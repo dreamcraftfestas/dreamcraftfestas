@@ -275,7 +275,7 @@ function gerarCatalogo() {
 
         let htmlImagens = '';
         for (let i = 1; i <= 5; i++) {
-            const caminho = 'Imagem/' + nomePasta + '/' + i + '.jpg';
+            const caminho = 'Imagem/' + nomePasta + '/' + i + '.webp';
             htmlImagens += '<img src="' + caminho + '" ' +
                 'class="' + (i === 1 ? 'imagem-ativa' : '') + '" ' +
                 'onerror="this.style.display=\'none\'" ' +
@@ -370,7 +370,7 @@ function abrirModal(pasta, indiceInicial) {
     // Coleta todas as imagens validas desta pasta
     imagensModal = [];
     for (let i = 1; i <= 5; i++) {
-        const caminho = 'Imagem/' + pasta + '/' + i + '.jpg';
+        const caminho = 'Imagem/' + pasta + '/' + i + '.webp';
         const img = new Image();
         img.src = caminho;
         if (img.complete && img.naturalWidth > 0) {
