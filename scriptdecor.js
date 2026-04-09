@@ -367,38 +367,36 @@ function setupCarrossel(card) {
 // ============================================
 
 function abrirModal(pasta, indiceInicial) {
-    // Coleta todas as imagens validas desta pasta
+    // Coleta as imagens (mantendo seu padrão .webp e ./)
     imagensModal = [];
     for (let i = 1; i <= 5; i++) {
         const caminho = './Imagem/' + pasta + '/' + i + '.webp';
-        const img = new Image();
-        img.src = caminho;
-        if (img.complete && img.naturalWidth > 0) {
-            imagensModal.push(caminho);
-        }
+        imagensModal.push(caminho);
     }
 
-    if (imagensModal.length === 0) return;
+    indiceModal = indiceInicial - 1;
 
-    indiceModal = Math.min(indiceInicial - 1, imagensModal.length - 1);
+    // Remove qualquer modal antigo que possa ter ficado perdido
+    const modalAntigo = document.querySelector('.modal-imagem');
+    if (modalAntigo) modalAntigo.remove();
 
     // Cria o modal
     modalAtual = document.createElement('div');
-    modalAtual.className = 'modal-imagem';
+    modalAtual.className = 'modal-imagem'; // Classe importante para o CSS abaixo
     modalAtual.innerHTML = 
         '<div class="modal-overlay" onclick="fecharModal()"></div>' +
         '<div class="modal-conteudo">' +
             '<button class="modal-fechar" onclick="fecharModal()">&times;</button>' +
             '<button class="modal-nav modal-anterior" onclick="imagemAnterior()">&#10094;</button>' +
-            '<img src="' + imagensModal[indiceModal] + '" class="modal-img" alt="Imagem ampliada">' +
+            '<img src="' + imagensModal[indiceModal] + '" class="modal-img" onerror="this.src=\'Logo/logo-festas.webp\'">' +
             '<button class="modal-nav modal-proximo" onclick="imagemProxima()">&#10095;</button>' +
             '<div class="modal-contador">' + (indiceModal + 1) + ' / ' + imagensModal.length + '</div>' +
         '</div>';
 
+    // O PULO DO GATO: Anexa direto no BODY para sair de dentro das outras divs
     document.body.appendChild(modalAtual);
-    document.body.style.overflow = 'hidden'; // Impede scroll
+    document.body.style.overflow = 'hidden'; 
 
-    // Atualiza botoes de navegacao
     atualizarBotoesModal();
 }
 
