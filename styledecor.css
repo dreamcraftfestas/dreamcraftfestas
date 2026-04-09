@@ -1,0 +1,699 @@
+/* ============================================
+   DREAMCRAFT - ESTILOS COM ZOOM E MODAL
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Playfair+Display:wght@600&display=swap');
+
+:root {
+    --cor-principal: #6f8f70;
+    --cor-secundaria: #f080a0;
+    --cor-fundo: #fdfdfd;
+    --cor-texto: #2c3e50;
+    --font-titulos: 'Playfair Display', serif;
+    --font-corpo: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-corpo);
+    background: url("Logo/logo_decoracoes.png") no-repeat center center fixed;
+    background-size: cover;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(116, 116, 116, 0.55);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* --- IMAGENS SEMPRE VISÍVEIS --- */
+img {
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- HEADER --- */
+.header {
+    background-color: var(--cor-principal);
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2000;
+    height: 100px;
+}
+
+.header img {
+    height: 70px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* --- MAIN --- */
+main {
+    margin-top: 120px;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+    font-family: var(--font-titulos);
+}
+
+/* --- CONTROLES --- */
+.controle {
+    margin-bottom: 20px;
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filtros-visuais {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filtro-btn {
+    background: #c2e7c3;
+    border: 2px solid var(--cor-principal);
+    color: var(--cor-principal);
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.filtro-btn:hover,
+.filtro-btn.active {
+    background: var(--cor-principal);
+    color: white;
+}
+
+#busca-tema {
+    padding: 10px 20px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    width: 250px;
+    max-width: 100%;
+    margin: 10px;
+    font-size: 16px;
+}
+
+#busca-tema:focus {
+    outline: none;
+    border-color: var(--cor-principal);
+}
+
+#filtro {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    margin: 10px;
+    font-size: 16px;
+}
+
+.controlevisualizacao {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.controlevisualizacao button {
+    background-color: var(--cor-principal);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.controlevisualizacao button:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* --- CARDS DE FESTA --- */
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.festa {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.festa:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* --- CARROSSEL COM ZOOM --- */
+.carrossel {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.imagens-carrossel {
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Sistema de carrossel simples */
+.imagens-carrossel img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+    opacity: 0 !important;
+    transition: all 0.5s ease;
+    cursor: zoom-in;
+}
+
+.imagens-carrossel img.imagem-ativa {
+    opacity: 1 !important;
+    position: relative;
+}
+
+/* ZOOM NO HOVER */
+.imagens-carrossel:hover img.imagem-ativa {
+    transform: scale(1.15);
+    object-fit: cover;
+    z-index: 10;
+}
+
+/* Hint de zoom */
+.zoom-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.carrossel:hover .zoom-hint {
+    opacity: 1;
+}
+
+/* Contador de imagens */
+.contador-imagens {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    display: none;
+}
+
+/* Conteúdo do card */
+.titulo {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: var(--font-titulos);
+}
+
+.descricao {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    color: #555;
+    flex-grow: 1;
+}
+
+.descricao li {
+    margin-bottom: 5px;
+}
+
+.whatsapp-btn {
+    background-color: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+    margin-top: auto;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E;
+    transform: scale(1.02);
+}
+
+/* ============================================
+   MODAL / LIGHTBOX
+   ============================================ */
+
+.modal-imagem {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    cursor: pointer;
+}
+
+.modal-conteudo {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    animation: modalEntrada 0.3s ease;
+}
+
+@keyframes modalEntrada {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-fechar {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    z-index: 10;
+}
+
+.modal-fechar:hover {
+    transform: scale(1.2);
+}
+
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.modal-nav:hover {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.modal-anterior {
+    left: -70px;
+}
+
+.modal-proximo {
+    right: -70px;
+}
+
+.modal-contador {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 16px;
+    background: rgba(0,0,0,0.5);
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+/* --- MODO LISTA --- */
+.catalogo.lista {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.catalogo.lista .festa {
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto 20px;
+}
+
+.catalogo.lista .festa:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Alinha texto à direita quando imagem está à direita (cards pares) */
+.catalogo.lista .festa:nth-child(even) .conteudo {
+    text-align: right;
+}
+
+.catalogo.lista .festa:nth-child(even) .descricao {
+    list-style: none;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: right;
+}
+
+.catalogo.lista .festa:nth-child(even) .descricao li {
+    position: relative;
+    padding-right: 15px;
+    margin-bottom: 5px;
+}
+
+.catalogo.lista .festa:nth-child(even) .descricao li::before {
+    content: "•";
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 24px;
+    line-height: 0.8;
+}
+
+.catalogo.lista .festa:nth-child(even) .whatsapp-btn {
+    align-self: flex-end;
+}
+
+
+.catalogo.lista .carrossel {
+    width: 300px;
+    flex-shrink: 0;
+    margin-bottom: 0;
+}
+
+.catalogo.lista .conteudo {
+    flex: 1;
+}
+
+.catalogo.lista .titulo {
+    font-size: 26px;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 20px;
+        height: 80px;
+    }
+
+    .header img {
+        height: 50px;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--cor-principal);
+        padding: 20px 0;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    main {
+        margin-top: 100px;
+    }
+
+    .filtros-visuais {
+        gap: 5px;
+    }
+
+    .filtro-btn {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+
+    #busca-tema {
+        width: 200px;
+    }
+
+    .catalogo {
+        grid-template-columns: 1fr;
+    }
+
+    .catalogo.lista .festa,
+    .catalogo.lista .festa:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .catalogo.lista .carrossel {
+        width: 100%;
+    }
+
+    /* Modal mobile */
+    .modal-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .modal-anterior {
+        left: 10px;
+    }
+
+    .modal-proximo {
+        right: 10px;
+    }
+
+    .modal-fechar {
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+    }
+}
+
+/* ============================================
+   CABEÇALHO MAIOR E LOGO AMPLIADO
+   ============================================ */
+
+.header {
+    height: 140px;
+    padding: 20px 80px;
+}
+
+.header img {
+    height: 100px;
+    width: auto;
+}
+
+.nav-menu a {
+    font-size: 18px;
+}
+
+main {
+    margin-top: 160px;
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 120px;
+        padding: 15px 30px;
+    }
+
+    .header img {
+        height: 80px;
+    }
+
+    main {
+        margin-top: 140px;
+    }
+
+    .nav-menu {
+        top: 120px;
+    }
+}
+
+/* ============================================
+   MOBILE - Cards em coluna única
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Força todos os cards em coluna, mesmo os pares */
+    .catalogo.lista .festa,
+    .catalogo.lista .festa:nth-child(even) {
+        flex-direction: column !important;
+        min-height: auto;
+        max-height: none;
+    }
+    
+    /* Imagem em cima, ocupando largura total */
+    .catalogo.lista .carrossel {
+        width: 100% !important;
+        height: 200px;
+        margin-bottom: 15px;
+    }
+    
+    /* Texto embaixo, alinhado à esquerda (padrão) */
+    .catalogo.lista .festa:nth-child(even) .conteudo,
+    .catalogo.lista .conteudo {
+        text-align: left !important;
+        width: 100%;
+    }
+    
+    /* Lista volta ao normal (marcadores à esquerda) */
+    .catalogo.lista .festa:nth-child(even) .descricao,
+    .catalogo.lista .descricao {
+        padding-left: 20px !important;
+        padding-right: 0 !important;
+        direction: ltr !important;
+    }
+    
+    .catalogo.lista .festa:nth-child(even) .descricao li {
+        justify-content: flex-start !important;
+    }
+    
+    .catalogo.lista .festa:nth-child(even) .descricao li::before {
+        order: 0 !important; /* Marcador volta para esquerda */
+        position: static !important;
+        margin-right: 8px !important;
+        margin-left: 0 !important;
+    }
+    
+    /* Botão WhatsApp centralizado */
+    .catalogo.lista .festa:nth-child(even) .whatsapp-btn,
+    .catalogo.lista .whatsapp-btn {
+        align-self: center !important;
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    /* Título centralizado no mobile */
+    .catalogo.lista .titulo {
+        text-align: center;
+        font-size: 18px;
+        max-height: none;
+    }
+}

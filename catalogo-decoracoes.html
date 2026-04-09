@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo DreamCraft</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styledecor.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+        <img src="Logo/logo-festas.png" alt="DreamCraft Festas">
+
+        <nav class="nav-menu" id="nav-menu">
+            <a href="index.html">Início</a>
+            <a href="index.html#servicos">Serviços</a>
+            <a href="index.html#contato">Contato</a>
+        </nav>
+
+        <button class="nav-toggle" id="nav-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <main>
+      
+        <h1>Catálogo de Mini Festas</h1>
+
+  <div class="controle">
+    <label for="filtro">Filtrar por categoria: </label>
+    
+    <!-- Botões visuais -->
+    <div class="filtros-visuais">
+        <button class="filtro-btn active" onclick="filtrarCategoria('all')">Todos</button>
+        <button class="filtro-btn" onclick="filtrarCategoria('princesas')">👑 Princesas</button>
+        <button class="filtro-btn" onclick="filtrarCategoria('herois')">🦸 Heróis</button>
+        <button class="filtro-btn" onclick="filtrarCategoria('animais')">🦁 Animais</button>
+        <button class="filtro-btn" onclick="filtrarCategoria('cores')">🎨 Cores</button>
+    </div>
+    
+    <!-- Campo de busca (SEPARADO do select) -->
+    <input type="text" id="busca-tema" placeholder="🔍 Buscar tema..." onkeyup="buscarTema()">
+    
+    <!-- Select dropdown (SEM o input dentro) -->
+    <select id="filtro" onchange="filtrarCategoria()">
+        <option value="all">Todos</option>
+        <option value="animais">Animais</option>
+        <option value="animação">Animação</option>
+        <option value="anime">Anime</option>
+        <option value="anonovo">Ano Novo</option>
+        <option value="arcovazado">Arco Vazado</option>
+        <option value="arraia">Arraia</option>
+        <option value="asas">Asas</option>
+        <option value="banda">Banda</option>
+        <option value="batizado">Batizado</option>
+        <option value="bebe">Bebê</option>
+        <option value="boiadeira">Boiadeira</option>
+        <option value="boneca">Boneca</option>
+        <option value="borboletas">Borboletas</option>
+        <option value="boteco">Boteco</option>
+        <option value="brinquedos">Brinquedos</option>
+        <option value="chadebebe">Chá de Bebê</option>
+        <option value="chacasanova">Chá de Casa Nova</option>
+        <option value="chalingerie">Chá Lingerie</option>
+        <option value="chapanela">Chá de Panela</option>
+        <option value="charevelacao">Chá Revelação</option>
+        <option value="circo">Circo</option>
+        <option value="colorir">Colorir</option>
+        <option value="contodefadas">Conto de Fadas</option>
+        <option value="cores">Cores Neutras</option>
+        <option value="corrida">Corrida</option>
+        <option value="cute">Cute</option>
+        <option value="datacomemorativa">Data Comemorativa</option>
+        <option value="desenho">Desenhos</option>
+        <option value="dinossauro">Dinossauro</option>
+        <option value="disney">Disney</option>
+        <option value="doce">Doces</option>
+        <option value="diversos">Diversos</option>
+        <option value="espaco">Espaço</option>
+        <option value="fazendinha">Fazendinha</option>
+        <option value="feminino">Feminino</option>
+        <option value="festa">Festas</option>
+        <option value="festajunina">Festa Junina</option>
+        <option value="festapersonalizada">Festa Personalizada</option>
+        <option value="filme">Filme</option>
+        <option value="fimdeano">Fim de ano</option>
+        <option value="flores">Flores</option>
+        <option value="frutas">Frutas</option>
+        <option value="fundodomar">Fundo do Mar</option>
+        <option value="futebol">Futebol</option>
+        <option value="game">Game</option>
+        <option value="glitter">Glitter</option>
+        <option value="halloween">Halloween</option>
+        <option value="happybirthday">Happy Birthday</option>
+        <option value="herois">Heróis</option>
+        <option value="homem">Homem</option>
+        <option value="humor">Humor</option>
+        <option value="jardim">Jardim</option>
+        <option value="jogos">Jogos</option>
+        <option value="k-pop">K-Pop</option>
+        <option value="magia">Magia</option>
+        <option value="meninas">Meninas</option>
+        <option value="meninos">Meninos</option>
+        <option value="monstro">Monstro</option>
+        <option value="mulheres">Mulheres</option>
+        <option value="musica">Musica</option>
+        <option value="natal">Natal</option>
+        <option value="neon">Neon</option>
+        <option value="noivado">Noivado</option>
+        <option value="liso">Painel Liso</option>
+        <option value="personalizasa">Festa Personalizada</option>
+        <option value="piscina">Pool Party</option>
+        <option value="prehistoria">Pré História</option>
+        <option value="princesas">Princesas</option>
+        <option value="profissão">Profissão</option>
+        <option value="hq">Quadinhos</option>
+        <option value="religioso">Religiosos</option>
+        <option value="safari">Safari</option>
+        <option value="stitch">Stitch</option>
+        <option value="times">Times</option>
+        <option value="veiculos">Veiculos</option>
+        <option value="verão">Verão</option>
+        <option value="youtube">You Tube</option>
+        <option value="youtuber">YouTuber</option>
+    </select>
+</div>
+
+<div class="controlevisualizacao">
+    <button type="button">Alternar Lista / Grade</button>
+</div>
+
+<div class="catalogo grid" id="catalogo-festas"></div>
+
+     
+ 
+  <script src="scriptdecor.js"></script>
+</body>
+</html>
