@@ -276,7 +276,7 @@ img {
 
 /* ZOOM CONTROLADO */
 .portfolio-item img:hover {
-    transform: scale(1.50);
+    transform: scale(1.80);
     z-index: 10;
 }
 
