@@ -54,7 +54,7 @@
             setInterval(function() {
                 index++;
                 mover();
-            }, 5000);
+            }, 3000);
             
             window.addEventListener('resize', mover);
         }
