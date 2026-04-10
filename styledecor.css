@@ -215,79 +215,66 @@ h1 {
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* --- CARROSSEL COM ZOOM --- */
+/* --- CARROSSEL COM ZOOM (CORRIGIDO) --- */
 .carrossel {
     position: relative;
     border-radius: 10px;
-    overflow: visible !important; /* MUDAMOS DE HIDDEN PARA VISIBLE */
+    overflow: visible !important; 
     margin-bottom: 15px;
     cursor: pointer;
+    z-index: 1;
 }
+
 .imagens-carrossel {
     height: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    background: transparent;
+    background: #f9f9f9; /* Fundo leve para quando a imagem for menor */
     border-radius: 10px;
-    overflow: visible !important; /* Essencial */
+    overflow: visible !important;
 }
 
-/* Sistema de carrossel simples */
+/* Estilo base de todas as imagens */
 .imagens-carrossel img {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Mantém a foto inteira sem cortar */
+    object-fit: contain;
     padding: 5px;
     opacity: 0 !important;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.5s ease;
+    transition: transform 0.3s ease-out, opacity 0.4s ease;
     z-index: 1;
-    transform-origin: center center; /* Zoom cresce do centro para fora */
 }
 
+/* Apenas a imagem ativa fica visível */
 .imagens-carrossel img.imagem-ativa {
     opacity: 1 !important;
-   position: relative;
-    transform: translate(-50%, -50%) scale(1);
+    z-index: 2;
 }
 
-/* ZOOM NO HOVER */
-.imagens-carrossel:hover img.imagem-ativa {
-    transform: scale(1.15);
-    object-fit: cover;
-    z-index: 10;
+/* ZOOM AO PASSAR O MOUSE - A imagem pula para fora do card */
+.carrossel:hover {
+    z-index: 999; /* Garante que o card inteiro fique na frente dos outros */
 }
-/* EFEITO DE EXPANDIR PARA FORA */
-.imagens-carrossel img:hover {
-    transform: scale(1.5); /* Aumenta 50% */
-    z-index: 999; /* Joga a imagem na frente de textos e outros cards */
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Adiciona sombra para destaque */
-}
-.carrossel:hover .imagem-ativa {
-    transform: translate(-50%, -50%) scale(1.6) !important; /* Aumenta 60% partindo do centro */
-    z-index: 9999 !important; /* Fica na frente de TUDO */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-    background-color: white; /* Adiciona um fundo para não ficar transparente no zoom */
-    border-radius: 10px;
-}
+
 .carrossel:hover .imagens-carrossel img.imagem-ativa {
-    transform: scale(1.6); /* Aumenta 60% para fora dos limites do card */
-    z-index: 99999 !important; /* Joga para frente de TUDO (outros cards e menus) */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra para dar profundidade */
-    background: white; /* Adiciona fundo branco para a imagem não ficar transparente sobre o texto */
+    transform: translate(-50%, -50%) scale(1.6); /* Cresce 60% a partir do centro */
+    z-index: 9999 !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background-color: white; 
     border-radius: 10px;
-    cursor: zoom-in;
 }
 
-/* Esconde o contador e o texto de ajuda durante o zoom para não atrapalhar */
+/* Esconde elementos auxiliares durante o zoom para não poluir a imagem */
 .carrossel:hover .contador-imagens,
 .carrossel:hover .zoom-hint {
     opacity: 0 !important;
+    visibility: hidden;
 }
 
 /* Hint de zoom */
