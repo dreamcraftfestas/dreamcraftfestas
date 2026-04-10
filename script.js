@@ -1,4 +1,111 @@
 // ============================================
+// DREAMCRAFT - JAVASCRIPT UNIFICADO
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ============================================
+    // 1. CARROSSEL DE PORTFÓLIO
+    // ============================================
+    const trilho = document.getElementById('portfolio-trilho-fotos');
+    const btnNext = document.getElementById('portfolio-next-btn');
+    const btnPrev = document.getElementById('portfolio-prev-btn');
+    
+    if (trilho && btnNext && btnPrev) {
+        let index = 0;
+        let timer;
+        const itens = trilho.querySelectorAll('.portfolio-item');
+        const totalItens = itens.length;
+
+        function getVisiveis() {
+            if (window.innerWidth > 1024) return 4;
+            if (window.innerWidth > 768) return 2;
+            return 1;
+        }
+
+        function mover() {
+            const visiveis = getVisiveis();
+            const larguraItem = 100 / visiveis;
+            const maxIndex = Math.max(0, totalItens - visiveis);
+            
+            if (index > maxIndex) index = maxIndex;
+            if (index < 0) index = 0;
+
+            trilho.style.transform = `translateX(-${index * larguraItem}%)`;
+        }
+
+        function proximo() {
+            const visiveis = getVisiveis();
+            const maxIndex = Math.max(0, totalItens - visiveis);
+            index = (index >= maxIndex) ? 0 : index + 1;
+            mover();
+        }
+
+        function anterior() {
+            const visiveis = getVisiveis();
+            const maxIndex = Math.max(0, totalItens - visiveis);
+            index = (index <= 0) ? maxIndex : index - 1;
+            mover();
+        }
+
+        function reiniciarTimer() {
+            clearInterval(timer);
+            timer = setInterval(proximo, 3000);
+        }
+
+        btnNext.addEventListener('click', () => { proximo(); reiniciarTimer(); });
+        btnPrev.addEventListener('click', () => { anterior(); reiniciarTimer(); });
+
+        // Inicia o carrossel
+        mover();
+        reiniciarTimer();
+        window.addEventListener('resize', mover);
+    }
+
+    // ============================================
+    // 2. FORMULÁRIO PARA WHATSAPP
+    // ============================================
+    const form = document.getElementById('meuFormulario');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // ESSENCIAL: Impede a página de atualizar!
+            
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const mensagem = document.getElementById('mensagem').value;
+            
+            const numeroZap = "5519993723106";
+            const texto = `Olá! Meu nome é ${nome} (${email}). %0A%0A*Mensagem:* %0A${mensagem}`;
+            
+            window.open(`https://wa.me/${numeroZap}?text=${texto}`, '_blank');
+            
+            form.reset(); // Limpa os campos após enviar
+        });
+    }
+
+    // ============================================
+    // 3. MENU MOBILE E HEADER (O restante do seu código)
+    // ============================================
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    }
+
+    // Header que some ao rolar
+    const header = document.querySelector('.header');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const current = window.pageYOffset;
+        if (current > lastScroll && current > 100) {
+            header.classList.add('header-hidden');
+        } else {
+            header.classList.remove('header-hidden');
+        }
+        lastScroll = current;
+    });
+
+});// ============================================
 // DREAMCRAFT - JAVASCRIPT PRINCIPAL
 // ============================================
 
