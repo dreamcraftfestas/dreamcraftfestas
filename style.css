@@ -229,18 +229,16 @@ img {
     background-color: var(--cor-principal);
 }
 
-/* --- PORTFÓLIO: 5 FOTOS COM ZOOM PURO --- */
+/* --- PORTFÓLIO: 5 ITENS, PROPORÇÃO ORIGINAL E ZOOM LIMPO --- */
 
 .portfolio-container-relativo {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 50px;
-    /* O segredo para não cortar o zoom nem mostrar tudo: */
     overflow: visible !important; 
 }
 
-/* Este contêiner é o "muro" que limita a visão */
 .portfolio-slider {
     width: 100%;
     overflow: hidden !important; 
@@ -249,67 +247,56 @@ img {
 
 .portfolio-wrapper {
     display: flex;
+    align-items: center; /* Alinha imagens de alturas diferentes pelo meio */
     transition: transform 0.6s ease-in-out;
-    /* Padding vertical alto permite que a imagem cresça sem ser cortada pelo overflow:hidden */
-    padding: 80px 0; 
+    padding: 60px 0; 
 }
 
 .portfolio-item {
-    /* Exatamente 5 fotos (100 / 5 = 20) */
-    flex: 0 0 20% !important; 
+    flex: 0 0 20% !important; /* Mantém exatamente 5 por linha */
     padding: 10px;
     box-sizing: border-box;
     display: flex;
-    align-items: center;
     justify-content: center;
-    /* REMOÇÃO TOTAL DE CARDS */
     background: transparent !important;
     border: none !important;
-    box-shadow: none !important;
 }
 
 .portfolio-item img {
+    /* REMOÇÃO DE ALTURA FIXA PARA MANTER PROPORÇÃO */
     width: 100% !important;
-    height: 400px !important; 
-    object-fit: cover !important; 
+    height: auto !important; 
+    max-height: 450px; /* Limite máximo para não descontrolar o layout */
+    object-fit: contain !important; /* Garante que a imagem inteira apareça sem cortes */
+    
     border-radius: 12px;
     background-color: transparent !important;
     transition: transform 0.3s ease-in-out; 
     cursor: pointer;
     position: relative;
     z-index: 1;
-    /* Força a imagem a não ter fundo */
-    box-shadow: none !important; 
 }
 
-/* EFEITO DE ZOOM PURO: APENAS A IMAGEM CRESCE */
+/* ZOOM PURO SEM CARD TRANSPARENTE */
 .portfolio-item img:hover {
-    transform: scale(1.3) !important; /* Aumenta 30% */
+    transform: scale(1.25) !important; 
     z-index: 99 !important;
-    /* Opcional: uma sombra suave apenas na imagem para dar profundidade */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important; 
 }
 
-/* BLOQUEIA QUALQUER FUNDO NO HOVER DO ITEM */
+/* Mata qualquer resquício de card/fundo no hover do container */
 .portfolio-item:hover {
     background: transparent !important;
-    background-color: transparent !important;
     box-shadow: none !important;
 }
 
-/* SETAS: Ajuste para ficarem por cima do zoom */
-.seta-portfolio {
-    z-index: 101; 
-}
-
-/* RESPONSIVIDADE */
+/* Responsividade */
 @media (max-width: 1024px) {
-    .portfolio-item { flex: 0 0 33.33% !important; } /* 3 fotos */
+    .portfolio-item { flex: 0 0 33.33% !important; }
 }
 
 @media (max-width: 768px) {
-    .portfolio-item { flex: 0 0 50% !important; } /* 2 fotos */
-    .portfolio-wrapper { padding: 40px 0; }
+    .portfolio-item { flex: 0 0 50% !important; }
 }
 
 /* Modal de Zoom */
