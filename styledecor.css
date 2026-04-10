@@ -199,7 +199,12 @@ h1 {
     overflow: visible;
     z-index: 1;
     transition: z-index 0.3s, transform 0.3s;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.5) !important;
+   
+   /* Efeito de desfoque profissional (Glassmorphism) */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+   
     border-radius: 15px;
     padding: 20px;
     position: relative;
@@ -207,9 +212,24 @@ h1 {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
+   border: 1px solid rgba(255, 255, 255, 0.3);
     transition: box-shadow 0.3s ease, z-index 0s; /* Removi o transform daqui */
 }
 
+/* CORREÇÃO PARA MOBILE (Evitar o fundo preto) */
+@media (max-width: 768px) {
+    .festa {
+        /* Garante que o fundo continue sendo a base branca transparente */
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        background-image: none !important;
+    }
+    
+    /* Se você tiver um modal de detalhes que abre no mobile, use isto: */
+    .modal-conteudo {
+        background: rgba(255, 255, 255, 0.9) !important; /* Um pouco mais sólido para leitura */
+        border-radius: 15px;
+    }
+}
 .festa:hover {
     z-index: 500;
    /* transform: translateY(-10px);*/
