@@ -229,112 +229,91 @@ img {
     background-color: var(--cor-principal);
 }
 
-/* --- PORTFÓLIO: IMAGENS INTEIRAS COM SUPER ZOOM --- */
-
+/* --- PORTFÓLIO --- */
 .portfolio-container-relativo {
     position: relative;
     max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 60px;
-    overflow: visible !important;
+    margin: 0 auto;
+    padding: 0 50px;
 }
 
 .portfolio-slider {
     width: 100%;
-    overflow: hidden !important;
-    position: relative;
-    padding: 100px 0; /* Espaço extra para o super zoom de 60% não cortar */
+    overflow: hidden;
+    border-radius: 15px;
 }
 
 .portfolio-wrapper {
     display: flex;
-    align-items: center; /* Alinha fotos de alturas diferentes pelo meio */
-    transition: transform 0.6s ease;
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
 }
 
 .portfolio-item {
-    flex: 0 0 20% !important;
-    min-width: 20% !important;
-    padding: 0 10px;
+    flex: 0 0 25%;
+    padding: 10px;
     box-sizing: border-box;
-    display: flex;
-    justify-content: center;
 }
 
 .portfolio-item img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 400px; /* Impede que fotos verticais fiquem gigantes */
-    /* GARANTE QUE A IMAGEM APAREÇA INTEIRA NO CARD */
-    object-fit: contain !important; 
-    
-    border-radius: 10px;
-    background-color: rgba(255,255,255,0.05); /* Fundo sutil para fotos de tamanhos variados */
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    cursor: zoom-in; /* Indica que pode ampliar */
-    position: relative;
-    z-index: 1;
+    width: 100%;
+    height: 450px;
+    object-fit: contain;
+    background: transparent;
+    border-radius: 12px;
+    cursor: zoom-in;
 }
 
-/* ZOOM DE 60% AO PASSAR O MOUSE (1.6) */
 .portfolio-item img:hover {
-    transform: scale(1.6) !important; 
-    z-index: 999 !important;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
+    transform: scale(1.05);
 }
 
-/* SETAS CENTRALIZADAS NA ÁREA VISÍVEL */
 .seta-portfolio {
     position: absolute;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    background: var(--cor-principal) !important;
-    color: white !important;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--cor-principal);
+    color: white;
     border: none;
     width: 45px;
     height: 45px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 99;
+    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.seta-portfolio.anterior { left: 0; }
-.seta-portfolio.proximo { right: 0; }
-
-/* AJUSTE PARA TELAS MENORES */
-@media (max-width: 900px) {
-    .portfolio-item { flex: 0 0 33.33% !important; min-width: 33.33% !important; }
-    .portfolio-item img { height: 280px !important; }
+.seta-portfolio:hover {
+    transform: translateY(-50%) scale(1.1);
 }
 
-@media (max-width: 600px) {
-    .portfolio-item { flex: 0 0 50% !important; min-width: 50% !important; }
-    .portfolio-item img { height: 220px !important; }
-}
+.anterior { left: 0; }
+.proximo { right: 0; }
 
-/* Modal para Visualização Original (Tamanho Real) */
+/* Modal de Zoom */
 .modal-zoom-estilo {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
     z-index: 10000;
     justify-content: center;
     align-items: center;
-    cursor: zoom-out;
 }
 
 #img-ampliada-target {
-    max-width: 95%;
-    max-height: 95%;
-    object-fit: scale-down; /* Tamanho original sem estourar a tela */
-    border: 3px solid white;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 5px;
+    box-shadow: 0 0 20px white;
 }
+
 
 #fechar-zoom-btn {
     position: absolute;
