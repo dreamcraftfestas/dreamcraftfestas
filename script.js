@@ -204,72 +204,90 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
 });
-/* ============================================
-   SERVIÇOS - 5 ITENS NA MESMA LINHA
-   ============================================ */
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ============================================
+    // CARROSSEL DE PORTFÓLIO (CORRIGIDO)
+    // ============================================
+    const trilho = document.getElementById('portfolio-trilho-fotos');
+    const btnNext = document.getElementById('portfolio-next-btn');
+    const btnPrev = document.getElementById('portfolio-prev-btn');
+    
+    if (trilho && btnNext && btnPrev) {
+        let index = 0;
+        let timer;
+        const itens = trilho.querySelectorAll('.portfolio-item');
+        const totalItens = itens.length;
 
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 colunas iguais */
-    gap: 15px; /* Espaço menor entre os cards */
-    max-width: 1400px; /* Largura máxima maior */
-    margin: 0 auto;
-    padding: 0 10px;
-}
+        function getVisiveis() {
+            if (window.innerWidth > 1024) return 4;
+            if (window.innerWidth > 768) return 2;
+            return 1;
+        }
 
-.service-item {
-    padding: 15px 12px; /* Padding reduzido */
-    min-height: auto; /* Remove altura fixa */
-}
+        function mover() {
+            const visiveis = getVisiveis();
+            const maxIndex = Math.max(0, totalItens - visiveis);
+            
+            // Garante que o index não ultrapasse o limite ao redimensionar
+            if (index > maxIndex) index = maxIndex;
+            if (index < 0) index = 0;
 
-.service-logo {
-    width: 80px; /* Logo menor */
-    height: 80px;
-    margin: 0 auto 10px;
-}
+            const larguraItem = 100 / visiveis;
+            trilho.style.transform = `translateX(-${index * larguraItem}%)`;
+        }
 
-.service-item i {
-    font-size: 2.5em; /* Ícone menor */
-    margin-bottom: 10px;
-}
+        function proximo() {
+            const visiveis = getVisiveis();
+            const maxIndex = Math.max(0, totalItens - visiveis);
+            
+            if (index >= maxIndex) {
+                index = 0; // Volta ao início
+            } else {
+                index++;
+            }
+            mover();
+        }
 
-.service-item h3 {
-    font-size: 0.95em; /* Título menor */
-    margin: 5px 0;
-}
+        function anterior() {
+            const visiveis = getVisiveis();
+            const maxIndex = Math.max(0, totalItens - visiveis);
+            
+            if (index <= 0) {
+                index = maxIndex; // Vai para o final
+            } else {
+                index--;
+            }
+            mover();
+        }
 
-.service-item h4 {
-    font-size: 0.85em; /* Subtítulo menor */
-    margin-bottom: 8px;
-}
+        function reiniciarTimer() {
+            clearInterval(timer);
+            timer = setInterval(proximo, 3000); // 3 segundos
+        }
 
-.service-item p {
-    font-size: 0.8em; /* Texto menor */
-    line-height: 1.4;
-    margin-bottom: 10px;
-}
+        // Cliques nas setas
+        btnNext.addEventListener('click', () => {
+            proximo();
+            reiniciarTimer();
+        });
 
-.service-cta {
-    padding: 8px 15px; /* Botão menor */
-    font-size: 0.8em;
-    margin-top: 10px;
-}
+        btnPrev.addEventListener('click', () => {
+            anterior();
+            reiniciarTimer();
+        });
 
-/* Responsivo - em telas menores vai para 2 ou 1 coluna */
-@media (max-width: 1200px) {
-    .service-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 em cima, 2 embaixo */
+        // Pausar ao passar o mouse
+        trilho.parentElement.addEventListener('mouseenter', () => clearInterval(timer));
+        trilho.parentElement.addEventListener('mouseleave', reiniciarTimer);
+
+        // Início
+        mover();
+        reiniciarTimer();
+
+        window.addEventListener('resize', mover);
     }
-}
 
-@media (max-width: 768px) {
-    .service-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas no tablet */
-    }
-}
-
-@media (max-width: 480px) {
-    .service-grid {
-        grid-template-columns: 1fr; /* 1 coluna no mobile */
-    }
-}
+    // --- Mantenha o restante do seu código (Menu Mobile, Header, etc) abaixo daqui ---
+    // MAS NÃO COLE CSS AQUI DENTRO!
+});
