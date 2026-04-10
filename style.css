@@ -237,7 +237,7 @@ img {
     margin: 0 auto;
     padding: 0 50px;
     /* Mudamos para visible para o zoom não ser cortado nas bordas da seção */
-    overflow: visible !important; 
+    overflow: hidden !important; 
 }
 
 .portfolio-slider {
@@ -250,7 +250,7 @@ img {
     display: flex;
     transition: transform 0.6s ease-in-out;
     /* O padding é essencial: ele cria o espaço vazio para a imagem ocupar ao dar zoom */
-    padding: 80px 0; 
+    padding: 50px 0; 
 }
 
 .portfolio-item {
@@ -264,13 +264,13 @@ img {
     background: transparent !important;
     background-color: transparent !important;
     border: none !important;
-    box-shadow: none !important;
+    /*box-shadow: none !important;*/
 }
 
 .portfolio-item img {
     width: 100% !important;
-    height: 450px !important; 
-    object-fit: contain !important; 
+    height: 400px !important; 
+    object-fit: cover !important; 
     background-color: transparent !important;
     border-radius: 12px;
     background-color: transparent !important;
@@ -285,11 +285,12 @@ img {
 /* EFEITO DE ZOOM AO PASSAR O MOUSE */
 .portfolio-item img:hover {
     transform: scale(1.5) !important; /* Aumentamos para 30% para ser bem visível */
-    z-index: 999 !important; /* Coloca a foto na frente de todas as outras */
-    box-shadow: none; /* Sombra para dar profundidade ao zoom */
+    z-index: 99 !important; /* Coloca a foto na frente de todas as outras */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Sombra leve apenas na foto */
 }
 .portfolio-item:hover {
     background: transparent !important;
+    box-shadow: none !important;
 }
 
 /* Ajuste para não cortar o zoom nas bordas do carrossel */
@@ -333,12 +334,12 @@ img {
 .seta-portfolio.proximo { right: 5px; }
 
 /* Responsividade do Carrossel */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .portfolio-item { flex: 0 0 50%; } /* 2 fotos em tablets */
 }
 
 @media (max-width: 768px) {
-    .portfolio-item { flex: 0 0 100%; } /* 1 foto no celular */
+    .portfolio-item { flex: 0 0 50%; } /* 1 foto no celular */
     .portfolio-container-relativo { padding: 0 30px; }
     .seta-portfolio { width: 35px; height: 35px; }
 }
