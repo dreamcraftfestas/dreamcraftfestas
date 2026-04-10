@@ -229,32 +229,34 @@ img {
     background-color: var(--cor-principal);
 }
 
-/* --- PORTFÓLIO: 5 ITENS, PROPORÇÃO ORIGINAL E ZOOM LIMPO --- */
+/* --- PORTFÓLIO: VERSÃO DEFINITIVA --- */
 
 .portfolio-container-relativo {
     position: relative;
-    max-width: 1200px;
+    max-width: 1300px; /* Aumentei um pouco para dar respiro */
     margin: 0 auto;
-    padding: 0 50px;
-    overflow: visible !important; 
+    padding: 0 60px;
+    overflow: visible !important;
 }
 
 .portfolio-slider {
     width: 100%;
-    overflow: hidden !important; 
+    overflow: hidden !important;
     position: relative;
 }
 
 .portfolio-wrapper {
     display: flex;
-    align-items: center; /* Alinha imagens de alturas diferentes pelo meio */
+    align-items: center; /* Alinha todas pelo centro horizontal */
     transition: transform 0.6s ease-in-out;
-    padding: 60px 0; 
+    padding: 70px 0; /* Espaço para o zoom não cortar */
 }
 
 .portfolio-item {
-    flex: 0 0 20% !important; /* Mantém exatamente 5 por linha */
-    padding: 10px;
+    /* Força 5 colunas idênticas */
+    flex: 0 0 20% !important; 
+    min-width: 20% !important;
+    padding: 0 10px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -263,40 +265,58 @@ img {
 }
 
 .portfolio-item img {
-    /* REMOÇÃO DE ALTURA FIXA PARA MANTER PROPORÇÃO */
+    /* O SEGREDO: Altura fixa com object-fit cover mantém o alinhamento 
+       sem distorcer a imagem (ela corta as bordas mas não estica) */
     width: 100% !important;
-    height: auto !important; 
-    max-height: 450px; /* Limite máximo para não descontrolar o layout */
-    object-fit: contain !important; /* Garante que a imagem inteira apareça sem cortes */
+    height: 380px !important; 
+    object-fit: cover !important; 
     
-    border-radius: 12px;
+    border-radius: 15px;
     background-color: transparent !important;
-    transition: transform 0.3s ease-in-out; 
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
     position: relative;
     z-index: 1;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* ZOOM PURO SEM CARD TRANSPARENTE */
+/* ZOOM LIMPO */
 .portfolio-item img:hover {
-    transform: scale(1.25) !important; 
+    transform: scale(1.2) !important;
     z-index: 99 !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important; 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
 }
 
-/* Mata qualquer resquício de card/fundo no hover do container */
-.portfolio-item:hover {
-    background: transparent !important;
-    box-shadow: none !important;
+/* FIX DAS SETAS (FORÇAR CENTRALIZAÇÃO) */
+.seta-portfolio {
+    position: absolute;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: var(--cor-principal) !important;
+    color: white !important;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Responsividade */
-@media (max-width: 1024px) {
+.seta-portfolio.anterior { left: 0px; }
+.seta-portfolio.proximo { right: 0px; }
+
+/* Responsivo para não esmagar no celular */
+@media (max-width: 900px) {
     .portfolio-item { flex: 0 0 33.33% !important; }
+    .portfolio-item img { height: 300px !important; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .portfolio-item { flex: 0 0 50% !important; }
+    .portfolio-item img { height: 250px !important; }
 }
 
 /* Modal de Zoom */
