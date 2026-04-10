@@ -204,7 +204,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
 });
-document.addEventListener('DOMContentLoaded', function() {
+
+<script>
+        document.getElementById('meuFormulario').addEventListener('submit', function(event) {
+            // Se você quer que envie para o WhatsApp, o preventDefault é necessário 
+            // para o Formspree não recarregar a página antes do Zap abrir.
+            event.preventDefault(); 
+            
+            const nome = this.nome.value;
+            const mensagem = this.mensagem.value;
+            
+            const texto = `Olá! Meu nome é ${nome}. ${mensagem}`;
+            const numeroZap = "5511999999999"; // Troque pelo seu número real
+            
+            window.open(`https://wa.me/${numeroZap}?text=${encodeURIComponent(texto)}`, '_blank');
+        });
+    </script>
+</body>
+</html>
     
     // ============================================
     // CARROSSEL DE PORTFÓLIO (CORRIGIDO)
