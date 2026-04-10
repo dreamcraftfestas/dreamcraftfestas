@@ -1,4 +1,143 @@
-// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ============================================
+    // 1. CARROSSEL DE PORTFÓLIO
+    // ============================================
+    const trilho = document.getElementById('portfolio-trilho-fotos');
+    const btnNext = document.getElementById('portfolio-next-btn');
+    const btnPrev = document.getElementById('portfolio-prev-btn');
+    
+    if (trilho && btnNext && btnPrev) {
+        let index = 0;
+        let timer;
+        const itens = trilho.querySelectorAll('.portfolio-item');
+
+        function getVisiveis() {
+            if (window.innerWidth > 1024) return 4;
+            if (window.innerWidth > 768) return 2;
+            return 1;
+        }
+
+        function mover() {
+            const visiveis = getVisiveis();
+            const larguraItem = 100 / visiveis;
+            const maxIndex = Math.max(0, itens.length - visiveis);
+            
+            if (index > maxIndex) index = maxIndex;
+            if (index < 0) index = 0;
+
+            trilho.style.transform = `translateX(-${index * larguraItem}%)`;
+        }
+
+        function proximo() {
+            const visiveis = getVisiveis();
+            const maxIndex = Math.max(0, itens.length - visiveis);
+            index = (index >= maxIndex) ? 0 : index + 1;
+            mover();
+        }
+
+        function anterior() {
+            const visiveis = getVisiveis();
+            const maxIndex = Math.max(0, itens.length - visiveis);
+            index = (index <= 0) ? maxIndex : index - 1;
+            mover();
+        }
+
+        btnNext.addEventListener('click', () => { proximo(); reiniciarTimer(); });
+        btnPrev.addEventListener('click', () => { anterior(); reiniciarTimer(); });
+
+        function reiniciarTimer() {
+            clearInterval(timer);
+            timer = setInterval(proximo, 4000);
+        }
+
+        reiniciarTimer();
+        window.addEventListener('resize', mover);
+        mover(); // Ajuste inicial
+    }
+
+    // ============================================
+    // 2. MODAL DE ZOOM (CLIQUE NA IMAGEM)
+    // ============================================
+    const modal = document.getElementById('modal-zoom-final');
+    const imgFull = document.getElementById('img-ampliada-target');
+    const btnFechar = document.getElementById('fechar-zoom-btn');
+    const imagensPortfolio = document.querySelectorAll('.portfolio-item img');
+
+    if (modal && imgFull) {
+        imagensPortfolio.forEach(img => {
+            img.addEventListener('click', function() {
+                imgFull.src = this.src;
+                modal.style.display = 'flex';
+            });
+        });
+
+        const fecharModal = () => { modal.style.display = 'none'; };
+        
+        if (btnFechar) btnFechar.addEventListener('click', fecharModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) fecharModal(); });
+    }
+
+    // ============================================
+    // 3. FORMULÁRIO WHATSAPP
+    // ============================================
+    const form = document.getElementById('meuFormulario');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // MANTÉM A PÁGINA ABERTA
+            
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const mensagem = document.getElementById('mensagem').value;
+            
+            const numeroZap = "5519993723106";
+            // %0A serve para quebrar linha no WhatsApp
+            const texto = `Olá! Meu nome é ${nome} (${email}).%0A%0A*Mensagem:*%0A${mensagem}`;
+            
+            window.open(`https://wa.me/${numeroZap}?text=${texto}`, '_blank');
+            form.reset();
+        });
+    }
+
+    // ============================================
+    // 4. MENU MOBILE
+    // ============================================
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    }
+
+    // ============================================
+    // 5. CONTADOR DE ESTATÍSTICAS
+    // ============================================
+    const statsSection = document.querySelector('.stats-section');
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    if (statsSection && statNumbers.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                statNumbers.forEach(num => {
+                    const target = +num.getAttribute('data-target');
+                    let count = 0;
+                    const updateCount = () => {
+                        const inc = target / 100;
+                        if (count < target) {
+                            count += inc;
+                            num.innerText = Math.ceil(count);
+                            setTimeout(updateCount, 20);
+                        } else {
+                            num.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+                observer.unobserve(statsSection);
+            }
+        }, { threshold: 0.5 });
+        observer.observe(statsSection);
+    }
+});// ============================================
 // DREAMCRAFT - JAVASCRIPT UNIFICADO
 // ============================================
 
