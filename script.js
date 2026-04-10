@@ -1,97 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ============================================
-    // 1. CARROSSEL DE PORTFÓLIO
-    // ============================================
-    const trilho = document.getElementById('portfolio-trilho-fotos');
-    const btnNext = document.getElementById('portfolio-next-btn');
-    const btnPrev = document.getElementById('portfolio-prev-btn');
-    
-    if (trilho && btnNext && btnPrev) {
-        let index = 0;
-        let timer;
-        const itens = trilho.querySelectorAll('.portfolio-item');
-
-        function getVisiveis() {
-            if (window.innerWidth > 1024) return 4;
-            if (window.innerWidth > 768) return 2;
-            return 1;
-        }
-
-        function mover() {
-            const visiveis = getVisiveis();
-            const larguraItem = 100 / visiveis;
-            const maxIndex = Math.max(0, itens.length - visiveis);
-            
-            if (index > maxIndex) index = maxIndex;
-            if (index < 0) index = 0;
-
-            trilho.style.transform = `translateX(-${index * larguraItem}%)`;
-        }
-
-        function proximo() {
-            const visiveis = getVisiveis();
-            const maxIndex = Math.max(0, itens.length - visiveis);
-            index = (index >= maxIndex) ? 0 : index + 1;
-            mover();
-        }
-
-        function anterior() {
-            const visiveis = getVisiveis();
-            const maxIndex = Math.max(0, itens.length - visiveis);
-            index = (index <= 0) ? maxIndex : index - 1;
-            mover();
-        }
-
-        btnNext.addEventListener('click', () => { proximo(); reiniciarTimer(); });
-        btnPrev.addEventListener('click', () => { anterior(); reiniciarTimer(); });
-
-        function reiniciarTimer() {
-            clearInterval(timer);
-            timer = setInterval(proximo, 4000);
-        }
-
-        reiniciarTimer();
-        window.addEventListener('resize', mover);
-        mover(); // Ajuste inicial
-    }
-
-    // ============================================
-    // 2. MODAL DE ZOOM (CLIQUE NA IMAGEM)
-    // ============================================
-    const modal = document.getElementById('modal-zoom-final');
-    const imgFull = document.getElementById('img-ampliada-target');
-    const btnFechar = document.getElementById('fechar-zoom-btn');
-    const imagensPortfolio = document.querySelectorAll('.portfolio-item img');
-
-    if (modal && imgFull) {
-        imagensPortfolio.forEach(img => {
-            img.addEventListener('click', function() {
-                imgFull.src = this.src;
-                modal.style.display = 'flex';
-            });
-        });
-
-        const fecharModal = () => { modal.style.display = 'none'; };
-        
-        if (btnFechar) btnFechar.addEventListener('click', fecharModal);
-        modal.addEventListener('click', (e) => { if (e.target === modal) fecharModal(); });
-    }
-
-    // ============================================
-    // 3. FORMULÁRIO WHATSAPP
-    // ============================================
+    // --- 1. FORMULÁRIO WHATSAPP (CORREÇÃO DO REFRESH) ---
     const form = document.getElementById('meuFormulario');
     if (form) {
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // MANTÉM A PÁGINA ABERTA
+            e.preventDefault(); // ISSO AQUI impede a página de atualizar e o URL de mudar
             
             const nome = document.getElementById('nome').value;
             const email = document.getElementById('email').value;
             const mensagem = document.getElementById('mensagem').value;
             
             const numeroZap = "5519993723106";
-            // %0A serve para quebrar linha no WhatsApp
             const texto = `Olá! Meu nome é ${nome} (${email}).%0A%0A*Mensagem:*%0A${mensagem}`;
             
             window.open(`https://wa.me/${numeroZap}?text=${texto}`, '_blank');
@@ -99,459 +18,57 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ============================================
-    // 4. MENU MOBILE
-    // ============================================
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-    }
-
-    // ============================================
-    // 5. CONTADOR DE ESTATÍSTICAS
-    // ============================================
-    const statsSection = document.querySelector('.stats-section');
-    const statNumbers = document.querySelectorAll('.stat-number');
-    
-    if (statsSection && statNumbers.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                statNumbers.forEach(num => {
-                    const target = +num.getAttribute('data-target');
-                    let count = 0;
-                    const updateCount = () => {
-                        const inc = target / 100;
-                        if (count < target) {
-                            count += inc;
-                            num.innerText = Math.ceil(count);
-                            setTimeout(updateCount, 20);
-                        } else {
-                            num.innerText = target;
-                        }
-                    };
-                    updateCount();
-                });
-                observer.unobserve(statsSection);
-            }
-        }, { threshold: 0.5 });
-        observer.observe(statsSection);
-    }
-});// ============================================
-// DREAMCRAFT - JAVASCRIPT UNIFICADO
-// ============================================
-
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // ============================================
-    // 1. CARROSSEL DE PORTFÓLIO
-    // ============================================
+    // --- 2. CARROSSEL DE PORTFÓLIO (CORREÇÃO DO MOVIMENTO) ---
     const trilho = document.getElementById('portfolio-trilho-fotos');
     const btnNext = document.getElementById('portfolio-next-btn');
     const btnPrev = document.getElementById('portfolio-prev-btn');
     
     if (trilho && btnNext && btnPrev) {
         let index = 0;
-        let timer;
         const itens = trilho.querySelectorAll('.portfolio-item');
-        const totalItens = itens.length;
-
-        function getVisiveis() {
-            if (window.innerWidth > 1024) return 4;
-            if (window.innerWidth > 768) return 2;
-            return 1;
-        }
 
         function mover() {
-            const visiveis = getVisiveis();
+            // Define quantas fotos aparecem dependendo da tela
+            const visiveis = window.innerWidth > 1024 ? 4 : (window.innerWidth > 768 ? 2 : 1);
             const larguraItem = 100 / visiveis;
-            const maxIndex = Math.max(0, totalItens - visiveis);
+            const maxIndex = Math.max(0, itens.length - visiveis);
             
-            if (index > maxIndex) index = maxIndex;
-            if (index < 0) index = 0;
+            if (index > maxIndex) index = 0;
+            if (index < 0) index = maxIndex;
 
             trilho.style.transform = `translateX(-${index * larguraItem}%)`;
         }
 
-        function proximo() {
-            const visiveis = getVisiveis();
-            const maxIndex = Math.max(0, totalItens - visiveis);
-            index = (index >= maxIndex) ? 0 : index + 1;
-            mover();
-        }
+        btnNext.addEventListener('click', () => { index++; mover(); });
+        btnPrev.addEventListener('click', () => { index--; mover(); });
 
-        function anterior() {
-            const visiveis = getVisiveis();
-            const maxIndex = Math.max(0, totalItens - visiveis);
-            index = (index <= 0) ? maxIndex : index - 1;
-            mover();
-        }
-
-        function reiniciarTimer() {
-            clearInterval(timer);
-            timer = setInterval(proximo, 3000);
-        }
-
-        btnNext.addEventListener('click', () => { proximo(); reiniciarTimer(); });
-        btnPrev.addEventListener('click', () => { anterior(); reiniciarTimer(); });
-
-        // Inicia o carrossel
-        mover();
-        reiniciarTimer();
+        // Auto-play a cada 5 segundos
+        setInterval(() => { index++; mover(); }, 5000);
+        
         window.addEventListener('resize', mover);
     }
 
-    // ============================================
-    // 2. FORMULÁRIO PARA WHATSAPP
-    // ============================================
-    const form = document.getElementById('meuFormulario');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // ESSENCIAL: Impede a página de atualizar!
-            
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
-            const mensagem = document.getElementById('mensagem').value;
-            
-            const numeroZap = "5519993723106";
-            const texto = `Olá! Meu nome é ${nome} (${email}). %0A%0A*Mensagem:* %0A${mensagem}`;
-            
-            window.open(`https://wa.me/${numeroZap}?text=${texto}`, '_blank');
-            
-            form.reset(); // Limpa os campos após enviar
+    // --- 3. ZOOM DAS IMAGENS ---
+    const modal = document.getElementById('modal-zoom-final');
+    const imgFull = document.getElementById('img-ampliada-target');
+    const btnFechar = document.getElementById('fechar-zoom-btn');
+
+    document.querySelectorAll('.portfolio-item img').forEach(img => {
+        img.addEventListener('click', function() {
+            if(modal && imgFull) {
+                imgFull.src = this.src;
+                modal.style.display = 'flex';
+            }
         });
-    }
-
-    // ============================================
-    // 3. MENU MOBILE E HEADER (O restante do seu código)
-    // ============================================
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-    }
-
-    // Header que some ao rolar
-    const header = document.querySelector('.header');
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-        const current = window.pageYOffset;
-        if (current > lastScroll && current > 100) {
-            header.classList.add('header-hidden');
-        } else {
-            header.classList.remove('header-hidden');
-        }
-        lastScroll = current;
     });
 
-});// ============================================
-// DREAMCRAFT - JAVASCRIPT PRINCIPAL
-// ============================================
+    if(btnFechar) btnFechar.addEventListener('click', () => modal.style.display = 'none');
+    if(modal) modal.addEventListener('click', (e) => { if(e.target === modal) modal.style.display = 'none'; });
 
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // ============================================
-    // CARROSSEL DE PORTFÓLIO
-    // ============================================
-    const trilho = document.getElementById('portfolio-trilho-fotos');
-    const btnNext = document.getElementById('portfolio-next-btn');
-    const btnPrev = document.getElementById('portfolio-prev-btn');
-    
-    if (trilho && btnNext && btnPrev) {
-        let index = 0;
-        let timer;
-        const itens = trilho.querySelectorAll('.portfolio-item');
-        
-        function getVisiveis() {
-            return window.innerWidth > 768 ? 4 : 1;
-        }
-        
-        function mover() {
-            const visiveis = getVisiveis();
-            const porcentagem = 100 / visiveis;
-            trilho.style.transform = 'translateX(-' + (index * porcentagem) + '%)';
-        }
-        
-        function proximo() {
-            const visiveis = getVisiveis();
-            const max = Math.max(0, itens.length - visiveis);
-            index = (index >= max) ? 0 : index + 1;
-            mover();
-        }
-        
-        function anterior() {
-            index = (index <= 0) ? 0 : index - 1;
-            mover();
-        }
-        
-        function reiniciarTimer() {
-            clearInterval(timer);
-            timer = setInterval(proximo, 3000);
-        }
-        
-        // Eventos
-        btnNext.addEventListener('click', function() {
-            proximo();
-            reiniciarTimer();
-        });
-        
-        btnPrev.addEventListener('click', function() {
-            anterior();
-            reiniciarTimer();
-        });
-        
-        // Zoom
-        const modal = document.getElementById('modal-zoom-final');
-        const imgFull = document.getElementById('img-ampliada-target');
-        const btnFechar = document.getElementById('fechar-zoom-btn');
-        
-        if (modal && imgFull && btnFechar) {
-            itens.forEach(function(item) {
-                const img = item.querySelector('img');
-                if (img) {
-                    img.addEventListener('click', function() {
-                        imgFull.src = this.src;
-                        modal.style.display = 'flex';
-                        clearInterval(timer);
-                    });
-                }
-            });
-            
-            btnFechar.addEventListener('click', function() {
-                modal.style.display = 'none';
-                reiniciarTimer();
-            });
-            
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                    reiniciarTimer();
-                }
-            });
-        }
-        
-        // Inicia
-        mover();
-        reiniciarTimer();
-        
-        // Resize
-        window.addEventListener('resize', function() {
-            index = 0;
-            mover();
-        });
-    }
-    
-    // ============================================
-    // MENU MOBILE
-    // ============================================
+    // --- 4. MENU MOBILE ---
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
-    
     if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-        
-        navMenu.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-            });
-        });
+        navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
     }
-    
-    // ============================================
-    // HEADER QUE SOME AO ROLAR
-    // ============================================
-    const header = document.querySelector('.header');
-    let lastScroll = 0;
-    
-    if (header) {
-        window.addEventListener('scroll', function() {
-            const current = window.pageYOffset;
-            
-            if (current > lastScroll && current > 100) {
-                header.classList.add('header-hidden');
-            } else {
-                header.classList.remove('header-hidden');
-            }
-            
-            lastScroll = current;
-        });
-    }
-    
-    // ============================================
-    // CONTADOR DE ESTATÍSTICAS
-    // ============================================
-    function animarContadores() {
-        const contadores = document.querySelectorAll('.stat-number');
-        
-        contadores.forEach(function(contador) {
-            const target = parseInt(contador.getAttribute('data-target'));
-            if (!target) return;
-            
-            let atual = 0;
-            const incremento = target / 100;
-            const duracao = 20;
-            
-            const timer = setInterval(function() {
-                atual += incremento;
-                if (atual >= target) {
-                    contador.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    contador.textContent = Math.floor(atual);
-                }
-            }, duracao);
-        });
-    }
-    
-    // Observer para iniciar contador
-    const statsSection = document.querySelector('.stats-section');
-    if (statsSection && 'IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    animarContadores();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        observer.observe(statsSection);
-    }
-    
-    // ============================================
-    // FORMULÁRIO
-    // ============================================
-    const form = document.querySelector('.contact-form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(form);
-            
-            fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(function(response) {
-                if (response.ok) {
-                    alert('Mensagem enviada com sucesso!');
-                    form.reset();
-                } else {
-                    alert('Erro ao enviar. Tente novamente.');
-                }
-            }).catch(function() {
-                alert('Erro de conexão. Tente mais tarde.');
-            });
-        });
-    }
-    
-});
-
-<script>
-        document.getElementById('meuFormulario').addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede o envio por e-mail/recarregamento
-    
-    // Pega os valores digitados
-    const nome = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
-    const mensagem = document.getElementById('mensagem').value;
-    
-    // Monta a mensagem para o WhatsApp
-    const texto = `Olá! Meu nome é ${nome} (${email}). %0A%0A*Minha mensagem:*%0A${mensagem}`;
-    
-    // SEU NÚMERO: Coloque apenas números (Código do país + DDD + Número)
-    const numeroZap = "5519993723106"; 
-    
-    // Abre o WhatsApp em uma nova aba
-    window.open(`https://wa.me/${numeroZap}?text=${texto}`, '_blank');
-});
-    
-    // ============================================
-    // CARROSSEL DE PORTFÓLIO (CORRIGIDO)
-    // ============================================
-    const trilho = document.getElementById('portfolio-trilho-fotos');
-    const btnNext = document.getElementById('portfolio-next-btn');
-    const btnPrev = document.getElementById('portfolio-prev-btn');
-    
-    if (trilho && btnNext && btnPrev) {
-        let index = 0;
-        let timer;
-        const itens = trilho.querySelectorAll('.portfolio-item');
-        const totalItens = itens.length;
-
-        function getVisiveis() {
-            if (window.innerWidth > 1024) return 4;
-            if (window.innerWidth > 768) return 2;
-            return 1;
-        }
-
-        function mover() {
-            const visiveis = getVisiveis();
-            const maxIndex = Math.max(0, totalItens - visiveis);
-            
-            // Garante que o index não ultrapasse o limite ao redimensionar
-            if (index > maxIndex) index = maxIndex;
-            if (index < 0) index = 0;
-
-            const larguraItem = 100 / visiveis;
-            trilho.style.transform = `translateX(-${index * larguraItem}%)`;
-        }
-
-        function proximo() {
-            const visiveis = getVisiveis();
-            const maxIndex = Math.max(0, totalItens - visiveis);
-            
-            if (index >= maxIndex) {
-                index = 0; // Volta ao início
-            } else {
-                index++;
-            }
-            mover();
-        }
-
-        function anterior() {
-            const visiveis = getVisiveis();
-            const maxIndex = Math.max(0, totalItens - visiveis);
-            
-            if (index <= 0) {
-                index = maxIndex; // Vai para o final
-            } else {
-                index--;
-            }
-            mover();
-        }
-
-        function reiniciarTimer() {
-            clearInterval(timer);
-            timer = setInterval(proximo, 3000); // 3 segundos
-        }
-
-        // Cliques nas setas
-        btnNext.addEventListener('click', () => {
-            proximo();
-            reiniciarTimer();
-        });
-
-        btnPrev.addEventListener('click', () => {
-            anterior();
-            reiniciarTimer();
-        });
-
-        // Pausar ao passar o mouse
-        trilho.parentElement.addEventListener('mouseenter', () => clearInterval(timer));
-        trilho.parentElement.addEventListener('mouseleave', reiniciarTimer);
-
-        // Início
-        mover();
-        reiniciarTimer();
-
-        window.addEventListener('resize', mover);
-    }
-
-    // --- Mantenha o restante do seu código (Menu Mobile, Header, etc) abaixo daqui ---
-    // MAS NÃO COLE CSS AQUI DENTRO!
 });
