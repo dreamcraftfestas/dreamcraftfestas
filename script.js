@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const texto = `Olá! Meu nome é ${nome} (${email}). %0A%0A*Minha mensagem:*%0A${mensagem}`;
     
     // SEU NÚMERO: Coloque apenas números (Código do país + DDD + Número)
-    const numeroZap = "5511999999999"; 
+    const numeroZap = "5519993723106"; 
     
     // Abre o WhatsApp em uma nova aba
     window.open(`https://wa.me/${numeroZap}?text=${texto}`, '_blank');
