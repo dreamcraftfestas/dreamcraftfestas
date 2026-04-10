@@ -265,7 +265,7 @@ img {
 }
 /*Tamanho do zoom*/
 .portfolio-item img:hover {
-    transform: scale(1.55);
+    transform: scale(1.85);
 }
 
 .seta-portfolio {
