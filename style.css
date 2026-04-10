@@ -229,63 +229,65 @@ img {
     background-color: var(--cor-principal);
 }
 
-/* --- PORTFÓLIO: TAMANHO IDEAL E SETAS CENTRALIZADAS --- */
+/* --- PORTFÓLIO: IMAGENS INTEIRAS COM SUPER ZOOM --- */
 
 .portfolio-container-relativo {
     position: relative;
-    max-width: 1200px; /* Reduzi para não espalhar demais na tela */
+    max-width: 1200px;
     margin: 40px auto;
-    padding: 0 50px;
+    padding: 0 60px;
     overflow: visible !important;
-    /* Define uma altura para o container não sumir */
-    min-height: 400px; 
 }
 
 .portfolio-slider {
     width: 100%;
     overflow: hidden !important;
     position: relative;
-    padding: 20px 0;
+    padding: 100px 0; /* Espaço extra para o super zoom de 60% não cortar */
 }
 
 .portfolio-wrapper {
     display: flex;
-    align-items: stretch; /* Faz todos os itens terem a mesma altura na linha */
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    align-items: center; /* Alinha fotos de alturas diferentes pelo meio */
+    transition: transform 0.6s ease;
 }
 
 .portfolio-item {
-    flex: 0 0 20% !important; /* Exatamente 5 por vez */
+    flex: 0 0 20% !important;
     min-width: 20% !important;
-    padding: 10px;
+    padding: 0 10px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 }
 
 .portfolio-item img {
     width: 100% !important;
-    /* ALTURA FIXA: Isso evita que as imagens fiquem minúsculas */
-    height: 350px !important; 
-    /* COVER: Preenche o espaço sem distorcer (pode cortar levemente as bordas para ajustar) */
-    object-fit: cover !important; 
+    height: auto !important;
+    max-height: 400px; /* Impede que fotos verticais fiquem gigantes */
+    /* GARANTE QUE A IMAGEM APAREÇA INTEIRA NO CARD */
+    object-fit: contain !important; 
     
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.05); /* Fundo sutil para fotos de tamanhos variados */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: zoom-in; /* Indica que pode ampliar */
+    position: relative;
+    z-index: 1;
 }
 
-/* ZOOM CONTROLADO */
+/* ZOOM DE 60% AO PASSAR O MOUSE (1.6) */
 .portfolio-item img:hover {
-    transform: scale(1.80);
-    z-index: 10;
+    transform: scale(1.6) !important; 
+    z-index: 999 !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
 }
 
-/* SETAS: POSICIONAMENTO ABSOLUTO NO CENTRO DO CONTAINER */
+/* SETAS CENTRALIZADAS NA ÁREA VISÍVEL */
 .seta-portfolio {
     position: absolute;
-    top: 50% !important; /* Centro vertical */
+    top: 50% !important;
     transform: translateY(-50%) !important;
-    
     background: var(--cor-principal) !important;
     color: white !important;
     border: none;
@@ -293,10 +295,11 @@ img {
     height: 45px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .seta-portfolio.anterior { left: 0; }
@@ -313,25 +316,24 @@ img {
     .portfolio-item img { height: 220px !important; }
 }
 
-/* Modal de Zoom */
+/* Modal para Visualização Original (Tamanho Real) */
 .modal-zoom-estilo {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.95);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
     z-index: 10000;
     justify-content: center;
     align-items: center;
+    cursor: zoom-out;
 }
 
 #img-ampliada-target {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 5px;
-    box-shadow: 0 0 20px white;
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: scale-down; /* Tamanho original sem estourar a tela */
+    border: 3px solid white;
 }
 
 #fechar-zoom-btn {
