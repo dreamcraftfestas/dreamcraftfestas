@@ -282,7 +282,7 @@ img {
 
 /* EFEITO DE ZOOM AO PASSAR O MOUSE */
 .portfolio-item img:hover {
-    transform: scale(1.3) !important; /* Aumentamos para 30% para ser bem visível */
+    transform: scale(1.5) !important; /* Aumentamos para 30% para ser bem visível */
     z-index: 999 !important; /* Coloca a foto na frente de todas as outras */
     box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra para dar profundidade ao zoom */
 }
