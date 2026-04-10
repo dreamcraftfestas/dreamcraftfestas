@@ -195,39 +195,46 @@ h1 {
     padding: 20px;
 }
 
+/* --- CARDS DE FESTA (VERSÃO COM TRANSPARÊNCIA TOTAL) --- */
 .festa {
     overflow: visible;
     z-index: 1;
-    transition: z-index 0.3s, transform 0.3s;
+    transition: z-index 0.3s, transform 0.3s, box-shadow 0.3s;
+    
+    /* 1. Forçamos o fundo branco com 50% de transparência */
     background: rgba(255, 255, 255, 0.5) !important;
-   
-   /* Efeito de desfoque profissional (Glassmorphism) */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-   
+    
+    /* 2. Removemos qualquer imagem de fundo que possa vir do tema mobile */
+    background-image: none !important;
+
+    /* 3. O "Glassmorphism" (Efeito de vidro) */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    
     border-radius: 15px;
     padding: 20px;
     position: relative;
-   /* transition: all 0.3s ease;*/
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-   border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: box-shadow 0.3s ease, z-index 0s; /* Removi o transform daqui */
+    
+    /* Borda sutil branca para ajudar a destacar do fundo */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* CORREÇÃO PARA MOBILE (Evitar o fundo preto) */
+/* --- AJUSTES ESPECÍFICOS PARA MOBILE --- */
 @media (max-width: 768px) {
     .festa {
-        /* Garante que o fundo continue sendo a base branca transparente */
+        /* No mobile, alguns navegadores precisam que a cor seja reafirmada */
         background-color: rgba(255, 255, 255, 0.5) !important;
-        background-image: none !important;
+        
+        /* Remove sombras pesadas que podem escurecer o card no mobile */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
     }
-    
-    /* Se você tiver um modal de detalhes que abre no mobile, use isto: */
-    .modal-conteudo {
-        background: rgba(255, 255, 255, 0.9) !important; /* Um pouco mais sólido para leitura */
-        border-radius: 15px;
+
+    /* Se o fundo estiver ficando preto, pode ser o container do catálogo */
+    .catalogo {
+        background: transparent !important;
     }
 }
 .festa:hover {
