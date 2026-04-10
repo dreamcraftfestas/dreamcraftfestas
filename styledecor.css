@@ -109,13 +109,22 @@ h1 {
 .controle {
     margin-bottom: 20px;
     text-align: center;
-    background: white;
+   
+    background: rgba(255, 255, 255, 0.3) !important;
+    background-image: none !important;
+
+   /* 3. EFEITO DE VIDRO PROFISSONAL (Glassmorphism) */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+   
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+   /* 4. BORDA SUTIL BRANCA: Dá o acabamento ao efeito de vidro */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
 .filtros-visuais {
@@ -142,6 +151,7 @@ h1 {
 .filtro-btn.active {
     background: var(--cor-principal);
     color: white;
+   transform: scale(1.05);
 }
 
 #busca-tema {
@@ -579,6 +589,36 @@ h1 {
 
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 768px) {
+    /* 1. CORREÇÃO CRÍTICA: Força o navegador a não escurecer o fundo */
+    :root { color-scheme: light; } 
+
+    .controle {
+        /* Força fundo branco com 50% de transparência e remove qualquer imagem/gradiente escuro */
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        background-image: none !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        
+        /* Efeito de desfoque para mobile */
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .festa {
+        /* Aplica a mesma lógica aos cards no mobile */
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        background-image: none !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+    }
+
+    .catalogo {
+        background: transparent !important;
+        grid-template-columns: 1fr;
+    }
+    
+    /* --- RESTANTE DO SEU CÓDIGO DE HEADER/MENU --- */
     .header {
         padding: 10px 20px;
         height: 80px;
@@ -622,10 +662,6 @@ h1 {
 
     #busca-tema {
         width: 200px;
-    }
-
-    .catalogo {
-        grid-template-columns: 1fr;
     }
 
     .catalogo.lista .festa,
