@@ -229,17 +229,14 @@ img {
     background-color: var(--cor-principal);
 }
 
-/* --- PORTFÓLIO: PROPORÇÃO ORIGINAL E SETAS FIXAS --- */
+/* --- PORTFÓLIO: IMAGENS INTEIRAS E SEM CORTES --- */
 
 .portfolio-container-relativo {
     position: relative;
-    max-width: 1400px; 
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 50px;
-    /* Garante que o container tenha altura suficiente para as setas se basearem */
-    min-height: 500px; 
-    display: flex;
-    align-items: center;
+    padding: 0 60px; /* Espaço para as setas não ficarem em cima da foto */
+    overflow: visible !important;
 }
 
 .portfolio-slider {
@@ -250,14 +247,15 @@ img {
 
 .portfolio-wrapper {
     display: flex;
-    /* Alinha imagens de diferentes alturas pelo meio vertical */
+    /* Alinha fotos de diferentes alturas pelo centro vertical */
     align-items: center; 
     transition: transform 0.6s ease-in-out;
-    padding: 80px 0; 
+    padding: 80px 0; /* Espaço de respiro para o zoom */
 }
 
 .portfolio-item {
-    flex: 0 0 20% !important; /* Mantém 5 por linha */
+    flex: 0 0 20% !important; /* Exatamente 5 por tela */
+    min-width: 20% !important;
     padding: 0 10px;
     box-sizing: border-box;
     display: flex;
@@ -266,55 +264,56 @@ img {
 }
 
 .portfolio-item img {
-    /* CORREÇÃO DE PROPORÇÃO */
+    /* O SEGREDO PARA NÃO CORTAR: */
     width: 100% !important;
-    height: auto !important; /* Deixa a imagem ditar a própria altura */
-    max-height: 450px; /* Impede que imagens verticais fiquem gigantes */
-    object-fit: contain !important; /* Exibe a imagem inteira sem cortes */
+    height: auto !important; /* A foto define sua própria altura */
+    max-height: 450px; /* Teto máximo para fotos verticais não estourarem */
+    object-fit: contain !important; /* GARANTE QUE A FOTO APAREÇA INTEIRA */
     
-    border-radius: 12px;
-    transition: all 0.3s ease-in-out;
+    border-radius: 15px;
+    background-color: transparent !important;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
+    position: relative;
     z-index: 1;
 }
 
-/* ZOOM SEM DISTORÇÃO */
+/* ZOOM SUAVE SEM CORTAR AS BORDAS */
 .portfolio-item img:hover {
-    transform: scale(1.15) !important;
+    transform: scale(1.1) !important; /* Zoom leve para não sobrepor demais as vizinhas */
     z-index: 99 !important;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
 }
 
-/* FIX DEFINITIVO DAS SETAS */
+/* FIX DEFINITIVO DAS SETAS CENTRALIZADAS */
 .seta-portfolio {
     position: absolute;
-    /* Força a seta a ficar no meio da seção, não da imagem individual */
     top: 50% !important;
     transform: translateY(-50%) !important;
-    
     background: var(--cor-principal) !important;
     color: white !important;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.seta-portfolio.anterior { left: 5px; }
-.seta-portfolio.proximo { right: 5px; }
+.seta-portfolio.anterior { left: 0px; }
+.seta-portfolio.proximo { right: 0px; }
 
-/* Responsivo */
+/* AJUSTES PARA CELULAR (PARA NÃO FICAR TUDO MINÚSCULO) */
 @media (max-width: 1024px) {
-    .portfolio-item { flex: 0 0 33.33% !important; }
+    .portfolio-item { flex: 0 0 33.33% !important; min-width: 33.33% !important; }
 }
+
 @media (max-width: 768px) {
-    .portfolio-item { flex: 0 0 50% !important; }
+    .portfolio-item { flex: 0 0 50% !important; min-width: 50% !important; }
 }
 
 /* Modal de Zoom */
