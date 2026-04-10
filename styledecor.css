@@ -217,11 +217,10 @@ h1 {
 .carrossel {
     position: relative;
     border-radius: 10px;
-    overflow: hidden;
+    overflow: visible !important; /* MUDAMOS DE HIDDEN PARA VISIBLE */
     margin-bottom: 15px;
     cursor: pointer;
 }
-
 .imagens-carrossel {
     height: 220px;
     display: flex;
@@ -257,6 +256,13 @@ h1 {
     transform: scale(1.15);
     object-fit: cover;
     z-index: 10;
+}
+/* EFEITO DE EXPANDIR PARA FORA */
+.imagens-carrossel img:hover {
+    transform: scale(1.5); /* Aumenta 50% */
+    z-index: 999; /* Joga a imagem na frente de textos e outros cards */
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Adiciona sombra para destaque */
 }
 
 /* Hint de zoom */
