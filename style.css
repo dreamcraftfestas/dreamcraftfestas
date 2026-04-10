@@ -250,31 +250,36 @@ img {
     will-change: transform;
 }
 
+/* --- PORTFÓLIO (VERSÃO FINAL SEM CORTES) --- */
 .portfolio-item {
-    /* 25% para 4 fotos por vez. Se mudar no JS, mude aqui também */
     flex: 0 0 25%; 
-    padding: 15px;
+    padding: 10px;
     box-sizing: border-box;
+    display: flex; /* Garante alinhamento interno */
+    align-items: center;
+    justify-content: center;
 }
 
 .portfolio-item img {
-    width: 100%;
-    height: 450px; /* Mantemos uma altura para alinhar o trilho */
-    /* MUDANÇA AQUI: contain mostra a imagem inteira sem cortes */
-    object-fit: contain; 
-    
-    /* Adicionamos um fundo leve ou transparente para fotos verticais */
-    background-color: rgba(255, 255, 255, 0.05); 
-    
+    width: 100% !important;
+    max-width: 100% !important;
+    /* Usamos min-height e max-height para dar flexibilidade sem quebrar o carrossel */
+    height: 400px !important; 
+    object-fit: contain !important; /* ISSO impede o corte */
+    background-color: transparent !important; 
     border-radius: 12px;
-    cursor: zoom-in;
     transition: transform 0.3s ease;
+    display: block;
+    margin: 0 auto;
 }
 
-/* Ajuste para telas menores: diminui a altura para não sobrar muito espaço vazio */
+/* No mobile, as fotos costumam ser menores, então baixamos o limite de altura */
 @media (max-width: 768px) {
+    .portfolio-item {
+        flex: 0 0 100%;
+    }
     .portfolio-item img {
-        height: 300px;
+        height: 300px !important; 
     }
 }
 
