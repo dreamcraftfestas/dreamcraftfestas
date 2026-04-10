@@ -95,4 +95,39 @@
     } else {
         iniciarScripts();
     }
+    // --- 5. CONTADOR ANIMADO (STATS) ---
+    const stats = document.querySelectorAll('.stat-number');
+    const statsSection = document.querySelector('.stats-section');
+    let iniciado = false;
+
+    const iniciarContagem = () => {
+        stats.forEach(num => {
+            const alvo = +num.getAttribute('data-target');
+            const incrementar = alvo / 100; // Velocidade da animação
+
+            const atualizarValor = () => {
+                const valorAtual = +num.innerText;
+                if (valorAtual < alvo) {
+                    num.innerText = Math.ceil(valorAtual + incrementar);
+                    setTimeout(atualizarValor, 30);
+                } else {
+                    num.innerText = alvo;
+                }
+            };
+            atualizarValor();
+        });
+    };
+
+    // Dispara a contagem apenas quando o usuário rolar até a seção
+    if (statsSection) {
+        window.addEventListener('scroll', () => {
+            const posicao = statsSection.getBoundingClientRect().top;
+            const alturaTela = window.innerHeight;
+
+            if (posicao < alturaTela && !iniciado) {
+                iniciarContagem();
+                iniciado = true;
+            }
+        });
+    }
 })();
