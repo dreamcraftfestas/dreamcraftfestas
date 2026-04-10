@@ -196,6 +196,7 @@ h1 {
 }
 
 .festa {
+   overflow: visible;
     background: #fff;
     border-radius: 15px;
     padding: 20px;
@@ -207,6 +208,7 @@ h1 {
 }
 
 .festa:hover {
+    z-index: 10;
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
@@ -228,7 +230,7 @@ h1 {
     position: relative;
     background: transparent;
     border-radius: 10px;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* Sistema de carrossel simples */
