@@ -250,7 +250,7 @@ img {
     display: flex;
     transition: transform 0.6s ease-in-out;
     /* O padding é essencial: ele cria o espaço vazio para a imagem ocupar ao dar zoom */
-    padding: 60px 0; 
+    padding: 80px 0; 
 }
 
 .portfolio-item {
@@ -262,6 +262,7 @@ img {
     justify-content: center;
     /* Remove fundo e bordas de qualquer card */
     background: transparent !important;
+    background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
 }
@@ -272,6 +273,7 @@ img {
     object-fit: contain !important; 
     background-color: transparent !important;
     border-radius: 12px;
+    background-color: transparent !important;
     /* Transição mais suave e perceptível */
     transition: transform 0.3s ease-out, box-shadow 0.3s ease;
     cursor: pointer;
@@ -284,7 +286,10 @@ img {
 .portfolio-item img:hover {
     transform: scale(1.5) !important; /* Aumentamos para 30% para ser bem visível */
     z-index: 999 !important; /* Coloca a foto na frente de todas as outras */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra para dar profundidade ao zoom */
+    box-shadow: none; /* Sombra para dar profundidade ao zoom */
+}
+.portfolio-item:hover {
+    background: transparent !important;
 }
 
 /* Ajuste para não cortar o zoom nas bordas do carrossel */
