@@ -229,26 +229,30 @@ h1 {
     position: relative;
     background: transparent;
     border-radius: 10px;
-    overflow: visible;
+    overflow: visible !important; /* Essencial */
 }
 
 /* Sistema de carrossel simples */
 .imagens-carrossel img {
     position: absolute;
-    top: 0;
-    left: 0;
+    /* Centralização absoluta para o zoom ser simétrico */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1); 
+    
     width: 100%;
     height: 100%;
     object-fit: contain;
     padding: 10px;
     opacity: 0 !important;
-    transition: all 0.5s ease;
+    transition: transform 0.3s ease-out, opacity 0.5s ease; /* Transição suave */
     cursor: zoom-in;
+    z-index: 1;
 }
 
 .imagens-carrossel img.imagem-ativa {
     opacity: 1 !important;
-    position: relative;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 /* ZOOM NO HOVER */
@@ -263,6 +267,13 @@ h1 {
     z-index: 999; /* Joga a imagem na frente de textos e outros cards */
     position: relative;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Adiciona sombra para destaque */
+}
+.carrossel:hover .imagem-ativa {
+    transform: translate(-50%, -50%) scale(1.6) !important; /* Aumenta 60% partindo do centro */
+    z-index: 9999 !important; /* Fica na frente de TUDO */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    background-color: white; /* Adiciona um fundo para não ficar transparente no zoom */
+    border-radius: 10px;
 }
 
 /* Hint de zoom */
