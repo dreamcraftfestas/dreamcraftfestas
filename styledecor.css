@@ -62,7 +62,7 @@ img {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 2000;
+    z-index: 20000;
     height: 100px;
 }
 
@@ -207,11 +207,12 @@ h1 {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
+    transition: box-shadow 0.3s ease, z-index 0s; /* Removi o transform daqui */
 }
 
 .festa:hover {
-    z-index: 100;
-    transform: translateY(-10px);
+    z-index: 500;
+   /* transform: translateY(-10px);*/
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
@@ -260,7 +261,12 @@ h1 {
 /* Apenas a imagem ativa fica visível */
 .imagens-carrossel img.imagem-ativa {
     opacity: 1 !important;
-    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1); /* Centralizada */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+    z-index: 10;
 }
 
 /* ZOOM AO PASSAR O MOUSE */
@@ -269,13 +275,15 @@ h1 {
 }
 
 .carrossel:hover .imagens-carrossel img.imagem-ativa {
-    /* Mantém a centralização (-50%, -50%) e aplica o zoom (1.6) */
-    transform: translate(-50%, -50%) scale(1.6) !important; 
+    /* -50% em X (mantém centralizado horizontal)
+       -70% em Y (faz ela subir um pouco para fora do card)
+       scale(1.7) (aumenta o tamanho)
+    */
+    transform: translate(-50%, -75%) scale(1.7) !important;
     z-index: 9999 !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-    background-color: white; 
-    border-radius: 10px;
-    padding: 5px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+    background-color: white;
+    border-radius: 12px;
 }
 
 /* Esconde o contador e o hint para não ficarem "atrás" da imagem no zoom */
