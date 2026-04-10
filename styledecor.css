@@ -201,8 +201,8 @@ h1 {
     z-index: 1;
     transition: z-index 0.3s, transform 0.3s, box-shadow 0.3s;
     
-    /* 1. Forçamos o fundo branco com 50% de transparência */
-    background: rgba(255, 255, 255, 0.5) !important;
+    /* 1. Forçamos o fundo branco com 30% de transparência */
+    background: rgba(255, 255, 255, 0.3) !important;
     
     /* 2. Removemos qualquer imagem de fundo que possa vir do tema mobile */
     background-image: none !important;
