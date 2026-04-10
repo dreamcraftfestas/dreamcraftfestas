@@ -229,45 +229,50 @@ img {
     background-color: var(--cor-principal);
 }
 
-/* --- PORTFÓLIO --- */
+/* --- PORTFÓLIO (CORRIGIDO PARA O CARROSSEL FUNCIONAR) --- */
 .portfolio-container-relativo {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 50px;
+    overflow: hidden; /* Importante: impede que as fotos vazem pelas laterais */
 }
 
 .portfolio-slider {
     width: 100%;
-    overflow: hidden;
-    border-radius: 15px;
+    overflow: visible; /* O overflow hidden já está no container pai */
 }
 
+/* Este é o "Trilho" que o JS movimenta */
 .portfolio-wrapper {
     display: flex;
-    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 0.6s ease-in-out; /* Velocidade do movimento */
     will-change: transform;
 }
 
 .portfolio-item {
-    flex: 0 0 25%;
-    padding: 10px;
+    /* 25% para 4 fotos por vez. Se mudar no JS, mude aqui também */
+    flex: 0 0 25%; 
+    padding: 15px;
     box-sizing: border-box;
 }
 
 .portfolio-item img {
     width: 100%;
-    height: 450px;
-    object-fit: contain;
-    background: transparent;
+    height: 350px; /* Altura fixa para alinhar todas */
+    object-fit: cover; /* Faz a foto preencher o espaço sem distorcer */
     border-radius: 12px;
     cursor: zoom-in;
+    transition: transform 0.3s;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .portfolio-item img:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
+/* Estilo das Setas */
 .seta-portfolio {
     position: absolute;
     top: 50%;
@@ -279,19 +284,33 @@ img {
     height: 45px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 99;
+    z-index: 100; /* Garante que fique acima das fotos */
     font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .seta-portfolio:hover {
+    background: var(--cor-secundaria);
     transform: translateY(-50%) scale(1.1);
 }
 
-.anterior { left: 0; }
-.proximo { right: 0; }
+.seta-portfolio.anterior { left: 5px; }
+.seta-portfolio.proximo { right: 5px; }
+
+/* Responsividade do Carrossel */
+@media (max-width: 1024px) {
+    .portfolio-item { flex: 0 0 50%; } /* 2 fotos em tablets */
+}
+
+@media (max-width: 768px) {
+    .portfolio-item { flex: 0 0 100%; } /* 1 foto no celular */
+    .portfolio-container-relativo { padding: 0 30px; }
+    .seta-portfolio { width: 35px; height: 35px; }
+}
 
 /* Modal de Zoom */
 .modal-zoom-estilo {
