@@ -176,7 +176,6 @@ const bancoDadosTemas = [
     { nome: "Minha primeira volta ao sol", pasta: "minhaprimeiravoltaaosol", categorias: "all diversos" },
     { nome: "Minions", pasta: "minions", categorias: "all filme desenhos" },
     { nome: "Minions 2", pasta: "minions2", categorias: "all filme desenhos" },
-    { nome: "Minions Gru", pasta: "minionsgru", categorias: "all filme desenhos" },
     { nome: "Minnie rosa", pasta: "minnierosa", categorias: "all desenhos disney" },
     { nome: "Minnie vermelha", pasta: "minnievermelha", categorias: "all desenhos disney" },
     { nome: "Moana", pasta: "moana", categorias: "all princesas filme contodefadas disney" },
