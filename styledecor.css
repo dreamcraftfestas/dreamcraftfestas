@@ -248,19 +248,20 @@ h1 {
     }
 }
 .festa:hover {
-    z-index: 500;
+    z-index: 999;
    /* transform: translateY(-10px);*/
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 /* --- CARROSSEL COM ZOOM (VERSÃO FINAL CORRIGIDA) --- */
 .carrossel {
-    position: relative;
+    position: relative; /* Essencial para o selo e contador */
     border-radius: 10px;
     overflow: visible !important; 
     margin-bottom: 15px;
     cursor: pointer;
-    z-index: 1;
+    z-index: 10; /* Valor base */
+    transition: z-index 0.3s;
 }
 
 .imagens-carrossel {
@@ -271,25 +272,20 @@ h1 {
     position: relative;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    /* Aqui é o segredo: visible para o zoom sair, mas sem deslocar a imagem */
-    overflow: visible !important;
+    overflow: visible !important; /* Permite que a foto "saia" do card no zoom */
 }
 
 /* Estilo base das imagens - Centralizadas no meio da div */
 .imagens-carrossel img {
     position: absolute;
-    /* Centraliza a imagem no meio do container */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
     max-width: 95%;
     max-height: 95%;
-    width: auto;
-    height: auto;
-    
     object-fit: contain;
     opacity: 0 !important;
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
     z-index: 1;
 }
 
@@ -310,14 +306,10 @@ h1 {
 }
 
 .carrossel:hover .imagens-carrossel img.imagem-ativa {
-    /* -50% em X (mantém centralizado horizontal)
-       -70% em Y (faz ela subir um pouco para fora do card)
-       scale(1.7) (aumenta o tamanho)
-    */
-    transform: translate(-50%, -75%) scale(1.7) !important;
+    transform: translate(-50%, -70%) scale(1.7) !important;
     z-index: 9999 !important;
     box-shadow: 0 15px 45px rgba(0,0,0,0.4);
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco sutil no zoom ajuda a ver a foto */
     border-radius: 12px;
 }
 
@@ -327,6 +319,35 @@ h1 {
     display: none !important;
 }
 
+/* Estilo para o selo de personalização */
+.selo-cores {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff69b4; /* Pink */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 5; 
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+/* Esconder elementos que atrapalham o zoom */
+.carrossel:hover .contador-imagens,
+.carrossel:hover .zoom-hint,
+.carrossel:hover .selo-cores {
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Importante para o selo não "fugir" do card */
+.carrossel {
+    position: relative;
+}
 /* Hint de zoom */
 .zoom-hint {
     position: absolute;
