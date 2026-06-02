@@ -1,587 +1,850 @@
-/* --- VARIAVEIS DE PERSONALIZAÇÃO --- */
-:root {
-    /* Cores principais baseadas na sua logo */
-    --cor-principal: #6f8f70; /* Azul-petróleo/Ciano da sua logo */
-    --cor-secundaria: #f080a0; /* Rosa-claro/Magenta da sua logo */
+/* ============================================
+   DREAMCRAFT - ESTILOS COM ZOOM E MODAL
+   ============================================ */
 
-    /* Cores para texto e fundo (para manter a leitura fácil) */
-    --cor-texto: #333; /* Cinza escuro para o texto */
-    --cor-fundo: #f8f8f8; /* Cinza bem claro para o fundo */
-    --cor-fundo-claro: #fff; /* Branco para seções específicas */
-    --header-height: 100%; /* ajuste conforme a altura do seu header */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Playfair+Display:wght@600&display=swap');
+
+:root {
+    --cor-principal: #6f8f70;
+    --cor-secundaria: #f080a0;
+    --cor-fundo: #fdfdfd;
+    --cor-texto: #2c3e50;
+    --font-titulos: 'Playfair Display', serif;
+    --font-corpo: 'Montserrat', sans-serif;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
 }
-body { 
-    font-family: Arial, sans-serif; 
-    margin: 0;
-    padding: 0;
 
-    /* --- IMAGEM FIXA DE FUNDO --- */
+body {
+    font-family: var(--font-corpo);
     background: url("Logo/logo_decoracoes.png") no-repeat center center fixed;
-    background-size: 100%;
-
-    /* Bloqueio de seleção (anti-cópia) */
+    background-size: cover;
     -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
-
-    position: relative;
 }
 
-/* --- OVERLAY TRANSPARENTE PARA NÃO FICAR ATRÁS DO HEADER --- */
 body::before {
     content: "";
     position: fixed;
-    top: var(--header-height);                   /* começa após o header fixo */
+    top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - var(--header-height));  /* completa a tela */
-    background: rgba(116, 116, 116, 0.55);             /* ajuste a TRANSPARÊNCIA aqui */
-    z-index: -1;                                 /* fica atrás de tudo */
-    pointer-events: none;                        /* não bloqueia cliques */
+    height: 100%;
+    background: rgba(116, 116, 116, 0.55);
+    z-index: -1;
+    pointer-events: none;
 }
 
-/* HEADER FIXO CENTRALIZADO */
+/* --- IMAGENS SEMPRE VISÍVEIS --- */
+img {
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- HEADER --- */
 .header {
+    background-color: var(--cor-principal);
+    padding: 15px 50px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    padding: 12px 60px;   /* AUMENTEI O TAMANHO */
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000;
-    background-color: var(--cor-principal);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-    gap: 55px;            /* MAIS ESPAÇO ENTRE LOGO E MENU */
+    z-index: 20000;
+    height: 100px;
 }
 
-/* LOGO */
 .header img {
-    height: 100px;      /* diminuí um pouco para aproximar o menu */
+    height: 70px;
     width: auto;
 }
 
-/* MENU ALINHADO AO LADO DO LOGO */
 .nav-menu {
     display: flex;
-    align-items: center;
-    gap: 35px;        /* Melhora o espaçamento */
-    margin-left: 0;   /* encosta mais no logo */
+    gap: 30px;
 }
 
-/* LINKS DO MENU */
 .nav-menu a {
-    color: #ffffff;
-    font-weight: 600;
+    color: white;
     text-decoration: none;
-    font-size: 17px;
-    padding: 6px 10px;
-    border-radius: 4px;
-    transition: background-color .25s ease, color .25s ease, transform .20s ease;
+    font-weight: bold;
+    font-size: 16px;
 }
 
-/* HOVER */
-.nav-menu a:hover {
-    background-color: rgba(255, 255, 255, 0.20);
-    transform: translateY(-2px);
-}
-
-/* ACTIVE - clique */
-.nav-menu a:active {
-    background-color: rgba(255, 255, 255, 0.35);
-    transform: scale(0.96);
-}
-
-/* BOTÃO MOBILE (OCULTO NO DESKTOP) */
 .nav-toggle {
     display: none;
     background: none;
     border: none;
-    font-size: 1.6em;
+    color: white;
+    font-size: 1.5em;
     cursor: pointer;
-    color: #fff;
-}
- 
-main, .catalogo, .controlevisualizacao {
-  /* ajuste caso o header tenha 80px de altura — troque se seu header for maior/menor */
-  margin-top: 0; /* reset geral */
-  padding-top: 0;
 }
 
-/* Se o header for sticky e estiver cobrindo, adicione este espaçamento ao conteúdo */
-:root { --header-height: 86px; } /* ajuste conforme a altura do seu header */
+/* --- MAIN --- */
 main {
-  margin-top: calc(var(--header-height));
-}
-
-h1 { 
-    text-align: center; 
-    margin-bottom: 30px; 
-    color: #333; 
-} 
-
-/* --- CONTROLES (BOTÕES E FILTRO) --- */
-.controlevisualizacao { 
-    text-align: center; 
-    margin-bottom: 0px; 
-} 
-
-/* BOTÃO: Alternar Lista / Grade */
-.controlevisualizacao button {
-    background-color: #5d8e5f;/*Verde Bambu */
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color .25s ease, transform .25s ease;
-    display: inline-block;
-    position: relative;
-    z-index: 1001;
-}
-.controlevisualizacao {
-    position: relative;
-    z-index: 1000;
-}
-/* efeito ao passar o mouse */
-.controlevisualizacao button:hover {
-    background-color: #4b744d;/*erde mais escuro */
-    transform: scale(1.05);  
-}
-
-/* efeito ao clicar */
-.controlevisualizacao button:active {
-    background-color: #a8c6a9;
-    transform: scale(0.97);
-}
-
-#toggleViewBtn {
-    background-color: #333;
-    color: white;
-    padding: 10px 18px;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-}
-
-#toggleViewBtn:hover {
-    background-color: #555;
-}
-.controle {
-    text-align: left;
-    margin-bottom: 0px;
-}
-/* --- CATÁLOGO (MODO LISTA PADRÃO) --- */
-.catalogo { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 20px; 
-} 
-.festa { 
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-
-    background-color: rgba(207, 225, 209, 0.65); /* fundo claro com transparência */
+    margin-top: 120px;
     padding: 20px;
-    border-radius: 12px;
-
-    max-width: 1000px;   /* Ajuste aqui o tamanho do card */
-    margin: 20px auto;  /* Centraliza */
-    width: 100%;        /* Mantém responsivo */
-} 
-.festa:nth-child(even) { 
-    flex-direction: row-reverse; /* Alternar esquerda/direita */
-} 
-/* Para itens pares (imagem à direita), alinhar texto para a direita */
-.festa:nth-child(even) .conteudo {
-    text-align: right;
-}
-/* Remove os marcadores nativos SOMENTE nos itens pares (imagem direita) */
-.festa:nth-child(even) .conteudo ul {
-    list-style: none;
-    padding-right: 10px; /* aproxima das imagens */
 }
 
-/* Cria novos marcadores alinhados à direita */
-.festa:nth-child(even) .conteudo ul li {
-    position: relative;
-    padding-right: 18px;  /* espaço para o marcador */
-    text-align: right;    /* texto alinhado à direita */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+    font-family: var(--font-titulos);
 }
 
-/* Bullet customizado */
-.festa:nth-child(even) .conteudo ul li::before {
-    content: "•";          /* marcador */
-    position: absolute;
-    right: 0;              /* cola o marcador na direita */
-    top: 0;
-    font-size: 20px;       /* ajuste fino do tamanho */
-    line-height: 1.1;
-}
-/* Ajuste opcional para títulos e listas internas, se existirem */
-.festa:nth-child(even) .conteudo .titulo,
-.festa:nth-child(even) .conteudo .descricao,
-.festa:nth-child(even) .conteudo ul,
-.festa:nth-child(even) .conteudo li {
-    text-align: right;
-}
- 
-.conteudo { 
-    /*width: 50%; */
-    flex: 1;
-    min-width: 0;
-} 
+/* --- CONTROLES --- */
+.controle {
+    margin-bottom: 20px;
+    text-align: center;
+   
+    background: rgba(255, 255, 255, 0.3) !important;
+    background-image: none !important;
 
-/* CORREÇÃO DO ALINHAMENTO DO TEXTO NO MODO LISTA */
-.titulo { 
-    font-size: 22px; 
-    font-weight: bold; 
-    color: #333; 
-    margin-bottom: 10px; 
-    text-align: left; /* Garante alinhamento esquerdo */
-} 
-.descricao { 
-    margin-bottom: 15px; 
-    padding-left: 0px; /* Remove o padding conflitante */
-    text-align: left; /* Garante alinhamento esquerdo */
-} 
-.descricao li { 
-    font-size: 16px; 
-    color: #555; 
-    margin-bottom: 5px; 
-    list-style-position: inside; /* Alinha marcadores de lista com o texto */
+   /* 3. EFEITO DE VIDRO PROFISSONAL (Glassmorphism) */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+   
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+   /* 4. BORDA SUTIL BRANCA: Dá o acabamento ao efeito de vidro */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
-/* Botão WhatsApp */
-.whatsapp-btn { 
-    background-color: #25D366; 
-    color: white; 
-    padding: 10px 15px; 
-    border: none; 
-    border-radius: 5px; 
-    text-decoration: none; 
-    font-weight: bold; 
-    display: inline-block; 
-} 
-.whatsapp-btn:hover {
-    background-color: #128C7E;
-}
-
-/* Links de Navegação */
-.link-catalogo-personalizados, .link-home {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #5d8e5f;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    margin-left: 20px;
-}
-
-.link-catalogo-personalizados:hover, .link-home:hover {
-    background-color: #4b744d;
-}
-
-/* --- CARROSSEL (MODO LISTA) --- */
-.carrossel {
-    position: relative; 
-    width: 100%; /* Ocupa 30% no modo lista */
-    flex: 0 0 260px; /* Largura fixa para o carrossel no modo lista */
-    /*height: 200px; */
-    overflow: hidden; 
-    border-radius: 10px; 
-    background-color: #f0f0f0;
+.filtros-visuais {
+    margin: 15px 0;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
+}
+
+.filtro-btn {
+    background: #c2e7c3;
+    border: 2px solid var(--cor-principal);
+    color: var(--cor-principal);
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.filtro-btn:hover,
+.filtro-btn.active {
+    background: var(--cor-principal);
+    color: white;
+   transform: scale(1.05);
+}
+
+#busca-tema {
+    padding: 10px 20px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    width: 250px;
+    max-width: 100%;
+    margin: 10px;
+    font-size: 16px;
+}
+
+#busca-tema:focus {
+    outline: none;
+    border-color: var(--cor-principal);
+}
+
+#filtro {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    margin: 10px;
+    font-size: 16px;
+}
+
+.controlevisualizacao {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.controlevisualizacao button {
+    background-color: var(--cor-principal);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.controlevisualizacao button:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* --- CARDS DE FESTA --- */
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+/* --- CARDS DE FESTA (VERSÃO COM TRANSPARÊNCIA TOTAL) --- */
+.festa {
+    overflow: visible;
+    z-index: 1;
+    transition: z-index 0.3s, transform 0.3s, box-shadow 0.3s;
+    
+    /* 1. Forçamos o fundo branco com 30% de transparência */
+    background: rgba(255, 255, 255, 0.3) !important;
+    
+    /* 2. Removemos qualquer imagem de fundo que possa vir do tema mobile */
+    background-image: none !important;
+
+    /* 3. O "Glassmorphism" (Efeito de vidro) */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+    /* Borda sutil branca para ajudar a destacar do fundo */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* --- AJUSTES ESPECÍFICOS PARA MOBILE --- */
+@media (max-width: 768px) {
+    .festa {
+        /* No mobile, alguns navegadores precisam que a cor seja reafirmada */
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        
+        /* Remove sombras pesadas que podem escurecer o card no mobile */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    }
+
+    /* Se o fundo estiver ficando preto, pode ser o container do catálogo */
+    .catalogo {
+        background: transparent !important;
+    }
+}
+.festa:hover {
+    z-index: 999;
+   /* transform: translateY(-10px);*/
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* --- CARROSSEL COM ZOOM (VERSÃO FINAL CORRIGIDA) --- */
+.carrossel {
+    position: relative; /* Essencial para o selo e contador */
+    border-radius: 10px;
+    overflow: visible !important; 
+    margin-bottom: 15px;
+    cursor: pointer;
+    z-index: 10; /* Valor base */
+    transition: z-index 0.3s;
+}
+
+.imagens-carrossel {
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: visible !important; /* Permite que a foto "saia" do card no zoom */
+}
+
+/* Estilo base das imagens - Centralizadas no meio da div */
+.imagens-carrossel img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+    opacity: 0 !important;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
     z-index: 1;
 }
 
-/* IMAGENS DO CARROSSEL (REGRA GERAL - MODO LISTA) */
-.imagens-carrossel img {
-    transition: transform 0.3s ease-in-out; 
-    width: 200px; 
-    height: auto; 
-    display: none; 
-    cursor: pointer; 
-    z-index: 2; 
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
+/* Apenas a imagem ativa fica visível */
 .imagens-carrossel img.imagem-ativa {
-    display: block;
-    opacity: 1; /* Torna a imagem ativa visível */
+    opacity: 1 !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1); /* Centralizada */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+    z-index: 10;
 }
 
-/* --- MODO GRADE (.catalogo.grade) --- */
+/* ZOOM AO PASSAR O MOUSE */
+.carrossel:hover {
+    z-index: 500; /* Card atual fica na frente dos outros */
+}
 
-.catalogo.grade { 
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* ajusta nº colunas automaticamente */
-    gap: 28px;              /* espaçamento entre cards (aumente se quiser mais espaço) */
-    padding: 20px;          /* espaço interno do grid */
-    align-items: start;
-    box-sizing: border-box; 
-} 
-.catalogo.grade .festa { 
-    display: flex;
-    flex-direction: column;
-    align-items: center;    /* centraliza a imagem e o botão no topo do card */
-    text-align: left;       /* por padrão o conteúdo será alinhado à esquerda */
-    padding: 18px;
+.carrossel:hover .imagens-carrossel img.imagem-ativa {
+    transform: translate(-50%, -70%) scale(1.7) !important;
+    z-index: 9999 !important;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco sutil no zoom ajuda a ver a foto */
     border-radius: 12px;
-    background: rgba(255,255,255,0.35); /* mantém o visual claro dentro do retângulo */
-    min-height: 460px;      /* garante altura consistente; ajuste conforme preferir */
-    box-sizing: border-box; 
-} 
-/* 1. Restaura marcadores normais */
-.catalogo.grade .festa .conteudo ul {
-    list-style: disc !important;
-    list-style-position: outside !important;
-    padding-left: 22px !important;
-    margin-left: 0 !important;
-}
-/* 2. Remove os bullets customizados dos itens pares */
-.catalogo.grade .festa:nth-child(even) .conteudo ul {
-    list-style: disc !important;
-}
-.catalogo.grade .festa:nth-child(even) .conteudo ul li::before {
-    content: none !important;
-}
-/* 4. Garante texto alinhado à esquerda */
-.catalogo.grade .festa .conteudo li,
-.catalogo.grade .festa .conteudo {
-    text-align: left !important;
-}
-/* CORREÇÃO DO ALINHAMENTO DO TEXTO NO MODO GRADE */
-.catalogo.grade .conteudo { 
-    width: 100%;
-    padding: 6px 10px 0 10px;
-    box-sizing: border-box;
-    text-align: left; 
-}
-/* Força marcadores à esquerda e recuo correto */
-.catalogo.grade .conteudo .descricao {
-    list-style-position: outside;
-    padding-left: 22px;     /* recuo do bullet */
-    margin: 8px 0 14px 0;
-    text-align: left;       /* garante que nem o text-align herdado afete */
-}
-/* Caso você tenha aplicado regras globais que centralizam texto dentro do card,
-   esta regra as sobrepõe apenas no modo grade. */
-.catalogo.grade .conteudo * {
-    text-align: left !important;
 }
 
-.catalogo.grade .titulo {
-    text-align: center; /* Centraliza o título */
+/* Esconde o contador e o hint para não ficarem "atrás" da imagem no zoom */
+.carrossel:hover .contador-imagens,
+.carrossel:hover .zoom-hint {
+    display: none !important;
 }
 
-.catalogo.grade .descricao {
-    /* Centraliza o bloco da lista e adiciona max-width para centralizar o bloco de texto */
-    margin: 0 auto 15px auto; 
-    text-align: left;
-    max-width: 300px; /* Limita a largura da lista para poder centralizá-la */
+/* Estilo para o selo de personalização */
+.selo-cores {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff69b4; /* Pink */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 5; 
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    pointer-events: none;
+    text-transform: uppercase;
 }
 
-/* CORREÇÕES PARA TAMANHO E CENTRALIZAÇÃO DA IMAGEM */
-
-/* 1. O contêiner principal do carrossel define largura máxima e centraliza */
-.catalogo.grade .carrossel {
-    /* Define o tamanho máximo da imagem */
-    width: 100%;
-    max-width: 320px;       /* controla largura da imagem no card */
-    height: 260px;          /* altura visível do carrossel no card */
-    overflow: hidden;
-    margin: 0 auto 12px auto;
-    border-radius: 8px;
-    display: block;
+/* Esconder elementos que atrapalham o zoom */
+.carrossel:hover .contador-imagens,
+.carrossel:hover .zoom-hint,
+.carrossel:hover .selo-cores {
+    opacity: 0;
+    transition: opacity 0.2s;
 }
 
-/* 2. O contêiner das imagens ocupa 100% do carrossel (que agora é centralizado) */
-.catalogo.grade .imagens-carrossel {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;      /* preenche o box sem distorção */
-    display: block;
+/* Importante para o selo não "fugir" do card */
+.carrossel {
+    position: relative;
 }
-
-/* 3. A imagem ocupa 100% do seu contêiner e MANTÉM A PROPORÇÃO */
-.catalogo.grade .imagens-carrossel img {
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover;      /* preenche o box sem distorção */
-    display: block;; 
-}
-
-.catalogo.grade .whatsapp-btn {
-    display: inline-block;
-    margin: 10px auto 0 auto;
-}
-/* --- INDICADORES (BOLINHAS) --- */
-.indicadores-carrossel {
+/* Hint de zoom */
+.zoom-hint {
     position: absolute;
     bottom: 10px;
-    /* Estas duas linhas garantem a centralização horizontal relativa ao .carrossel */
-    left: 50%;
-    transform: translateX(-50%); 
-    
-    display: flex;
-    gap: 8px;
-    z-index: 10; 
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
 }
 
-.indicador {
-    width: 10px;
-    height: 10px;
-    background-color: #bbb;
-    border-radius: 50%;
-    cursor: pointer;
+.carrossel:hover .zoom-hint {
+    opacity: 1;
 }
 
-.indicador.ativo {
-    background-color: #717171;
-}
-
-@media (max-width: 768px) {
-    .catalogo.grade {
-        grid-template-columns: 1fr;
-        gap: 18px;
-        padding: 12px;
-    }
-
-    .catalogo.grade .festa {
-        min-height: auto;
-        padding: 12px;
-    }
-
-    .catalogo.grade .carrossel {
-        max-width: 100%;
-        height: auto;
-    }
-}
-/* --- MODAL (AMPLIAÇÃO) --- */
-
-.modal-ampliacao {
+/* Contador de imagens */
+.contador-imagens {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
     display: none;
+}
+
+/* Conteúdo do card */
+.titulo {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: var(--font-titulos);
+}
+
+.descricao {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    color: #555;
+    flex-grow: 1;
+}
+
+.descricao li {
+    margin-bottom: 5px;
+}
+
+.whatsapp-btn {
+    background-color: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+    margin-top: auto;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E;
+    transform: scale(1.02);
+}
+
+/* ============================================
+   MODAL / LIGHTBOX
+   ============================================ */
+
+.modal-imagem {
     position: fixed;
-    z-index: 1000;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* CORREÇÃO PARA A IMAGEM NO MODAL */
-.modal-ampliacao img {
-    margin: auto;
-    display: block;
-    width: auto; 
-    height: auto; 
-    max-width: 90%; 
-    max-height: 90vh; 
-    object-fit: contain; 
-    
+.modal-overlay {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* Botões de Navegação do Modal */
-.prev, .next {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
     cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -50px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    background-color: rgba(0,0,0,0.4);
 }
 
-.next {
+.modal-conteudo {
+    position: relative;
+    z-index: 100000;
+    max-width: 90%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center;*/
+}
+
+.modal-img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    animation: modalEntrada 0.3s ease;
+}
+
+@keyframes modalEntrada {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-fechar {
+    position: absolute;
+    top: -50px;
     right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
-}
-
-/* Botão de fechar (X) */
-.fechar {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
+    background: none;
+    border: none;
+    color: white;
     font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
     cursor: pointer;
+    transition: transform 0.3s;
+    /*z-index: 10;*/
 }
 
-.fechar:hover,
-.fechar:focus {
-    color: #bbb;
-    text-decoration: none;
+.modal-fechar:hover {
+    transform: scale(1.2);
+}
+
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.modal-nav:hover {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.modal-anterior {
+    left: -70px;
+}
+
+.modal-proximo {
+    right: -70px;
+}
+
+.modal-contador {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 16px;
+    background: rgba(0,0,0,0.5);
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+/* --- MODO LISTA --- */
+.catalogo.lista {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.catalogo.lista .festa {
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto 20px;
+}
+
+.catalogo.lista .festa:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Alinha texto à direita quando imagem está à direita (cards pares) */
+.catalogo.lista .festa:nth-child(even) .conteudo {
+    text-align: right;
+}
+
+.catalogo.lista .festa:nth-child(even) .descricao {
+    list-style: none;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: right;
+}
+
+.catalogo.lista .festa:nth-child(even) .descricao li {
+    position: relative;
+    padding-right: 15px;
+    margin-bottom: 5px;
+}
+
+.catalogo.lista .festa:nth-child(even) .descricao li::before {
+    content: "•";
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 24px;
+    line-height: 0.8;
+}
+
+.catalogo.lista .festa:nth-child(even) .whatsapp-btn {
+    align-self: flex-end;
+}
+
+
+.catalogo.lista .carrossel {
+    width: 300px;
+    flex-shrink: 0;
+    margin-bottom: 0;
+}
+
+.catalogo.lista .conteudo {
+    flex: 1;
+}
+
+.catalogo.lista .titulo {
+    font-size: 26px;
 }
 
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 768px) {
+    /* 1. CORREÇÃO CRÍTICA: Força o navegador a não escurecer o fundo */
+    :root { color-scheme: light; } 
+
+    .controle {
+        /* Força fundo branco com 50% de transparência e remove qualquer imagem/gradiente escuro */
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        background-image: none !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        
+        /* Efeito de desfoque para mobile */
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .festa {
+        /* Aplica a mesma lógica aos cards no mobile */
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        background-image: none !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+    }
 
     .catalogo {
-        display: grid;
+        background: transparent !important;
         grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .festa, .festa:nth-child(even) {
-        flex-direction: row-reverse;
-        text-align: center;
-
-    }
-
-    .carrossel {
-        width: 100%;
-        height: auto;
-    }
-
-    .titulo {
-        font-size: 18px;
-    }
-
-    .descricao {
-        font-size: 14px;
-        padding-left: 0;
-    }
-
-    .whatsapp-btn {
-        display: block;
-        margin-top: 15px;
-        margin-left: auto;
-        margin-right: auto;
     }
     
-    .controlevisualizacao, .controle {
-        text-align: center;
+    /* --- RESTANTE DO SEU CÓDIGO DE HEADER/MENU --- */
+    .header {
+        padding: 10px 20px;
+        height: 80px;
     }
+
+    .header img {
+        height: 50px;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--cor-principal);
+        padding: 20px 0;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    main {
+        margin-top: 100px;
+    }
+
+    .filtros-visuais {
+        gap: 5px;
+    }
+
+    .filtro-btn {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+
+    #busca-tema {
+        width: 200px;
+    }
+
+    .catalogo.lista .festa,
+    .catalogo.lista .festa:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .catalogo.lista .carrossel {
+        width: 100%;
+    }
+
+    /* Modal mobile */
+    .modal-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .modal-anterior {
+        left: 10px;
+    }
+
+    .modal-proximo {
+        right: 10px;
+    }
+
+    .modal-fechar {
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+    }
+}
+
+/* ============================================
+   CABEÇALHO MAIOR E LOGO AMPLIADO
+   ============================================ */
+
+.header {
+    height: 140px;
+    padding: 20px 80px;
+}
+
+.header img {
+    height: 100px;
+    width: auto;
+}
+
+.nav-menu a {
+    font-size: 18px;
+}
+
+main {
+    margin-top: 160px;
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 120px;
+        padding: 15px 30px;
+    }
+
+    .header img {
+        height: 80px;
+    }
+
+    main {
+        margin-top: 140px;
+    }
+
+    .nav-menu {
+        top: 120px;
+    }
+}
+
+/* ============================================
+   MOBILE - Cards em coluna única
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Força todos os cards em coluna, mesmo os pares */
+    .catalogo.lista .festa,
+    .catalogo.lista .festa:nth-child(even) {
+        flex-direction: column !important;
+        min-height: auto;
+        max-height: none;
+    }
+    
+    /* Imagem em cima, ocupando largura total */
+    .catalogo.lista .carrossel {
+        width: 100% !important;
+        height: 200px;
+        margin-bottom: 15px;
+    }
+    
+    /* Texto embaixo, alinhado à esquerda (padrão) */
+    .catalogo.lista .festa:nth-child(even) .conteudo,
+    .catalogo.lista .conteudo {
+        text-align: left !important;
+        width: 100%;
+    }
+    
+    /* Lista volta ao normal (marcadores à esquerda) */
+    .catalogo.lista .festa:nth-child(even) .descricao,
+    .catalogo.lista .descricao {
+        padding-left: 20px !important;
+        padding-right: 0 !important;
+        direction: ltr !important;
+    }
+    
+    .catalogo.lista .festa:nth-child(even) .descricao li {
+        justify-content: flex-start !important;
+    }
+    
+    .catalogo.lista .festa:nth-child(even) .descricao li::before {
+        order: 0 !important; /* Marcador volta para esquerda */
+        position: static !important;
+        margin-right: 8px !important;
+        margin-left: 0 !important;
+    }
+    
+    /* Botão WhatsApp centralizado */
+    .catalogo.lista .festa:nth-child(even) .whatsapp-btn,
+    .catalogo.lista .whatsapp-btn {
+        align-self: center !important;
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    /* Título centralizado no mobile */
+    .catalogo.lista .titulo {
+        text-align: center;
+        font-size: 18px;
+        max-height: none;
+    }
+}
+
+/* FORÇAR O MODAL PARA FORA DE TUDO */
+.modal-imagem {
+    position: fixed !important; /* Fixa na tela toda */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.9) !important; /* Fundo preto */
+    z-index: 999999 !important; /* Maior que qualquer menu ou card */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.modal-conteudo {
+    position: relative !important;
+    z-index: 1000000 !important;
+    max-width: 90% !important;
+    max-height: 90% !important;
+}
+
+.modal-img {
+    max-width: 100% !important;
+    max-height: 85vh !important;
+    object-fit: contain !important;
+    border: 4px solid #fff !important;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0,0,0,1);
 }

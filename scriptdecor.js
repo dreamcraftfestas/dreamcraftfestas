@@ -3,13 +3,15 @@
 // ============================================
 
 const bancoDadosTemas = [
+    { nome: "1ª Volta ao Sol", pasta: "1voltaaosol", categorias: "all animais desenhos" },
     { nome: "101 Dálmatas", pasta: "101dalmatas", categorias: "all animais desenhos" },
     { nome: "Hulk", pasta: "hulk", categorias: "all herois meninos" },
     { nome: "Ariel", pasta: "ariel", categorias: "all princesas disney" },
     { nome: "Ana Castela", pasta: "anacastela", categorias: "all boiadeira musica" },
     { nome: "Animatronics", pasta: "animatronics", categorias: "all jogos" },
     { nome: "15 anos", pasta: "15anos", categorias: "all diversos" },
-    { nome: "3 Palavrinhas", pasta: "3palavrinhas", categorias: "all religiosos" },
+    { nome: "3 Palavrinhas Menino", pasta: "3palavrinhasmenino", categorias: "all religiosos" },
+    { nome: "3 Palavrinhas Menina", pasta: "3palavrinhasmenina", categorias: "all religiosos" },
     { nome: "Abelhinha", pasta: "abelhinha", categorias: "all animais desenhos" },
     { nome: "Alice no pais das maravilhas", pasta: "alicenopaisdasmaravilhas", categorias: "all princesas contodefadas filme disney" },
     { nome: "Ano novo", pasta: "anonovo", categorias: "all anonovo fimdeano datacomemorativa" },
@@ -30,6 +32,7 @@ const bancoDadosTemas = [
     { nome: "Batizado Verde", pasta: "batizadoverde", categorias: "all religiosos batizado" },
     { nome: "Batizado Anjinho", pasta: "batizadoanjinho", categorias: "all religiosos batizado" },
     { nome: "Batizado Divino Espirito Santo", pasta: "batizadodivinoespiritosanto", categorias: "all religiosos batizado" },
+    { nome: "Batizado Divino Espirito Santo Arabesco", pasta: "batizadodivinoespiritosantoarabesco", categorias: "all religiosos batizado" },
     { nome: "Batman", pasta: "batman", categorias: "all herois filme desenhos" },
     { nome: "Bee movie", pasta: "beemovie", categorias: "all filme animais" },
     { nome: "Bela adormecida", pasta: "belaadormecida", categorias: "all princesas contodefadas filme disney" },
@@ -184,6 +187,7 @@ const bancoDadosTemas = [
     { nome: "Moana baby", pasta: "moanababy", categorias: "all princesas filme contodefadas cute disney" },
     { nome: "Monstros SA", pasta: "monstrossa", categorias: "all desenhos filme disney" },
     { nome: "Mulher Maravilha", pasta: "mulhermaravilha", categorias: "all herois filme" },
+    { nome: "Mulher Maravilha Cute", pasta: "mulhermaravilhacute", categorias: "all herois filme cute" },
     { nome: "Mundo Bita", pasta: "mundobita", categorias: "all desenhos musica" },
     { nome: "Naruto", pasta: "naruto", categorias: "all anime" },
     { nome: "Natal", pasta: "natal", categorias: "all natal datacomemorativa" },
@@ -243,11 +247,12 @@ const bancoDadosTemas = [
     { nome: "Wandinha", pasta: "wandinha", categorias: "all filme" },
     { nome: "Os Rosa", pasta: "osrosa", categorias: "all youtuber" },
     { nome: "Baby Shark rosa", pasta: "babysharkrosa", categorias: "all fundodomar desenhos musica" },
-    { nome: "desenhos Boiadeirinha", pasta: "desenhosboiadeirinha", categorias: "all desenhos boiadeira" },
+    { nome: "Desenho Boiadeirinha", pasta: "desenhoboiadeirinha", categorias: "all desenhos boiadeira" },
     { nome: "Power Rangers", pasta: "powerrangers", categorias: "all desenhos filme" },
     { nome: "Angel", pasta: "angel", categorias: "all desenhos filme stitch angel" },
     { nome: "Urso Marrom", pasta: "ursomarrom", categorias: "all desenhos urso" },
-    { nome: "Romano Pirulito Liso", pasta: "romanopirulitoliso", categorias: "all romano pirulito liso" },
+    { nome: "Romano Pirulito Laranja", pasta: "romanopirulitolaranja", categorias: "all romano pirulito liso" },
+    { nome: "Romano Pirulito Pink", pasta: "romanopirulitopink", categorias: "all romano pirulito liso" },
     { nome: "Romano Retangular Liso", pasta: "romanoretangularliso", categorias: "all romano pirulito liso" },
     { nome: "Romano Branco", pasta: "romanobranco", categorias: "all romano pirulito liso" },
     { nome: "Romano Rose", pasta: "romanorose", categorias: "all romano pirulito liso" },
@@ -293,7 +298,7 @@ function gerarCatalogo() {
                 '<li>Bandeja lapidada</li>' +
                 '<li>Bandeja Oval</li>' +
                 '<li>Vaso grego</li>' +
-                '<li>Tudo como na imagem ou nas cores que desejas</li>';
+                '<li>Tudo como na imagem ou nas cores que desejar</li>';
         } else if (nomePasta === "arcovazado_desconstruido") {
             descricaoHTML = 
                 '<li><strong>Arco Vazado Desconstruído (Orgânico)</strong></li>' +
