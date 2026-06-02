@@ -339,7 +339,7 @@ function gerarCatalogo() {
                 '<div class="zoom-hint">🔍 Clique para ampliar</div>' +
             '</div>' +
             '<div class="conteudo">' +
-                '<div class="titulo">Mini Festa ' + nome + '</div>' +
+                '<div class="titulo">' + nome + '</div>' +
                 '<ul class="descricao">' +
                     descricaoHTML +
                 '</ul>' +
