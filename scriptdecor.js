@@ -284,28 +284,38 @@ function gerarCatalogo() {
         let descricaoHTML = "";
         
         if (nomePasta === "arcovazado_simples") {
-            descricaoHTML = `
-                <li><strong>Estilo Clássico (Simples)</strong></li>
-                <li>Balões com tamanhos uniformes</li>
-                <li>Estrutura de Arco Vazado</li>
-                <li>Painel, Boleiras e Bandejas</li>
-                <li>Escolha as cores dos balões!</li>
-            `;
+            descricaoHTML = 
+                '<li><strong>Arco Vazado Simples (Clássico)</strong></li>' +
+                '<li>Painel</li>' +
+                '<li>Arco de balões uniformes</li>' +
+                '<li>Boleira</li>' +
+                '<li>Bandeja sextavada</li>' +
+                '<li>Bandeja lapidada</li>' +
+                '<li>Bandeja Oval</li>' +
+                '<li>Vaso grego</li>' +
+                '<li>Tudo como na imagem ou nas cores que desejas</li>';
         } else if (nomePasta === "arcovazado_desconstruido") {
-            descricaoHTML = `
-                <li><strong>Estilo Orgânico (Desconstruído)</strong></li>
-                <li>Balões de diversos tamanhos</li>
-                <li>Visual moderno e volumoso</li>
-                <li>Painel, Boleiras e Bandejas</li>
-                <li>Escolha as cores dos balões!</li>
-            `;
+            descricaoHTML = 
+                '<li><strong>Arco Vazado Desconstruído (Orgânico)</strong></li>' +
+                '<li>Painel</li>' +
+                '<li>Arco de balões desconstruídos</li>' +
+                '<li>Boleira</li>' +
+                '<li>Bandeja sextavada</li>' +
+                '<li>Bandeja lapidada</li>' +
+                '<li>Bandeja Oval</li>' +
+                '<li>Vaso grego</li>' +
+                '<li>Tudo como na imagem ou nas cores que desejas</li>';
         } else {
-            descricaoHTML = `
-                <li>Painel e Arco de balões</li>
-                <li>Kit de bandejas completo</li>
-                <li>Boleira e Vaso grego</li>
-                <li>Tudo conforme a imagem</li>
-            `;
+            // Descrição padrão para todos os outros temas do catálogo
+            descricaoHTML = 
+                '<li>Painel</li>' +
+                '<li>Arco de balões</li>' +
+                '<li>Boleira</li>' +
+                '<li>Bandeja sextavada</li>' +
+                '<li>Bandeja lapidada</li>' +
+                '<li>Bandeja Oval</li>' +
+                '<li>Vaso grego</li>' +
+                '<li>Tudo como na imagem ou nas cores que desejas</li>';
         }
 
         // --- GERA AS IMAGENS ---
