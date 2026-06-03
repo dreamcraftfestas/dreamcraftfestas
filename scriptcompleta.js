@@ -4,7 +4,7 @@
 
 const bancoDadosTemas = [
     
-    { nome: "1ª Volta ao Sol", pasta: "101dalmatas", categorias: "all 1ano" },
+    { nome: "1ª Volta ao Sol", pasta: "101dalmatas", categorias: "all 1ano" },    
     { nome: "3 Palavrinhas Fundo Verde", pasta: "3palavrinhasfundoverde", categorias: "all religiosos" },
     { nome: "99 Noites", pasta: "99noites", categorias: "all jogos" },
     { nome: "Anos 60 Branco e Preto", pasta: "anos60brancoepreto", categorias: "all anos60" },
@@ -18,8 +18,8 @@ const bancoDadosTemas = [
     { nome: "Bolofofos Menina", pasta: "bolofofosmenina", categorias: "all desenhos musicas" },
     { nome: "Bolofofos Menino", pasta: "bolofofosmenino", categorias: "all desenhos musicas" },
     { nome: "Borboleta Lilas", pasta: "borboletalilas", categorias: "all borboletas animais" },
-    { nome: "Branca de Neve", pasta: "brancadeneve", categorias: "all princesas contodefadas filme disney" },
     { nome: "Branca de Neve Azul Bebe", pasta: "brancadeneveazulbebe", categorias: "all princesas contodefadas filme disney" },
+    { nome: "Branca de Neve", pasta: "brancadeneve", categorias: "all princesas contodefadas filme disney" },
     { nome: "Brasil Copa Sou Brasil até a Alma", pasta: "brasilcopasoubrasilateaalma", categorias: "all futebol times copa" },
     { nome: "Brasil Copa Vai Brasil", pasta: "brasilcopavaibrasil", categorias: "all futebol times copa" },
     { nome: "Brawl Star", pasta: "brawlstar", categorias: "all jogos" },
@@ -34,8 +34,8 @@ const bancoDadosTemas = [
     { nome: "Dia das Mães Rosas", pasta: "diadasmaesrosas", categorias: "all datacomemorativa" },
     { nome: "Dino Baby", pasta: "dinobaby", categorias: "all dinossauro animais" },
     { nome: "Divertidamente 2", pasta: "divertidamente2", categorias: "all filme" },
-    { nome: "Dourado", pasta: "dourado", categorias: "all diversos" },
     { nome: "Dourado e Branco Romano", pasta: "douradoebrancoromano", categorias: "all diversos" },
+    { nome: "Dourado", pasta: "dourado", categorias: "all diversos" },
     { nome: "Fazendinha Azul", pasta: "fazendinhaazul", categorias: "all fazendinha" },
     { nome: "Fazendinha Vermelha / Rosa", pasta: "fazendinhavermelharosa", categorias: "all fazendinha" },
     { nome: "Feijoada", pasta: "feijoada", categorias: "all boteco diversos" },
@@ -88,8 +88,8 @@ const bancoDadosTemas = [
     { nome: "Rapunzel Castelo", pasta: "rapunzelcastelo", categorias: "all princesas contodefadas filme" },
     { nome: "Roblox", pasta: "roblox", categorias: "all jogos" },
     { nome: "Sereia Splash", pasta: "sereiasplash", categorias: "all fundodomar desenhos" },
-    { nome: "Shimmer Wall", pasta: "shimmerwall", categorias: "all diversos" },
     { nome: "Shimmer Wall Holográfico/Frutacor", pasta: "shimmerwallholograficofrutacor", categorias: "all diversos" },
+    { nome: "Shimmer Wall", pasta: "shimmerwall", categorias: "all diversos" },
     { nome: "Sititch Milk Shake", pasta: "sititchmilkshake", categorias: "all disney filme desenhos" },
     { nome: "Sky – Patrulha Canina", pasta: "skypatrulhacanina", categorias: "all desenhos animais" },
     { nome: "Spider Man Miles Morales", pasta: "spidermanmilesmorales", categorias: "all herois filme desenhos jogos" },
@@ -104,6 +104,7 @@ const bancoDadosTemas = [
     { nome: "Turma da Mônica", pasta: "turmadamonica", categorias: "all desenhos" },
     { nome: "Unicórnio", pasta: "unicornio", categorias: "all diversos cute" },
     { nome: "Ursinho Azul Chá de Bebe", pasta: "ursinhoazulchadebebe", categorias: "all chadebebe" }
+
 
 ];
 
