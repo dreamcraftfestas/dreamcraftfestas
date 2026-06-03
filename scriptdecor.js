@@ -95,6 +95,7 @@ const bancoDadosTemas = [
     { nome: "Divertidamente", pasta: "divertidamente", categorias: "all filme contodefadas" },
     { nome: "Doceria", pasta: "doceria", categorias: "all doces diversos" },
     { nome: "Dragon Ball", pasta: "dragonball", categorias: "all desenhos" },
+    { nome: "Epresarial", pasta: "empresarial", categorias: "all empresas" },
     { nome: "Enaldinho", pasta: "enaldinho", categorias: "all youtuber" },
     { nome: "Enrolados", pasta: "enrolados", categorias: "all princesas contodefadas filme" },
     { nome: "Eu amo tete menina", pasta: "euamotetemenina", categorias: "all cute diversos" },
@@ -331,7 +332,7 @@ function gerarCatalogo() {
 
         // --- GERA AS IMAGENS ---
         let htmlImagens = '';
-        for (let i = 1; i <= 20; i++) {
+        for (let i = 1; i <= 25; i++) {
             const caminho = './Imagem/' + nomePasta + '/' + i + '.webp';
             htmlImagens += '<img src="' + caminho + '" ' +
                 'class="' + (i === 1 ? 'imagem-ativa' : '') + '" ' +
