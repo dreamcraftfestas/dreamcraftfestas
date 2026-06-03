@@ -135,7 +135,7 @@ const bancoDadosTemas = [
     { nome: "Happy Birthday lantejoula lilas", pasta: "happybirthdaylantejoulalilas", categorias: "all happybirthday" },
     { nome: "Happy Birthday lantejoula rosa", pasta: "happybirthdaylantejoularosa", categorias: "all happybirthday" },
     { nome: "Happy Birthday preto e Dourado", pasta: "happybirthdaypretoedourado", categorias: "all happybirthday" },
-    { nome: "Happy Birthday rosa", pasta: "happybirthdayrosa", categorias: "all happybirthday" },
+    /*{ nome: "Happy Birthday rosa", pasta: "happybirthdayrosa", categorias: "all happybirthday" },*/
     { nome: "Happy Birthday vermelho e dourado", pasta: "happybirthdayvermelhoedourado", categorias: "all happybirthday" },
     { nome: "Harry Potter", pasta: "harrypotter", categorias: "all filme contodefadas magia" },
     { nome: "Hello Kitty", pasta: "hellokitty", categorias: "all desenhos" },
