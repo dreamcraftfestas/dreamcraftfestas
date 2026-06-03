@@ -24,7 +24,6 @@ const bancoDadosTemas = [
     { nome: "BTS", pasta: "bts", categorias: "all k-pop musica" },
     { nome: "Baby Shark Azul", pasta: "babysharkazul", categorias: "all fundodomar desenhos musica" },
     { nome: "Baby Shark Rosa", pasta: "babysharkrosa", categorias: "all fundodomar desenhos musica" },
-    { nome: "Baby Shark rosa", pasta: "babysharkrosa", categorias: "all fundodomar desenhos musica" },
     { nome: "Bailarina", pasta: "bailarina", categorias: "all meninas bale" },
     { nome: "Barbie", pasta: "barbie", categorias: "all meninos desenhos filme boneca" },
     { nome: "Batizado Anjinho", pasta: "batizadoanjinho", categorias: "all religiosos batizado" },
