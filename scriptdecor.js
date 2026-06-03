@@ -120,7 +120,6 @@ const bancoDadosTemas = [
     { nome: "Godzilla vs King Kong", pasta: "godzillavskingkong", categorias: "all filme contodefadas" },
     { nome: "Gratidao", pasta: "gratidao", categorias: "all diversos" },
     { nome: "Grinch", pasta: "grinch", categorias: "all filme desenho menino" },
-    { nome: "Grinch", pasta: "grinch", categorias: "all filme" },
     { nome: "Guerreiras do K-pop", pasta: "guerreirasdokpop", categorias: "all k-pop musica filme" },
     { nome: "Halloween abobora", pasta: "halloweenabobora", categorias: "all datacomemorativa halloween" },
     { nome: "Halloween castelo laranja", pasta: "halloweencastelolaranja", categorias: "all datacomemorativa halloween" },
