@@ -225,7 +225,6 @@ const bancoDadosTemas = [
     { nome: "Relampago Mcqueen", pasta: "relampagomcqueen", categorias: "all filme corrida veiculos" },
     { nome: "Roblocks Menina", pasta: "roblocksmenina", categorias: "all jogos" },
     { nome: "Roblocks Minino", pasta: "roblocksmenino", categorias: "all jogos" },
-    { nome: "Romano Azul bebe", pasta: "romanoazulbebe", categorias: "all romano pirulito liso" },
     { nome: "Romano Branco", pasta: "romanobranco", categorias: "all romano pirulito liso" },
     { nome: "Romano Liso", pasta: "romanoliso", categorias: "all romano pirulito liso" },
     { nome: "Romano Marrom", pasta: "romanomarrom", categorias: "all romano pirulito liso" },
