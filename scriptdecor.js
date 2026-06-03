@@ -88,7 +88,7 @@ const bancoDadosTemas = [
     { nome: "Dia das Maes", pasta: "diadasmaes", categorias: "all datacomemorativa" },
     { nome: "Dia dos Pais", pasta: "diadospais", categorias: "all datacomemorativa" },
     { nome: "Dinossauro", pasta: "dinossauro", categorias: "all dinossauro animais" },
-    { nome: "Dinossauros Baby Rosa", pasta: "dinossaurosbabyrosa", categorias: "all dinossauro animais meninas" },
+    { nome: "Dinossauros Baby Rosa", pasta: "dinossaurobabyrosa", categorias: "all dinossauro animais meninas" },
     { nome: "Dinossauros Baby", pasta: "dinossaurosbaby", categorias: "all dinossauro animais" },
     { nome: "Divertidamente", pasta: "divertidamente", categorias: "all filme contodefadas" },
     { nome: "Doceria", pasta: "doceria", categorias: "all doces diversos" },
