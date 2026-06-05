@@ -317,7 +317,6 @@ function gerarCatalogo() {
         card.innerHTML = 
             '<div class="carrossel">' +
                 '<div class="imagens-carrossel" data-pasta="' + nomePasta + '">' + htmlImagens + '</div>' +
-                '<div class="contador-imagens"></div>' +
                 '<div class="zoom-hint">🔍 Clique para ampliar</div>' +
             '</div>' +
             '<div class="conteudo">' +
