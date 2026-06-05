@@ -315,7 +315,7 @@ function gerarCatalogo() {
         card.className = 'festa';
         card.setAttribute('data-categoria', categorias);
 
-        // O contador (<div class="contador-imagens">) foi removido daqui permanentemente
+        // Estrutura sem nenhuma menção ao contador removido
         card.innerHTML = 
             '<div class="carrossel">' +
                 '<div class="imagens-carrossel" data-pasta="' + nomePasta + '">' + htmlImagens + '</div>' +
@@ -335,23 +335,22 @@ function gerarCatalogo() {
 
         setTimeout(function() {
             setupCarrossel(card);
-        }, 100);
+        }, 200);
     });
 }
 
 function setupCarrossel(card) {
     const container = card.querySelector('.imagens-carrossel');
 
-    // Aguarda 600ms para que o navegador processe o erro "onerror" das imagens inexistentes
+    // Intervalo de segurança estendido para evitar falsos positivos de segurança do servidor
     setTimeout(function() {
-        // Filtra apenas imagens válidas que NÃO estão ocultas por erro de carregamento
         const imagensValidas = Array.from(container.querySelectorAll('img')).filter(function(img) {
             return img.style.display !== 'none';
         });
 
         const totalImagens = imagensValidas.length;
 
-        // Se só houver 1 ou nenhuma imagem, ativa a primeira e cancela a rotação automática
+        // Se houver apenas uma imagem válida, ela fica fixa e o carrossel não roda espacos vazios
         if (totalImagens <= 1) {
             if (totalImagens === 1) {
                 imagensValidas[0].classList.add('imagem-ativa');
@@ -360,7 +359,6 @@ function setupCarrossel(card) {
         }
 
         let atual = 0;
-
         imagensValidas.forEach(function(img, index) {
             if (index === 0) {
                 img.classList.add('imagem-ativa');
@@ -369,9 +367,9 @@ function setupCarrossel(card) {
             }
         });
 
-        const intervalo = setInterval(function() {
+        const loopCarrossel = setInterval(function() {
             if (!document.body.contains(card)) {
-                clearInterval(intervalo);
+                clearInterval(loopCarrossel);
                 return;
             }
             imagensValidas[atual].classList.remove('imagem-ativa');
@@ -379,7 +377,7 @@ function setupCarrossel(card) {
             imagensValidas[atual].classList.add('imagem-ativa');
         }, 3000);
 
-    }, 600);
+    }, 800);
 }
 
 // ============================================
