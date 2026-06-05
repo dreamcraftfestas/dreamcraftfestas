@@ -7,6 +7,7 @@ const bancoDadosTemas = [
     { nome: "1ª Volta ao Sol", pasta: "101dalmatas", categorias: "all 1ano" },    
     { nome: "3 Palavrinhas Fundo Verde", pasta: "3palavrinhasfundoverde", categorias: "all religiosos" },
     { nome: "99 Noites", pasta: "99noites", categorias: "all jogos" },
+    { nome: "Ano Novo", pasta: "anonovo", categorias: "all anonovo" },
     { nome: "Anos 60 Branco e Preto", pasta: "anos60brancoepreto", categorias: "all anos60" },
     { nome: "Anos 80 Preto e Neon", pasta: "anos80pretoteneon", categorias: "all anos80" },
     { nome: "Arca de Noé", pasta: "arcadenoe", categorias: "all religiosos" },
@@ -87,6 +88,7 @@ const bancoDadosTemas = [
     { nome: "Princesas Disney", pasta: "princesasdisney", categorias: "all princesas contodefadas filme disney" },
     { nome: "Rapunzel Castelo", pasta: "rapunzelcastelo", categorias: "all princesas contodefadas filme" },
     { nome: "Roblox", pasta: "roblox", categorias: "all jogos" },
+    { nome: "Rosas Azuis", pasta: "rosasazuis", categorias: "all jogos" },
     { nome: "Sereia Splash", pasta: "sereiasplash", categorias: "all fundodomar desenhos" },
     { nome: "Shimmer Wall Holográfico/Frutacor", pasta: "shimmerwallholograficofrutacor", categorias: "all diversos" },
     { nome: "Shimmer Wall", pasta: "shimmerwall", categorias: "all diversos" },
@@ -137,7 +139,7 @@ function gerarCatalogo() {
         // --- GERA AS IMAGENS ---
         let htmlImagens = '';
         for (let i = 1; i <= 20; i++) {
-            const caminho = './Imagem/' + nomePasta + '/' + i + '.webp';
+            const caminho = './festa-completa/' + nomePasta + '/' + i + '.webp';
             htmlImagens += '<img src="' + caminho + '" ' +
                 'class="' + (i === 1 ? 'imagem-ativa' : '') + '" ' +
                 'onerror="this.style.display=\'none\'" ' +
