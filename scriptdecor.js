@@ -1,5 +1,5 @@
 // ============================================
-// DREAMCRAFT - CATÁLOGO CORRIGIDO E OTIMIZADO
+// DREAMCRAFT - CATÁLOGO 100% CORRIGIDO E SEGURO
 // ============================================
 
 const bancoDadosTemas = [
@@ -487,9 +487,12 @@ document.addEventListener('keydown', function(e) {
 });
 
 function filtrarCategoria(categoria) {
+    // PROTEÇÃO CONTRA ELEMENTOS SEM ARGUMENTO: Se vier vazio, tenta detetar o valor do select
     if (!categoria) {
-        categoria = document.getElementById("filtro").value;
+        const select = document.getElementById("filtro");
+        categoria = select ? select.value : 'all';
     }
+    
     const festas = document.querySelectorAll(".festa");
     const buscaInput = document.getElementById('busca-tema');
     if (buscaInput) buscaInput.value = ""; 

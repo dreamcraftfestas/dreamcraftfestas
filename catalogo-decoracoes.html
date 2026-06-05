@@ -43,7 +43,7 @@
     <input type="text" id="busca-tema" placeholder="🔍 Buscar tema..." onkeyup="buscarTema()">
     
     <!-- Select dropdown (SEM o input dentro) -->
-    <select id="filtro" onchange="filtrarCategoria()">
+    <select id="filtro" onchange="filtrarCategoria(this.value)">
         <option value="all">Todos</option>
 <option value="15anos">15 Anos</option>
 <option value="angel">Angel</option>
