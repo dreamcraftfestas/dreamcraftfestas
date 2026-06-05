@@ -333,93 +333,62 @@ function gerarCatalogo() {
     container.appendChild(fragmento);
 }
 
-function setupCarrosselEstrategico(card) {
+function setupCarrossel(card) {
     const container = card.querySelector('.imagens-carrossel');
-    const nomePasta = container.getAttribute('data-pasta');
     const contador = card.querySelector('.contador-imagens');
-    let intervalo = null;
-    let atual = 0;
 
-    function carregarRestoDasImagens() {
-        if (container.getAttribute('data-carregado') === 'true') return;
-        container.setAttribute('data-carregado', 'true');
+    // Aguarda um pouco mais para dar tempo ao navegador de disparar os eventos 'onerror'
+    setTimeout(function() {
+        // Seleciona APENAS as imagens que não falharam no carregamento (as que não estão com display: none)
+        let imagensValidas = Array.from(container.querySelectorAll('img')).filter(function(img) {
+            return img.style.display !== 'none';
+        });
 
-        // Cria e injeta silenciosamente as fotos 2 até 25 do tema
-        for (let i = 2; i <= 25; i++) {
-            const img = document.createElement('img');
-            img.src = './Imagem/' + nomePasta + '/' + i + '.webp';
-            img.loading = "lazy";
-            img.setAttribute('data-index', i);
-            // Garante que elas fiquem invisíveis até que a rolagem decida mostrá-las
-            img.style.display = 'none'; 
-            
-            img.onclick = function() { abrirModal(nomePasta, i); };
-            
-            img.onerror = function() {
-                this.remove();
-                atualizarContador();
-            };
-            img.onload = function() {
-                atualizarContador();
-            };
-            container.appendChild(img);
+        const totalImagens = imagensValidas.length;
+
+        // Atualiza o contador de fotos do card
+        if (contador && totalImagens > 0) {
+            contador.textContent = totalImagens + ' foto' + (totalImagens > 1 ? 's' : '');
+            contador.style.display = 'block'; // Garante que o contador aparece se houver fotos
         }
-    }
 
-    function atualizarContador() {
-        const total = container.querySelectorAll('img').length;
-        if (contador && total > 0) {
-            contador.textContent = total + ' foto' + (total > 1 ? 's' : '');
+        // Se não houver imagens ou apenas uma, não precisa de rodar o carrossel
+        if (totalImagens <= 1) {
+            if (totalImagens === 1) {
+                imagensValidas[0].classList.add('imagem-ativa');
+            }
+            return;
         }
-    }
 
-    function rotacionar() {
-        const imgs = container.querySelectorAll('img');
-        if (imgs.length <= 1) return;
-
-        // Força a ocultação total da foto atual
-        imgs[atual].classList.remove('imagem-ativa');
-        imgs[atual].style.display = 'none';
-
-        // Avança para o próximo índice
-        atual = (atual + 1) % imgs.length;
-
-        // Força a exibição visual da nova foto ativa
-        imgs[atual].classList.add('imagem-ativa');
-        imgs[atual].style.display = 'block';
-    }
-
-    // Eventos de Mouse para computadores
-    card.addEventListener('mouseenter', function() {
-        carregarRestoDasImagens();
-        if (!intervalo) intervalo = setInterval(rotacionar, 2500); // 2.5 segundos por foto
-    });
-
-    card.addEventListener('mouseleave', function() {
-        if (intervalo) {
-            clearInterval(intervalo);
-            intervalo = null;
-        }
-        // Reseta o carrossel para a primeira imagem (1.webp) quando o mouse sai do card
-        const imgs = container.querySelectorAll('img');
-        if (imgs.length > 0) {
-            imgs.forEach(img => {
+        // Garante o estado inicial do carrossel antes de iniciar o intervalo
+        let atual = 0;
+        imagensValidas.forEach(function(img, index) {
+            if (index === 0) {
+                img.classList.add('imagem-ativa');
+            } else {
                 img.classList.remove('imagem-ativa');
-                img.style.display = 'none';
-            });
-            atual = 0;
-            imgs[0].classList.add('imagem-ativa');
-            imgs[0].style.display = 'block';
-        }
-    });
+            }
+        });
 
-    // Suporte robusto para telas de toque/celular
-    card.addEventListener('touchstart', function() {
-        carregarRestoDasImagens();
-        if (!intervalo) intervalo = setInterval(rotacionar, 2500);
-    }, {passive: true});
+        // Inicia a rotação automática a cada 3 segundos
+        const intervalo = setInterval(function() {
+            // Se o card foi removido do HTML (ex: ao filtrar categorias), limpa o temporizador
+            if (!document.body.contains(card)) {
+                clearInterval(intervalo);
+                return;
+            }
 
-    if (contador) contador.textContent = "1 foto";
+            // Remove a classe ativa da imagem atual
+            imagensValidas[atual].classList.remove('imagem-ativa');
+            
+            // Avança para a próxima imagem válida
+            atual = (atual + 1) % totalImagens;
+            
+            // Adiciona a classe ativa na nova imagem
+            imagensValidas[atual].classList.add('imagem-ativa');
+        }, 3000);
+
+    }, 600); // 600ms é o tempo de segurança ideal para o DOM processar os erros de imagem no mobile e desktop
 }
 
 function abrirModal(pasta, indiceInicial) {
