@@ -315,7 +315,6 @@ function gerarCatalogo() {
         card.className = 'festa';
         card.setAttribute('data-categoria', categorias);
 
-        // Estrutura sem nenhuma menção ao contador removido
         card.innerHTML = 
             '<div class="carrossel">' +
                 '<div class="imagens-carrossel" data-pasta="' + nomePasta + '">' + htmlImagens + '</div>' +
@@ -335,14 +334,13 @@ function gerarCatalogo() {
 
         setTimeout(function() {
             setupCarrossel(card);
-        }, 200);
+        }, 100);
     });
 }
 
 function setupCarrossel(card) {
     const container = card.querySelector('.imagens-carrossel');
 
-    // Intervalo de segurança estendido para evitar falsos positivos de segurança do servidor
     setTimeout(function() {
         const imagensValidas = Array.from(container.querySelectorAll('img')).filter(function(img) {
             return img.style.display !== 'none';
@@ -350,7 +348,7 @@ function setupCarrossel(card) {
 
         const totalImagens = imagensValidas.length;
 
-        // Se houver apenas uma imagem válida, ela fica fixa e o carrossel não roda espacos vazios
+        // Correção definitiva: Se só houver 1 imagem, ela fica ativa e o carrossel NÃO roda espaços em branco
         if (totalImagens <= 1) {
             if (totalImagens === 1) {
                 imagensValidas[0].classList.add('imagem-ativa');
@@ -367,9 +365,9 @@ function setupCarrossel(card) {
             }
         });
 
-        const loopCarrossel = setInterval(function() {
+        const intervalo = setInterval(function() {
             if (!document.body.contains(card)) {
-                clearInterval(loopCarrossel);
+                clearInterval(intervalo);
                 return;
             }
             imagensValidas[atual].classList.remove('imagem-ativa');
@@ -377,7 +375,7 @@ function setupCarrossel(card) {
             imagensValidas[atual].classList.add('imagem-ativa');
         }, 3000);
 
-    }, 800);
+    }, 600);
 }
 
 
