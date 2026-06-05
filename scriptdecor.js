@@ -348,11 +348,7 @@ function setupCarrossel(card) {
 
         const totalImagens = imagensValidas.length;
 
-        if (contador && totalImagens > 0) {
-            contador.textContent = totalImagens + ' foto' + (totalImagens > 1 ? 's' : '');
-            contador.style.display = 'block';
-        }
-
+        
         if (totalImagens <= 1) {
             if (totalImagens === 1) {
                 imagensValidas[0].classList.add('imagem-ativa');
