@@ -339,7 +339,6 @@ function gerarCatalogo() {
 
 function setupCarrossel(card) {
     const container = card.querySelector('.imagens-carrossel');
-    const contador = card.querySelector('.contador-imagens');
 
     setTimeout(function() {
         let imagensValidas = Array.from(container.querySelectorAll('img')).filter(function(img) {
@@ -348,7 +347,6 @@ function setupCarrossel(card) {
 
         const totalImagens = imagensValidas.length;
 
-        
         if (totalImagens <= 1) {
             if (totalImagens === 1) {
                 imagensValidas[0].classList.add('imagem-ativa');
