@@ -1,5 +1,5 @@
 // ============================================
-// DREAMCRAFT - CATÁLOGO CORRIGIDO E SEGURO
+// DREAMCRAFT - CATÁLOGO CORRIGIDO
 // ============================================
 
 const bancoDadosTemas = [
@@ -170,11 +170,13 @@ const bancoDadosTemas = [
     { nome: "Minnie rosa", pasta: "minnierosa", categorias: "all desenhos disney" },
     { nome: "Minnie vermelha", pasta: "minnievermelha", categorias: "all desenhos disney" },
     { nome: "Moana 2", pasta: "moana2", categorias: "all princesas filme contodefadas disney" },
-    { nome: "Moana baby", pasta: "moanababy", categorias: "all princesas filme contodefadas cute disney" },
+    { nome: "Moana baby", pasta: "moanababy",
+    categorias: "all princesas filme contodefadas cute disney" },
     { nome: "Moana", pasta: "moana", categorias: "all princesas filme contodefadas disney" },
     { nome: "Monstros SA", pasta: "monstrossa", categorias: "all desenhos filme disney" },
     { nome: "Mulher Maravilha Cute", pasta: "mulhermaravilhacute", categorias: "all herois filme cute" },
-    { nome: "Mundo Bita", pasta: "mundobita", categorias: "all desenhos musica" },
+    { nome: "Mundo Bita", pasta: "mundobita",
+    categorias: "all desenhos musica" },
     { nome: "Naruto", pasta: "naruto", categorias: "all anime" },
     { nome: "Natal", pasta: "natal", categorias: "all natal datacomemorativa" },
     { nome: "Noivado", pasta: "noivado", categorias: "all noivado" },
@@ -208,16 +210,14 @@ const bancoDadosTemas = [
     { nome: "Roblocks Minino", pasta: "roblocksmenino", categorias: "all jogos" },
     { nome: "Romano Liso", pasta: "romanoliso", categorias: "all romano pirulito liso" },
     { nome: "Romano Meia Lua", pasta: "romanomeialua", categorias: "all romano pirulito liso" },
-    { nome: "Romano Pirulito Laranja", pasta: "romanopirulitolaranja",
-    categorias: "all romano pirulito liso" },
+    { nome: "Romano Pirulito Laranja", pasta: "romanopirulitolaranja", categorias: "all romano pirulito liso" },
     { nome: "Romano Pirulito Pink", pasta: "romanopirulitopink", categorias: "all romano pirulito liso" },
     { nome: "Romano Retangular", pasta: "romanoretangular", categorias: "all romano pirulito liso" },
     { nome: "Safari Menina", pasta: "safarimenina", categorias: "all safari" },
     { nome: "Safari Menino", pasta: "safarimenino", categorias: "all safari" },
     { nome: "Sao Paulo", pasta: "saopaulo", categorias: "all times futebol" },
     { nome: "Sereia Splash", pasta: "sereiasplash", categorias: "all filme menina" },
-    { nome: "Sky e Everest", pasta: "skyeeverest",
-    categorias: "all animais desenhos" },
+    { nome: "Sky e Everest", pasta: "skyeeverest", categorias: "all animais desenhos" },
     { nome: "Sonic e Knuckles", pasta: "soniceknuckles", categorias: "all jogos desenhos filme" },
     { nome: "Sonic e Shadow", pasta: "soniceshadow", categorias: "all jogos desenhos filme" },
     { nome: "Sonic", pasta: "sonic", categorias: "all jogos desenhos filme" },
@@ -235,7 +235,8 @@ const bancoDadosTemas = [
     { nome: "Tres palavrinhas Menino", pasta: "trespalavrinhasmenino", categorias: "all religiosos meninos" },
     { nome: "Trolls", pasta: "trolls", categorias: "all desenhos filme" },
     { nome: "Turma Tube", pasta: "turmatube", categorias: "all desenhos youtube" },
-    { nome: "Turma da Monica", pasta: "turmadamonica", categorias: "all desenhos" },
+    { nome: "Turma da Monica", pasta: "turmadamonica",
+    categorias: "all desenhos" },
     { nome: "Ursinho Marron", pasta: "ursinhomarron", categorias: "all ursinho infantil" },
     { nome: "Ursinho Pooh Baby", pasta: "ursinhopoohbaby", categorias: "all desenhos filme cute" },
     { nome: "Ursinho Pooh", pasta: "ursinhopooh", categorias: "all desenhos filme" },
@@ -246,10 +247,10 @@ const bancoDadosTemas = [
     { nome: "Wandinha", pasta: "wandinha", categorias: "all filme" },
     { nome: "lilas Glitter", pasta: "lilasglitter", categorias: "all glitter" },
     { nome: "raposinha", pasta: "raposinha", categorias: "all animais" },
-    { nome: "1ª Volta ao Sol", pasta: "1voltaaosol", categorias: "all animais desenhos" }
+    { nome: "1ª Volta ao Sol", pasta: "1voltaaosol", categorias: "all animais desenhos" },
 ];
 
-// Variável global para controlar o modal
+// Variavel global para controlar o modal
 let modalAtual = null;
 let imagensModal = [];
 let indiceModal = 0;
@@ -314,6 +315,7 @@ function gerarCatalogo() {
         card.className = 'festa';
         card.setAttribute('data-categoria', categorias);
 
+        // O contador (<div class="contador-imagens">) foi removido daqui permanentemente
         card.innerHTML = 
             '<div class="carrossel">' +
                 '<div class="imagens-carrossel" data-pasta="' + nomePasta + '">' + htmlImagens + '</div>' +
@@ -340,13 +342,16 @@ function gerarCatalogo() {
 function setupCarrossel(card) {
     const container = card.querySelector('.imagens-carrossel');
 
+    // Aguarda 600ms para que o navegador processe o erro "onerror" das imagens inexistentes
     setTimeout(function() {
-        let imagensValidas = Array.from(container.querySelectorAll('img')).filter(function(img) {
+        // Filtra apenas imagens válidas que NÃO estão ocultas por erro de carregamento
+        const imagensValidas = Array.from(container.querySelectorAll('img')).filter(function(img) {
             return img.style.display !== 'none';
         });
 
         const totalImagens = imagensValidas.length;
 
+        // Se só houver 1 ou nenhuma imagem, ativa a primeira e cancela a rotação automática
         if (totalImagens <= 1) {
             if (totalImagens === 1) {
                 imagensValidas[0].classList.add('imagem-ativa');
@@ -355,6 +360,7 @@ function setupCarrossel(card) {
         }
 
         let atual = 0;
+
         imagensValidas.forEach(function(img, index) {
             if (index === 0) {
                 img.classList.add('imagem-ativa');
