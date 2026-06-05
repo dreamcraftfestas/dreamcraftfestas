@@ -108,7 +108,7 @@ const bancoDadosTemas = [
     { nome: "Flor Lilas e borboleta", pasta: "florlilaseborboleta", categorias: "all flores borboletas" },
     { nome: "Flork eu te amo", pasta: "florkeuteamo", categorias: "all diversos" },
     { nome: "Free Fire", pasta: "freefire", categorias: "all jogos" },
-    { nome: "Frozen", pasta: "frozen", categories: "all princesas filme contodefadas disney" },
+    { nome: "Frozen", pasta: "frozen", categorias: "all princesas filme contodefadas disney" },
     { nome: "Frutas", pasta: "frutas", categorias: "all frutas" },
     { nome: "Fundo do mar", pasta: "fundodomar", categorias: "all fundodomar" },
     { nome: "Futebol menina", pasta: "futebolmenina", categorias: "all times futebol feminino" },
@@ -247,7 +247,6 @@ const bancoDadosTemas = [
     { nome: "1ª Volta ao Sol", pasta: "1voltaaosol", categorias: "all animais desenhos" },
 ];
 
-// Variavel global para controlar o modal
 let modalAtual = null;
 let imagensModal = [];
 let indiceModal = 0;
@@ -257,8 +256,6 @@ function gerarCatalogo() {
     if (!container) return;
 
     container.innerHTML = "";
-
-    // Criamos um fragmento para anexar tudo de uma vez na página e evitar lentidão de re-renderização
     const fragmento = document.createDocumentFragment();
 
     bancoDadosTemas.forEach(function(tema) {
@@ -302,7 +299,6 @@ function gerarCatalogo() {
                 '<li>Tudo como na imagem ou nas cores que desejas</li>';
         }
 
-        // OTIMIZAÇÃO CRUCIAL: Inicia o HTML apenas com a primeira imagem visível e usa loading="lazy"
         const caminhoPrimeira = './Imagem/' + nomePasta + '/1.webp';
         let htmlImagens = '<img src="' + caminhoPrimeira + '" class="imagem-ativa" loading="lazy" data-index="1" onclick="abrirModal(\'' + nomePasta + '\', 1)">';
 
@@ -327,15 +323,12 @@ function gerarCatalogo() {
             '</div>';
 
         fragmento.appendChild(card);
-        
-        // Configura o comportamento dinâmico do carrossel
         setupCarrosselEstrategico(card);
     });
 
     container.appendChild(fragmento);
 }
 
-// OTIMIZAÇÃO CRUCIAL: Gerencia o carrossel sem loops infinitos pesados globais
 function setupCarrosselEstrategico(card) {
     const container = card.querySelector('.imagens-carrossel');
     const nomePasta = container.getAttribute('data-pasta');
@@ -343,12 +336,10 @@ function setupCarrosselEstrategico(card) {
     let intervalo = null;
     let atual = 0;
 
-    // Função interna para carregar as fotos restantes silenciosamente apenas se necessário
     function carregarRestoDasImagens() {
         if (container.getAttribute('data-carregado') === 'true') return;
         container.setAttribute('data-carregado', 'true');
 
-        let imagensInjetadas = 0;
         for (let i = 2; i <= 25; i++) {
             const img = document.createElement('img');
             img.src = './Imagem/' + nomePasta + '/' + i + '.webp';
@@ -383,7 +374,6 @@ function setupCarrosselEstrategico(card) {
         imgs[atual].classList.add('imagem-ativa');
     }
 
-    // Carrega o resto e liga o efeito visual apenas quando o usuário passa o mouse ou interage (Desktop/Mobile)
     card.addEventListener('mouseenter', function() {
         carregarRestoDasImagens();
         if (!intervalo) intervalo = setInterval(rotacionar, 3000);
@@ -396,23 +386,16 @@ function setupCarrosselEstrategico(card) {
         }
     });
 
-    // Mobile fallback suave
     card.addEventListener('touchstart', function() {
         carregarRestoDasImagens();
         if (!intervalo) intervalo = setInterval(rotacionar, 3000);
     }, {passive: true});
 
-    // Define o texto inicial como "1 foto" enquanto as outras checam em segundo plano sob demanda
     if (contador) contador.textContent = "1 foto";
 }
 
-// ============================================
-// MODAL / LIGHTBOX (Otimizado)
-// ============================================
-
 function abrirModal(pasta, indiceInicial) {
     imagensModal = [];
-    // Geramos as opções padrão do modal
     for (let i = 1; i <= 20; i++) {
         const caminho = './Imagem/' + pasta + '/' + i + '.webp';
         imagensModal.push(caminho);
@@ -503,17 +486,13 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowRight') imagemProxima();
 });
 
-// ============================================
-// FILTROS E BUSCA (Refatorados para Velocidade)
-// ============================================
-
 function filtrarCategoria(categoria) {
     if (!categoria) {
         categoria = document.getElementById("filtro").value;
     }
     const festas = document.querySelectorAll(".festa");
     const buscaInput = document.getElementById('busca-tema');
-    if (buscaInput) buscaInput.value = ""; // Limpa a barra de busca ao usar categorias
+    if (buscaInput) buscaInput.value = ""; 
 
     document.querySelectorAll('.filtro-btn').forEach(function(btn) {
         btn.classList.remove('active');
@@ -562,7 +541,6 @@ function alternarVisualizacao() {
     }
 }
 
-// Inicialização única e limpa
 document.addEventListener('DOMContentLoaded', function() {
     gerarCatalogo();
 
