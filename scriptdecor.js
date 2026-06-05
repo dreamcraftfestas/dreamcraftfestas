@@ -170,6 +170,7 @@ const bancoDadosTemas = [
     { nome: "Lady Budy", pasta: "ladybudy", categorias: "all desenhos filme" },
     { nome: "Lantejoula Dourado", pasta: "lantejouladourado", categorias: "all lantejoula natal" },
     { nome: "Lantejoula Prata", pasta: "lantejoulaprata", categorias: "all lantejoula natal" },
+    { nome: "Lantejoula Verde", pasta: "lantejoulaverde", categorias: "all lantejoula natal" },
     { nome: "Lantejoula Vermelha", pasta: "lantejoulavermelha", categorias: "all lantejoula natal" },
     { nome: "Lanterna Verde", pasta: "lanternaverde", categorias: "all herois filme" },
     { nome: "Lavanda", pasta: "lavanda", categorias: "all flores" },
