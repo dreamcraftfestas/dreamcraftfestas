@@ -1,5 +1,5 @@
 // ============================================
-// DREAMCRAFT - CATÁLOGO CORRIGIDO
+// DREAMCRAFT - CATÁLOGO CORRIGIDO E OTIMIZADO
 // ============================================
 
 const bancoDadosTemas = [
@@ -108,7 +108,7 @@ const bancoDadosTemas = [
     { nome: "Flor Lilas e borboleta", pasta: "florlilaseborboleta", categorias: "all flores borboletas" },
     { nome: "Flork eu te amo", pasta: "florkeuteamo", categorias: "all diversos" },
     { nome: "Free Fire", pasta: "freefire", categorias: "all jogos" },
-    { nome: "Frozen", pasta: "frozen", categorias: "all princesas filme contodefadas disney" },
+    { nome: "Frozen", pasta: "frozen", categories: "all princesas filme contodefadas disney" },
     { nome: "Frutas", pasta: "frutas", categorias: "all frutas" },
     { nome: "Fundo do mar", pasta: "fundodomar", categorias: "all fundodomar" },
     { nome: "Futebol menina", pasta: "futebolmenina", categorias: "all times futebol feminino" },
@@ -133,7 +133,6 @@ const bancoDadosTemas = [
     { nome: "Happy Birthday lantejoula lilas", pasta: "happybirthdaylantejoulalilas", categorias: "all happybirthday" },
     { nome: "Happy Birthday lantejoula rosa", pasta: "happybirthdaylantejoularosa", categorias: "all happybirthday" },
     { nome: "Happy Birthday preto e Dourado", pasta: "happybirthdaypretoedourado", categorias: "all happybirthday" },
-    /*{ nome: "Happy Birthday rosa", pasta: "happybirthdayrosa", categorias: "all happybirthday" },*/
     { nome: "Happy Birthday vermelho e dourado", pasta: "happybirthdayvermelhoedourado", categorias: "all happybirthday" },
     { nome: "Harry Potter", pasta: "harrypotter", categorias: "all filme contodefadas magia" },
     { nome: "Hello Kitty", pasta: "hellokitty", categorias: "all desenhos" },
@@ -154,23 +153,9 @@ const bancoDadosTemas = [
     { nome: "Lavanda", pasta: "lavanda", categorias: "all flores" },
     { nome: "Laços", pasta: "lacos", categorias: "all lacos" },
     { nome: "Liga da Justica baby", pasta: "ligadajusticababy", categorias: "all herois cute" },
-    /*{ nome: "Liso Azul e Prata", pasta: "lisoazuleprata", categorias: "all cores" },
-    { nome: "Liso amarelo", pasta: "lisoamarelo", categorias: "all cores" },
-    { nome: "Liso azul claro", pasta: "lisoazulclaro", categorias: "all cores" },*/
     { nome: "Liso azul royal", pasta: "lisoazulroyal", categorias: "all cores" },
     { nome: "Liso branco", pasta: "lisobranco", categorias: "all liso cores" },
-    /*{ nome: "Liso laranja", pasta: "lisolaranja", categorias: "all cores" },
-    { nome: "Liso lilas", pasta: "lisolilas", categorias: "all cores" },
-    { nome: "Liso pink", pasta: "lisopink", categorias: "all cores" },*/
     { nome: "Liso pirulito azul bebe", pasta: "lisopirulitoazulbebe", categorias: "all cores" },
-    /*{ nome: "Liso pirulito azul royal", pasta: "lisopirulitoazulroyal", categorias: "all cores" },
-    { nome: "Liso pirulito branco", pasta: "lisopirulitobranco", categorias: "all cores" },
-    { nome: "Liso pirulito lilas com borboletas", pasta: "lisopirulitolilascomborboletas", categorias: "all cores personalizadas" },
-    { nome: "Liso pirulito lilas", pasta: "lisopirulitolilas", categorias: "all cores" },
-    { nome: "Liso pirulito rosa", pasta: "lisopirulitorosa", categorias: "all cores" },
-    { nome: "Liso pirulito rose", pasta: "lisopirulitorose", categorias: "all cores" },
-    { nome: "Liso pirulito verde exercito", pasta: "lisopirulitoverdeexercito", categorias: "all cores" },
-    { nome: "Liso preto", pasta: "lisopreto", categorias: "all cores" },*/
     { nome: "Liso rosa", pasta: "lisorosa", categorias: "all cores" },
     { nome: "Magali", pasta: "magali", categorias: "all desenhos" },
     { nome: "Margarida", pasta: "margarida", categorias: "all flores" },
@@ -221,14 +206,11 @@ const bancoDadosTemas = [
     { nome: "Relampago Mcqueen", pasta: "relampagomcqueen", categorias: "all filme corrida veiculos" },
     { nome: "Roblocks Menina", pasta: "roblocksmenina", categorias: "all jogos" },
     { nome: "Roblocks Minino", pasta: "roblocksmenino", categorias: "all jogos" },
-    /*{ nome: "Romano Branco", pasta: "romanobranco", categorias: "all romano pirulito liso" },*/
     { nome: "Romano Liso", pasta: "romanoliso", categorias: "all romano pirulito liso" },
-    /*{ nome: "Romano Marrom", pasta: "romanomarrom", categorias: "all romano pirulito liso" },*/
     { nome: "Romano Meia Lua", pasta: "romanomeialua", categorias: "all romano pirulito liso" },
     { nome: "Romano Pirulito Laranja", pasta: "romanopirulitolaranja", categorias: "all romano pirulito liso" },
     { nome: "Romano Pirulito Pink", pasta: "romanopirulitopink", categorias: "all romano pirulito liso" },
     { nome: "Romano Retangular", pasta: "romanoretangular", categorias: "all romano pirulito liso" },
-    /*{ nome: "Romano Rose", pasta: "romanorose", categorias: "all romano pirulito liso" },*/
     { nome: "Safari Menina", pasta: "safarimenina", categorias: "all safari" },
     { nome: "Safari Menino", pasta: "safarimenino", categorias: "all safari" },
     { nome: "Sao Paulo", pasta: "saopaulo", categorias: "all times futebol" },
@@ -262,7 +244,7 @@ const bancoDadosTemas = [
     { nome: "Wandinha", pasta: "wandinha", categorias: "all filme" },
     { nome: "lilas Glitter", pasta: "lilasglitter", categorias: "all glitter" },
     { nome: "raposinha", pasta: "raposinha", categorias: "all animais" },
-	{ nome: "1ª Volta ao Sol", pasta: "1voltaaosol", categorias: "all animais desenhos" },
+    { nome: "1ª Volta ao Sol", pasta: "1voltaaosol", categorias: "all animais desenhos" },
 ];
 
 // Variavel global para controlar o modal
@@ -276,12 +258,14 @@ function gerarCatalogo() {
 
     container.innerHTML = "";
 
+    // Criamos um fragmento para anexar tudo de uma vez na página e evitar lentidão de re-renderização
+    const fragmento = document.createDocumentFragment();
+
     bancoDadosTemas.forEach(function(tema) {
         const nome = tema.nome;
         const categorias = tema.categorias;
         const nomePasta = tema.pasta;
 
-        // --- DEFINE A DESCRIÇÃO COM BASE NO TIPO ---
         let descricaoHTML = "";
         
         if (nomePasta === "arcovazado_simples") {
@@ -307,7 +291,6 @@ function gerarCatalogo() {
                 '<li>Vaso grego</li>' +
                 '<li>Tudo como na imagem ou nas cores que desejas</li>';
         } else {
-            // Descrição padrão para todos os outros temas do catálogo
             descricaoHTML = 
                 '<li>Painel</li>' +
                 '<li>Arco de balões</li>' +
@@ -319,15 +302,9 @@ function gerarCatalogo() {
                 '<li>Tudo como na imagem ou nas cores que desejas</li>';
         }
 
-        // --- GERA AS IMAGENS ---
-        let htmlImagens = '';
-        for (let i = 1; i <= 25; i++) {
-            const caminho = './Imagem/' + nomePasta + '/' + i + '.webp';
-            htmlImagens += '<img src="' + caminho + '" ' +
-                'class="' + (i === 1 ? 'imagem-ativa' : '') + '" ' +
-                'onerror="this.style.display=\'none\'" ' +
-                'onclick="abrirModal(\'' + nomePasta + '\', ' + i + ')">';
-        }
+        // OTIMIZAÇÃO CRUCIAL: Inicia o HTML apenas com a primeira imagem visível e usa loading="lazy"
+        const caminhoPrimeira = './Imagem/' + nomePasta + '/1.webp';
+        let htmlImagens = '<img src="' + caminhoPrimeira + '" class="imagem-ativa" loading="lazy" data-index="1" onclick="abrirModal(\'' + nomePasta + '\', 1)">';
 
         const card = document.createElement('div');
         card.className = 'festa';
@@ -335,7 +312,7 @@ function gerarCatalogo() {
 
         card.innerHTML = 
             '<div class="carrossel">' +
-                '<div class="imagens-carrossel" data-pasta="' + nomePasta + '">' + htmlImagens + '</div>' +
+                '<div class="imagens-carrossel" data-pasta="' + nomePasta + '" data-carregado="false">' + htmlImagens + '</div>' +
                 '<div class="contador-imagens"></div>' +
                 '<div class="zoom-hint">🔍 Clique para ampliar</div>' +
             '</div>' +
@@ -349,66 +326,93 @@ function gerarCatalogo() {
                 '</a>' +
             '</div>';
 
-        container.appendChild(card);
-
-        setTimeout(function() {
-            setupCarrossel(card);
-        }, 100);
+        fragmento.appendChild(card);
+        
+        // Configura o comportamento dinâmico do carrossel
+        setupCarrosselEstrategico(card);
     });
+
+    container.appendChild(fragmento);
 }
 
-function setupCarrossel(card) {
+// OTIMIZAÇÃO CRUCIAL: Gerencia o carrossel sem loops infinitos pesados globais
+function setupCarrosselEstrategico(card) {
     const container = card.querySelector('.imagens-carrossel');
-    const todasImagens = container.querySelectorAll('img');
+    const nomePasta = container.getAttribute('data-pasta');
     const contador = card.querySelector('.contador-imagens');
+    let intervalo = null;
+    let atual = 0;
 
-    setTimeout(function() {
-        const imagensValidas = Array.from(todasImagens).filter(function(img) {
-            return img.style.display !== 'none' && img.complete && img.naturalWidth > 0;
-        });
+    // Função interna para carregar as fotos restantes silenciosamente apenas se necessário
+    function carregarRestoDasImagens() {
+        if (container.getAttribute('data-carregado') === 'true') return;
+        container.setAttribute('data-carregado', 'true');
 
-        const totalImagens = imagensValidas.length;
-
-        if (contador && totalImagens > 0) {
-            contador.textContent = totalImagens + ' foto' + (totalImagens > 1 ? 's' : '');
+        let imagensInjetadas = 0;
+        for (let i = 2; i <= 25; i++) {
+            const img = document.createElement('img');
+            img.src = './Imagem/' + nomePasta + '/' + i + '.webp';
+            img.loading = "lazy";
+            img.setAttribute('data-index', i);
+            img.onclick = function() { abrirModal(nomePasta, i); };
+            
+            img.onerror = function() {
+                this.remove();
+                atualizarContador();
+            };
+            img.onload = function() {
+                atualizarContador();
+            };
+            container.appendChild(img);
         }
+    }
 
-        if (totalImagens <= 1) {
-            if (totalImagens === 1) {
-                imagensValidas[0].classList.add('imagem-ativa');
-            }
-            return;
+    function atualizarContador() {
+        const total = container.querySelectorAll('img').length;
+        if (contador && total > 0) {
+            contador.textContent = total + ' foto' + (total > 1 ? 's' : '');
         }
+    }
 
-        let atual = 0;
+    function rotacionar() {
+        const imgs = container.querySelectorAll('img');
+        if (imgs.length <= 1) return;
 
-        imagensValidas.forEach(function(img, index) {
-            if (index === 0) {
-                img.classList.add('imagem-ativa');
-            } else {
-                img.classList.remove('imagem-ativa');
-            }
-        });
+        imgs[atual].classList.remove('imagem-ativa');
+        atual = (atual + 1) % imgs.length;
+        imgs[atual].classList.add('imagem-ativa');
+    }
 
-        const intervalo = setInterval(function() {
-            if (!document.body.contains(card)) {
-                clearInterval(intervalo);
-                return;
-            }
-            imagensValidas[atual].classList.remove('imagem-ativa');
-            atual = (atual + 1) % totalImagens;
-            imagensValidas[atual].classList.add('imagem-ativa');
-        }, 3000);
+    // Carrega o resto e liga o efeito visual apenas quando o usuário passa o mouse ou interage (Desktop/Mobile)
+    card.addEventListener('mouseenter', function() {
+        carregarRestoDasImagens();
+        if (!intervalo) intervalo = setInterval(rotacionar, 3000);
+    });
 
-    }, 500);
+    card.addEventListener('mouseleave', function() {
+        if (intervalo) {
+            clearInterval(intervalo);
+            intervalo = null;
+        }
+    });
+
+    // Mobile fallback suave
+    card.addEventListener('touchstart', function() {
+        carregarRestoDasImagens();
+        if (!intervalo) intervalo = setInterval(rotacionar, 3000);
+    }, {passive: true});
+
+    // Define o texto inicial como "1 foto" enquanto as outras checam em segundo plano sob demanda
+    if (contador) contador.textContent = "1 foto";
 }
 
 // ============================================
-// MODAL / LIGHTBOX
+// MODAL / LIGHTBOX (Otimizado)
 // ============================================
 
 function abrirModal(pasta, indiceInicial) {
     imagensModal = [];
+    // Geramos as opções padrão do modal
     for (let i = 1; i <= 20; i++) {
         const caminho = './Imagem/' + pasta + '/' + i + '.webp';
         imagensModal.push(caminho);
@@ -438,6 +442,7 @@ function abrirModal(pasta, indiceInicial) {
 }
 
 function validarImagensModal() {
+    if (!modalAtual) return;
     const imgModal = modalAtual.querySelector('.modal-img');
     imgModal.onerror = function() {
         if (imagensModal.length > 1) {
@@ -499,7 +504,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 // ============================================
-// FILTROS E BUSCA
+// FILTROS E BUSCA (Refatorados para Velocidade)
 // ============================================
 
 function filtrarCategoria(categoria) {
@@ -507,6 +512,8 @@ function filtrarCategoria(categoria) {
         categoria = document.getElementById("filtro").value;
     }
     const festas = document.querySelectorAll(".festa");
+    const buscaInput = document.getElementById('busca-tema');
+    if (buscaInput) buscaInput.value = ""; // Limpa a barra de busca ao usar categorias
 
     document.querySelectorAll('.filtro-btn').forEach(function(btn) {
         btn.classList.remove('active');
@@ -518,9 +525,11 @@ function filtrarCategoria(categoria) {
     const select = document.getElementById("filtro");
     if (select) select.value = categoria;
 
+    const termoAlvo = categoria.toLowerCase();
+
     festas.forEach(function(festa) {
         const cats = (festa.getAttribute("data-categoria") || "").toLowerCase();
-        if (categoria === "all" || cats.indexOf(categoria.toLowerCase()) !== -1) {
+        if (termoAlvo === "all" || cats.indexOf(termoAlvo) !== -1) {
             festa.style.display = "flex";
         } else {
             festa.style.display = "none";
@@ -553,6 +562,7 @@ function alternarVisualizacao() {
     }
 }
 
+// Inicialização única e limpa
 document.addEventListener('DOMContentLoaded', function() {
     gerarCatalogo();
 
