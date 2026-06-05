@@ -247,7 +247,7 @@ categorias: "all desenhos youtube" },
     { nome: "Wandinha", pasta: "wandinha", categorias: "all filme" },
     { nome: "lilas Glitter", pasta: "lilasglitter", categorias: "all glitter" },
     { nome: "raposinha", pasta: "raposinha", categorias: "all animais" },
-    { nome: "1ª Volta ao Sol", pasta: "1voltaaosol", categorias: "all animais desenhos" },
+    { nome: "1ª Volta ao Sol", pasta: "1voltaaosol", categorias: "all animais desenhos" }
 ];
 
 let modalAtual = null;
