@@ -1,5 +1,5 @@
 // ============================================
-// DREAMCRAFT - CATÁLOGO COM CARROSSEL CORRIGIDO
+// DREAMCRAFT - CATÁLOGO CORRIGIDO E SEGURO
 // ============================================
 
 const bancoDadosTemas = [
@@ -130,8 +130,7 @@ const bancoDadosTemas = [
     { nome: "Happy Birthday azul arabesco dourado", pasta: "happybirthdayazularabescodourado", categorias: "all happybirthday glitter" },
     { nome: "Happy Birthday azul e Prata", pasta: "happybirthdayazuleprata", categorias: "all happybirthday" },
     { nome: "Happy Birthday glitter Rose", pasta: "happybirthdayglitterrose", categorias: "all happybirthday glitter" },
-    { nome: "Happy Birthday lantejoula lilas", pasta: "happybirthdaylantejoulalilas",
-categorias: "all happybirthday" },
+    { nome: "Happy Birthday lantejoula lilas", pasta: "happybirthdaylantejoulalilas", categorias: "all happybirthday" },
     { nome: "Happy Birthday lantejoula rosa", pasta: "happybirthdaylantejoularosa", categorias: "all happybirthday" },
     { nome: "Happy Birthday preto e Dourado", pasta: "happybirthdaypretoedourado", categorias: "all happybirthday" },
     { nome: "Happy Birthday vermelho e dourado", pasta: "happybirthdayvermelhoedourado", categorias: "all happybirthday" },
@@ -201,8 +200,7 @@ categorias: "all happybirthday" },
     { nome: "Power Rangers", pasta: "powerrangers", categorias: "all desenhos filme" },
     { nome: "Princesa Sofia", pasta: "princesasofia", categorias: "all disney filme desenhos" },
     { nome: "Princesa Tiana", pasta: "princesatiana", categorias: "all princesas filme desenhos disney" },
-    { nome: "Princesas Disney", pasta: "princesasdisney",
-categorias: "all disney filme desenhos" },
+    { nome: "Princesas Disney", pasta: "princesasdisney", categorias: "all disney filme desenhos" },
     { nome: "Real Madri", pasta: "realmadri", categorias: "all time futebol" },
     { nome: "Rei Leao", pasta: "reileao", categorias: "all animais desenhos filme" },
     { nome: "Relampago Mcqueen", pasta: "relampagomcqueen", categorias: "all filme corrida veiculos" },
@@ -210,14 +208,16 @@ categorias: "all disney filme desenhos" },
     { nome: "Roblocks Minino", pasta: "roblocksmenino", categorias: "all jogos" },
     { nome: "Romano Liso", pasta: "romanoliso", categorias: "all romano pirulito liso" },
     { nome: "Romano Meia Lua", pasta: "romanomeialua", categorias: "all romano pirulito liso" },
-    { nome: "Romano Pirulito Laranja", pasta: "romanopirulitolaranja", categorias: "all romano pirulito liso" },
+    { nome: "Romano Pirulito Laranja", pasta: "romanopirulitolaranja",
+    categorias: "all romano pirulito liso" },
     { nome: "Romano Pirulito Pink", pasta: "romanopirulitopink", categorias: "all romano pirulito liso" },
     { nome: "Romano Retangular", pasta: "romanoretangular", categorias: "all romano pirulito liso" },
     { nome: "Safari Menina", pasta: "safarimenina", categorias: "all safari" },
     { nome: "Safari Menino", pasta: "safarimenino", categorias: "all safari" },
     { nome: "Sao Paulo", pasta: "saopaulo", categorias: "all times futebol" },
     { nome: "Sereia Splash", pasta: "sereiasplash", categorias: "all filme menina" },
-    { nome: "Sky e Everest", pasta: "skyeeverest", categorias: "all animais desenhos" },
+    { nome: "Sky e Everest", pasta: "skyeeverest",
+    categorias: "all animais desenhos" },
     { nome: "Sonic e Knuckles", pasta: "soniceknuckles", categorias: "all jogos desenhos filme" },
     { nome: "Sonic e Shadow", pasta: "soniceshadow", categorias: "all jogos desenhos filme" },
     { nome: "Sonic", pasta: "sonic", categorias: "all jogos desenhos filme" },
@@ -234,8 +234,7 @@ categorias: "all disney filme desenhos" },
     { nome: "Tres palavrinhas Menina", pasta: "trespalavrinhasmenina", categorias: "all religiosos meninas" },
     { nome: "Tres palavrinhas Menino", pasta: "trespalavrinhasmenino", categorias: "all religiosos meninos" },
     { nome: "Trolls", pasta: "trolls", categorias: "all desenhos filme" },
-    { nome: "Turma Tube", pasta: "turmatube",
-categorias: "all desenhos youtube" },
+    { nome: "Turma Tube", pasta: "turmatube", categorias: "all desenhos youtube" },
     { nome: "Turma da Monica", pasta: "turmadamonica", categorias: "all desenhos" },
     { nome: "Ursinho Marron", pasta: "ursinhomarron", categorias: "all ursinho infantil" },
     { nome: "Ursinho Pooh Baby", pasta: "ursinhopoohbaby", categorias: "all desenhos filme cute" },
@@ -250,6 +249,7 @@ categorias: "all desenhos youtube" },
     { nome: "1ª Volta ao Sol", pasta: "1voltaaosol", categorias: "all animais desenhos" }
 ];
 
+// Variável global para controlar o modal
 let modalAtual = null;
 let imagensModal = [];
 let indiceModal = 0;
@@ -259,7 +259,6 @@ function gerarCatalogo() {
     if (!container) return;
 
     container.innerHTML = "";
-    const fragmento = document.createDocumentFragment();
 
     bancoDadosTemas.forEach(function(tema) {
         const nome = tema.nome;
@@ -302,9 +301,14 @@ function gerarCatalogo() {
                 '<li>Tudo como na imagem ou nas cores que desejas</li>';
         }
 
-        const caminhoPrimeira = './Imagem/' + nomePasta + '/1.webp';
-        // A primeira imagem ganha a classe 'imagem-ativa' e fica sempre visível de início
-        let htmlImagens = '<img src="' + caminhoPrimeira + '" class="imagem-ativa" style="display: block;" loading="lazy" data-index="1" onclick="abrirModal(\'' + nomePasta + '\', 1)">';
+        let htmlImagens = '';
+        for (let i = 1; i <= 25; i++) {
+            const caminho = './Imagem/' + nomePasta + '/' + i + '.webp';
+            htmlImagens += '<img src="' + caminho + '" ' +
+                'class="' + (i === 1 ? 'imagem-ativa' : '') + '" ' +
+                'onerror="this.style.display=\'none\'" ' +
+                'onclick="abrirModal(\'' + nomePasta + '\', ' + i + ')">';
+        }
 
         const card = document.createElement('div');
         card.className = 'festa';
@@ -312,7 +316,7 @@ function gerarCatalogo() {
 
         card.innerHTML = 
             '<div class="carrossel">' +
-                '<div class="imagens-carrossel" data-pasta="' + nomePasta + '" data-carregado="false">' + htmlImagens + '</div>' +
+                '<div class="imagens-carrossel" data-pasta="' + nomePasta + '">' + htmlImagens + '</div>' +
                 '<div class="contador-imagens"></div>' +
                 '<div class="zoom-hint">🔍 Clique para ampliar</div>' +
             '</div>' +
@@ -326,33 +330,30 @@ function gerarCatalogo() {
                 '</a>' +
             '</div>';
 
-        fragmento.appendChild(card);
-        setupCarrosselEstrategico(card);
-    });
+        container.appendChild(card);
 
-    container.appendChild(fragmento);
+        setTimeout(function() {
+            setupCarrossel(card);
+        }, 100);
+    });
 }
 
 function setupCarrossel(card) {
     const container = card.querySelector('.imagens-carrossel');
     const contador = card.querySelector('.contador-imagens');
 
-    // Aguarda um pouco mais para dar tempo ao navegador de disparar os eventos 'onerror'
     setTimeout(function() {
-        // Seleciona APENAS as imagens que não falharam no carregamento (as que não estão com display: none)
         let imagensValidas = Array.from(container.querySelectorAll('img')).filter(function(img) {
             return img.style.display !== 'none';
         });
 
         const totalImagens = imagensValidas.length;
 
-        // Atualiza o contador de fotos do card
         if (contador && totalImagens > 0) {
             contador.textContent = totalImagens + ' foto' + (totalImagens > 1 ? 's' : '');
-            contador.style.display = 'block'; // Garante que o contador aparece se houver fotos
+            contador.style.display = 'block';
         }
 
-        // Se não houver imagens ou apenas uma, não precisa de rodar o carrossel
         if (totalImagens <= 1) {
             if (totalImagens === 1) {
                 imagensValidas[0].classList.add('imagem-ativa');
@@ -360,7 +361,6 @@ function setupCarrossel(card) {
             return;
         }
 
-        // Garante o estado inicial do carrossel antes de iniciar o intervalo
         let atual = 0;
         imagensValidas.forEach(function(img, index) {
             if (index === 0) {
@@ -370,30 +370,26 @@ function setupCarrossel(card) {
             }
         });
 
-        // Inicia a rotação automática a cada 3 segundos
         const intervalo = setInterval(function() {
-            // Se o card foi removido do HTML (ex: ao filtrar categorias), limpa o temporizador
             if (!document.body.contains(card)) {
                 clearInterval(intervalo);
                 return;
             }
-
-            // Remove a classe ativa da imagem atual
             imagensValidas[atual].classList.remove('imagem-ativa');
-            
-            // Avança para a próxima imagem válida
             atual = (atual + 1) % totalImagens;
-            
-            // Adiciona a classe ativa na nova imagem
             imagensValidas[atual].classList.add('imagem-ativa');
         }, 3000);
 
-    }, 600); // 600ms é o tempo de segurança ideal para o DOM processar os erros de imagem no mobile e desktop
+    }, 600);
 }
+
+// ============================================
+// MODAL / LIGHTBOX
+// ============================================
 
 function abrirModal(pasta, indiceInicial) {
     imagensModal = [];
-    for (let i = 1; i <= 25; i++) {
+    for (let i = 1; i <= 20; i++) {
         const caminho = './Imagem/' + pasta + '/' + i + '.webp';
         imagensModal.push(caminho);
     }
@@ -422,7 +418,6 @@ function abrirModal(pasta, indiceInicial) {
 }
 
 function validarImagensModal() {
-    if (!modalAtual) return;
     const imgModal = modalAtual.querySelector('.modal-img');
     imgModal.onerror = function() {
         if (imagensModal.length > 1) {
@@ -483,15 +478,15 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowRight') imagemProxima();
 });
 
+// ============================================
+// FILTROS E BUSCA
+// ============================================
+
 function filtrarCategoria(categoria) {
     if (!categoria) {
-        const select = document.getElementById("filtro");
-        categoria = select ? select.value : 'all';
+        categoria = document.getElementById("filtro").value;
     }
-    
     const festas = document.querySelectorAll(".festa");
-    const buscaInput = document.getElementById('busca-tema');
-    if (buscaInput) buscaInput.value = ""; 
 
     document.querySelectorAll('.filtro-btn').forEach(function(btn) {
         btn.classList.remove('active');
@@ -503,11 +498,9 @@ function filtrarCategoria(categoria) {
     const select = document.getElementById("filtro");
     if (select) select.value = categoria;
 
-    const termoAlvo = categoria.toLowerCase();
-
     festas.forEach(function(festa) {
         const cats = (festa.getAttribute("data-categoria") || "").toLowerCase();
-        if (termoAlvo === "all" || cats.indexOf(termoAlvo) !== -1) {
+        if (categoria === "all" || cats.indexOf(categoria.toLowerCase()) !== -1) {
             festa.style.display = "flex";
         } else {
             festa.style.display = "none";
