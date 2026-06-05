@@ -1,5 +1,5 @@
 // ============================================
-// DREAMCRAFT - CATÁLOGO 100% CORRIGIDO E SEGURO
+// DREAMCRAFT - CATÁLOGO COM CARROSSEL CORRIGIDO
 // ============================================
 
 const bancoDadosTemas = [
@@ -130,7 +130,8 @@ const bancoDadosTemas = [
     { nome: "Happy Birthday azul arabesco dourado", pasta: "happybirthdayazularabescodourado", categorias: "all happybirthday glitter" },
     { nome: "Happy Birthday azul e Prata", pasta: "happybirthdayazuleprata", categorias: "all happybirthday" },
     { nome: "Happy Birthday glitter Rose", pasta: "happybirthdayglitterrose", categorias: "all happybirthday glitter" },
-    { nome: "Happy Birthday lantejoula lilas", pasta: "happybirthdaylantejoulalilas", categorias: "all happybirthday" },
+    { nome: "Happy Birthday lantejoula lilas", pasta: "happybirthdaylantejoulalilas",
+categorias: "all happybirthday" },
     { nome: "Happy Birthday lantejoula rosa", pasta: "happybirthdaylantejoularosa", categorias: "all happybirthday" },
     { nome: "Happy Birthday preto e Dourado", pasta: "happybirthdaypretoedourado", categorias: "all happybirthday" },
     { nome: "Happy Birthday vermelho e dourado", pasta: "happybirthdayvermelhoedourado", categorias: "all happybirthday" },
@@ -200,7 +201,8 @@ const bancoDadosTemas = [
     { nome: "Power Rangers", pasta: "powerrangers", categorias: "all desenhos filme" },
     { nome: "Princesa Sofia", pasta: "princesasofia", categorias: "all disney filme desenhos" },
     { nome: "Princesa Tiana", pasta: "princesatiana", categorias: "all princesas filme desenhos disney" },
-    { nome: "Princesas Disney", pasta: "princesasdisney", categorias: "all disney filme desenhos" },
+    { nome: "Princesas Disney", pasta: "princesasdisney",
+categorias: "all disney filme desenhos" },
     { nome: "Real Madri", pasta: "realmadri", categorias: "all time futebol" },
     { nome: "Rei Leao", pasta: "reileao", categorias: "all animais desenhos filme" },
     { nome: "Relampago Mcqueen", pasta: "relampagomcqueen", categorias: "all filme corrida veiculos" },
@@ -232,7 +234,8 @@ const bancoDadosTemas = [
     { nome: "Tres palavrinhas Menina", pasta: "trespalavrinhasmenina", categorias: "all religiosos meninas" },
     { nome: "Tres palavrinhas Menino", pasta: "trespalavrinhasmenino", categorias: "all religiosos meninos" },
     { nome: "Trolls", pasta: "trolls", categorias: "all desenhos filme" },
-    { nome: "Turma Tube", pasta: "turmatube", categorias: "all desenhos youtube" },
+    { nome: "Turma Tube", pasta: "turmatube",
+categorias: "all desenhos youtube" },
     { nome: "Turma da Monica", pasta: "turmadamonica", categorias: "all desenhos" },
     { nome: "Ursinho Marron", pasta: "ursinhomarron", categorias: "all ursinho infantil" },
     { nome: "Ursinho Pooh Baby", pasta: "ursinhopoohbaby", categorias: "all desenhos filme cute" },
@@ -300,7 +303,8 @@ function gerarCatalogo() {
         }
 
         const caminhoPrimeira = './Imagem/' + nomePasta + '/1.webp';
-        let htmlImagens = '<img src="' + caminhoPrimeira + '" class="imagem-ativa" loading="lazy" data-index="1" onclick="abrirModal(\'' + nomePasta + '\', 1)">';
+        // A primeira imagem ganha a classe 'imagem-ativa' e fica sempre visível de início
+        let htmlImagens = '<img src="' + caminhoPrimeira + '" class="imagem-ativa" style="display: block;" loading="lazy" data-index="1" onclick="abrirModal(\'' + nomePasta + '\', 1)">';
 
         const card = document.createElement('div');
         card.className = 'festa';
@@ -340,11 +344,15 @@ function setupCarrosselEstrategico(card) {
         if (container.getAttribute('data-carregado') === 'true') return;
         container.setAttribute('data-carregado', 'true');
 
+        // Cria e injeta silenciosamente as fotos 2 até 25 do tema
         for (let i = 2; i <= 25; i++) {
             const img = document.createElement('img');
             img.src = './Imagem/' + nomePasta + '/' + i + '.webp';
             img.loading = "lazy";
             img.setAttribute('data-index', i);
+            // Garante que elas fiquem invisíveis até que a rolagem decida mostrá-las
+            img.style.display = 'none'; 
+            
             img.onclick = function() { abrirModal(nomePasta, i); };
             
             img.onerror = function() {
@@ -369,14 +377,22 @@ function setupCarrosselEstrategico(card) {
         const imgs = container.querySelectorAll('img');
         if (imgs.length <= 1) return;
 
+        // Força a ocultação total da foto atual
         imgs[atual].classList.remove('imagem-ativa');
+        imgs[atual].style.display = 'none';
+
+        // Avança para o próximo índice
         atual = (atual + 1) % imgs.length;
+
+        // Força a exibição visual da nova foto ativa
         imgs[atual].classList.add('imagem-ativa');
+        imgs[atual].style.display = 'block';
     }
 
+    // Eventos de Mouse para computadores
     card.addEventListener('mouseenter', function() {
         carregarRestoDasImagens();
-        if (!intervalo) intervalo = setInterval(rotacionar, 3000);
+        if (!intervalo) intervalo = setInterval(rotacionar, 2500); // 2.5 segundos por foto
     });
 
     card.addEventListener('mouseleave', function() {
@@ -384,11 +400,23 @@ function setupCarrosselEstrategico(card) {
             clearInterval(intervalo);
             intervalo = null;
         }
+        // Reseta o carrossel para a primeira imagem (1.webp) quando o mouse sai do card
+        const imgs = container.querySelectorAll('img');
+        if (imgs.length > 0) {
+            imgs.forEach(img => {
+                img.classList.remove('imagem-ativa');
+                img.style.display = 'none';
+            });
+            atual = 0;
+            imgs[0].classList.add('imagem-ativa');
+            imgs[0].style.display = 'block';
+        }
     });
 
+    // Suporte robusto para telas de toque/celular
     card.addEventListener('touchstart', function() {
         carregarRestoDasImagens();
-        if (!intervalo) intervalo = setInterval(rotacionar, 3000);
+        if (!intervalo) intervalo = setInterval(rotacionar, 2500);
     }, {passive: true});
 
     if (contador) contador.textContent = "1 foto";
@@ -396,7 +424,7 @@ function setupCarrosselEstrategico(card) {
 
 function abrirModal(pasta, indiceInicial) {
     imagensModal = [];
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i <= 25; i++) {
         const caminho = './Imagem/' + pasta + '/' + i + '.webp';
         imagensModal.push(caminho);
     }
@@ -487,7 +515,6 @@ document.addEventListener('keydown', function(e) {
 });
 
 function filtrarCategoria(categoria) {
-    // PROTEÇÃO CONTRA ELEMENTOS SEM ARGUMENTO: Se vier vazio, tenta detetar o valor do select
     if (!categoria) {
         const select = document.getElementById("filtro");
         categoria = select ? select.value : 'all';
