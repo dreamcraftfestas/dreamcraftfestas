@@ -109,7 +109,7 @@ const bancoDadosTemas = [
     { nome: "Divertidamente", pasta: "divertidamente", categorias: "all filme contodefadas" },
     { nome: "Doceria", pasta: "doceria", categorias: "all doces diversos" },
     { nome: "Dragon Ball", pasta: "dragonball", categorias: "all desenhos" },
-    { nome: "Dragão Medieval", pasta: "dragaomedieval", categorias: "all desenhos" },
+    /*{ nome: "Dragão Medieval", pasta: "dragaomedieval", categorias: "all desenhos" },*/
     { nome: "Empresarial", pasta: "empresarial", categorias: "all empresas" },
     { nome: "Enaldinho", pasta: "enaldinho", categorias: "all youtuber" },
     { nome: "Enrolados", pasta: "enrolados", categorias: "all princesas contodefadas filme" },
