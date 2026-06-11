@@ -60,7 +60,7 @@ const bancoDadosTemas = [
     { nome: "Boteco cerveja", pasta: "botecocerveja", categorias: "all boteco diversos" },
     { nome: "Boteco", pasta: "boteco", categorias: "all boteco diversos" },
     { nome: "Branca de neve cute", pasta: "brancadenevecute", categorias: "all princesas contodefadas filme disney cute" },
-    { nome: "Branca de Neve", pasta: "brancadeneve", categorias: "all princesas contodefadas filme disney cute" },
+    /*{ nome: "Branca de Neve", pasta: "brancadeneve", categorias: "all princesas contodefadas filme disney cute" },*/
     { nome: "Brasilidades", pasta: "brasilidades", categorias: "all brasilidade diversos" },
     { nome: "Brasilidades Laranja", pasta: "brasilidadeslaranja", categorias: "all brasilidade diversos" },
     { nome: "CR7", pasta: "cr7", categorias: "all futebol jogador" },
