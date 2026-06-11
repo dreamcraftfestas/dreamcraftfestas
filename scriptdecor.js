@@ -50,7 +50,7 @@ const bancoDadosTemas = [
     { nome: "Bluey e bingo", pasta: "blueyebingo", categorias: "all desenhos animais" },
     { nome: "Bob Esponja", pasta: "bobesponja", categorias: "all desenhos fundodomar" },
     { nome: "Bobbie Goods", pasta: "bobbiegoods", categorias: "all diversos" },
-    { nome: "Boiadeira", pasta: "boiadeira", categorias: "all boiadeira" },
+    /*{ nome: "Boiadeira", pasta: "boiadeira", categorias: "all boiadeira" },*/
     { nome: "Bolofofos", pasta: "bolofofos", categorias: "all desenhos musicas" },
     { nome: "Bombeiro", pasta: "bombeiro", categorias: "all bombeiro" },
     { nome: "Borboleta Roxa", pasta: "borboletaroxa", categorias: "all borboletas animais" },
