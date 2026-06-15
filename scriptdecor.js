@@ -191,7 +191,7 @@ const bancoDadosTemas = [
   { nome: "Margarida",                              pasta: "margarida",                            categorias: "all flores" },
   { nome: "Maria Clara e JP",                       pasta: "mariaclaraejp",                        categorias: "all youtuber desenhos" },
   { nome: "Masha e o Urso",                         pasta: "mashaeourso",                          categorias: "all desenhos" },
-  { nome: "Meninas Super Poderosas",               pasta: "meninassuperpoderosas",                 categorias: "all desenho meninas" },
+  { nome: "Meninas Super Poderosas",                pasta: "meninassuperpoderosas",                 categorias: "all desenho meninas" },
   { nome: "Meu Mundo Doce com Jesus",               pasta: "meumundodocecomjesus",                 categorias: "all religiosos" },
   { nome: "Mickey",                                 pasta: "mickey",                               categorias: "all desenhos disney" },
   { nome: "MineCraft",                              pasta: "minecraft",                            categorias: "all jogos" },
@@ -312,93 +312,80 @@ let indiceModal  = 0;
 
 /* ---------- GERAÇÃO DO CATÁLOGO ---------- */
 /*
- * Estratégia de performance:
- * 1. Os cards são inseridos no DOM imediatamente (só com a 1ª imagem visível)
- *    para que a página apareça rápido.
- * 2. Um IntersectionObserver detecta quando cada card entra na tela.
- * 3. Ao entrar na tela, descobrimos QUANTAS imagens existem na pasta
- *    testando uma a uma com Promise (para no primeiro 404/erro).
- * 4. Só então montamos o carrossel com as imagens reais — sem brancos.
+ * Estratégia sem requests extras (evita 403):
+ * 1. Cada card é criado com as 25 <img> já no DOM, mas todas
+ *    com loading="lazy" — o browser só faz o request quando
+ *    o elemento está perto da viewport.
+ * 2. Cada <img> tem um onerror que a marca com data-falhou="1"
+ *    e a esconde. Nenhum request "de teste" extra é feito.
+ * 3. O IntersectionObserver espera o card entrar na tela e,
+ *    depois que as imagens tiveram tempo de responder (onload/onerror),
+ *    inicia o slideshow apenas com as que carregaram.
+ * 4. O slideshow pula automaticamente imagens que falharam.
  */
 function gerarCatalogo() {
-  const container = document.getElementById('catalogo-festas');
+  var container = document.getElementById('catalogo-festas');
   if (!container) return;
 
-  const fragment = document.createDocumentFragment();
-
+  var fragment = document.createDocumentFragment();
   bancoDadosTemas.forEach(function (tema) {
-    fragment.appendChild(criarCardEsqueleto(tema));
+    fragment.appendChild(criarCard(tema));
   });
 
   container.innerHTML = '';
   container.appendChild(fragment);
-
   iniciarCarrosseis();
 }
 
-/* Cria o card com apenas a 1ª imagem (placeholder até o Observer agir) */
-function criarCardEsqueleto(tema) {
-  const { nome, pasta, categorias } = tema;
-  const wppNome = encodeURIComponent(nome);
+function criarCard(tema) {
+  var nome      = tema.nome;
+  var pasta     = tema.pasta;
+  var categorias = tema.categorias;
+  var wppNome   = encodeURIComponent(nome);
 
-  const card = document.createElement('div');
+  var card = document.createElement('div');
   card.className = 'festa';
   card.setAttribute('data-categoria', categorias);
   card.setAttribute('data-pasta', pasta);
 
+  // Monta todas as 25 imagens com lazy loading nativo.
+  // onerror esconde silenciosamente — sem requests extras.
+  var htmlImgs = '';
+  for (var i = 1; i <= 25; i++) {
+    htmlImgs +=
+      '<img src="./Imagem/' + pasta + '/' + i + '.webp"' +
+      ' loading="lazy"' +
+      ' data-indice="' + i + '"' +
+      ' onerror="this.dataset.falhou=\'1\';this.style.display=\'none\';"' +
+      (i === 1 ? ' class="imagem-ativa"' : '') +
+      '>';
+  }
+
   card.innerHTML =
     '<div class="carrossel">' +
-      '<div class="imagens-carrossel">' +
-        '<img src="./Imagem/' + pasta + '/1.webp" ' +
-          'class="imagem-ativa" ' +
-          'onclick="abrirModal(\'' + pasta + '\', 1)">' +
-      '</div>' +
+      '<div class="imagens-carrossel">' + htmlImgs + '</div>' +
       '<div class="zoom-hint">🔍 Clique para ampliar</div>' +
     '</div>' +
     '<div class="conteudo">' +
       '<div class="titulo">' + nome + '</div>' +
       '<ul class="descricao">' + getDescricaoHTML(pasta) + '</ul>' +
-      '<a class="whatsapp-btn" ' +
-        'href="https://wa.me/5519993723106?text=Ol%C3%A1%2C+quero+or%C3%A7amento+para+' + wppNome + '" ' +
-        'target="_blank" rel="noopener">' +
+      '<a class="whatsapp-btn"' +
+        ' href="https://wa.me/5519993723106?text=Ol%C3%A1%2C+quero+or%C3%A7amento+para+' + wppNome + '"' +
+        ' target="_blank" rel="noopener">' +
         '<i class="fa-brands fa-whatsapp"></i> Solicitar Orçamento' +
       '</a>' +
     '</div>';
 
-  return card;
-}
-
-/* Testa se uma imagem existe; resolve true/false */
-function imagemExiste(src) {
-  return new Promise(function (resolve) {
-    var img = new Image();
-    img.onload  = function () { resolve(true); };
-    img.onerror = function () { resolve(false); };
-    img.src = src;
+  // Delega o clique para abrir o modal — descobre as imgs válidas no momento do clique
+  card.querySelector('.imagens-carrossel').addEventListener('click', function (e) {
+    if (e.target.tagName !== 'IMG') return;
+    var imgs    = Array.from(card.querySelectorAll('.imagens-carrossel img:not([data-falhou])'));
+    var clicada = imgs.indexOf(e.target);
+    if (clicada === -1) clicada = 0;
+    abrirModalComLista(imgs.map(function (im) { return im.src; }), clicada);
   });
-}
 
-/*
- * Descobre quantas imagens existem na pasta testando sequencialmente
- * 1, 2, 3 ... até MAX_IMAGENS. Para no primeiro que falhar.
- * Retorna array com os caminhos confirmados.
- */
-var MAX_IMAGENS = 25;
-
-function descobrirImagens(pasta) {
-  var caminhos = [];
-
-  function testar(i) {
-    if (i > MAX_IMAGENS) return Promise.resolve(caminhos);
-    var src = './Imagem/' + pasta + '/' + i + '.webp';
-    return imagemExiste(src).then(function (existe) {
-      if (!existe) return caminhos; // para aqui
-      caminhos.push(src);
-      return testar(i + 1);
-    });
-  }
-
-  return testar(1);
+  return card;
 }
 
 /* ---------- CARROSSEIS COM IntersectionObserver ---------- */
@@ -406,17 +393,10 @@ function iniciarCarrosseis() {
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
-      var card = entry.target;
-      observer.unobserve(card);
-
-      var pasta = card.getAttribute('data-pasta');
-
-      // Descobre as imagens reais da pasta, depois monta o carrossel
-      descobrirImagens(pasta).then(function (caminhos) {
-        montarCarrossel(card, pasta, caminhos);
-      });
+      observer.unobserve(entry.target);
+      iniciarSlideshow(entry.target);
     });
-  }, { rootMargin: '200px 0px' });
+  }, { rootMargin: '300px 0px' }); // antecipa para as imgs lazy carregarem
 
   document.querySelectorAll('.festa').forEach(function (card) {
     observer.observe(card);
@@ -424,50 +404,52 @@ function iniciarCarrosseis() {
 }
 
 /*
- * Com a lista exata de imagens que existem:
- * - Substitui o conteúdo do carrossel pelas imagens reais
- * - Inicia o slideshow apenas se houver mais de 1 imagem
+ * Inicia o slideshow do card.
+ * Aguarda um pequeno delay para as imagens lazy terem tempo de
+ * disparar onload/onerror antes de filtrar as válidas.
  */
-function montarCarrossel(card, pasta, caminhos) {
-  var container = card.querySelector('.imagens-carrossel');
-  if (!container || caminhos.length === 0) return;
+function iniciarSlideshow(card) {
+  // 800 ms é suficiente para o browser processar onload/onerror
+  // das imagens que já estavam na fila de download
+  setTimeout(function () {
+    var container = card.querySelector('.imagens-carrossel');
+    if (!container) return;
 
-  // Reconstrói as imagens com os caminhos confirmados
-  container.innerHTML = '';
-  caminhos.forEach(function (src, i) {
-    var img = document.createElement('img');
-    img.src = src;
-    if (i === 0) img.className = 'imagem-ativa';
-    img.addEventListener('click', function () {
-      abrirModalComLista(caminhos, i);
+    // Imagens válidas = carregaram sem erro (data-falhou ausente)
+    var todas   = Array.from(container.querySelectorAll('img'));
+    var validas = todas.filter(function (img) { return !img.dataset.falhou; });
+
+    if (validas.length <= 1) return; // nada a rotacionar
+
+    var atual = 0;
+    // Garante que só a primeira está ativa
+    validas.forEach(function (img, i) {
+      img.classList.toggle('imagem-ativa', i === 0);
     });
-    container.appendChild(img);
-  });
 
-  // Só cria o slideshow se houver 2+ imagens
-  if (caminhos.length <= 1) return;
-
-  var atual = 0;
-  var imgs   = container.querySelectorAll('img');
-
-  setInterval(function () {
-    if (!document.body.contains(card)) return;
-    imgs[atual].classList.remove('imagem-ativa');
-    atual = (atual + 1) % imgs.length;
-    imgs[atual].classList.add('imagem-ativa');
-  }, 3000);
+    setInterval(function () {
+      if (!document.body.contains(card)) return;
+      validas[atual].classList.remove('imagem-ativa');
+      // Avança apenas para imagens que não falharam depois do delay inicial
+      do {
+        atual = (atual + 1) % validas.length;
+      } while (validas[atual].dataset.falhou && validas.some(function (v) { return !v.dataset.falhou; }));
+      validas[atual].classList.add('imagem-ativa');
+    }, 3000);
+  }, 800);
 }
 
 /* ---------- MODAL / LIGHTBOX ---------- */
-function abrirModal(pasta, indiceInicial) {
-  // Fecha modal anterior se existir
+
+/*
+ * Recebe a lista exata de srcs válidos (já filtrados pelo carrossel)
+ * e o índice da imagem clicada. Não faz requests extras.
+ */
+function abrirModalComLista(srcs, indiceInicial) {
   if (modalAtual) fecharModal();
 
-  imagensModal = [];
-  for (let i = 1; i <= 20; i++) {
-    imagensModal.push('./Imagem/' + pasta + '/' + i + '.webp');
-  }
-  indiceModal = indiceInicial - 1;
+  imagensModal = srcs.slice(); // cópia
+  indiceModal  = indiceInicial || 0;
 
   modalAtual = document.createElement('div');
   modalAtual.className = 'modal-imagem';
@@ -476,8 +458,7 @@ function abrirModal(pasta, indiceInicial) {
     '<div class="modal-conteudo">' +
       '<button class="modal-fechar" aria-label="Fechar">&times;</button>' +
       '<button class="modal-nav modal-anterior" aria-label="Anterior">&#10094;</button>' +
-      '<img src="' + imagensModal[indiceModal] + '" class="modal-img" ' +
-        'alt="Imagem do tema" onerror="this.src=\'Logo/logo-festas.png\'">' +
+      '<img src="' + imagensModal[indiceModal] + '" class="modal-img" alt="Imagem do tema">' +
       '<button class="modal-nav modal-proximo" aria-label="Próximo">&#10095;</button>' +
       '<div class="modal-contador">' + (indiceModal + 1) + ' / ' + imagensModal.length + '</div>' +
     '</div>';
@@ -485,28 +466,11 @@ function abrirModal(pasta, indiceInicial) {
   document.body.appendChild(modalAtual);
   document.body.style.overflow = 'hidden';
 
-  // Eventos do modal
   modalAtual.querySelector('.modal-overlay').addEventListener('click', fecharModal);
   modalAtual.querySelector('.modal-fechar').addEventListener('click', fecharModal);
   modalAtual.querySelector('.modal-anterior').addEventListener('click', imagemAnterior);
   modalAtual.querySelector('.modal-proximo').addEventListener('click', imagemProxima);
 
-  validarImagensModal();
-  atualizarBotoesModal();
-}
-
-function validarImagensModal() {
-  if (!modalAtual) return;
-  const imgEl = modalAtual.querySelector('.modal-img');
-  imgEl.onerror = function () {
-    if (imagensModal.length > 1) {
-      imagensModal.splice(indiceModal, 1);
-      if (indiceModal >= imagensModal.length) indiceModal = 0;
-      atualizarModal();
-    } else {
-      fecharModal();
-    }
-  };
   atualizarBotoesModal();
 }
 
