@@ -181,6 +181,7 @@ const bancoDadosTemas = [
   { nome: "Laço Preto Fundo Branco",                pasta: "lacopretofundobranco",                 categorias: "all lacos"  , totalImgs: 1 },
   { nome: "Laço Rosa Fundo Branco",                 pasta: "lacorosafundobranco",                  categorias: "all lacos"  , totalImgs: 1 },
   { nome: "Liga da Justiça Baby",                   pasta: "ligadajusticababy",                    categorias: "all herois cute"  , totalImgs: 1 },
+  { nome: "Lilás Glitter",                          pasta: "lilasglitter",                         categorias: "all glitter"  , totalImgs: 4 },
   { nome: "Liso Azul Royal",                        pasta: "lisoazulroyal",                        categorias: "all cores"  , totalImgs: 0 },
   { nome: "Liso Branco",                            pasta: "lisobranco",                           categorias: "all liso cores"  , totalImgs: 1 },
   { nome: "Liso Pirulito Azul Bebê",                pasta: "lisopirulitoazulbebe",                 categorias: "all cores"  , totalImgs: 1 },
@@ -234,6 +235,7 @@ const bancoDadosTemas = [
   { nome: "Princesa Sofia",                         pasta: "princesasofia",                        categorias: "all disney filme desenhos"  , totalImgs: 1 },
   { nome: "Princesa Tiana",                         pasta: "princesatiana",                        categorias: "all princesas filme desenhos disney"  , totalImgs: 2 },
   { nome: "Princesas Disney",                       pasta: "princesasdisney",                      categorias: "all disney filme desenhos"  , totalImgs: 1 },
+  { nome: "Raposinha",                              pasta: "raposinha",                            categorias: "all animais"  , totalImgs: 1 },
   { nome: "Real Madrid",                            pasta: "realmadri",                            categorias: "all time futebol"  , totalImgs: 1 },
   { nome: "Rei Leão",                               pasta: "reileao",                              categorias: "all animais desenhos filme"  , totalImgs: 3 },
   { nome: "Relâmpago McQueen",                      pasta: "relampagomcqueen",                     categorias: "all filme corrida veiculos"  , totalImgs: 1 },
@@ -273,8 +275,6 @@ const bancoDadosTemas = [
   { nome: "Valente",                                pasta: "valente",                              categorias: "all princesas filme disney"  , totalImgs: 1 },
   { nome: "Vera Arco-Íris",                         pasta: "veraarcoiris",                         categorias: "all desenhos"  , totalImgs: 2 },
   { nome: "Wandinha",                               pasta: "wandinha",                             categorias: "all filme"  , totalImgs: 1 },
-  { nome: "Lilás Glitter",                          pasta: "lilasglitter",                         categorias: "all glitter"  , totalImgs: 4 },
-  { nome: "Raposinha",                              pasta: "raposinha",                            categorias: "all animais"  , totalImgs: 1 },
   { nome: "Yoshi",                                  pasta: "yoshi",                                categorias: "all desenho jogo"  , totalImgs: 1 }
 ];
 
