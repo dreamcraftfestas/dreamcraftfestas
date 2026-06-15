@@ -358,7 +358,7 @@ function criarCard(tema) {
       '<img src="./Imagem/' + pasta + '/' + i + '.webp"' +
       ' loading="lazy"' +
       ' data-indice="' + i + '"' +
-      ' onerror="this.dataset.falhou=\'1\';this.style.display=\'none\';"' +
+      ' onerror="if(!this.dataset.tentouMaiusculo){this.dataset.tentouMaiusculo=\'1\'; this.src=\'./Imagem/' + pasta + '/' + i + '.WEBP\';}else{this.dataset.falhou=\'1\';this.style.display=\'none\';}"' +
       (i === 1 ? ' class="imagem-ativa"' : '') +
       '>';
   }
