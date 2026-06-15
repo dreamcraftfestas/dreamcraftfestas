@@ -40,7 +40,7 @@ const bancoDadosTemas = [
   { nome: "Batizado Rosa",                          pasta: "batizadorosa",                         categorias: "all religiosos batizado"  , totalImgs: 4 },
   { nome: "Batizado Verde",                         pasta: "batizadoverde",                        categorias: "all religiosos batizado"  , totalImgs: 2 },
   { nome: "Batizado Azul",                          pasta: "batizadoazul",                         categorias: "all religiosos batizado"  , totalImgs: 2 },
-  { nome: "Batizado",                               pasta: "batizado",                             categorias: "all religiosos batizado"  , totalImgs: 0 },
+  /*{ nome: "Batizado",                               pasta: "batizado",                             categorias: "all religiosos batizado"  , totalImgs: 0 },*/
   { nome: "Batman",                                 pasta: "batman",                               categorias: "all herois filme desenhos"  , totalImgs: 2 },
   { nome: "Bee Movie",                              pasta: "beemovie",                             categorias: "all filme animais"  , totalImgs: 1 },
   { nome: "Bela Adormecida",                        pasta: "belaadormecida",                       categorias: "all princesas contodefadas filme disney"  , totalImgs: 2 },
@@ -182,7 +182,7 @@ const bancoDadosTemas = [
   { nome: "Laço Rosa Fundo Branco",                 pasta: "lacorosafundobranco",                  categorias: "all lacos"  , totalImgs: 1 },
   { nome: "Liga da Justiça Baby",                   pasta: "ligadajusticababy",                    categorias: "all herois cute"  , totalImgs: 1 },
   { nome: "Lilás Glitter",                          pasta: "lilasglitter",                         categorias: "all glitter"  , totalImgs: 4 },
-  { nome: "Liso Azul Royal",                        pasta: "lisoazulroyal",                        categorias: "all cores"  , totalImgs: 0 },
+  /*{ nome: "Liso Azul Royal",                        pasta: "lisoazulroyal",                        categorias: "all cores"  , totalImgs: 0 },*/
   { nome: "Liso Branco",                            pasta: "lisobranco",                           categorias: "all liso cores"  , totalImgs: 1 },
   { nome: "Liso Pirulito Azul Bebê",                pasta: "lisopirulitoazulbebe",                 categorias: "all cores"  , totalImgs: 1 },
   { nome: "Liso Rosa",                              pasta: "lisorosa",                             categorias: "all cores"  , totalImgs: 1 },
@@ -229,7 +229,7 @@ const bancoDadosTemas = [
   { nome: "Poderosa Chefinha",                      pasta: "poderosachefinha",                     categorias: "all filme desenhos"  , totalImgs: 1 },
   { nome: "Poderoso Chefinho",                      pasta: "poderosochefinho",                     categorias: "all filme desenhos"  , totalImgs: 1 },
   { nome: "Pokémon",                                pasta: "pokemon",                              categorias: "all desenhos animais"  , totalImgs: 2 },
-  { nome: "Pool Party Azul",                        pasta: "poolpartyazul",                        categorias: "all piscina"  , totalImgs: 0 },
+  /*{ nome: "Pool Party Azul",                        pasta: "poolpartyazul",                        categorias: "all piscina"  , totalImgs: 0 },*/
   { nome: "Pool Party Rosa",                        pasta: "poolpartyrosa",                        categorias: "all piscina"  , totalImgs: 3 },
   { nome: "Power Rangers",                          pasta: "powerrangers",                         categorias: "all desenhos filme"  , totalImgs: 1 },
   { nome: "Princesa Sofia",                         pasta: "princesasofia",                        categorias: "all disney filme desenhos"  , totalImgs: 1 },
@@ -241,7 +241,7 @@ const bancoDadosTemas = [
   { nome: "Relâmpago McQueen",                      pasta: "relampagomcqueen",                     categorias: "all filme corrida veiculos"  , totalImgs: 1 },
   { nome: "Roblox Menina",                          pasta: "robloxmenina",                         categorias: "all jogos"  , totalImgs: 1 },
   { nome: "Roblox Menino",                          pasta: "robloxmenino",                         categorias: "all jogos"  , totalImgs: 3 },
-  { nome: "Romano Liso",                            pasta: "romanoliso",                           categorias: "all romano pirulito liso"  , totalImgs: 0 },
+  /*{ nome: "Romano Liso",                            pasta: "romanoliso",                           categorias: "all romano pirulito liso"  , totalImgs: 0 },*/
   { nome: "Romano Meia Lua",                        pasta: "romanomeialua",                        categorias: "all romano pirulito liso"  , totalImgs: 1 },
   { nome: "Romano Pirulito Laranja",                pasta: "romanopirulitolaranja",                categorias: "all romano pirulito liso"  , totalImgs: 1 },
   { nome: "Romano Pirulito Pink",                   pasta: "romanopirulitopink",                   categorias: "all romano pirulito liso"  , totalImgs: 2 },
