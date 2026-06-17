@@ -125,288 +125,300 @@ const bancoDadosTemas = [
 
 ];
 
-// Variavel global para controlar o modal
-let modalAtual = null;
-let imagensModal = [];
-let indiceModal = 0;
+/* ---------- DESCRIÇÃO PADRÃO ---------- */
+const DESCRICAO_PADRAO = [
+  'Painel', 'Arco de balões', 'Boleiras',
+  ,'Vaso Romano','Flores','Tapete', 'Tudo como na imagem ou nas cores que desejas'
+];
 
+/*const DESCRICOES_ESPECIAIS = {
+  arcovazado_simples: [
+    '<strong>Arco Vazado Simples (Clássico)</strong>',
+    'Painel', 'Arco de balões uniformes', 'Boleira',
+    'Bandeja sextavada', 'Bandeja lapidada', 'Bandeja Oval',
+    'Vaso grego', 'Tudo como na imagem ou nas cores que desejar'
+  ],
+  arcovazado_desconstruido: [
+    '<strong>Arco Vazado Desconstruído (Orgânico)</strong>',
+    'Painel', 'Arco de balões desconstruídos', 'Boleira',
+    'Bandeja sextavada', 'Bandeja lapidada', 'Bandeja Oval',
+    'Vaso grego', 'Tudo como na imagem ou nas cores que desejas'
+  ]
+};*/
+
+function getDescricaoHTML(pasta) {
+  const itens = DESCRICOES_ESPECIAIS[pasta] || DESCRICAO_PADRAO;
+  return itens.map(function (item) { return '<li>' + item + '</li>'; }).join('');
+}
+
+/* ---------- ESTADO GLOBAL DO MODAL ---------- */
+let modalAtual  = null;
+let imagensModal = [];
+let indiceModal  = 0;
+
+/* ---------- GERAÇÃO DO CATÁLOGO ---------- */
+/*
+ * Estratégia sem requests extras (evita 403):
+ * 1. Cada card é criado com as 25 <img> já no DOM, mas todas
+ *    com loading="lazy" — o browser só faz o request quando
+ *    o elemento está perto da viewport.
+ * 2. Cada <img> tem um onerror que a marca com data-falhou="1"
+ *    e a esconde. Nenhum request "de teste" extra é feito.
+ * 3. O IntersectionObserver espera o card entrar na tela e,
+ *    depois que as imagens tiveram tempo de responder (onload/onerror),
+ *    inicia o slideshow apenas com as que carregaram.
+ * 4. O slideshow pula automaticamente imagens que falharam.
+ */
 function gerarCatalogo() {
-    const container = document.getElementById('catalogo-festas');
+  var container = document.getElementById('catalogo-festas');
+  if (!container) return;
+
+  var fragment = document.createDocumentFragment();
+  bancoDadosTemas.forEach(function (tema) {
+    fragment.appendChild(criarCard(tema));
+  });
+
+  container.innerHTML = '';
+  container.appendChild(fragment);
+  iniciarCarrosseis();
+}
+
+function criarCard(tema) {
+  var nome       = tema.nome;
+  var pasta      = tema.pasta;
+  var categorias = tema.categorias;
+  var wppNome    = encodeURIComponent(nome);
+  
+  // Pega o total real de imagens injetado pelo Node. Se não existir, assume 1 por segurança.
+  var qtdImagens = tema.totalImgs || 1; 
+
+  var card = document.createElement('div');
+  card.className = 'festa';
+  card.setAttribute('data-categoria', categorias);
+  card.setAttribute('data-pasta', pasta);
+
+  // O loop agora só roda até o número REAL de imagens que existem na pasta!
+  var htmlImgs = '';
+  for (var i = 1; i <= qtdImagens; i++) {
+    htmlImgs +=
+      '<img src="./Festa-Completa/' + pasta + '/' + i + '.webp"' +
+      ' loading="lazy"' +
+      ' data-indice="' + i + '"' +
+      ' onerror="if(!this.dataset.tentouMaiusculo){this.dataset.tentouMaiusculo=\'1\'; this.src=\'./Festa-Completa/' + pasta + '/' + i + '.WEBP\';}else{this.dataset.falhou=\'1\';this.style.display=\'none\';}"' +
+      (i === 1 ? ' class="imagem-ativa"' : '') +
+      '>';
+  }
+
+  card.innerHTML =
+    '<div class="carrossel">' +
+      '<div class="imagens-carrossel">' + htmlImgs + '</div>' +
+      '<div class="zoom-hint">🔍 Clique para ampliar</div>' +
+    '</div>' +
+    '<div class="conteudo">' +
+      '<div class="titulo">' + nome + '</div>' +
+      '<ul class="descricao">' + getDescricaoHTML(pasta) + '</ul>' +
+      '<a class="whatsapp-btn"' +
+        ' href="https://wa.me/5519993723106?text=Ol%C3%A1%2C+quero+or%C3%A7amento+para+' + wppNome + '"' +
+        ' target="_blank" rel="noopener">' +
+        '<i class="fa-brands fa-whatsapp"></i> Solicitar Orçamento' +
+      '</a>' +
+    '</div>';
+
+  // Delega o clique para abrir o modal
+  card.querySelector('.imagens-carrossel').addEventListener('click', function (e) {
+    if (e.target.tagName !== 'IMG') return;
+    var imgs    = Array.from(card.querySelectorAll('.imagens-carrossel img:not([data-falhou])'));
+    var clicada = imgs.indexOf(e.target);
+    if (clicada === -1) clicada = 0;
+    abrirModalComLista(imgs.map(function (im) { return im.src; }), clicada);
+  });
+
+  return card;
+}
+
+/* ---------- CARROSSEIS COM IntersectionObserver ---------- */
+function iniciarCarrosseis() {
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+      iniciarSlideshow(entry.target);
+    });
+  }, { rootMargin: '300px 0px' }); // antecipa para as imgs lazy carregarem
+
+  document.querySelectorAll('.festa').forEach(function (card) {
+    observer.observe(card);
+  });
+}
+
+/*
+ * Inicia o slideshow do card.
+ * Aguarda um pequeno delay para as imagens lazy terem tempo de
+ * disparar onload/onerror antes de filtrar as válidas.
+ */
+function iniciarSlideshow(card) {
+  // 800 ms é suficiente para o browser processar onload/onerror
+  // das imagens que já estavam na fila de download
+  setTimeout(function () {
+    var container = card.querySelector('.imagens-carrossel');
     if (!container) return;
 
-    container.innerHTML = "";
+    // Imagens válidas = carregaram sem erro (data-falhou ausente)
+    var todas   = Array.from(container.querySelectorAll('img'));
+    var validas = todas.filter(function (img) { return !img.dataset.falhou; });
 
-    bancoDadosTemas.forEach(function(tema) {
-        const nome = tema.nome;
-        const categorias = tema.categorias;
-        const nomePasta = tema.pasta;
+    if (validas.length <= 1) return; // nada a rotacionar
 
-        // --- DEFINE A DESCRIÇÃO COM BASE NO TIPO ---
-        let descricaoHTML = 
-            '<li>Painel</li>' +
-            '<li>Arco de balões</li>' +
-            '<li>Trio de Cilindro</li>' +
-            '<li>Boleira Slim em 3 tamanhos</li>' +
-            '<li>Vaso Romano</li>' +
-            '<li>Tapete</li>' +
-            '<li>Tudo como na imagem ou nas cores que desejas</li>';
-
-        // --- GERA AS IMAGENS ---
-        let htmlImagens = '';
-        for (let i = 1; i <= 20; i++) {
-            const caminho = './festa-completa/' + nomePasta + '/' + i + '.webp';
-            htmlImagens += '<img src="' + caminho + '" ' +
-                'class="' + (i === 1 ? 'imagem-ativa' : '') + '" ' +
-                'onerror="this.style.display=\'none\'" ' +
-                'onclick="abrirModal(\'' + nomePasta + '\', ' + i + ')">';
-        }
-
-        const card = document.createElement('div');
-        card.className = 'festa';
-        card.setAttribute('data-categoria', categorias);
-
-        card.innerHTML = 
-            '<div class="carrossel">' +
-                '<div class="imagens-carrossel" data-pasta="' + nomePasta + '">' + htmlImagens + '</div>' +
-                '<div class="contador-imagens"></div>' +
-                '<div class="zoom-hint">🔍 Clique para ampliar</div>' +
-            '</div>' +
-            '<div class="conteudo">' +
-                '<div class="titulo">Mini Festa ' + nome + '</div>' +
-                '<ul class="descricao">' +
-                    descricaoHTML +
-                '</ul>' +
-                '<a class="whatsapp-btn" href="https://wa.me/5519993723106?text=Olá, quero orçamento para ' + encodeURIComponent(nome) + '" target="_blank">' +
-                    '<i class="fa-brands fa-whatsapp"></i> Solicitar Orçamento' +
-                '</a>' +
-            '</div>';
-        container.appendChild(card);
-
-        setTimeout(function() {
-            setupCarrossel(card);
-        }, 100);
+    var atual = 0;
+    // Garante que só a primeira está ativa
+    validas.forEach(function (img, i) {
+      img.classList.toggle('imagem-ativa', i === 0);
     });
+
+    setInterval(function () {
+      if (!document.body.contains(card)) return;
+      validas[atual].classList.remove('imagem-ativa');
+      // Avança apenas para imagens que não falharam depois do delay inicial
+      do {
+        atual = (atual + 1) % validas.length;
+      } while (validas[atual].dataset.falhou && validas.some(function (v) { return !v.dataset.falhou; }));
+      validas[atual].classList.add('imagem-ativa');
+    }, 3000);
+  }, 800);
 }
 
-function setupCarrossel(card) {
-    const container = card.querySelector('.imagens-carrossel');
-    const todasImagens = container.querySelectorAll('img');
-    const contador = card.querySelector('.contador-imagens');
+/* ---------- MODAL / LIGHTBOX ---------- */
 
-    setTimeout(function() {
-        const imagensValidas = Array.from(todasImagens).filter(function(img) {
-            return img.style.display !== 'none' && img.complete && img.naturalWidth > 0;
-        });
+/*
+ * Recebe a lista exata de srcs válidos (já filtrados pelo carrossel)
+ * e o índice da imagem clicada. Não faz requests extras.
+ */
+function abrirModalComLista(srcs, indiceInicial) {
+  if (modalAtual) fecharModal();
 
-        const totalImagens = imagensValidas.length;
+  imagensModal = srcs.slice(); // cópia
+  indiceModal  = indiceInicial || 0;
 
-        if (contador && totalImagens > 0) {
-            contador.textContent = totalImagens + ' foto' + (totalImagens > 1 ? 's' : '');
-        }
+  modalAtual = document.createElement('div');
+  modalAtual.className = 'modal-imagem';
+  modalAtual.innerHTML =
+    '<div class="modal-overlay"></div>' +
+    '<div class="modal-conteudo">' +
+      '<button class="modal-fechar" aria-label="Fechar">&times;</button>' +
+      '<button class="modal-nav modal-anterior" aria-label="Anterior">&#10094;</button>' +
+      '<img src="' + imagensModal[indiceModal] + '" class="modal-img" alt="Imagem do tema">' +
+      '<button class="modal-nav modal-proximo" aria-label="Próximo">&#10095;</button>' +
+      '<div class="modal-contador">' + (indiceModal + 1) + ' / ' + imagensModal.length + '</div>' +
+    '</div>';
 
-        if (totalImagens <= 1) {
-            if (totalImagens === 1) {
-                imagensValidas[0].classList.add('imagem-ativa');
-            }
-            return;
-        }
+  document.body.appendChild(modalAtual);
+  document.body.style.overflow = 'hidden';
 
-        let atual = 0;
+  modalAtual.querySelector('.modal-overlay').addEventListener('click', fecharModal);
+  modalAtual.querySelector('.modal-fechar').addEventListener('click', fecharModal);
+  modalAtual.querySelector('.modal-anterior').addEventListener('click', imagemAnterior);
+  modalAtual.querySelector('.modal-proximo').addEventListener('click', imagemProxima);
 
-        imagensValidas.forEach(function(img, index) {
-            if (index === 0) {
-                img.classList.add('imagem-ativa');
-            } else {
-                img.classList.remove('imagem-ativa');
-            }
-        });
-
-        const intervalo = setInterval(function() {
-            if (!document.body.contains(card)) {
-                clearInterval(intervalo);
-                return;
-            }
-            imagensValidas[atual].classList.remove('imagem-ativa');
-            atual = (atual + 1) % totalImagens;
-            imagensValidas[atual].classList.add('imagem-ativa');
-        }, 3000);
-
-    }, 500);
-}
-
-// ============================================
-// MODAL / LIGHTBOX
-// ============================================
-
-function abrirModal(pasta, indiceInicial) {
-    imagensModal = [];
-    for (let i = 1; i <= 20; i++) {
-        const caminho = './Imagem/' + pasta + '/' + i + '.webp';
-        imagensModal.push(caminho);
-    }
-
-    indiceModal = indiceInicial - 1;
-
-    const modalAntigo = document.querySelector('.modal-imagem');
-    if (modalAntigo) modalAntigo.remove();
-
-    modalAtual = document.createElement('div');
-    modalAtual.className = 'modal-imagem';
-    modalAtual.innerHTML = 
-        '<div class="modal-overlay" onclick="fecharModal()"></div>' +
-        '<div class="modal-conteudo">' +
-            '<button class="modal-fechar" onclick="fecharModal()">&times;</button>' +
-            '<button class="modal-nav modal-anterior" onclick="imagemAnterior()">&#10094;</button>' +
-            '<img src="' + imagensModal[indiceModal] + '" class="modal-img" onerror="this.src=\'Logo/logo-festas.png\'">' +
-            '<button class="modal-nav modal-proximo" onclick="imagemProxima()">&#10095;</button>' +
-            '<div class="modal-contador">' + (indiceModal + 1) + ' / ' + imagensModal.length + '</div>' +
-        '</div>';
-
-    document.body.appendChild(modalAtual);
-    document.body.style.overflow = 'hidden'; 
-
-    validarImagensModal();
-}
-
-function validarImagensModal() {
-    const imgModal = modalAtual.querySelector('.modal-img');
-    imgModal.onerror = function() {
-        if (imagensModal.length > 1) {
-             imagensModal.splice(indiceModal, 1);
-             if (indiceModal >= imagensModal.length) indiceModal = 0;
-             atualizarModal();
-        } else {
-             fecharModal();
-        }
-    };
-    atualizarBotoesModal();
+  atualizarBotoesModal();
 }
 
 function fecharModal() {
-    if (modalAtual) {
-        modalAtual.remove();
-        modalAtual = null;
-        document.body.style.overflow = '';
-    }
+  if (!modalAtual) return;
+  modalAtual.remove();
+  modalAtual = null;
+  document.body.style.overflow = '';
 }
 
 function imagemProxima() {
-    if (indiceModal < imagensModal.length - 1) {
-        indiceModal++;
-        atualizarModal();
-    }
+  if (indiceModal < imagensModal.length - 1) { indiceModal++; atualizarModal(); }
 }
 
 function imagemAnterior() {
-    if (indiceModal > 0) {
-        indiceModal--;
-        atualizarModal();
-    }
+  if (indiceModal > 0) { indiceModal--; atualizarModal(); }
 }
 
 function atualizarModal() {
-    if (!modalAtual) return;
-    const img = modalAtual.querySelector('.modal-img');
-    const contador = modalAtual.querySelector('.modal-contador');
-
-    img.src = imagensModal[indiceModal];
-    contador.textContent = (indiceModal + 1) + ' / ' + imagensModal.length;
-    atualizarBotoesModal();
+  if (!modalAtual) return;
+  modalAtual.querySelector('.modal-img').src = imagensModal[indiceModal];
+  modalAtual.querySelector('.modal-contador').textContent =
+    (indiceModal + 1) + ' / ' + imagensModal.length;
+  atualizarBotoesModal();
 }
 
 function atualizarBotoesModal() {
-    if (!modalAtual) return;
-    const btnAnterior = modalAtual.querySelector('.modal-anterior');
-    const btnProximo = modalAtual.querySelector('.modal-proximo');
-    btnAnterior.style.display = indiceModal === 0 ? 'none' : 'block';
-    btnProximo.style.display = indiceModal === imagensModal.length - 1 ? 'none' : 'block';
+  if (!modalAtual) return;
+  const btnAnt = modalAtual.querySelector('.modal-anterior');
+  const btnPro = modalAtual.querySelector('.modal-proximo');
+  btnAnt.style.display = indiceModal === 0 ? 'none' : 'block';
+  btnPro.style.display = indiceModal === imagensModal.length - 1 ? 'none' : 'block';
 }
 
-document.addEventListener('keydown', function(e) {
-    if (!modalAtual) return;
-    if (e.key === 'Escape') fecharModal();
-    if (e.key === 'ArrowLeft') imagemAnterior();
-    if (e.key === 'ArrowRight') imagemProxima();
+document.addEventListener('keydown', function (e) {
+  if (!modalAtual) return;
+  if (e.key === 'Escape')      fecharModal();
+  if (e.key === 'ArrowLeft')   imagemAnterior();
+  if (e.key === 'ArrowRight')  imagemProxima();
 });
 
-// ============================================
-// FILTROS E BUSCA
-// ============================================
-
+/* ---------- FILTROS E BUSCA ---------- */
 function filtrarCategoria(categoria) {
-    if (!categoria) {
-        categoria = document.getElementById("filtro").value;
-    }
-    const festas = document.querySelectorAll(".festa");
+  if (!categoria) categoria = document.getElementById('filtro').value;
 
-    document.querySelectorAll('.filtro-btn').forEach(function(btn) {
-        btn.classList.remove('active');
-        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').indexOf("'" + categoria + "'") !== -1) {
-            btn.classList.add('active');
-        }
-    });
+  document.querySelectorAll('.filtro-btn').forEach(function (btn) {
+    const onclick = btn.getAttribute('onclick') || '';
+    btn.classList.toggle('active', onclick.indexOf("'" + categoria + "'") !== -1);
+  });
 
-    const select = document.getElementById("filtro");
-    if (select) select.value = categoria;
+  const select = document.getElementById('filtro');
+  if (select) select.value = categoria;
 
-    festas.forEach(function(festa) {
-        const cats = (festa.getAttribute("data-categoria") || "").toLowerCase();
-        if (categoria === "all" || cats.indexOf(categoria.toLowerCase()) !== -1) {
-            festa.style.display = "flex";
-        } else {
-            festa.style.display = "none";
-        }
-    });
+  const catLower = categoria.toLowerCase();
+  document.querySelectorAll('.festa').forEach(function (festa) {
+    const cats = (festa.getAttribute('data-categoria') || '').toLowerCase();
+    festa.style.display = (catLower === 'all' || cats.includes(catLower)) ? 'flex' : 'none';
+  });
 }
 
 function buscarTema() {
-    const termo = document.getElementById('busca-tema').value.toLowerCase();
-    const festas = document.querySelectorAll('.festa');
-
-    festas.forEach(function(festa) {
-        const titulo = festa.querySelector('.titulo').textContent.toLowerCase();
-        festa.style.display = titulo.indexOf(termo) !== -1 ? 'flex' : 'none';
-    });
+  const termo = document.getElementById('busca-tema').value.toLowerCase();
+  document.querySelectorAll('.festa').forEach(function (festa) {
+    const titulo = festa.querySelector('.titulo').textContent.toLowerCase();
+    festa.style.display = titulo.includes(termo) ? 'flex' : 'none';
+  });
 }
 
 function alternarVisualizacao() {
-    const catalogo = document.getElementById('catalogo-festas');
-    if (!catalogo) return;
-
-    if (catalogo.classList.contains('grid')) {
-        catalogo.classList.remove('grid');
-        catalogo.classList.add('lista');
-        localStorage.setItem('visualizacao', 'lista');
-    } else {
-        catalogo.classList.remove('lista');
-        catalogo.classList.add('grid');
-        localStorage.setItem('visualizacao', 'grid');
-    }
+  const catalogo = document.getElementById('catalogo-festas');
+  if (!catalogo) return;
+  const isLista = catalogo.classList.toggle('lista');
+  catalogo.classList.toggle('grid', !isLista);
+  try { localStorage.setItem('visualizacao', isLista ? 'lista' : 'grid'); } catch (_) {}
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    gerarCatalogo();
+/* ---------- INICIALIZAÇÃO ---------- */
+document.addEventListener('DOMContentLoaded', function () {
+  gerarCatalogo();
 
-    const catalogo = document.getElementById('catalogo-festas');
-    const preferencia = localStorage.getItem('visualizacao');
-
-    if (preferencia === 'lista' && catalogo) {
-        catalogo.classList.remove('grid');
-        catalogo.classList.add('lista');
+  // Restaura preferência de visualização
+  const catalogo = document.getElementById('catalogo-festas');
+  try {
+    if (localStorage.getItem('visualizacao') === 'lista' && catalogo) {
+      catalogo.classList.replace('grid', 'lista');
     }
+  } catch (_) {}
 
-    const btnAlternar = document.querySelector('.controlevisualizacao button');
-    if (btnAlternar) {
-        btnAlternar.addEventListener('click', alternarVisualizacao);
-    }
+  // Botão alternar visualização
+  const btnAlternar = document.querySelector('.controlevisualizacao button');
+  if (btnAlternar) btnAlternar.addEventListener('click', alternarVisualizacao);
 
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-    }
+  // Menu mobile
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu   = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function () {
+      navMenu.classList.toggle('active');
+    });
+  }
 
-    filtrarCategoria('all');
+  filtrarCategoria('all');
 });
