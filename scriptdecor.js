@@ -138,7 +138,7 @@ const bancoDadosTemas = [
   { nome: "Godzilla vs King Kong",                  pasta: "godzillavskingkong",                   categorias: "all filme contodefadas"  , totalImgs: 3 },
   { nome: "Goku SSJ3",                              pasta: "gokussj3",                             categorias: "all diversos"  , totalImgs: 1 },
   { nome: "Gratidão",                               pasta: "gratidao",                             categorias: "all diversos"  , totalImgs: 1 },
-  { nome: "Grinch",                                 pasta: "Grinch",                               categorias: "all filme desenho", totalImgs: 1 },
+  { nome: "Grinch",                                 pasta: "grinch",                               categorias: "all filme desenho", totalImgs: 1 },
   { nome: "Groot",                                  pasta: "groot",                                categorias: "all filme cute"  , totalImgs: 1 },
   { nome: "Guerreiras do K-Pop",                    pasta: "guerreirasdokpop",                     categorias: "all k-pop musica filme"  , totalImgs: 2 },
   { nome: "Halloween Abóbora",                      pasta: "halloweenabobora",                     categorias: "all datacomemorativa halloween"  , totalImgs: 1 },
