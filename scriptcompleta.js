@@ -33,9 +33,13 @@ const bancoDadosTemas = [
     { nome: "Casa Magica da Gabby", pasta: "casamagicadagabby", categorias: "all desenhos magia" },
     { nome: "Castelo Princesa Rosa", pasta: "casteloprincesarosa", categorias: "all princesas disney" },
     { nome: "Churrasco Cilindro Wisky", pasta: "churrascocilindrowisky", categorias: "all churrasco boteco" },
+    { nome: "Chá de Bebe Azul ", pasta: "chadebebeazul", categorias: "all chadebebe" }
     { nome: "Chá de Bebe Azul Elefantinho Balão", pasta: "chadebebeazulelefantinhobalao", categorias: "all chadebebe" },
+    { nome: "Chá de Bebe Lilas", pasta: "chadebebelilas", categorias: "all chadebebe" }
     { nome: "Chá de Bebe Ursinho Rosa", pasta: "chadebebeursinhorosa", categorias: "all chadebebe" },
-    { nome: "Chá revelação Rosa/Azul – Ursinho", pasta: "charevelacaorosaazulursinho", categorias: "all charevelacao" },
+    { nome: "Chá de Bebe Rosa", pasta: "chadebeberosa", categorias: "all chadebebe" }
+    { nome: "Chá Revelação Rosa/Azul – Ursinho", pasta: "charevelacaorosaazulursinho", categorias: "all charevelacao" },
+    { nome: "Chá Revelação Rosa e Azul", pasta: "charevelacaorosaeazul", categorias: "all charevelacao" },
     { nome: "Cocorico", pasta: "cocorico", categorias: "all fazenda desenho" },
     { nome: "Corinthians", pasta: "corinthians", categorias: "all times futebol" },
     { nome: "Corinthians Lilás", pasta: "corinthianslilas", categorias: "all times futebol" },
