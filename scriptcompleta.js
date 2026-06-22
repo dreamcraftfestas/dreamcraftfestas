@@ -29,6 +29,7 @@ const bancoDadosTemas = [
     { nome: "Brasil Copa Sou Brasil até a Alma", pasta: "brasilcopasoubrasilateaalma", categorias: "all futebol times copa" },
     { nome: "Brasil Copa Vai Brasil", pasta: "brasilcopavaibrasil", categorias: "all futebol times copa" },
     { nome: "Brawl Star", pasta: "brawlstar", categorias: "all jogos" },
+    { nome: "Capivara", pasta: "capivara", categorias: "all desenhos cute" },
     { nome: "Casa Magica da Gabby", pasta: "casamagicadagabby", categorias: "all desenhos magia" },
     { nome: "Castelo Princesa Rosa", pasta: "casteloprincesarosa", categorias: "all princesas disney" },
     { nome: "Churrasco Cilindro Wisky", pasta: "churrascocilindrowisky", categorias: "all churrasco boteco" },

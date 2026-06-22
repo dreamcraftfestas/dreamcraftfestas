@@ -90,6 +90,7 @@ const bancoDadosTemas = [
   { nome: "Churrasco",                              pasta: "churrasco",                            categorias: "all churrasco"  , totalImgs: 1 },
   { nome: "Ciências",                               pasta: "ciencia",                              categorias: "all ciencia"  , totalImgs: 1 },
   { nome: "Cinderela",                              pasta: "cinderela",                            categorias: "all princesas filme contodefadas disney"  , totalImgs: 1 },
+  { nome: "Circo Digital",                          pasta: "circodigital",                            categorias: "all circo"  , totalImgs: 1 },
   { nome: "Circo Rosa",                             pasta: "circorosa",                            categorias: "all circo"  , totalImgs: 1 },
   { nome: "Copa Brasil",                            pasta: "copabrasil",                           categorias: "all times futebol copa"  , totalImgs: 1 },
   { nome: "Corinthians",                            pasta: "corinthians",                          categorias: "all times futebol"  , totalImgs: 3 },
