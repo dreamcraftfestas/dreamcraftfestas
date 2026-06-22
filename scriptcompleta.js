@@ -112,6 +112,7 @@ const bancoDadosTemas = [
     { nome: "Sereia Splash", pasta: "sereiasplash", categorias: "all fundodomar desenhos" },
     { nome: "Shimmer Wall Holográfico/Frutacor", pasta: "shimmerwallholograficofrutacor", categorias: "all diversos" },
     { nome: "Shimmer Wall", pasta: "shimmerwall", categorias: "all diversos" },
+    { nome: "Shimmer Wall Prata Pirulito Lilas", pasta: "shimmerwallpratacomlilas", categorias: "all diversos" },
     { nome: "Sititch Milk Shake", pasta: "sititchmilkshake", categorias: "all disney filme desenhos" },
     { nome: "Sky – Patrulha Canina", pasta: "skypatrulhacanina", categorias: "all desenhos animais" },
     { nome: "Spider Man Miles Morales", pasta: "spidermanmilesmorales", categorias: "all herois filme desenhos jogos" },
