@@ -194,7 +194,7 @@ function criarCard(tema) {
   var htmlImgs = '';
   for (var i = 1; i <= qtdImagens; i++) {
     htmlImgs +=
-      '<img src="./Festa-Completa/' + pasta + '/' + i + '.webp"' +
+      '<img src="./festa-fompleta/' + pasta + '/' + i + '.webp"' +
       ' loading="lazy"' +
       ' data-indice="' + i + '"' +
       ' onerror="if(!this.dataset.tentouMaiusculo){this.dataset.tentouMaiusculo=\'1\'; this.src=\'./Festa-Completa/' + pasta + '/' + i + '.WEBP\';}else{this.dataset.falhou=\'1\';this.style.display=\'none\';}"' +
