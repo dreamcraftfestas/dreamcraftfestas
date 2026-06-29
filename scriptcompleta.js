@@ -134,27 +134,14 @@ const bancoDadosTemas = [
 /* ---------- DESCRIÇÃO PADRÃO ---------- */
 const DESCRICAO_PADRAO = [
   'Painel', 'Arco de balões', 'Boleiras',
-  ,'Vaso Romano','Flores','Tapete', 'Tudo como na imagem ou nas cores que desejas'
+  'Vaso Romano','Flores','Tapete', 'Tudo como na imagem ou nas cores que desejas'
 ];
 
-/*const DESCRICOES_ESPECIAIS = {
-  arcovazado_simples: [
-    '<strong>Arco Vazado Simples (Clássico)</strong>',
-    'Painel', 'Arco de balões uniformes', 'Boleira',
-    'Bandeja sextavada', 'Bandeja lapidada', 'Bandeja Oval',
-    'Vaso grego', 'Tudo como na imagem ou nas cores que desejar'
-  ],
-  arcovazado_desconstruido: [
-    '<strong>Arco Vazado Desconstruído (Orgânico)</strong>',
-    'Painel', 'Arco de balões desconstruídos', 'Boleira',
-    'Bandeja sextavada', 'Bandeja lapidada', 'Bandeja Oval',
-    'Vaso grego', 'Tudo como na imagem ou nas cores que desejas'
-  ]
-};*/
-
 function getDescricaoHTML(pasta) {
-  const itens = DESCRICOES_ESPECIAIS[pasta] || DESCRICAO_PADRAO;
-  return itens.map(function (item) { return '<li>' + item + '</li>'; }).join('');
+  const itens = DESCRICAO_PADRAO;
+  return itens.map(function (item) {
+    return '<li>' + item + '</li>';
+  }).join('');
 }
 
 /* ---------- ESTADO GLOBAL DO MODAL ---------- */
