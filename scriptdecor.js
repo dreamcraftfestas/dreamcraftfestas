@@ -519,6 +519,15 @@ document.addEventListener('keydown', function (e) {
 function filtrarCategoria(categoria) {
   if (!categoria) categoria = document.getElementById('filtro').value;
 
+  // --- NOVO: Atualiza a URL do navegador com a categoria selecionada ---
+  const url = new URL(window.location.href);
+  if (categoria && categoria !== 'all') {
+    url.searchParams.set('categoria', categoria);
+  } else {
+    url.searchParams.delete('categoria'); // Remove o parâmetro se for "Todos"
+  }
+  window.history.replaceState({}, '', url);
+
   document.querySelectorAll('.filtro-btn').forEach(function (btn) {
     const onclick = btn.getAttribute('onclick') || '';
     btn.classList.toggle('active', onclick.indexOf("'" + categoria + "'") !== -1);
