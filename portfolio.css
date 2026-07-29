@@ -375,7 +375,7 @@
     padding: 90px 20px;
     background: linear-gradient(
         135deg,
-        #c2e7c3,
+        --cor-fundo 0%,
         #eaf6ea
     );
     text-align: center;
