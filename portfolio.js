@@ -1,246 +1,301 @@
-/* =====================================================
+/* =========================================================
    PORTFÓLIO DREAMCRAFT
-   FILTROS
-   ===================================================== */
+   Filtros + Lightbox
+   Versão otimizada
+   ========================================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-        const filtros =
-            document.querySelectorAll(
-                ".portfolio-filter"
+    /* =====================================================
+       ELEMENTOS
+       ===================================================== */
+
+    const filtros = document.querySelectorAll(".portfolio-filter");
+    const cards = document.querySelectorAll(".portfolio-card");
+    const linksLightbox = document.querySelectorAll(".portfolio-lightbox");
+
+
+    /* =====================================================
+       FILTROS
+       ===================================================== */
+
+    filtros.forEach(function (botao) {
+
+        botao.addEventListener("click", function () {
+
+            const categoriaSelecionada =
+                this.getAttribute("data-filter");
+
+
+            /* Atualiza botão ativo */
+
+            filtros.forEach(function (item) {
+
+                item.classList.remove("active");
+
+            });
+
+            this.classList.add("active");
+
+
+            /* Filtra os cards */
+
+            cards.forEach(function (card) {
+
+                const categoriaCard =
+                    card.getAttribute("data-category");
+
+
+                const deveMostrar =
+                    categoriaSelecionada === "todos" ||
+                    categoriaSelecionada === categoriaCard;
+
+
+                if (deveMostrar) {
+
+                    card.classList.remove("portfolio-card-hidden");
+
+                } else {
+
+                    card.classList.add("portfolio-card-hidden");
+
+                }
+
+            });
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       LIGHTBOX
+       ===================================================== */
+
+    let lightboxAtual = null;
+
+
+    function abrirLightbox(src, titulo, alt) {
+
+        /* Evita criar dois lightboxes */
+
+        if (lightboxAtual) {
+
+            lightboxAtual.remove();
+
+            lightboxAtual = null;
+
+        }
+
+
+        /* Cria o modal */
+
+        const lightbox =
+            document.createElement("div");
+
+
+        lightbox.className =
+            "portfolio-lightbox-modal";
+
+
+        lightbox.setAttribute(
+            "role",
+            "dialog"
+        );
+
+
+        lightbox.setAttribute(
+            "aria-modal",
+            "true"
+        );
+
+
+        lightbox.setAttribute(
+            "aria-label",
+            titulo
+        );
+
+
+        lightbox.innerHTML = `
+
+            <div class="portfolio-lightbox-content">
+
+                <button
+                    type="button"
+                    class="portfolio-lightbox-close"
+                    aria-label="Fechar imagem"
+                >
+                    ×
+                </button>
+
+                <img
+                    src="${src}"
+                    alt="${alt}"
+                    decoding="async"
+                >
+
+                <p>
+                    ${titulo}
+                </p>
+
+            </div>
+
+        `;
+
+
+        document.body.appendChild(lightbox);
+
+        lightboxAtual = lightbox;
+
+
+        /* Impede o scroll da página */
+
+        document.body.classList.add(
+            "lightbox-open"
+        );
+
+
+        /* Foco no botão fechar */
+
+        const botaoFechar =
+            lightbox.querySelector(
+                ".portfolio-lightbox-close"
             );
 
-        const cards =
-            document.querySelectorAll(
-                ".portfolio-card"
+
+        botaoFechar.focus();
+
+
+        /* =================================================
+           FUNÇÃO FECHAR
+           ================================================= */
+
+        function fecharLightbox() {
+
+            if (!lightboxAtual) {
+                return;
+            }
+
+
+            lightboxAtual.remove();
+
+            lightboxAtual = null;
+
+
+            document.body.classList.remove(
+                "lightbox-open"
             );
 
-
-        filtros.forEach(
-            function (botao) {
-
-                botao.addEventListener(
-                    "click",
-                    function () {
-
-                        const categoria =
-                            this.dataset.filter;
+        }
 
 
-                        /* Remove ativo */
+        /* =================================================
+           BOTÃO FECHAR
+           ================================================= */
 
-                        filtros.forEach(
-                            function (item) {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            }
-                        );
+        botaoFechar.addEventListener(
+            "click",
+            fecharLightbox
+        );
 
 
-                        /* Ativa botão */
+        /* =================================================
+           CLICAR FORA DA IMAGEM
+           ================================================= */
 
-                        this.classList.add(
-                            "active"
-                        );
+        lightbox.addEventListener(
+            "click",
+            function (event) {
 
+                if (
+                    event.target ===
+                    lightbox
+                ) {
 
-                        /* Filtra */
+                    fecharLightbox();
 
-                        cards.forEach(
-                            function (card) {
-
-                                const categoriaCard =
-                                    card.dataset.category;
-
-
-                                if (
-                                    categoria === "todos"
-                                    ||
-                                    categoria === categoriaCard
-                                ) {
-
-                                    card.style.display =
-                                        "block";
-
-                                    setTimeout(
-                                        function () {
-
-                                            card.style.opacity =
-                                                "1";
-
-                                        },
-                                        10
-                                    );
-
-                                } else {
-
-                                    card.style.opacity =
-                                        "0";
-
-                                    setTimeout(
-                                        function () {
-
-                                            card.style.display =
-                                                "none";
-
-                                        },
-                                        250
-                                    );
-
-                                }
-
-                            }
-                        );
-
-                    }
-                );
+                }
 
             }
         );
 
 
         /* =================================================
-           LIGHTBOX
+           TECLA ESC
            ================================================= */
 
-        const imagens =
-            document.querySelectorAll(
-                ".portfolio-lightbox"
-            );
+        function teclaEscape(event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                fecharLightbox();
+
+                document.removeEventListener(
+                    "keydown",
+                    teclaEscape
+                );
+
+            }
+
+        }
 
 
-        imagens.forEach(
-            function (imagem) {
+        document.addEventListener(
+            "keydown",
+            teclaEscape
+        );
 
-                imagem.addEventListener(
-                    "click",
-                    function (event) {
-
-                        event.preventDefault();
+    }
 
 
-                        const src =
-                            this.getAttribute(
-                                "href"
-                            );
 
-                        const titulo =
-                            this.dataset.title ||
-                            "Decoração DreamCraft";
+    /* =====================================================
+       CLIQUE NAS IMAGENS
+       ================================================= */
 
+    linksLightbox.forEach(function (link) {
 
-                        /* Overlay */
+        link.addEventListener(
+            "click",
+            function (event) {
 
-                        const lightbox =
-                            document.createElement(
-                                "div"
-                            );
+                event.preventDefault();
 
 
-                        lightbox.className =
-                            "portfolio-lightbox-modal";
+                const src =
+                    this.getAttribute("href");
 
 
-                        lightbox.innerHTML = `
-
-                            <div class="portfolio-lightbox-content">
-
-                                <button
-                                    class="portfolio-lightbox-close"
-                                    aria-label="Fechar imagem"
-                                >
-                                    ×
-                                </button>
-
-                                <img
-                                    src="${src}"
-                                    alt="${titulo}"
-                                >
-
-                                <p>
-                                    ${titulo}
-                                </p>
-
-                            </div>
-
-                        `;
+                const titulo =
+                    this.getAttribute(
+                        "data-title"
+                    ) ||
+                    "Decoração DreamCraft";
 
 
-                        document.body.appendChild(
-                            lightbox
-                        );
+                const imagem =
+                    this.querySelector("img");
 
 
-                        /* Fechar botão */
-
-                        const fechar =
-                            lightbox.querySelector(
-                                ".portfolio-lightbox-close"
-                            );
+                const alt =
+                    imagem
+                        ? imagem.getAttribute("alt")
+                        : titulo;
 
 
-                        fechar.addEventListener(
-                            "click",
-                            function () {
-
-                                lightbox.remove();
-
-                            }
-                        );
-
-
-                        /* Fechar clicando fora */
-
-                        lightbox.addEventListener(
-                            "click",
-                            function (event) {
-
-                                if (
-                                    event.target ===
-                                    lightbox
-                                ) {
-
-                                    lightbox.remove();
-
-                                }
-
-                            }
-                        );
-
-
-                        /* ESC */
-
-                        document.addEventListener(
-                            "keydown",
-                            function esc(event) {
-
-                                if (
-                                    event.key ===
-                                    "Escape"
-                                ) {
-
-                                    lightbox.remove();
-
-                                    document.removeEventListener(
-                                        "keydown",
-                                        esc
-                                    );
-
-                                }
-
-                            }
-                        );
-
-                    }
+                abrirLightbox(
+                    src,
+                    titulo,
+                    alt
                 );
 
             }
         );
 
-    }
-);
+    });
+
+
+});
