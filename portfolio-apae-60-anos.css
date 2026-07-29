@@ -1318,3 +1318,34 @@
 
 
 }
+/* =====================================================
+   CORREÇÃO DE BASE - PORTFÓLIO APAE
+   ===================================================== */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+main {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
