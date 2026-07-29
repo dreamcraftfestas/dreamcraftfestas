@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
        LIGHTBOX
        ===================================================== */
 
-    const links = document.querySelectorAll(".portfolio-lightbox");
+    const links = document.querySelectorAll(".portfolio-lightbox-port");
 
     links.forEach(function (link) {
 
