@@ -47,32 +47,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       LIGHTBOX
+       LIGHTBOX (AMPLIAR IMAGEM)
        ===================================================== */
 
-    const links = document.querySelectorAll(".portfolio-lightbox-port");
+    /* Atualizado para capturar ambas as classes de link/card */
+    const links = document.querySelectorAll(".portfolio-lightbox-port, .portfolio-card-media");
 
     links.forEach(function (link) {
 
         link.addEventListener("click", function (event) {
 
-            /* Impede abrir a imagem como página */
+            /* IMPEDE a imagem de abrir em uma nova página */
             event.preventDefault();
 
-            const imagem = this.getAttribute("href");
+            /* Pega o caminho da imagem e o título/legenda */
+            const imagem = this.getAttribute("href") || this.querySelector("img").src;
 
             const titulo =
                 this.getAttribute("data-title") ||
+                this.querySelector("img").alt ||
                 "Decoração DreamCraft";
 
 
-            /* Cria o fundo do Lightbox */
+            /* Cria o fundo do Lightbox (Modal) */
             const modal = document.createElement("div");
 
             modal.className = "portfolio-lightbox-modal";
 
 
-            /* Conteúdo do Lightbox */
+            /* Conteúdo do Lightbox com o Botão X */
             modal.innerHTML = `
 
                 <div class="portfolio-lightbox-content">
@@ -103,63 +106,47 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.appendChild(modal);
 
 
-            /* Impede rolagem da página */
+            /* Trava a rolagem do fundo enquanto a foto estiver aberta */
             document.body.style.overflow = "hidden";
 
 
-            /* Botão fechar */
-            const fechar =
-                modal.querySelector(
-                    ".portfolio-lightbox-close"
-                );
-
-
-            fechar.addEventListener("click", function () {
-
+            /* Função para remover o modal e destravar a rolagem */
+            function fecharModal() {
                 modal.remove();
-
                 document.body.style.overflow = "";
+                document.removeEventListener("keydown", fecharComEsc);
+            }
 
+
+            /* 1. Botão Fechar (X) */
+            const fechar = modal.querySelector(".portfolio-lightbox-close");
+
+            fechar.addEventListener("click", function (e) {
+                e.stopPropagation();
+                fecharModal();
             });
 
 
-            /* Clique fora da imagem */
+            /* 2. Clique fora da imagem (Fundo escuro) */
             modal.addEventListener("click", function (event) {
 
                 if (event.target === modal) {
-
-                    modal.remove();
-
-                    document.body.style.overflow = "";
-
+                    fecharModal();
                 }
 
             });
 
 
-            /* Tecla ESC */
+            /* 3. Tecla ESC do teclado */
             function fecharComEsc(event) {
 
                 if (event.key === "Escape") {
-
-                    modal.remove();
-
-                    document.body.style.overflow = "";
-
-                    document.removeEventListener(
-                        "keydown",
-                        fecharComEsc
-                    );
-
+                    fecharModal();
                 }
 
             }
 
-
-            document.addEventListener(
-                "keydown",
-                fecharComEsc
-            );
+            document.addEventListener("keydown", fecharComEsc);
 
         });
 
