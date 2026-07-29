@@ -1089,3 +1089,106 @@ body.lightbox-open {
     }
 
 }
+/* =====================================================
+   CORREÇÃO DEFINITIVA - MINIATURAS DO PORTFÓLIO
+   ===================================================== */
+
+.portfolio-full-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 40px auto 0 !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+}
+
+.portfolio-card {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 320px !important;
+    min-height: 320px !important;
+    overflow: hidden !important;
+    border-radius: 18px !important;
+    background: #c2e7c3 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    box-sizing: border-box !important;
+}
+
+.portfolio-card a.portfolio-lightbox {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    text-decoration: none !important;
+}
+
+.portfolio-card img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    z-index: 1 !important;
+    transition: transform 0.4s ease !important;
+}
+
+.portfolio-card:hover img {
+    transform: scale(1.05) !important;
+}
+
+.portfolio-card-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.3s ease, visibility 0.3s ease !important;
+}
+
+.portfolio-card:hover .portfolio-card-overlay {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+/* =====================================================
+   RESPONSIVO
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .portfolio-full-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .portfolio-full-grid {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+        padding: 0 15px !important;
+    }
+
+    .portfolio-card {
+        height: 280px !important;
+        min-height: 280px !important;
+    }
+
+}
