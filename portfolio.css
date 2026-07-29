@@ -2,7 +2,46 @@
    PORTFÓLIO DREAMCRAFT
    CSS COMPLETO E CORRIGIDO
    ========================================================= */
+/* =========================================================
+   1. VARIÁVEIS DA IDENTIDADE VISUAL
+   ========================================================= */
 
+:root {
+    /*
+    * IMPORTANTE:
+    * Estas cores foram definidas para preservar a identidade
+    * verde da DreamCraft.
+    *
+    * Caso o verde exato da sua marca seja diferente,
+    * podemos ajustar posteriormente em um único lugar.
+    */
+
+    --dc-green: #3f7d58;
+    --dc-green-dark: #2e6043;
+    --cor-principal: #6f8f70;
+    --cor-fundo: #a8c6a9;   
+    --cor-fundo-claro: #c2e7c3;
+    --dc-green-light: #eaf4ed;
+
+    --dc-white: #ffffff;
+    --dc-off-white: #f8faf8;
+
+    --dc-text: #2c2c2c;
+    --dc-text-light: #666666;
+
+    --dc-border: rgba(63, 125, 88, 0.12);
+
+    --dc-shadow-soft:
+        0 8px 30px rgba(0, 0, 0, 0.06);
+
+    --dc-shadow-header:
+        0 5px 25px rgba(0, 0, 0, 0.08);
+
+    --dc-radius: 14px;
+
+    --dc-transition:
+        0.35s ease;
+}
 
 /* =========================================================
    HERO
@@ -68,7 +107,7 @@
     width: 100%;
     padding: 80px 20px;
 
-    background: #ffffff;
+    background: var(--cor-fundo-claro);
 }
 
 .portfolio-page-container {
