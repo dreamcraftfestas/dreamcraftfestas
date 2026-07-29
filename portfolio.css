@@ -1,38 +1,49 @@
-/* =====================================================
+/* =========================================================
    PORTFÓLIO DREAMCRAFT
-   PÁGINA COMPLETA
-   ===================================================== */
-
-.portfolio-page-section {
-    padding: 80px 20px;
-    background: #c2e7c3;
-}
-
-.portfolio-page-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+   CSS COMPLETO
+   ========================================================= */
 
 
-/* =====================================================
+/* =========================================================
    HERO
-   ===================================================== */
+   ========================================================= */
 
 .portfolio-page-hero {
+    width: 100%;
     padding: 100px 20px 80px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #c2e7c3 0%,
+            #e8f5e8 100%
+        );
+
     text-align: center;
-    background: #ffffff;
 }
 
 .portfolio-page-hero-content {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
+.portfolio-page-hero .section-tag {
+    display: inline-block;
+    margin-bottom: 20px;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #4f7253;
+}
+
 .portfolio-page-hero h1 {
-    margin: 20px 0;
-    font-size: clamp(2rem, 5vw, 4rem);
+    margin: 0 0 20px;
+
+    font-size: clamp(36px, 5vw, 64px);
     line-height: 1.1;
+
+    color: #263b2a;
 }
 
 .portfolio-page-hero h1 span {
@@ -42,72 +53,132 @@
 .portfolio-page-hero p {
     max-width: 700px;
     margin: 0 auto;
-    font-size: 1.1rem;
+
+    font-size: 18px;
     line-height: 1.7;
-    color: #555;
+
+    color: #536456;
 }
 
 
-/* =====================================================
+/* =========================================================
+   SEÇÃO PRINCIPAL
+   ========================================================= */
+
+.portfolio-page-section {
+    width: 100%;
+    padding: 80px 20px;
+
+    background: #ffffff;
+}
+
+.portfolio-page-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
    FILTROS
-   ===================================================== */
+   ========================================================= */
 
 .portfolio-filters {
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     flex-wrap: wrap;
+
     gap: 12px;
+
     margin-bottom: 50px;
 }
 
 .portfolio-filter {
-    border: 1px solid #6f8f70;
-    background: #ffffff;
-    color: #4d684f;
+    appearance: none;
+
     padding: 12px 24px;
+
+    border: 1px solid #b8d6ba;
     border-radius: 30px;
-    cursor: pointer;
+
+    background: #ffffff;
+
+    color: #557258;
+
     font-size: 15px;
     font-weight: 600;
-    transition: all 0.3s ease;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .portfolio-filter:hover {
-    background: #6f8f70;
-    color: #ffffff;
+    background: #e5f3e6;
+
+    border-color: #6f8f70;
+
+    transform: translateY(-2px);
 }
 
 .portfolio-filter.active {
     background: #6f8f70;
+
+    border-color: #6f8f70;
+
     color: #ffffff;
 }
 
 
-/* =====================================================
-   GRID
-   ===================================================== */
+/* =========================================================
+   GRID DA GALERIA
+   ========================================================= */
 
 .portfolio-full-grid {
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
     gap: 25px;
+
+    width: 100%;
 }
 
 
-/* =====================================================
+/* =========================================================
    CARD
-   ===================================================== */
+   ========================================================= */
 
 .portfolio-card {
+
     position: relative;
+
+    display: block;
+
     width: 100%;
-    height: 320px;
+
+    min-width: 0;
+
     overflow: hidden;
+
     border-radius: 18px;
-    background: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+
+    background: #e8f5e8;
+
+    box-shadow:
+        0 8px 25px rgba(60, 90, 65, 0.10);
+
     opacity: 1;
+
     transition:
         opacity 0.3s ease,
         transform 0.3s ease,
@@ -115,92 +186,132 @@
 }
 
 .portfolio-card:hover {
+
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+
+    box-shadow:
+        0 15px 35px rgba(60, 90, 65, 0.18);
 }
 
 
-/* =====================================================
-   LINK DA IMAGEM
-   ===================================================== */
+/* =========================================================
+   LINK DO CARD
+   ========================================================= */
 
 .portfolio-lightbox {
-    display: block;
+
     position: relative;
+
+    display: block;
+
     width: 100%;
-    height: 100%;
+
+    height: 320px;
+
     overflow: hidden;
-    cursor: pointer;
+
+    text-decoration: none;
 }
 
 
-/* =====================================================
+/* =========================================================
    IMAGENS
-   IMPORTANTE
-   ===================================================== */
+   ========================================================= */
 
-.portfolio-card img {
+.portfolio-lightbox img {
+
     display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
 
     width: 100% !important;
+
     height: 100% !important;
+
+    min-width: 100%;
+
+    min-height: 100%;
+
+    max-width: none !important;
+
+    max-height: none !important;
 
     object-fit: cover;
 
+    object-position: center;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
     position: relative;
+
     z-index: 1;
 
-    transition: transform 0.5s ease;
+    transition:
+        transform 0.5s ease;
 }
 
-.portfolio-card:hover img {
+
+.portfolio-card:hover
+.portfolio-lightbox img {
+
     transform: scale(1.05);
 }
 
 
-/* =====================================================
+/* =========================================================
    OVERLAY
-   ===================================================== */
+   ========================================================= */
 
 .portfolio-card-overlay {
+
     position: absolute;
+
     inset: 0;
 
     z-index: 2;
 
     display: flex;
+
     flex-direction: column;
-    align-items: center;
+
     justify-content: center;
 
-    gap: 10px;
+    align-items: center;
 
-    background: rgba(0, 0, 0, 0.45);
+    gap: 12px;
+
+    background:
+        rgba(38, 59, 42, 0.55);
 
     color: #ffffff;
 
     opacity: 0;
 
-    transition: opacity 0.3s ease;
+    transition:
+        opacity 0.3s ease;
+
+    pointer-events: none;
 }
 
-.portfolio-lightbox:hover .portfolio-card-overlay {
+.portfolio-card:hover
+.portfolio-card-overlay {
+
     opacity: 1;
 }
 
 .portfolio-card-overlay span {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
     width: 55px;
     height: 55px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.95);
+    background: #ffffff;
 
     color: #6f8f70;
 
@@ -208,150 +319,254 @@
 }
 
 .portfolio-card-overlay strong {
-    font-size: 16px;
-}
 
-
-/* =====================================================
-   CTA
-   ===================================================== */
-
-.portfolio-cta {
-    padding: 90px 20px;
-    text-align: center;
-    background: #ffffff;
-}
-
-.portfolio-cta-content {
-    max-width: 750px;
-    margin: 0 auto;
-}
-
-.portfolio-cta h2 {
-    margin: 20px 0;
-    font-size: clamp(2rem, 4vw, 3rem);
-}
-
-.portfolio-cta h2 span {
-    color: #6f8f70;
-}
-
-.portfolio-cta p {
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 30px;
-}
-
-.portfolio-cta-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-
-    padding: 15px 30px;
-
-    background: #6f8f70;
-    color: #ffffff;
-
-    border-radius: 30px;
-
-    text-decoration: none;
+    font-size: 15px;
 
     font-weight: 600;
 
-    transition: all 0.3s ease;
-}
-
-.portfolio-cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    color: #ffffff;
 }
 
 
-/* =====================================================
-   LIGHTBOX
-   ===================================================== */
+/* =========================================================
+   LIGHTBOX MODAL
+   ========================================================= */
 
 .portfolio-lightbox-modal {
+
     position: fixed;
+
     inset: 0;
 
     z-index: 99999;
 
     display: flex;
-    align-items: center;
+
     justify-content: center;
+
+    align-items: center;
 
     padding: 30px;
 
-    background: rgba(0, 0, 0, 0.90);
+    background:
+        rgba(0, 0, 0, 0.88);
 }
 
 .portfolio-lightbox-content {
+
     position: relative;
 
-    max-width: 1000px;
-    max-height: 90vh;
-
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
+    max-width: 95vw;
+
+    max-height: 95vh;
 }
 
 .portfolio-lightbox-content img {
+
     display: block;
 
-    max-width: 90vw;
-    max-height: 80vh;
-
     width: auto;
+
     height: auto;
+
+    max-width: 90vw;
+
+    max-height: 82vh;
 
     object-fit: contain;
 
     border-radius: 10px;
+
+    box-shadow:
+        0 10px 50px rgba(0, 0, 0, 0.5);
 }
 
 .portfolio-lightbox-content p {
-    margin-top: 15px;
+
+    margin: 15px 0 0;
 
     color: #ffffff;
 
-    font-size: 18px;
+    font-size: 16px;
 
     text-align: center;
 }
 
+
+/* =========================================================
+   BOTÃO FECHAR
+   ========================================================= */
+
 .portfolio-lightbox-close {
+
     position: absolute;
 
     top: -45px;
+
     right: -10px;
 
+    z-index: 10;
+
     width: 40px;
+
     height: 40px;
 
     border: none;
 
-    background: transparent;
+    border-radius: 50%;
 
-    color: #ffffff;
+    background: #ffffff;
 
-    font-size: 35px;
+    color: #333333;
+
+    font-size: 28px;
+
+    line-height: 1;
 
     cursor: pointer;
 
-    line-height: 1;
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.portfolio-lightbox-close:hover {
+
+    transform: scale(1.1);
+
+    background: #c2e7c3;
 }
 
 
-/* =====================================================
-   RESPONSIVO
-   ===================================================== */
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.portfolio-cta {
+
+    width: 100%;
+
+    padding: 90px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c2e7c3,
+            #eaf6ea
+        );
+
+    text-align: center;
+}
+
+.portfolio-cta-content {
+
+    max-width: 800px;
+
+    margin: 0 auto;
+}
+
+.portfolio-cta .section-tag {
+
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: #4f7253;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.portfolio-cta h2 {
+
+    margin: 0 0 20px;
+
+    color: #263b2a;
+
+    font-size: clamp(32px, 5vw, 50px);
+
+    line-height: 1.2;
+}
+
+.portfolio-cta h2 span {
+
+    color: #6f8f70;
+}
+
+.portfolio-cta p {
+
+    max-width: 650px;
+
+    margin: 0 auto 30px;
+
+    color: #536456;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+.portfolio-cta-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 15px 30px;
+
+    border-radius: 30px;
+
+    background: #6f8f70;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.portfolio-cta-button:hover {
+
+    background: #557258;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
 
 @media (max-width: 900px) {
 
     .portfolio-full-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
     }
 
 }
@@ -360,29 +575,66 @@
 @media (max-width: 600px) {
 
     .portfolio-page-hero {
+
         padding: 70px 20px 60px;
+
     }
 
     .portfolio-page-section {
+
         padding: 60px 15px;
+
     }
 
     .portfolio-full-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
         gap: 20px;
+
     }
 
-    .portfolio-card {
+    .portfolio-lightbox {
+
         height: 280px;
+
     }
 
     .portfolio-filters {
+
         gap: 8px;
+
     }
 
     .portfolio-filter {
-        padding: 10px 16px;
+
+        padding: 10px 18px;
+
         font-size: 14px;
+
+    }
+
+    .portfolio-lightbox-modal {
+
+        padding: 15px;
+
+    }
+
+    .portfolio-lightbox-content img {
+
+        max-width: 95vw;
+
+        max-height: 80vh;
+
+    }
+
+    .portfolio-lightbox-close {
+
+        top: -50px;
+
+        right: 0;
+
     }
 
 }
