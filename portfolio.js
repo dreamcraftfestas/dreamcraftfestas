@@ -1,259 +1,100 @@
-/* =========================================================
-   DREAMCRAFT DECORAÇÕES
-   LIGHTBOX DO PORTFÓLIO
-   ========================================================= */
+/* =====================================================
+   PORTFÓLIO DREAMCRAFT
+   FILTROS
+   ===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-
-        /*
-         * Seleciona todas as imagens
-         * que pertencem ao portfólio.
-         */
-
-        const portfolioItems =
+        const filtros =
             document.querySelectorAll(
-                ".portfolio-item[data-lightbox]"
+                ".portfolio-filter"
+            );
+
+        const cards =
+            document.querySelectorAll(
+                ".portfolio-card"
             );
 
 
-        /*
-         * Se não existir nenhuma imagem,
-         * encerra o script.
-         */
+        filtros.forEach(
+            function (botao) {
 
-        if (
-            portfolioItems.length === 0
-        ) {
-
-            return;
-
-        }
-
-
-        /*
-         * Cria o Lightbox dinamicamente.
-         */
-
-        const lightbox =
-            document.createElement(
-                "div"
-            );
-
-
-        lightbox.className =
-            "portfolio-lightbox";
-
-
-        lightbox.innerHTML = `
-
-            <button
-                class="portfolio-lightbox-close"
-                aria-label="Fechar imagem"
-            >
-                ×
-            </button>
-
-            <button
-                class="portfolio-lightbox-prev"
-                aria-label="Imagem anterior"
-            >
-                ‹
-            </button>
-
-            <img
-                class="portfolio-lightbox-image"
-                src=""
-                alt=""
-            >
-
-            <button
-                class="portfolio-lightbox-next"
-                aria-label="Próxima imagem"
-            >
-                ›
-            </button>
-
-        `;
-
-
-        document.body.appendChild(
-            lightbox
-        );
-
-
-        /*
-         * Elementos internos.
-         */
-
-        const lightboxImage =
-            lightbox.querySelector(
-                ".portfolio-lightbox-image"
-            );
-
-        const closeButton =
-            lightbox.querySelector(
-                ".portfolio-lightbox-close"
-            );
-
-        const previousButton =
-            lightbox.querySelector(
-                ".portfolio-lightbox-prev"
-            );
-
-        const nextButton =
-            lightbox.querySelector(
-                ".portfolio-lightbox-next"
-            );
-
-
-        /*
-         * Lista de imagens.
-         */
-
-        const images =
-            Array.from(
-                portfolioItems
-            );
-
-
-        /*
-         * Imagem atual.
-         */
-
-        let currentIndex =
-            0;
-
-
-        /*
-         * Abre o Lightbox.
-         */
-
-        function openLightbox(
-            index
-        ) {
-
-            currentIndex =
-                index;
-
-            updateImage();
-
-            lightbox.classList.add(
-                "active"
-            );
-
-            document.body.classList.add(
-                "lightbox-open"
-            );
-
-        }
-
-
-        /*
-         * Fecha o Lightbox.
-         */
-
-        function closeLightbox() {
-
-            lightbox.classList.remove(
-                "active"
-            );
-
-            document.body.classList.remove(
-                "lightbox-open"
-            );
-
-        }
-
-
-        /*
-         * Atualiza a imagem.
-         */
-
-        function updateImage() {
-
-            const item =
-                images[
-                    currentIndex
-                ];
-
-
-            const image =
-                item.querySelector(
-                    "img"
-                );
-
-
-            lightboxImage.src =
-                image.src;
-
-
-            lightboxImage.alt =
-                image.alt;
-
-        }
-
-
-        /*
-         * Próxima imagem.
-         */
-
-        function nextImage() {
-
-            currentIndex =
-                (
-                    currentIndex + 1
-                )
-                %
-                images.length;
-
-
-            updateImage();
-
-        }
-
-
-        /*
-         * Imagem anterior.
-         */
-
-        function previousImage() {
-
-            currentIndex =
-                (
-                    currentIndex -
-                    1 +
-                    images.length
-                )
-                %
-                images.length;
-
-
-            updateImage();
-
-        }
-
-
-        /*
-         * Clique nas imagens.
-         */
-
-        images.forEach(
-            (
-                item,
-                index
-            ) => {
-
-                item.addEventListener(
+                botao.addEventListener(
                     "click",
-                    function (event) {
+                    function () {
 
-                        event.preventDefault();
+                        const categoria =
+                            this.dataset.filter;
 
-                        openLightbox(
-                            index
+
+                        /* Remove ativo */
+
+                        filtros.forEach(
+                            function (item) {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        /* Ativa botão */
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        /* Filtra */
+
+                        cards.forEach(
+                            function (card) {
+
+                                const categoriaCard =
+                                    card.dataset.category;
+
+
+                                if (
+                                    categoria === "todos"
+                                    ||
+                                    categoria === categoriaCard
+                                ) {
+
+                                    card.style.display =
+                                        "block";
+
+                                    setTimeout(
+                                        function () {
+
+                                            card.style.opacity =
+                                                "1";
+
+                                        },
+                                        10
+                                    );
+
+                                } else {
+
+                                    card.style.opacity =
+                                        "0";
+
+                                    setTimeout(
+                                        function () {
+
+                                            card.style.display =
+                                                "none";
+
+                                        },
+                                        250
+                                    );
+
+                                }
+
+                            }
                         );
 
                     }
@@ -263,108 +104,143 @@ document.addEventListener(
         );
 
 
-        /*
-         * Fechar.
-         */
+        /* =================================================
+           LIGHTBOX
+           ================================================= */
 
-        closeButton.addEventListener(
-            "click",
-            closeLightbox
-        );
-
-
-        /*
-         * Próxima.
-         */
-
-        nextButton.addEventListener(
-            "click",
-            nextImage
-        );
+        const imagens =
+            document.querySelectorAll(
+                ".portfolio-lightbox"
+            );
 
 
-        /*
-         * Anterior.
-         */
+        imagens.forEach(
+            function (imagem) {
 
-        previousButton.addEventListener(
-            "click",
-            previousImage
-        );
+                imagem.addEventListener(
+                    "click",
+                    function (event) {
+
+                        event.preventDefault();
 
 
-        /*
-         * Clique no fundo.
-         */
+                        const src =
+                            this.getAttribute(
+                                "href"
+                            );
 
-        lightbox.addEventListener(
-            "click",
-            function (event) {
+                        const titulo =
+                            this.dataset.title ||
+                            "Decoração DreamCraft";
 
-                if (
-                    event.target ===
-                    lightbox
-                ) {
 
-                    closeLightbox();
+                        /* Overlay */
 
-                }
+                        const lightbox =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        lightbox.className =
+                            "portfolio-lightbox-modal";
+
+
+                        lightbox.innerHTML = `
+
+                            <div class="portfolio-lightbox-content">
+
+                                <button
+                                    class="portfolio-lightbox-close"
+                                    aria-label="Fechar imagem"
+                                >
+                                    ×
+                                </button>
+
+                                <img
+                                    src="${src}"
+                                    alt="${titulo}"
+                                >
+
+                                <p>
+                                    ${titulo}
+                                </p>
+
+                            </div>
+
+                        `;
+
+
+                        document.body.appendChild(
+                            lightbox
+                        );
+
+
+                        /* Fechar botão */
+
+                        const fechar =
+                            lightbox.querySelector(
+                                ".portfolio-lightbox-close"
+                            );
+
+
+                        fechar.addEventListener(
+                            "click",
+                            function () {
+
+                                lightbox.remove();
+
+                            }
+                        );
+
+
+                        /* Fechar clicando fora */
+
+                        lightbox.addEventListener(
+                            "click",
+                            function (event) {
+
+                                if (
+                                    event.target ===
+                                    lightbox
+                                ) {
+
+                                    lightbox.remove();
+
+                                }
+
+                            }
+                        );
+
+
+                        /* ESC */
+
+                        document.addEventListener(
+                            "keydown",
+                            function esc(event) {
+
+                                if (
+                                    event.key ===
+                                    "Escape"
+                                ) {
+
+                                    lightbox.remove();
+
+                                    document.removeEventListener(
+                                        "keydown",
+                                        esc
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
 
             }
         );
-
-
-        /*
-         * Teclado.
-         */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    !lightbox.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                if (
-                    event.key ===
-                    "Escape"
-                ) {
-
-                    closeLightbox();
-
-                }
-
-
-                if (
-                    event.key ===
-                    "ArrowRight"
-                ) {
-
-                    nextImage();
-
-                }
-
-
-                if (
-                    event.key ===
-                    "ArrowLeft"
-                ) {
-
-                    previousImage();
-
-                }
-
-            }
-        );
-
 
     }
 );
