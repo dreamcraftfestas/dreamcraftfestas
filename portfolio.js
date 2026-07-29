@@ -15,57 +15,39 @@ document.addEventListener("DOMContentLoaded", function () {
     const linksLightbox = document.querySelectorAll(".portfolio-lightbox");
 
 
-    /* =====================================================
-       FILTROS
-       ===================================================== */
-/*
-    filtros.forEach(function (botao) {
+    /* =================================================
+   FILTRO DOS CARDS
+   ================================================= */
 
-        botao.addEventListener("click", function () {
+cards.forEach(function (card) {
 
-            const categoriaSelecionada =
-                this.getAttribute("data-filter");*/
+    const categoriaCard =
+        card.dataset.category;
 
+    if (
+        categoria === "todos" ||
+        categoria === categoriaCard
+    ) {
 
-            /* Atualiza botão ativo */
+        card.style.display = "block";
 
-           /* filtros.forEach(function (item) {
-
-                item.classList.remove("active");
-
-            });
-
-            this.classList.add("active");*/
-
-
-            /* Filtra os cards */
-
-           /* cards.forEach(function (card) {
-
-                const categoriaCard =
-                    card.getAttribute("data-category");
-
-
-                const deveMostrar =
-                    categoriaSelecionada === "todos" ||
-                    categoriaSelecionada === categoriaCard;
-
-
-                if (deveMostrar) {
-
-                    card.classList.remove("portfolio-card-hidden");
-
-                } else {
-
-                    card.classList.add("portfolio-card-hidden");
-
-                }
-
-            });
-
+        requestAnimationFrame(function () {
+            card.style.opacity = "1";
         });
 
-    });*/
+    } else {
+
+        card.style.opacity = "0";
+
+        setTimeout(function () {
+
+            card.style.display = "none";
+
+        }, 300);
+
+    }
+
+});
 
 
 
