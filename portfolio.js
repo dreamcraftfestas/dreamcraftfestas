@@ -18,29 +18,29 @@ document.addEventListener("DOMContentLoaded", function () {
     /* =====================================================
        FILTROS
        ===================================================== */
-
+/*
     filtros.forEach(function (botao) {
 
         botao.addEventListener("click", function () {
 
             const categoriaSelecionada =
-                this.getAttribute("data-filter");
+                this.getAttribute("data-filter");*/
 
 
             /* Atualiza botão ativo */
 
-            filtros.forEach(function (item) {
+           /* filtros.forEach(function (item) {
 
                 item.classList.remove("active");
 
             });
 
-            this.classList.add("active");
+            this.classList.add("active");*/
 
 
             /* Filtra os cards */
 
-            cards.forEach(function (card) {
+           /* cards.forEach(function (card) {
 
                 const categoriaCard =
                     card.getAttribute("data-category");
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
-    });
+    });*/
 
 
 
