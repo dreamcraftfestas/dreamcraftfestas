@@ -209,7 +209,7 @@
    LINK DO CARD
    ========================================================= */
 
-.portfolio-lightbox-port {
+.portfolio-lightbox {
 
     position: relative;
 
@@ -229,7 +229,7 @@
    IMAGENS
    ========================================================= */
 
-.portfolio-lightbox img {
+.portfolio-card-media img {
 
     display: block !important;
 
@@ -263,7 +263,7 @@
 
 
 .portfolio-card:hover
-.portfolio-lightbox img {
+.portfolio-card-media img {
 
     transform: scale(1.05);
 }
@@ -606,7 +606,7 @@
 
     }
 
-    .portfolio-lightbox {
+    .portfolio-card-media {
 
         height: 280px;
 
