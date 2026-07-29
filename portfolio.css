@@ -1,321 +1,680 @@
-/* =========================================================
-   PORTFÓLIO DREAMCRAFT
-   CSS COMPLETO
-   ========================================================= */
+/* =====================================================
+   PORTFÓLIO COMPLETO - DREAMCRAFT
+   ===================================================== */
 
-/* =========================================================
-   HERO
-   ========================================================= */
+
+/* HERO */
 
 .portfolio-page-hero {
-    padding: 140px 20px 80px;
-    background: linear-gradient(
-        180deg,
-        #c2e7c3 0%,
-        #f8faf8 100%
-    );
+
+    padding: 150px 20px 90px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8faf8 0%,
+            #ffffff 100%
+        );
+
     text-align: center;
+
 }
+
 
 .portfolio-page-hero-content {
+
     max-width: 850px;
+
     margin: 0 auto;
+
 }
+
 
 .portfolio-page-hero .section-tag {
-    display: inline-block;
+
+    display: block;
+
     margin-bottom: 20px;
+
+    color: #6f8f70;
+
     font-size: 13px;
+
     font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #557457;
+
+    letter-spacing: 4px;
+
 }
+
 
 .portfolio-page-hero h1 {
-    margin: 0 0 20px;
-    font-size: clamp(38px, 6vw, 68px);
-    line-height: 1.1;
-    color: #263b2a;
+
+    margin: 0;
+
+    color: #26382c;
+
+    font-size: clamp(42px, 6vw, 76px);
+
+    line-height: 1.05;
+
 }
+
 
 .portfolio-page-hero h1 span {
+
     color: #6f8f70;
+
+    display: block;
+
 }
+
 
 .portfolio-page-hero p {
-    max-width: 700px;
-    margin: 0 auto;
+
+    max-width: 680px;
+
+    margin: 30px auto 0;
+
+    color: #59665d;
+
     font-size: 18px;
-    line-height: 1.7;
-    color: #5c665e;
+
+    line-height: 1.8;
+
 }
 
 
-/* =========================================================
-   SEÇÃO PRINCIPAL
-   ========================================================= */
+
+/* =====================================================
+   SEÇÃO
+   ===================================================== */
 
 .portfolio-page-section {
-    padding: 80px 20px;
-    background: #f8faf8;
+
+    padding: 80px 20px 110px;
+
+    background: #ffffff;
+
 }
+
 
 .portfolio-page-container {
-    width: 100%;
-    max-width: 1300px;
+
+    max-width: 1400px;
+
     margin: 0 auto;
+
 }
 
 
-/* =========================================================
+
+/* =====================================================
    FILTROS
-   ========================================================= */
+   ===================================================== */
 
 .portfolio-filters {
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     flex-wrap: wrap;
+
     gap: 12px;
-    margin-bottom: 50px;
+
+    margin-bottom: 55px;
+
 }
+
 
 .portfolio-filter {
+
     padding: 12px 24px;
-    border: 1px solid #c8d8c9;
+
+    border: 1px solid #dce6de;
+
     border-radius: 50px;
+
     background: #ffffff;
-    color: #557457;
+
+    color: #526357;
+
     font-family: inherit;
-    font-size: 15px;
+
+    font-size: 14px;
+
     font-weight: 600;
+
     cursor: pointer;
-    transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+
+    transition: all 0.3s ease;
+
 }
+
 
 .portfolio-filter:hover {
+
+    border-color: #6f8f70;
+
+    color: #6f8f70;
+
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(50, 80, 55, 0.10);
+
 }
+
 
 .portfolio-filter.active {
+
     background: #6f8f70;
+
     border-color: #6f8f70;
+
     color: #ffffff;
-    box-shadow: 0 8px 20px rgba(111, 143, 112, 0.25);
+
 }
 
 
-/* =========================================================
-   GALERIA
-   ========================================================= */
+
+/* =====================================================
+   GRID
+   ===================================================== */
 
 .portfolio-full-grid {
+
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
     gap: 24px;
-    width: 100%;
+
 }
 
-
-/* =========================================================
-   CARD
-   ========================================================= */
 
 .portfolio-card {
+
     position: relative;
-    display: block;
-    width: 100%;
-    min-width: 0;
-    opacity: 1;
+
+    min-height: 420px;
+
     overflow: hidden;
+
     border-radius: 18px;
-    background: #ffffff;
-    box-shadow: 0 10px 30px rgba(40, 60, 45, 0.10);
+
+    background: #eef2ee;
+
+    box-shadow:
+        0 10px 35px
+        rgba(38, 56, 44, 0.08);
+
     transition:
-        transform 0.3s ease,
-        opacity 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+
 }
+
 
 .portfolio-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 40px rgba(40, 60, 45, 0.16);
+
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(38, 56, 44, 0.16);
+
 }
 
 
-/* =========================================================
-   LINK DA IMAGEM
-   ========================================================= */
+.portfolio-card a {
 
-.portfolio-lightbox {
-    position: relative;
     display: block;
+
     width: 100%;
+
     height: 100%;
-    min-height: 280px;
-    overflow: hidden;
-    background: #e8eee8;
-    text-decoration: none;
+
 }
 
 
-/* =========================================================
-   MINIATURAS
-   CORREÇÃO PRINCIPAL
-   ========================================================= */
+.portfolio-card img {
 
-.portfolio-lightbox img {
-    display: block !important;
-    width: 100% !important;
-    height: 320px !important;
-    min-height: 320px !important;
-    max-width: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    position: relative !important;
-    z-index: 1;
-    transition: transform 0.5s ease;
-}
+    width: 100%;
 
-.portfolio-card:hover .portfolio-lightbox img {
-    transform: scale(1.05);
+    height: 420px;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.6s ease;
+
 }
 
 
-/* =========================================================
+.portfolio-card:hover img {
+
+    transform: scale(1.06);
+
+}
+
+
+
+/* =====================================================
    OVERLAY
-   ========================================================= */
+   ===================================================== */
 
 .portfolio-card-overlay {
+
     position: absolute;
+
     inset: 0;
-    z-index: 2;
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
 
-    background: rgba(38, 59, 42, 0.65);
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background:
+        rgba(38, 56, 44, 0.65);
 
     color: #ffffff;
 
     opacity: 0;
 
-    transition: opacity 0.3s ease;
+    transition:
+        opacity 0.4s ease;
 
-    pointer-events: none;
 }
 
-.portfolio-card:hover .portfolio-card-overlay {
+
+.portfolio-card:hover
+.portfolio-card-overlay {
+
     opacity: 1;
+
 }
+
 
 .portfolio-card-overlay span {
+
+    width: 55px;
+
+    height: 55px;
+
     display: flex;
-    justify-content: center;
+
     align-items: center;
 
-    width: 52px;
-    height: 52px;
+    justify-content: center;
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.95);
+    background: #ffffff;
 
-    color: #557457;
+    color: #6f8f70;
 
     font-size: 20px;
+
 }
+
 
 .portfolio-card-overlay strong {
+
     font-size: 15px;
-    font-weight: 600;
+
+    letter-spacing: 1px;
+
 }
 
 
-/* =========================================================
+
+/* =====================================================
    CTA
-   ========================================================= */
+   ===================================================== */
 
 .portfolio-cta {
+
     padding: 100px 20px;
+
     background: #c2e7c3;
+
     text-align: center;
+
 }
+
 
 .portfolio-cta-content {
-    max-width: 800px;
+
+    max-width: 760px;
+
     margin: 0 auto;
+
 }
+
 
 .portfolio-cta .section-tag {
-    display: inline-block;
+
+    display: block;
+
     margin-bottom: 20px;
-    color: #557457;
+
+    color: #527056;
+
     font-size: 13px;
+
     font-weight: 700;
-    letter-spacing: 2px;
+
+    letter-spacing: 4px;
+
 }
+
 
 .portfolio-cta h2 {
-    margin: 0 0 20px;
-    color: #263b2a;
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.15;
+
+    margin: 0;
+
+    color: #26382c;
+
+    font-size: clamp(36px, 5vw, 60px);
+
+    line-height: 1.1;
+
 }
+
 
 .portfolio-cta h2 span {
-    color: #557457;
+
+    display: block;
+
+    color: #6f8f70;
+
 }
+
 
 .portfolio-cta p {
+
     max-width: 650px;
-    margin: 0 auto 30px;
-    color: #4f6252;
+
+    margin: 25px auto 35px;
+
+    color: #526357;
+
     font-size: 17px;
+
     line-height: 1.7;
+
 }
 
+
 .portfolio-cta-button {
+
     display: inline-flex;
+
     align-items: center;
-    justify-content: center;
+
     gap: 12px;
 
-    padding: 15px 28px;
+    padding: 16px 30px;
 
     border-radius: 50px;
 
-    background: #557457;
+    background: #26382c;
+
     color: #ffffff;
 
     text-decoration: none;
 
-    font-size: 16px;
     font-weight: 700;
 
-    box-shadow: 0 10px 25px rgba(50, 80, 55, 0.20);
+    transition: all 0.3s ease;
 
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
 }
 
+
 .portfolio-cta-button:hover {
+
+    background: #6f8f70;
+
     transform: translateY(-3px);
-    background: #466348;
-    box-shadow: 0 15px 30px rgba(50, 80, 55, 0.28);
+
+}
+
+
+
+/* =====================================================
+   RESPONSIVO
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .portfolio-full-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .portfolio-page-hero {
+
+        padding:
+            120px
+            20px
+            70px;
+
+    }
+
+
+    .portfolio-page-section {
+
+        padding:
+            60px
+            15px
+            80px;
+
+    }
+
+
+    .portfolio-full-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+    }
+
+
+    .portfolio-card {
+
+        min-height: 360px;
+
+    }
+
+
+    .portfolio-card img {
+
+        height: 360px;
+
+    }
+
+
+    .portfolio-filter {
+
+        padding:
+            10px
+            18px;
+
+        font-size: 13px;
+
+    }
+
+
+    .portfolio-cta {
+
+        padding:
+            75px
+            20px;
+
+    }
+
+}
+/* =====================================================
+   LIGHTBOX
+   ===================================================== */
+
+.portfolio-lightbox-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        rgba(20, 30, 23, 0.92);
+
+    animation:
+        portfolioFadeIn
+        0.3s ease;
+
+}
+
+
+.portfolio-lightbox-content {
+
+    position: relative;
+
+    max-width: 1100px;
+
+    max-height: 90vh;
+
+    text-align: center;
+
+}
+
+
+.portfolio-lightbox-content img {
+
+    max-width: 100%;
+
+    max-height: 78vh;
+
+    display: block;
+
+    margin: 0 auto;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+}
+
+
+.portfolio-lightbox-content p {
+
+    margin: 15px 0 0;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+}
+
+
+.portfolio-lightbox-close {
+
+    position: absolute;
+
+    top: -45px;
+
+    right: 0;
+
+    width: 40px;
+
+    height: 40px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: #26382c;
+
+    font-size: 28px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+}
+
+
+@keyframes portfolioFadeIn {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+/* =========================================================
+   FILTRO DO PORTFÓLIO
+   ========================================================= */
+
+.portfolio-card {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+}
+
+
+.portfolio-card-hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   IMAGENS DO PORTFÓLIO
+   ========================================================= */
+
+.portfolio-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 
@@ -329,13 +688,16 @@
     z-index: 99999;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     padding: 30px;
 
-    background: rgba(20, 30, 22, 0.92);
+    background: rgba(0, 0, 0, 0.88);
+
+    animation: portfolioLightboxFadeIn 0.2s ease;
 }
+
 
 .portfolio-lightbox-content {
     position: relative;
@@ -343,16 +705,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
-    max-width: 95vw;
+    width: 100%;
+    max-width: 1200px;
     max-height: 95vh;
 }
+
 
 .portfolio-lightbox-content img {
     display: block;
 
-    max-width: 90vw;
-    max-height: 82vh;
+    max-width: 100%;
+    max-height: 80vh;
 
     width: auto;
     height: auto;
@@ -361,58 +726,90 @@
 
     border-radius: 10px;
 
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.5);
 }
+
 
 .portfolio-lightbox-content p {
     margin: 15px 0 0;
 
     color: #ffffff;
 
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 500;
+
     text-align: center;
 }
+
+
+/* =========================================================
+   BOTÃO FECHAR
+   ========================================================= */
 
 .portfolio-lightbox-close {
     position: absolute;
 
-    top: -20px;
-    right: -20px;
+    top: -15px;
+    right: -15px;
 
-    z-index: 5;
+    z-index: 10;
 
     width: 45px;
     height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border: none;
     border-radius: 50%;
 
     background: #ffffff;
-    color: #263b2a;
+    color: #333333;
 
     font-size: 30px;
     line-height: 1;
 
     cursor: pointer;
 
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.3);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.portfolio-lightbox-close:hover {
+    transform: scale(1.08);
 }
 
 
 /* =========================================================
-   TABLET
+   BLOQUEAR SCROLL QUANDO LIGHTBOX ESTIVER ABERTO
    ========================================================= */
 
-@media (max-width: 900px) {
+body.lightbox-open {
+    overflow: hidden;
+}
 
-    .portfolio-full-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
+
+/* =========================================================
+   ANIMAÇÃO
+   ========================================================= */
+
+@keyframes portfolioLightboxFadeIn {
+
+    from {
+        opacity: 0;
     }
 
-    .portfolio-lightbox img {
-        height: 280px !important;
-        min-height: 280px !important;
+    to {
+        opacity: 1;
     }
 
 }
@@ -422,57 +819,28 @@
    CELULAR
    ========================================================= */
 
-@media (max-width: 600px) {
-
-    .portfolio-page-hero {
-        padding: 110px 20px 60px;
-    }
-
-    .portfolio-page-section {
-        padding: 60px 15px;
-    }
-
-    .portfolio-filters {
-        gap: 8px;
-        margin-bottom: 35px;
-    }
-
-    .portfolio-filter {
-        padding: 10px 16px;
-        font-size: 14px;
-    }
-
-    .portfolio-full-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .portfolio-lightbox {
-        min-height: 240px;
-    }
-
-    .portfolio-lightbox img {
-        width: 100% !important;
-        height: 280px !important;
-        min-height: 280px !important;
-    }
-
-    .portfolio-cta {
-        padding: 70px 20px;
-    }
+@media (max-width: 768px) {
 
     .portfolio-lightbox-modal {
         padding: 20px;
     }
 
+
     .portfolio-lightbox-content img {
-        max-width: 95vw;
         max-height: 75vh;
     }
 
+
     .portfolio-lightbox-close {
-        top: -15px;
-        right: -5px;
+
+        top: -10px;
+        right: -10px;
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 26px;
+
     }
 
 }
