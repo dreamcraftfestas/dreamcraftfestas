@@ -8,142 +8,91 @@ document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll(".portfolio-card");
 
     filtros.forEach(function (botao) {
-
         botao.addEventListener("click", function () {
-
             const categoria = this.dataset.filter;
 
-            /* Remove ativo de todos */
             filtros.forEach(function (item) {
                 item.classList.remove("active");
             });
 
-            /* Ativa o botão clicado */
             this.classList.add("active");
 
-            /* Filtra os cards */
             cards.forEach(function (card) {
-
                 const categoriaCard = card.dataset.category;
 
-                if (
-                    categoria === "todos" ||
-                    categoria === categoriaCard
-                ) {
-
+                if (categoria === "todos" || categoria === categoriaCard) {
                     card.classList.remove("portfolio-hidden");
-
                 } else {
-
                     card.classList.add("portfolio-hidden");
-
                 }
-
             });
-
         });
-
     });
 
 
     /* =====================================================
-       LIGHTBOX (AMPLIAR IMAGEM)
+       LIGHTBOX (MODAL DE ZOOM)
        ===================================================== */
 
-    /* Atualizado para capturar ambas as classes de link/card */
-    const links = document.querySelectorAll(".portfolio-lightbox-port, .portfolio-card-media");
+    // Seleciona os containers das fotos ou links antigos
+    const elementosFoto = document.querySelectorAll(".portfolio-card-media, .portfolio-lightbox-port, .portfolio-card");
 
-    links.forEach(function (link) {
+    elementosFoto.forEach(function (elemento) {
 
-        link.addEventListener("click", function (event) {
+        elemento.addEventListener("click", function (event) {
 
-            /* IMPEDE a imagem de abrir em uma nova página */
+            // Trava qualquer navegação de link no navegador
             event.preventDefault();
+            event.stopPropagation();
 
-            /* Pega o caminho da imagem e o título/legenda */
-            const imagem = this.getAttribute("href") || this.querySelector("img").src;
+            // Pega o caminho da imagem e o título
+            const imgTag = this.querySelector("img");
+            const imagem = this.getAttribute("data-src") || this.getAttribute("href") || (imgTag ? imgTag.src : "");
+            const titulo = this.getAttribute("data-title") || (imgTag ? imgTag.alt : "Decoração DreamCraft");
 
-            const titulo =
-                this.getAttribute("data-title") ||
-                this.querySelector("img").alt ||
-                "Decoração DreamCraft";
+            if (!imagem) return;
 
-
-            /* Cria o fundo do Lightbox (Modal) */
+            // Cria o Modal
             const modal = document.createElement("div");
-
             modal.className = "portfolio-lightbox-modal";
 
-
-            /* Conteúdo do Lightbox com o Botão X */
             modal.innerHTML = `
-
                 <div class="portfolio-lightbox-content">
-
-                    <button
-                        type="button"
-                        class="portfolio-lightbox-close"
-                        aria-label="Fechar imagem"
-                    >
-                        ×
-                    </button>
-
-                    <img
-                        src="${imagem}"
-                        alt="${titulo}"
-                    >
-
-                    <p>
-                        ${titulo}
-                    </p>
-
+                    <button type="button" class="portfolio-lightbox-close" aria-label="Fechar imagem">&times;</button>
+                    <img src="${imagem}" alt="${titulo}">
+                    <p>${titulo}</p>
                 </div>
-
             `;
 
-
-            /* Adiciona na página */
             document.body.appendChild(modal);
+            document.body.style.overflow = "hidden"; // Trava o scroll da página
 
-
-            /* Trava a rolagem do fundo enquanto a foto estiver aberta */
-            document.body.style.overflow = "hidden";
-
-
-            /* Função para remover o modal e destravar a rolagem */
+            // Função para fechar o modal
             function fecharModal() {
                 modal.remove();
                 document.body.style.overflow = "";
                 document.removeEventListener("keydown", fecharComEsc);
             }
 
-
-            /* 1. Botão Fechar (X) */
-            const fechar = modal.querySelector(".portfolio-lightbox-close");
-
-            fechar.addEventListener("click", function (e) {
+            // 1. Fechar no X
+            const botaoFechar = modal.querySelector(".portfolio-lightbox-close");
+            botaoFechar.addEventListener("click", function (e) {
                 e.stopPropagation();
                 fecharModal();
             });
 
-
-            /* 2. Clique fora da imagem (Fundo escuro) */
-            modal.addEventListener("click", function (event) {
-
-                if (event.target === modal) {
+            // 2. Fechar clicando fora da imagem (no fundo escuro)
+            modal.addEventListener("click", function (e) {
+                if (e.target === modal) {
                     fecharModal();
                 }
-
             });
 
-
-            /* 3. Tecla ESC do teclado */
-            function fecharComEsc(event) {
-
-                if (event.key === "Escape") {
+            // 3. Fechar com a tecla ESC
+            function fecharComEsc(e) {
+                if (e.key === "Escape") {
                     fecharModal();
                 }
-
             }
 
             document.addEventListener("keydown", fecharComEsc);
