@@ -135,7 +135,7 @@
     padding: 12px 24px;
     border: 1px solid #b8d6ba;
     border-radius: 30px;
-    background: #ffffff;
+    background: var(--cor-fundo-claro);
     color: #557258;
     font-size: 15px;
     font-weight: 600;
