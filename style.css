@@ -759,6 +759,199 @@ img {
         text-align: left;
     }
 }
+/* ======================================================
+   DreamCraft na Comunidade
+====================================================== */
+
+.community-banner {
+    position: relative;
+    background-image: url("Imagens/comunidade/projeto-capa.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    min-height: 550px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    overflow: hidden;
+}
+
+/* Camada escura sobre a imagem */
+.community-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* Conteúdo */
+.community-overlay {
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+
+    color: #fff;
+
+    animation: fadeUp .8s ease;
+}
+
+/* Selo */
+.community-tag {
+
+    display: inline-block;
+
+    padding: 10px 22px;
+
+    margin-bottom: 25px;
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,.15);
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    color: #fff;
+
+    font-size: .95rem;
+
+    font-weight: 600;
+
+    letter-spacing: .5px;
+
+}
+
+/* Título */
+
+.community-overlay h2{
+
+    font-size: 3rem;
+
+    font-weight: 700;
+
+    margin-bottom: 25px;
+
+    color:#fff;
+
+}
+
+/* Texto */
+
+.community-overlay p{
+
+    font-size:1.15rem;
+
+    line-height:1.9;
+
+    margin-bottom:35px;
+
+    color:rgba(255,255,255,.92);
+
+}
+
+/* Botão */
+
+.community-overlay .cta-button{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+}
+
+/* ==========================
+   Animação
+========================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   Responsivo Tablet
+========================== */
+
+@media(max-width:992px){
+
+    .community-banner{
+
+        min-height:480px;
+
+        background-attachment:scroll;
+
+    }
+
+    .community-overlay h2{
+
+        font-size:2.4rem;
+
+    }
+
+}
+
+/* ==========================
+   Responsivo Celular
+========================== */
+
+@media(max-width:768px){
+
+    .community-banner{
+
+        min-height:420px;
+
+        padding:60px 20px;
+
+    }
+
+    .community-tag{
+
+        font-size:.85rem;
+
+        padding:8px 18px;
+
+    }
+
+    .community-overlay h2{
+
+        font-size:2rem;
+
+        line-height:1.3;
+
+    }
+
+    .community-overlay p{
+
+        font-size:1rem;
+
+        line-height:1.7;
+
+    }
+
+}
 /* ============================================
    SERVIÇOS - 5 ITENS NA MESMA LINHA
    ============================================ */

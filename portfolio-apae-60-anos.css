@@ -1,0 +1,1320 @@
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   PORTFÓLIO ESPECIAL — APAE LIMEIRA 60 ANOS
+   ========================================================= */
+
+
+/* =========================================================
+   VARIÁVEIS ESPECÍFICAS
+   ========================================================= */
+
+.apae-project-hero,
+.apae-project-introduction,
+.apae-project-gallery-section,
+.apae-project-highlight-section,
+.apae-project-message,
+.apae-project-cta {
+
+    --apae-green: #6f8f70;
+    --apae-green-dark: #587259;
+    --apae-green-light: #a8c6a9;
+    --apae-cream: #f7f5f0;
+    --apae-text: #333333;
+    --apae-white: #ffffff;
+
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.apae-project-container {
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.apae-project-hero {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    background-image:
+        url("projetos/painel01.webp");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+
+}
+
+
+/* Overlay sobre a imagem */
+
+.apae-project-hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(49, 67, 51, 0.78),
+            rgba(111, 143, 112, 0.65)
+        );
+
+}
+
+
+/* Conteúdo do Hero */
+
+.apae-project-hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 900px;
+
+    padding: 60px 30px;
+
+    animation: apaeHeroFadeUp 1s ease forwards;
+
+}
+
+
+/* Tag */
+
+.apae-project-hero .section-tag {
+
+    display: inline-block;
+
+    margin-bottom: 25px;
+
+    padding: 10px 24px;
+
+    border: 1px solid rgba(255,255,255,0.5);
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    color: #ffffff;
+
+    font-size: 0.85rem;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* Título */
+
+.apae-project-hero h1 {
+
+    margin: 0 auto 25px;
+
+    max-width: 850px;
+
+    color: #ffffff;
+
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+
+    line-height: 1.08;
+
+    font-weight: 700;
+
+    letter-spacing: -2px;
+
+}
+
+
+/* Destaque do título */
+
+.apae-project-hero h1 span {
+
+    display: block;
+
+    color: #ffffff;
+
+}
+
+
+/* Descrição */
+
+.apae-project-hero p {
+
+    max-width: 650px;
+
+    margin: 0 auto 35px;
+
+    color: rgba(255,255,255,0.92);
+
+    font-size: 1.2rem;
+
+    line-height: 1.8;
+
+}
+
+
+/* Botão */
+
+.apae-project-hero-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 28px;
+
+    border-radius: 50px;
+
+    background: #ffffff;
+
+    color: #6f8f70;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition:
+
+        transform 0.3s ease,
+
+        box-shadow 0.3s ease,
+
+        background 0.3s ease;
+
+}
+
+
+.apae-project-hero-button:hover {
+
+    transform: translateY(-4px);
+
+    background: #f7f5f0;
+
+    box-shadow:
+
+        0 12px 30px rgba(0,0,0,0.2);
+
+}
+
+
+/* =========================================================
+   INTRODUÇÃO
+   ========================================================= */
+
+.apae-project-introduction {
+
+    padding: 110px 0;
+
+    background: #ffffff;
+
+}
+
+
+/* Cabeçalho */
+
+.apae-project-heading {
+
+    max-width: 800px;
+
+    margin-bottom: 70px;
+
+}
+
+
+.apae-project-heading .section-tag {
+
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: #6f8f70;
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+.apae-project-heading h2 {
+
+    margin: 0;
+
+    color: #333333;
+
+    font-size: clamp(2.2rem, 4vw, 4rem);
+
+    line-height: 1.15;
+
+    font-weight: 700;
+
+}
+
+
+.apae-project-introduction-grid {
+
+    display: grid;
+
+    grid-template-columns: 1.4fr 0.6fr;
+
+    gap: 80px;
+
+    align-items: center;
+
+}
+
+
+/* Texto */
+
+.apae-project-introduction-text {
+
+    max-width: 700px;
+
+}
+
+
+.apae-project-introduction-text p {
+
+    margin-bottom: 25px;
+
+    color: #555555;
+
+    font-size: 1.08rem;
+
+    line-height: 1.9;
+
+}
+
+
+.apae-project-introduction-text p:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+/* Destaque 60 */
+
+.apae-project-introduction-highlight {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 320px;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #6f8f70,
+            #587259
+        );
+
+    color: #ffffff;
+
+    text-align: center;
+
+    box-shadow:
+
+        0 20px 50px rgba(111,143,112,0.25);
+
+}
+
+
+.apae-project-number {
+
+    display: block;
+
+    font-size: clamp(6rem, 10vw, 9rem);
+
+    line-height: 0.9;
+
+    font-weight: 700;
+
+}
+
+
+.apae-project-number-label {
+
+    margin-top: 15px;
+
+    font-size: 1.1rem;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+}
+
+
+.apae-project-introduction-highlight p {
+
+    margin-top: 30px;
+
+    padding-top: 20px;
+
+    width: 100%;
+
+    border-top: 1px solid rgba(255,255,255,0.35);
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   GALERIA
+   ========================================================= */
+
+.apae-project-gallery-section {
+
+    padding: 110px 0;
+
+    background: #f7f5f0;
+
+}
+
+
+.apae-project-gallery-section .section-heading {
+
+    max-width: 750px;
+
+    margin: 0 auto 60px;
+
+    text-align: center;
+
+}
+
+
+.apae-project-gallery-section .section-tag {
+
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: #6f8f70;
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+.apae-project-gallery-section h2 {
+
+    margin-bottom: 20px;
+
+    color: #333333;
+
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+
+    line-height: 1.15;
+
+}
+
+
+.apae-project-gallery-section h2 span {
+
+    color: #6f8f70;
+
+}
+
+
+.apae-project-gallery-section .section-heading p {
+
+    color: #666666;
+
+    font-size: 1.05rem;
+
+    line-height: 1.8;
+
+}
+
+
+/* Grid */
+
+.apae-project-gallery {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-auto-rows: 360px;
+
+    gap: 20px;
+
+}
+
+
+/* Item */
+
+.apae-project-gallery-item {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #dddddd;
+
+    text-decoration: none;
+
+}
+
+
+.apae-gallery-large {
+
+    grid-row: span 2;
+
+}
+
+
+/* Imagem */
+
+.apae-project-gallery-item img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+
+        transform 0.7s ease;
+
+}
+
+
+/* Overlay */
+
+.apae-project-gallery-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+
+        rgba(49,67,51,0.55);
+
+    opacity: 0;
+
+    transition:
+
+        opacity 0.4s ease;
+
+}
+
+
+.apae-project-gallery-overlay span {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: #6f8f70;
+
+    font-size: 2rem;
+
+    font-weight: 300;
+
+    transform: scale(0.7);
+
+    transition:
+
+        transform 0.4s ease;
+
+}
+
+
+.apae-project-gallery-item:hover img {
+
+    transform: scale(1.06);
+
+}
+
+
+.apae-project-gallery-item:hover
+.apae-project-gallery-overlay {
+
+    opacity: 1;
+
+}
+
+
+.apae-project-gallery-item:hover
+.apae-project-gallery-overlay span {
+
+    transform: scale(1);
+
+}
+
+
+/* =========================================================
+   SEÇÃO DE DESTAQUE
+   ========================================================= */
+
+.apae-project-highlight-section {
+
+    position: relative;
+
+    padding: 120px 0;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #6f8f70,
+            #587259
+        );
+
+    color: #ffffff;
+
+    overflow: hidden;
+
+}
+
+
+/* Elemento decorativo */
+
+.apae-project-highlight-section::before {
+
+    content: "60";
+
+    position: absolute;
+
+    right: -30px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: rgba(255,255,255,0.05);
+
+    font-size: 25rem;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    pointer-events: none;
+
+}
+
+
+.apae-project-highlight-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 750px;
+
+}
+
+
+.apae-project-highlight-content .section-tag {
+
+    display: inline-block;
+
+    margin-bottom: 25px;
+
+    color: rgba(255,255,255,0.8);
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+.apae-project-highlight-content h2 {
+
+    margin-bottom: 30px;
+
+    color: #ffffff;
+
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+
+    line-height: 1.1;
+
+}
+
+
+.apae-project-highlight-content h2 span {
+
+    display: block;
+
+}
+
+
+.apae-project-highlight-content p {
+
+    max-width: 700px;
+
+    margin-bottom: 20px;
+
+    color: rgba(255,255,255,0.9);
+
+    font-size: 1.08rem;
+
+    line-height: 1.9;
+
+}
+
+
+/* =========================================================
+   MENSAGEM FINAL
+   ========================================================= */
+
+.apae-project-message {
+
+    padding: 100px 0;
+
+    background: #ffffff;
+
+    text-align: center;
+
+}
+
+
+.apae-project-message-content {
+
+    max-width: 700px;
+
+    margin: 0 auto;
+
+}
+
+
+.apae-project-message-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 70px;
+
+    height: 70px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    background: #f7f5f0;
+
+    color: #6f8f70;
+
+    font-size: 2rem;
+
+}
+
+
+.apae-project-message h2 {
+
+    margin-bottom: 20px;
+
+    color: #333333;
+
+    font-size: clamp(2rem, 4vw, 3.5rem);
+
+}
+
+
+.apae-project-message p {
+
+    color: #666666;
+
+    font-size: 1.1rem;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   CTA FINAL
+   ========================================================= */
+
+.apae-project-cta {
+
+    position: relative;
+
+    padding: 110px 0;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(111,143,112,0.96),
+            rgba(88,114,89,0.96)
+        );
+
+    color: #ffffff;
+
+    text-align: center;
+
+}
+
+
+.apae-project-cta-content {
+
+    max-width: 800px;
+
+    margin: 0 auto;
+
+}
+
+
+.apae-project-cta .section-tag {
+
+    display: inline-block;
+
+    margin-bottom: 25px;
+
+    color: rgba(255,255,255,0.85);
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+.apae-project-cta h2 {
+
+    margin-bottom: 25px;
+
+    color: #ffffff;
+
+    font-size: clamp(2.3rem, 5vw, 4rem);
+
+    line-height: 1.15;
+
+}
+
+
+.apae-project-cta h2 span {
+
+    display: block;
+
+}
+
+
+.apae-project-cta p {
+
+    max-width: 650px;
+
+    margin: 0 auto 35px;
+
+    color: rgba(255,255,255,0.9);
+
+    font-size: 1.1rem;
+
+    line-height: 1.8;
+
+}
+
+
+.apae-project-cta-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 16px 30px;
+
+    border-radius: 50px;
+
+    background: #ffffff;
+
+    color: #6f8f70;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition:
+
+        transform 0.3s ease,
+
+        box-shadow 0.3s ease;
+
+}
+
+
+.apae-project-cta-button:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+
+        0 12px 30px rgba(0,0,0,0.2);
+
+}
+
+
+/* =========================================================
+   ANIMAÇÕES
+   ========================================================= */
+
+@keyframes apaeHeroFadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — TABLET
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+
+    .apae-project-introduction-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+
+    }
+
+
+    .apae-project-introduction-highlight {
+
+        max-width: 500px;
+
+        min-height: 280px;
+
+        margin: 0 auto;
+
+    }
+
+
+    .apae-project-gallery {
+
+        grid-template-columns: 1fr 1fr;
+
+        grid-auto-rows: 300px;
+
+    }
+
+
+    .apae-project-highlight-section::before {
+
+        font-size: 18rem;
+
+    }
+
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — CELULAR
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+
+    .apae-project-container {
+
+        padding-left: 20px;
+
+        padding-right: 20px;
+
+    }
+
+
+    /* Hero */
+
+    .apae-project-hero {
+
+        min-height: 90vh;
+
+        background-position: center;
+
+    }
+
+
+    .apae-project-hero-content {
+
+        padding: 50px 20px;
+
+    }
+
+
+    .apae-project-hero h1 {
+
+        font-size: 2.6rem;
+
+        letter-spacing: -1px;
+
+    }
+
+
+    .apae-project-hero p {
+
+        font-size: 1rem;
+
+        line-height: 1.7;
+
+    }
+
+
+    /* Introdução */
+
+    .apae-project-introduction {
+
+        padding: 80px 0;
+
+    }
+
+
+    .apae-project-heading {
+
+        margin-bottom: 45px;
+
+    }
+
+
+    .apae-project-heading h2 {
+
+        font-size: 2.2rem;
+
+    }
+
+
+    .apae-project-introduction-text p {
+
+        font-size: 1rem;
+
+        line-height: 1.8;
+
+    }
+
+
+    .apae-project-introduction-highlight {
+
+        min-height: 250px;
+
+        padding: 30px;
+
+    }
+
+
+    .apae-project-number {
+
+        font-size: 6rem;
+
+    }
+
+
+    /* Galeria */
+
+    .apae-project-gallery-section {
+
+        padding: 80px 0;
+
+    }
+
+
+    .apae-project-gallery-section h2 {
+
+        font-size: 2.2rem;
+
+    }
+
+
+    .apae-project-gallery {
+
+        grid-template-columns: 1fr;
+
+        grid-auto-rows: 300px;
+
+    }
+
+
+    .apae-gallery-large {
+
+        grid-row: span 1;
+
+    }
+
+
+    .apae-project-gallery-overlay {
+
+        opacity: 1;
+
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.3),
+            transparent
+        );
+
+        align-items: flex-end;
+
+        justify-content: flex-end;
+
+        padding: 15px;
+
+    }
+
+
+    .apae-project-gallery-overlay span {
+
+        width: 45px;
+
+        height: 45px;
+
+        font-size: 1.5rem;
+
+        transform: scale(1);
+
+    }
+
+
+    /* Destaque */
+
+    .apae-project-highlight-section {
+
+        padding: 80px 0;
+
+    }
+
+
+    .apae-project-highlight-section::before {
+
+        right: -20px;
+
+        font-size: 12rem;
+
+    }
+
+
+    .apae-project-highlight-content h2 {
+
+        font-size: 2.5rem;
+
+    }
+
+
+    .apae-project-highlight-content p {
+
+        font-size: 1rem;
+
+        line-height: 1.8;
+
+    }
+
+
+    /* Mensagem */
+
+    .apae-project-message {
+
+        padding: 80px 0;
+
+    }
+
+
+    .apae-project-message h2 {
+
+        font-size: 2.2rem;
+
+    }
+
+
+    /* CTA */
+
+    .apae-project-cta {
+
+        padding: 80px 0;
+
+    }
+
+
+    .apae-project-cta h2 {
+
+        font-size: 2.4rem;
+
+    }
+
+
+    .apae-project-cta p {
+
+        font-size: 1rem;
+
+    }
+
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+
+    .apae-project-hero h1 {
+
+        font-size: 2.2rem;
+
+    }
+
+
+    .apae-project-hero .section-tag {
+
+        font-size: 0.7rem;
+
+        letter-spacing: 1.5px;
+
+        padding: 8px 16px;
+
+    }
+
+
+    .apae-project-hero-button {
+
+        padding: 13px 22px;
+
+        font-size: 0.9rem;
+
+    }
+
+
+    .apae-project-heading h2 {
+
+        font-size: 1.9rem;
+
+    }
+
+
+    .apae-project-gallery {
+
+        grid-auto-rows: 250px;
+
+    }
+
+
+    .apae-project-highlight-content h2 {
+
+        font-size: 2.1rem;
+
+    }
+
+
+    .apae-project-cta h2 {
+
+        font-size: 2rem;
+
+    }
+
+
+}

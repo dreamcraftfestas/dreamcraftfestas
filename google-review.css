@@ -1,0 +1,241 @@
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   GOOGLE REVIEWS
+   ========================================================= */
+
+
+/* =========================================================
+   CONTAINER PRINCIPAL
+   ========================================================= */
+
+.google-review-cta {
+
+    max-width: 1000px;
+
+    margin: 60px auto 0;
+
+    padding: 35px 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    background:
+        rgba(111, 143, 112, 0.10);
+
+    border:
+        1px solid rgba(111, 143, 112, 0.25);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.06);
+
+}
+
+
+/* =========================================================
+   ÍCONE GOOGLE
+   ========================================================= */
+
+.google-review-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 28px;
+
+    color:
+        var(--cor-principal);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+
+}
+
+
+/* =========================================================
+   CONTEÚDO
+   ========================================================= */
+
+.google-review-content {
+
+    flex: 1;
+
+}
+
+
+.google-review-content h3 {
+
+    margin:
+        0 0 6px;
+
+    color:
+        var(--cor-principal);
+
+    font-size:
+        1.25rem;
+
+    line-height:
+        1.4;
+
+}
+
+
+.google-review-content p {
+
+    margin:
+        0;
+
+    color:
+        #555;
+
+    line-height:
+        1.6;
+
+}
+
+
+/* =========================================================
+   ÁREA DO BOTÃO
+   ========================================================= */
+
+.google-review-actions {
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   BOTÃO GOOGLE
+   ========================================================= */
+
+.google-review-button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    padding:
+        14px 22px;
+
+    background:
+        var(--cor-principal);
+
+    color:
+        #ffffff;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        600;
+
+    border-radius:
+        50px;
+
+    white-space:
+        nowrap;
+
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.google-review-button:hover {
+
+    background:
+        #5d7c5f;
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(111, 143, 112, 0.30);
+
+}
+
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .google-review-cta {
+
+        margin:
+            40px 20px 0;
+
+        padding:
+            30px 25px;
+
+        flex-direction:
+            column;
+
+        text-align:
+            center;
+
+    }
+
+
+    .google-review-content h3 {
+
+        font-size:
+            1.15rem;
+
+    }
+
+
+    .google-review-content p {
+
+        font-size:
+            0.95rem;
+
+    }
+
+
+    .google-review-actions {
+
+        width:
+            100%;
+
+    }
+
+
+    .google-review-button {
+
+        width:
+            100%;
+
+    }
+
+}

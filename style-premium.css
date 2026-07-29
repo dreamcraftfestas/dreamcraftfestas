@@ -1,0 +1,6163 @@
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   STYLE PREMIUM
+   Sprint 1 - Header e melhorias globais
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIÁVEIS DA IDENTIDADE VISUAL
+   ========================================================= */
+
+:root {
+    /*
+    * IMPORTANTE:
+    * Estas cores foram definidas para preservar a identidade
+    * verde da DreamCraft.
+    *
+    * Caso o verde exato da sua marca seja diferente,
+    * podemos ajustar posteriormente em um único lugar.
+    */
+
+    --dc-green: #3f7d58;
+    --dc-green-dark: #2e6043;
+    --cor-principal: #6f8f70;
+    --cor-fundo: #a8c6a9;   
+    --cor-fundo-claro: #c2e7c3;
+    --dc-green-light: #eaf4ed;
+
+    --dc-white: #ffffff;
+    --dc-off-white: #f8faf8;
+
+    --dc-text: #2c2c2c;
+    --dc-text-light: #666666;
+
+    --dc-border: rgba(63, 125, 88, 0.12);
+
+    --dc-shadow-soft:
+        0 8px 30px rgba(0, 0, 0, 0.06);
+
+    --dc-shadow-header:
+        0 5px 25px rgba(0, 0, 0, 0.08);
+
+    --dc-radius: 14px;
+
+    --dc-transition:
+        0.35s ease;
+}
+
+
+/* =========================================================
+   2. HEADER PREMIUM
+   ========================================================= */
+
+/*
+ * Estas regras complementam o Header existente.
+ *
+ * O objetivo é:
+ *
+ * - manter o Header no topo;
+ * - permitir que o JavaScript adicione a classe .header-scrolled;
+ * - criar uma transição suave;
+ * - preservar o layout atual.
+ */
+
+header {
+    transition:
+        background-color var(--dc-transition),
+        box-shadow var(--dc-transition),
+        backdrop-filter var(--dc-transition),
+        padding var(--dc-transition),
+        transform var(--dc-transition);
+}
+
+
+/* =========================================================
+   3. HEADER QUANDO A PÁGINA É ROLADA
+   ========================================================= */
+
+header.header-scrolled {
+
+    /* Verde original da DreamCraft com transparência */
+    background-color: rgba(111, 143, 112, 0.30);
+
+    /* Efeito de vidro */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* Sombra suave */
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* =========================================================
+   4. LOGO NO HEADER AO ROLAR
+   ========================================================= */
+
+header.header-scrolled img {
+
+    transition:
+        transform var(--dc-transition);
+
+}
+
+
+/* =========================================================
+   5. LINKS DO MENU
+   ========================================================= */
+
+header nav a {
+
+    position: relative;
+
+    transition:
+        color var(--dc-transition);
+
+}
+
+
+/*
+ * Linha animada abaixo do item do menu
+ */
+
+header nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background-color: var(--dc-green);
+
+    transform:
+        translateX(-50%);
+
+    transition:
+        width var(--dc-transition);
+
+}
+
+
+/*
+ * Hover
+ */
+
+header nav a:hover::after {
+
+    width: 70%;
+
+}
+
+
+/* =========================================================
+   6. MENU ATIVO
+   ========================================================= */
+
+header nav a.active::after {
+
+    width: 70%;
+
+}
+
+
+/* =========================================================
+   7. BOTÕES PREMIUM
+   ========================================================= */
+
+/*
+ * Caso seu site já possua a classe .cta-button,
+ * estas regras refinam a interação sem mudar
+ * a identidade visual.
+ */
+
+.cta-button {
+
+    transition:
+        transform var(--dc-transition),
+        box-shadow var(--dc-transition),
+        background-color var(--dc-transition);
+
+}
+
+
+.cta-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(63, 125, 88, 0.20);
+
+}
+
+
+/* =========================================================
+   8. MENU MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+
+    /*
+     * Header no mobile
+     */
+
+    header {
+
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+
+    /*
+     * Menu aberto
+     */
+
+    header nav.active {
+
+        box-shadow:
+            0 15px 35px rgba(0, 0, 0, 0.10);
+
+    }
+
+
+    /*
+     * Links maiores para facilitar o toque
+     */
+
+    header nav a {
+
+        padding-top: 12px;
+        padding-bottom: 12px;
+
+    }
+
+
+    /*
+     * Remover linha inferior no mobile.
+     * O destaque será feito pelo próprio item.
+     */
+
+    header nav a::after {
+
+        display: none;
+
+    }
+
+
+}
+
+
+/* =========================================================
+   9. ACESSIBILIDADE
+   ========================================================= */
+
+/*
+ * Remove animações para usuários que preferem
+ * redução de movimento no sistema operacional.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
+
+    }
+
+}
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   HERO PRINCIPAL
+   ========================================================= */
+
+
+/* =========================================================
+   1. HERO
+   ========================================================= */
+
+.hero-section {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+}
+
+
+/* =========================================================
+   2. IMAGEM DE FUNDO
+   ========================================================= */
+
+.hero-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -3;
+
+}
+
+
+.hero-background-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    animation:
+        heroImageZoom
+        12s
+        ease-out
+        forwards;
+
+}
+
+
+/* =========================================================
+   3. ZOOM SUAVE DA FOTO
+   ========================================================= */
+
+@keyframes heroImageZoom {
+
+    from {
+
+        transform:
+            scale(1.05);
+
+    }
+
+    to {
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   4. OVERLAY VERDE
+   ========================================================= */
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -2;
+
+    /*
+     * Utiliza a identidade verde da DreamCraft.
+     *
+     * O gradiente é mais forte no lado esquerdo,
+     * onde o texto será apresentado.
+     */
+
+    background:
+
+        linear-gradient(
+            90deg,
+
+            rgba(
+                42,
+                67,
+                48,
+                0.78
+            ) 0%,
+
+            rgba(
+                63,
+                91,
+                68,
+                0.55
+            ) 45%,
+
+            rgba(
+                63,
+                91,
+                68,
+                0.18
+            ) 100%
+        );
+
+}
+
+
+/* =========================================================
+   5. CONTEÚDO DO HERO
+   ========================================================= */
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            1200px,
+            calc(
+                100% - 80px
+            )
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        100px 0 80px;
+
+    color:
+        #ffffff;
+
+    text-align:
+        left;
+
+    animation:
+        heroContentEnter
+        1s
+        ease-out
+        both;
+
+}
+
+
+/* =========================================================
+   6. ANIMAÇÃO DO CONTEÚDO
+   ========================================================= */
+
+@keyframes heroContentEnter {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(
+                25px
+            );
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(
+                0
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   7. IDENTIFICAÇÃO DA MARCA
+   ========================================================= */
+
+.hero-tag {
+
+    display:
+        inline-block;
+
+    margin-bottom:
+        20px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        3px;
+
+    text-transform:
+        uppercase;
+
+    color:
+        #ffffff;
+
+    opacity:
+        0.95;
+
+}
+
+
+/* =========================================================
+   8. TÍTULO
+   ========================================================= */
+
+.hero-content h1 {
+
+    max-width:
+        800px;
+
+    margin:
+        0;
+
+    font-size:
+
+        clamp(
+            42px,
+            5vw,
+            72px
+        );
+
+    line-height:
+        1.08;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        -1.5px;
+
+}
+
+
+/*
+ * Segunda linha do título
+ */
+
+.hero-content h1 span {
+
+    display:
+        block;
+
+    color:
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   9. TEXTO
+   ========================================================= */
+
+.hero-content p {
+
+    max-width:
+        600px;
+
+    margin:
+        28px 0 0;
+
+    font-size:
+        19px;
+
+    line-height:
+        1.7;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.92
+        );
+
+}
+
+
+/* =========================================================
+   10. ÁREA DOS BOTÕES
+   ========================================================= */
+
+.hero-actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        16px;
+
+    margin-top:
+        35px;
+
+    flex-wrap:
+        wrap;
+
+}
+
+
+/* =========================================================
+   11. BOTÃO PRINCIPAL
+   ========================================================= */
+
+.hero-button-primary {
+
+    background-color:
+        #6f8f70;
+
+    color:
+        #ffffff;
+
+    box-shadow:
+
+        0
+        8px
+        25px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+
+}
+
+
+/* =========================================================
+   12. HOVER BOTÃO PRINCIPAL
+   ========================================================= */
+
+.hero-button-primary:hover {
+
+    background-color:
+        #5d7d60;
+
+    color:
+        #ffffff;
+
+    transform:
+        translateY(
+            -3px
+        );
+
+    box-shadow:
+
+        0
+        12px
+        30px
+        rgba(
+            0,
+            0,
+            0,
+            0.22
+        );
+
+}
+
+
+/* =========================================================
+   13. BOTÃO SECUNDÁRIO
+   ========================================================= */
+
+.hero-button-secondary {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        52px;
+
+    padding:
+        0 28px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+    border-radius:
+        999px;
+
+    background-color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    color:
+        #ffffff;
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+    text-decoration:
+        none;
+
+    backdrop-filter:
+        blur(
+            5px
+        );
+
+    -webkit-backdrop-filter:
+        blur(
+            5px
+        );
+
+    transition:
+
+        transform
+        0.35s
+        ease,
+
+        background-color
+        0.35s
+        ease,
+
+        color
+        0.35s
+        ease;
+
+}
+
+
+/* =========================================================
+   14. HOVER BOTÃO SECUNDÁRIO
+   ========================================================= */
+
+.hero-button-secondary:hover {
+
+    background-color:
+        #ffffff;
+
+    color:
+        #6f8f70;
+
+    transform:
+        translateY(
+            -3px
+        );
+
+}
+
+
+/* =========================================================
+   15. INDICADOR DE SCROLL
+   ========================================================= */
+
+.hero-scroll {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        30px;
+
+    z-index:
+        3;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+    transform:
+        translateX(
+            -50%
+        );
+
+    color:
+        #ffffff;
+
+    text-decoration:
+        none;
+
+    font-size:
+        12px;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+
+    opacity:
+        0.85;
+
+    transition:
+        opacity
+        0.3s
+        ease;
+
+}
+
+
+.hero-scroll:hover {
+
+    color:
+        #ffffff;
+
+    opacity:
+        1;
+
+}
+
+
+/* =========================================================
+   16. SETA DO SCROLL
+   ========================================================= */
+
+.hero-scroll-arrow {
+
+    font-size:
+        22px;
+
+    line-height:
+        1;
+
+    animation:
+        scrollArrow
+        1.8s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes scrollArrow {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(
+                0
+            );
+
+    }
+
+    50% {
+
+        transform:
+            translateY(
+                7px
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   17. TABLETS
+   ========================================================= */
+
+@media (
+    max-width: 900px
+) {
+
+    .hero-content {
+
+        width:
+            calc(
+                100% - 50px
+            );
+
+    }
+
+
+    .hero-content h1 {
+
+        max-width:
+            650px;
+
+    }
+
+}
+
+
+/* =========================================================
+   18. CELULARES
+   ========================================================= */
+
+@media (
+    max-width: 600px
+) {
+
+    .hero-section {
+
+        min-height:
+            100svh;
+
+    }
+
+
+    .hero-content {
+
+        width:
+            calc(
+                100% - 40px
+            );
+
+        padding:
+            100px 0 80px;
+
+        text-align:
+            center;
+
+    }
+
+
+    /*
+     * Overlay mais uniforme no celular.
+     */
+
+    .hero-overlay {
+
+        background:
+
+            linear-gradient(
+                180deg,
+
+                rgba(
+                    30,
+                    55,
+                    38,
+                    0.70
+                ) 0%,
+
+                rgba(
+                    30,
+                    55,
+                    38,
+                    0.55
+                ) 50%,
+
+                rgba(
+                    30,
+                    55,
+                    38,
+                    0.78
+                ) 100%
+            );
+
+    }
+
+
+    .hero-tag {
+
+        font-size:
+            11px;
+
+        letter-spacing:
+            2px;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size:
+
+            clamp(
+                36px,
+                10vw,
+                48px
+            );
+
+        letter-spacing:
+            -0.8px;
+
+    }
+
+
+    .hero-content p {
+
+        font-size:
+            16px;
+
+        line-height:
+            1.6;
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+
+    }
+
+
+    .hero-actions {
+
+        flex-direction:
+            column;
+
+        width:
+            100%;
+
+        align-items:
+            stretch;
+
+    }
+
+
+    /*
+     * Aproveita a classe cta-button
+     * que já existe no seu site.
+     */
+
+    .hero-actions .cta-button,
+    .hero-button-secondary {
+
+        width:
+            100%;
+
+        box-sizing:
+            border-box;
+
+    }
+
+
+    .hero-scroll {
+
+        bottom:
+            18px;
+
+    }
+
+}
+
+
+/* =========================================================
+   19. REDUÇÃO DE MOVIMENTO
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    .hero-background-image {
+
+        animation:
+            none;
+
+    }
+
+
+    .hero-content {
+
+        animation:
+            none;
+
+    }
+
+
+    .hero-scroll-arrow {
+
+        animation:
+            none;
+
+    }
+
+}
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   SEÇÃO NOSSA HISTÓRIA
+   ========================================================= */
+
+
+/* =========================================================
+   1. SEÇÃO
+   ========================================================= */
+
+.about-section {
+
+    position: relative;
+
+    padding:
+        120px
+        0;
+
+    background-color:
+        var(--cor-fundo);
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   2. CONTAINER
+   ========================================================= */
+
+.about-container {
+
+    width:
+        min(
+            1200px,
+            calc(
+                100% - 80px
+            )
+        );
+
+    margin:
+        0 auto;
+
+}
+
+
+/* =========================================================
+   3. CABEÇALHO DA SEÇÃO
+   ========================================================= */
+
+.section-heading {
+
+    max-width:
+        720px;
+
+}
+
+
+.about-heading {
+
+    margin:
+        0
+        auto
+        70px;
+
+    text-align:
+        center;
+
+}
+
+
+.section-tag {
+
+    display:
+        inline-block;
+
+    margin-bottom:
+        16px;
+
+    color:
+        #6f8f70;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        3px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.section-heading h2 {
+
+    margin:
+        0;
+
+    color:
+        #2e3d32;
+
+    font-size:
+
+        clamp(
+            36px,
+            4vw,
+            52px
+        );
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        -1px;
+
+}
+
+
+.section-heading h2 span {
+
+    display:
+        block;
+
+    color:
+        #6f8f70;
+
+}
+
+
+.section-heading p {
+
+    max-width:
+        620px;
+
+    margin:
+        24px
+        auto
+        0;
+
+    color:
+        #666666;
+
+    font-size:
+        18px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   4. GRID PRINCIPAL
+   ========================================================= */
+
+.about-content {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    align-items:
+        center;
+
+    gap:
+        90px;
+
+}
+
+
+/* =========================================================
+   5. ÁREA DA IMAGEM
+   ========================================================= */
+
+.about-image-wrapper {
+
+    position:
+        relative;
+
+    padding:
+        20px;
+
+}
+
+
+.about-image-frame {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    height:
+        600px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        20px;
+
+    box-shadow:
+
+        0
+        20px
+        50px
+        rgba(
+            0,
+            0,
+            0,
+            0.12
+        );
+
+}
+
+
+.about-image {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center;
+
+    display:
+        block;
+
+    transition:
+        transform
+        0.6s
+        ease;
+
+}
+
+
+.about-image-frame:hover
+.about-image {
+
+    transform:
+        scale(
+            1.04
+        );
+
+}
+
+
+/* =========================================================
+   6. DETALHE DECORATIVO
+   ========================================================= */
+
+.about-image-decoration {
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        140px;
+
+    height:
+        140px;
+
+    border:
+        2px
+        solid
+        #6f8f70;
+
+    border-radius:
+        20px;
+
+    z-index:
+        -1;
+
+}
+
+
+/* =========================================================
+   7. TEXTO
+   ========================================================= */
+
+.about-text {
+
+    max-width:
+        520px;
+
+}
+
+
+.about-small-title {
+
+    display:
+        block;
+
+    margin-bottom:
+        18px;
+
+    color:
+        #6f8f70;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.about-text h3 {
+
+    margin:
+        0
+        0
+        25px;
+
+    color:
+        #2e3d32;
+
+    font-size:
+
+        clamp(
+            28px,
+            3vw,
+            40px
+        );
+
+    line-height:
+        1.2;
+
+}
+
+
+.about-text p {
+
+    margin:
+        0
+        0
+        18px;
+
+    color:
+        #666666;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.8;
+
+}
+
+
+/* =========================================================
+   8. DIFERENCIAIS
+   ========================================================= */
+
+.about-highlights {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        18px;
+
+    margin:
+        35px
+        0;
+
+}
+
+
+.about-highlight {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+
+}
+
+
+.about-highlight-icon {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    flex-shrink:
+        0;
+
+    border-radius:
+        50%;
+
+    background-color:
+        #eaf2eb;
+
+    color:
+        #6f8f70;
+
+    font-size:
+        18px;
+
+}
+
+
+.about-highlight div {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+
+}
+
+
+.about-highlight strong {
+
+    color:
+        #2e3d32;
+
+    font-size:
+        15px;
+
+}
+
+
+.about-highlight div span {
+
+    color:
+        #777777;
+
+    font-size:
+        14px;
+
+}
+
+
+/* =========================================================
+   9. BOTÃO
+   ========================================================= */
+
+.about-button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        50px;
+
+    padding:
+        0
+        28px;
+
+    border-radius:
+        999px;
+
+    background-color:
+        #6f8f70;
+
+    color:
+        #ffffff;
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+    text-decoration:
+        none;
+
+    transition:
+
+        transform
+        0.35s
+        ease,
+
+        background-color
+        0.35s
+        ease,
+
+        box-shadow
+        0.35s
+        ease;
+
+}
+
+
+.about-button:hover {
+
+    background-color:
+        #5d7d60;
+
+    color:
+        #ffffff;
+
+    transform:
+        translateY(
+            -3px
+        );
+
+    box-shadow:
+
+        0
+        10px
+        25px
+        rgba(
+            63,
+            125,
+            88,
+            0.20
+        );
+
+}
+
+
+/* =========================================================
+   10. TABLETS
+   ========================================================= */
+
+@media (
+    max-width: 900px
+) {
+
+    .about-section {
+
+        padding:
+            90px
+            0;
+
+    }
+
+
+    .about-container {
+
+        width:
+            calc(
+                100% - 50px
+            );
+
+    }
+
+
+    .about-content {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            60px;
+
+    }
+
+
+    .about-text {
+
+        max-width:
+            700px;
+
+        margin:
+            0
+            auto;
+
+    }
+
+
+    .about-image-frame {
+
+        height:
+            500px;
+
+    }
+
+}
+
+
+/* =========================================================
+   11. CELULARES
+   ========================================================= */
+
+@media (
+    max-width: 600px
+) {
+
+    .about-section {
+
+        padding:
+            80px
+            0;
+
+    }
+
+
+    .about-container {
+
+        width:
+            calc(
+                100% - 40px
+            );
+
+    }
+
+
+    .about-heading {
+
+        margin-bottom:
+            50px;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size:
+            36px;
+
+    }
+
+
+    .section-heading p {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .about-image-wrapper {
+
+        padding:
+            10px;
+
+    }
+
+
+    .about-image-frame {
+
+        height:
+            430px;
+
+        border-radius:
+            16px;
+
+    }
+
+
+    .about-image-decoration {
+
+        width:
+            90px;
+
+        height:
+            90px;
+
+        border-radius:
+            14px;
+
+    }
+
+
+    .about-text h3 {
+
+        font-size:
+            30px;
+
+    }
+
+
+    .about-text p {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .about-button {
+
+        width:
+            100%;
+
+    }
+
+}
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   SEÇÃO NOSSAS DECORAÇÕES / SERVIÇOS
+   ========================================================= */
+
+
+/* =========================================================
+   1. SEÇÃO
+   ========================================================= */
+
+.services-section {
+
+    position:
+        relative;
+
+    padding:
+        120px
+        0;
+
+    background-color:
+        var(--cor-fundo-claro);
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   2. CONTAINER
+   ========================================================= */
+
+.services-container {
+
+    width:
+        min(
+            1200px,
+            calc(
+                100% - 80px
+            )
+        );
+
+    margin:
+        0 auto;
+
+}
+
+
+/* =========================================================
+   3. CABEÇALHO
+   ========================================================= */
+
+.services-heading {
+
+    margin:
+        0
+        auto
+        65px;
+
+    text-align:
+        center;
+
+}
+
+
+.services-heading p {
+
+    max-width:
+        650px;
+
+}
+
+
+/* =========================================================
+   4. GRID
+   ========================================================= */
+
+.services-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap:
+        30px;
+
+}
+
+
+/* =========================================================
+   5. CARD
+   ========================================================= */
+
+.service-card {
+
+    position:
+        relative;
+
+    min-height:
+        600px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        20px;
+
+    background-color:
+        var(--cor-fundo-claro);
+
+    box-shadow:
+
+        0
+        15px
+        40px
+        rgba(
+            0,
+            0,
+            0,
+            0.08
+        );
+
+    isolation:
+        isolate;
+
+}
+
+
+/* =========================================================
+   6. IMAGEM
+   ========================================================= */
+
+.service-card-image {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        -2;
+
+}
+
+
+.service-card-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center;
+
+    display:
+        block;
+
+    transition:
+        transform
+        0.7s
+        ease;
+
+}
+
+
+/* =========================================================
+   7. ZOOM NO HOVER
+   ========================================================= */
+
+.service-card:hover
+.service-card-image img {
+
+    transform:
+        scale(
+            1.06
+        );
+
+}
+
+
+/* =========================================================
+   8. OVERLAY
+   ========================================================= */
+
+.service-card-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+
+            rgba(
+                25,
+                45,
+                30,
+                0.05
+            ) 20%,
+
+            rgba(
+                25,
+                45,
+                30,
+                0.30
+            ) 45%,
+
+            rgba(
+                25,
+                45,
+                30,
+                0.88
+            ) 100%
+        );
+
+}
+
+
+/* =========================================================
+   9. CONTEÚDO
+   ========================================================= */
+
+.service-card-content {
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    bottom:
+        0;
+
+    z-index:
+        2;
+
+    padding:
+        45px;
+
+    color:
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   10. TAG
+   ========================================================= */
+
+.service-card-tag {
+
+    display:
+        block;
+
+    margin-bottom:
+        12px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.85
+        );
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =========================================================
+   11. TÍTULO
+   ========================================================= */
+
+.service-card-content h3 {
+
+    margin:
+        0;
+
+    color:
+        #ffffff;
+
+    font-size:
+        38px;
+
+    line-height:
+        1.15;
+
+}
+
+
+/* =========================================================
+   12. DESCRIÇÃO
+   ========================================================= */
+
+.service-card-content p {
+
+    max-width:
+        480px;
+
+    margin:
+        18px
+        0
+        25px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    font-size:
+        16px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   13. BOTÃO
+   ========================================================= */
+
+.service-card-button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+    text-decoration:
+        none;
+
+    transition:
+        gap
+        0.3s
+        ease;
+
+}
+
+
+.service-card-button span {
+
+    font-size:
+        22px;
+
+    line-height:
+        1;
+
+}
+
+
+.service-card-button:hover {
+
+    color:
+        #ffffff;
+
+    gap:
+        18px;
+
+}
+
+
+/* =========================================================
+   14. RODAPÉ DA SEÇÃO
+   ========================================================= */
+
+.services-footer {
+
+    margin:
+        45px
+        auto
+        0;
+
+    text-align:
+        center;
+
+}
+
+
+.services-footer p {
+
+    margin:
+        0;
+
+    color:
+        #6b756d;
+
+    font-size:
+        14px;
+
+}
+
+
+/* =========================================================
+   15. TABLETS
+   ========================================================= */
+
+@media (
+    max-width: 900px
+) {
+
+    .services-section {
+
+        padding:
+            90px
+            0;
+
+    }
+
+
+    .services-container {
+
+        width:
+            calc(
+                100% - 50px
+            );
+
+    }
+
+
+    .services-grid {
+
+        grid-template-columns:
+            1fr;
+
+        max-width:
+            650px;
+
+        margin:
+            0
+            auto;
+
+    }
+
+
+    .service-card {
+
+        min-height:
+            550px;
+
+    }
+
+}
+
+
+/* =========================================================
+   16. CELULARES
+   ========================================================= */
+
+@media (
+    max-width: 600px
+) {
+
+    .services-section {
+
+        padding:
+            80px
+            0;
+
+    }
+
+
+    .services-container {
+
+        width:
+            calc(
+                100% - 40px
+            );
+
+    }
+
+
+    .services-heading {
+
+        margin-bottom:
+            45px;
+
+    }
+
+
+    .service-card {
+
+        min-height:
+            520px;
+
+        border-radius:
+            16px;
+
+    }
+
+
+    .service-card-content {
+
+        padding:
+            30px;
+
+    }
+
+
+    .service-card-content h3 {
+
+        font-size:
+            32px;
+
+    }
+
+
+    .service-card-content p {
+
+        font-size:
+            15px;
+
+    }
+
+
+    .services-footer {
+
+        margin-top:
+            35px;
+
+    }
+
+}
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   PORTFÓLIO / GALERIA
+   ========================================================= */
+
+
+/* =========================================================
+   1. SEÇÃO
+   ========================================================= */
+
+.portfolio-section {
+
+    position:
+        relative;
+
+    padding:
+        120px
+        0;
+
+    background-color:
+        var(--cor-fundo);
+
+}
+
+
+/* =========================================================
+   2. CONTAINER
+   ========================================================= */
+
+.portfolio-container {
+
+    width:
+        min(
+            1200px,
+            calc(
+                100% - 80px
+            )
+        );
+
+    margin:
+        0 auto;
+
+}
+
+
+/* =========================================================
+   3. CABEÇALHO
+   ========================================================= */
+
+.portfolio-heading {
+
+    margin:
+        0
+        auto
+        65px;
+
+    text-align:
+        center;
+
+}
+
+
+.portfolio-heading p {
+
+    max-width:
+        650px;
+
+}
+
+
+/* =========================================================
+   4. GRID DA GALERIA
+   ========================================================= */
+
+.portfolio-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    grid-auto-rows:
+        280px;
+
+    gap:
+        18px;
+
+}
+
+
+/* =========================================================
+   5. ITEM
+   ========================================================= */
+
+.portfolio-item {
+
+    position:
+        relative;
+
+    display:
+        block;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        16px;
+
+    background-color:
+        #eaf0eb;
+
+    text-decoration:
+        none;
+
+}
+
+
+/* =========================================================
+   6. ITENS GRANDES
+   ========================================================= */
+
+.portfolio-item-large {
+
+    grid-row:
+        span 2;
+
+}
+
+
+/* =========================================================
+   7. IMAGEM
+   ========================================================= */
+
+.portfolio-item img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center;
+
+    transition:
+        transform
+        0.7s
+        ease;
+
+}
+
+
+/* =========================================================
+   8. ZOOM
+   ========================================================= */
+
+.portfolio-item:hover img {
+
+    transform:
+        scale(
+            1.07
+        );
+
+}
+
+
+/* =========================================================
+   9. OVERLAY
+   ========================================================= */
+
+.portfolio-item-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+
+        rgba(
+            63,
+            91,
+            68,
+            0.60
+        );
+
+    opacity:
+        0;
+
+    transition:
+        opacity
+        0.4s
+        ease;
+
+}
+
+
+/* =========================================================
+   10. HOVER OVERLAY
+   ========================================================= */
+
+.portfolio-item:hover
+.portfolio-item-overlay {
+
+    opacity:
+        1;
+
+}
+
+
+/* =========================================================
+   11. ÍCONE
+   ========================================================= */
+
+.portfolio-item-icon {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        55px;
+
+    height:
+        55px;
+
+    border:
+        1px
+        solid
+        rgba(
+            255,
+            255,
+            255,
+            0.8
+        );
+
+    border-radius:
+        50%;
+
+    color:
+        #ffffff;
+
+    font-size:
+        30px;
+
+    font-weight:
+        300;
+
+    transform:
+        scale(
+            0.7
+        );
+
+    transition:
+        transform
+        0.4s
+        ease;
+
+}
+
+
+.portfolio-item:hover
+.portfolio-item-icon {
+
+    transform:
+        scale(
+            1
+        );
+
+}
+
+
+/* =========================================================
+   12. BOTÃO
+   ========================================================= */
+
+.portfolio-footer {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    margin-top:
+        50px;
+
+}
+
+
+.portfolio-button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    min-height:
+        52px;
+
+    padding:
+        0
+        30px;
+
+    border:
+        1px
+        solid
+        #6f8f70;
+
+    border-radius:
+        999px;
+
+    color:
+        #6f8f70;
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+    text-decoration:
+        none;
+
+    transition:
+
+        background-color
+        0.35s
+        ease,
+
+        color
+        0.35s
+        ease,
+
+        gap
+        0.35s
+        ease;
+
+}
+
+
+.portfolio-button span {
+
+    font-size:
+        21px;
+
+}
+
+
+.portfolio-button:hover {
+
+    background-color:
+        #6f8f70;
+
+    color:
+        #ffffff;
+
+    gap:
+        18px;
+
+}
+
+
+/* =========================================================
+   13. TABLETS
+   ========================================================= */
+
+@media (
+    max-width: 900px
+) {
+
+    .portfolio-section {
+
+        padding:
+            90px
+            0;
+
+    }
+
+
+    .portfolio-container {
+
+        width:
+            calc(
+                100% - 50px
+            );
+
+    }
+
+
+    .portfolio-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+
+        grid-auto-rows:
+            260px;
+
+    }
+
+}
+
+
+/* =========================================================
+   14. CELULARES
+   ========================================================= */
+
+@media (
+    max-width: 600px
+) {
+
+    .portfolio-section {
+
+        padding:
+            80px
+            0;
+
+    }
+
+
+    .portfolio-container {
+
+        width:
+            calc(
+                100% - 40px
+            );
+
+    }
+
+
+    .portfolio-heading {
+
+        margin-bottom:
+            45px;
+
+    }
+
+
+    .portfolio-grid {
+
+        grid-template-columns:
+            1fr;
+
+        grid-auto-rows:
+            300px;
+
+    }
+
+
+    .portfolio-item-large {
+
+        grid-row:
+            span 1;
+
+    }
+
+
+    /*
+     * No celular o overlay fica sempre
+     * parcialmente visível, pois não existe
+     * hover tradicional.
+     */
+
+    .portfolio-item-overlay {
+
+        opacity:
+            0;
+
+    }
+
+
+    .portfolio-footer {
+
+        margin-top:
+            35px;
+
+    }
+
+
+    .portfolio-button {
+
+        width:
+            100%;
+
+        justify-content:
+            center;
+
+        box-sizing:
+            border-box;
+
+    }
+
+}
+/* =========================================================
+   LIGHTBOX DO PORTFÓLIO
+   ========================================================= */
+
+
+/* =========================================================
+   1. LIGHTBOX
+   ========================================================= */
+
+.portfolio-lightbox {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        9999;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        40px;
+
+    background:
+
+        rgba(
+            20,
+            30,
+            23,
+            0.94
+        );
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    transition:
+
+        opacity
+        0.3s
+        ease,
+
+        visibility
+        0.3s
+        ease;
+
+}
+
+
+/* =========================================================
+   2. ATIVO
+   ========================================================= */
+
+.portfolio-lightbox.active {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+}
+
+
+/* =========================================================
+   3. IMAGEM
+   ========================================================= */
+
+.portfolio-lightbox-image {
+
+    max-width:
+        90vw;
+
+    max-height:
+        85vh;
+
+    width:
+        auto;
+
+    height:
+        auto;
+
+    object-fit:
+        contain;
+
+    border-radius:
+        8px;
+
+    box-shadow:
+
+        0
+        20px
+        60px
+        rgba(
+            0,
+            0,
+            0,
+            0.35
+        );
+
+}
+
+
+/* =========================================================
+   4. BOTÃO FECHAR
+   ========================================================= */
+
+.portfolio-lightbox-close {
+
+    position:
+        absolute;
+
+    top:
+        25px;
+
+    right:
+        30px;
+
+    width:
+        50px;
+
+    height:
+        50px;
+
+    border:
+        1px
+        solid
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
+
+    border-radius:
+        50%;
+
+    background:
+        transparent;
+
+    color:
+        #ffffff;
+
+    font-size:
+        32px;
+
+    font-weight:
+        300;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+    transition:
+        background-color
+        0.3s
+        ease;
+
+}
+
+
+.portfolio-lightbox-close:hover {
+
+    background-color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+
+}
+
+
+/* =========================================================
+   5. NAVEGAÇÃO
+   ========================================================= */
+
+.portfolio-lightbox-prev,
+.portfolio-lightbox-next {
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    width:
+        55px;
+
+    height:
+        55px;
+
+    border:
+        1px
+        solid
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+
+    color:
+        #ffffff;
+
+    font-size:
+        36px;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+    transform:
+        translateY(
+            -50%
+        );
+
+    transition:
+
+        background-color
+        0.3s
+        ease;
+
+}
+
+
+.portfolio-lightbox-prev:hover,
+.portfolio-lightbox-next:hover {
+
+    background:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+
+}
+
+
+.portfolio-lightbox-prev {
+
+    left:
+        30px;
+
+}
+
+
+.portfolio-lightbox-next {
+
+    right:
+        30px;
+
+}
+
+
+/* =========================================================
+   6. BLOQUEAR SCROLL
+   ========================================================= */
+
+body.lightbox-open {
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   7. MOBILE
+   ========================================================= */
+
+@media (
+    max-width: 600px
+) {
+
+    .portfolio-lightbox {
+
+        padding:
+            20px;
+
+    }
+
+
+    .portfolio-lightbox-image {
+
+        max-width:
+            95vw;
+
+        max-height:
+            75vh;
+
+    }
+
+
+    .portfolio-lightbox-close {
+
+        top:
+            15px;
+
+        right:
+            15px;
+
+        width:
+            45px;
+
+        height:
+            45px;
+
+    }
+
+
+    .portfolio-lightbox-prev,
+    .portfolio-lightbox-next {
+
+        width:
+            45px;
+
+        height:
+            45px;
+
+        font-size:
+            28px;
+
+    }
+
+
+    .portfolio-lightbox-prev {
+
+        left:
+            10px;
+
+    }
+
+
+    .portfolio-lightbox-next {
+
+        right:
+            10px;
+
+    }
+
+}
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   PROJETO ESPECIAL — APAE 60 ANOS
+   ========================================================= */
+
+
+/* =========================================================
+   1. SEÇÃO
+   ========================================================= */
+
+.special-project-section {
+
+    position:
+        relative;
+
+    padding:
+        120px
+        0;
+
+    background-color:
+        var(--cor-fundo-claro);
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   2. CONTAINER
+   ========================================================= */
+
+.special-project-container {
+
+    width:
+        min(
+            1200px,
+            calc(
+                100% - 80px
+            )
+        );
+
+    margin:
+        0 auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.1fr
+        0.9fr;
+
+    align-items:
+        center;
+
+    gap:
+        80px;
+
+}
+
+
+/* =========================================================
+   3. IMAGEM
+   ========================================================= */
+
+.special-project-image {
+
+    position:
+        relative;
+
+    height:
+        600px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        20px;
+
+    box-shadow:
+
+        0
+        20px
+        50px
+        rgba(
+            0,
+            0,
+            0,
+            0.10
+        );
+
+}
+
+
+.special-project-image::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(
+                0,
+                0,
+                0,
+                0
+            ),
+            rgba(
+                40,
+                60,
+                45,
+                0.10
+            )
+        );
+
+    pointer-events:
+        none;
+
+}
+
+
+.special-project-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center;
+
+    transition:
+        transform
+        0.7s
+        ease;
+
+}
+
+
+.special-project-image:hover img {
+
+    transform:
+        scale(
+            1.04
+        );
+
+}
+
+
+/* =========================================================
+   4. CONTEÚDO
+   ========================================================= */
+
+.special-project-content {
+
+    max-width:
+        500px;
+
+}
+
+
+.special-project-content h2 {
+
+    margin:
+        0
+        0
+        25px;
+
+    color:
+        #2e3d32;
+
+    font-size:
+
+        clamp(
+            36px,
+            4vw,
+            52px
+        );
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        -1px;
+
+}
+
+
+.special-project-content h2 span {
+
+    display:
+        block;
+
+    color:
+        #6f8f70;
+
+}
+
+
+.special-project-content p {
+
+    margin:
+        0
+        0
+        20px;
+
+    color:
+        #666666;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.8;
+
+}
+
+
+.special-project-content
+.special-project-intro {
+
+    color:
+        #4f5d52;
+
+    font-size:
+        19px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   5. DESTAQUE
+   ========================================================= */
+
+.special-project-highlight {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+
+    margin:
+        30px
+        0;
+
+    padding:
+        20px;
+
+    border-left:
+        3px
+        solid
+        #6f8f70;
+
+    background-color:
+        rgba(
+            111,
+            143,
+            112,
+            0.08
+        );
+
+}
+
+
+.special-project-highlight-icon {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    flex-shrink:
+        0;
+
+    border-radius:
+        50%;
+
+    background-color:
+        #6f8f70;
+
+    color:
+        #ffffff;
+
+    font-size:
+        18px;
+
+}
+
+
+.special-project-highlight div {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        4px;
+
+}
+
+
+.special-project-highlight strong {
+
+    color:
+        #2e3d32;
+
+    font-size:
+        15px;
+
+}
+
+
+.special-project-highlight div span {
+
+    color:
+        #6f756d;
+
+    font-size:
+        14px;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================================================
+   6. BOTÃO
+   ========================================================= */
+
+.special-project-button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    min-height:
+        52px;
+
+    padding:
+        0
+        30px;
+
+    border-radius:
+        999px;
+
+    background-color:
+        #6f8f70;
+
+    color:
+        #ffffff;
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+    text-decoration:
+        none;
+
+    transition:
+
+        background-color
+        0.3s
+        ease,
+
+        transform
+        0.3s
+        ease,
+
+        gap
+        0.3s
+        ease;
+
+}
+
+
+.special-project-button span {
+
+    font-size:
+        21px;
+
+}
+
+
+.special-project-button:hover {
+
+    background-color:
+        #5d7d60;
+
+    color:
+        #ffffff;
+
+    transform:
+        translateY(
+            -3px
+        );
+
+    gap:
+        18px;
+
+}
+
+
+/* =========================================================
+   7. TABLETS
+   ========================================================= */
+
+@media (
+    max-width: 900px
+) {
+
+    .special-project-section {
+
+        padding:
+            90px
+            0;
+
+    }
+
+
+    .special-project-container {
+
+        width:
+            calc(
+                100% - 50px
+            );
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            50px;
+
+    }
+
+
+    .special-project-image {
+
+        height:
+            500px;
+
+    }
+
+
+    .special-project-content {
+
+        max-width:
+            700px;
+
+    }
+
+}
+
+
+/* =========================================================
+   8. CELULARES
+   ========================================================= */
+
+@media (
+    max-width: 600px
+) {
+
+    .special-project-section {
+
+        padding:
+            80px
+            0;
+
+    }
+
+
+    .special-project-container {
+
+        width:
+            calc(
+                100% - 40px
+            );
+
+    }
+
+
+    .special-project-image {
+
+        height:
+            420px;
+
+        border-radius:
+            16px;
+
+    }
+
+
+    .special-project-content h2 {
+
+        font-size:
+            36px;
+
+    }
+
+
+    .special-project-content p {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .special-project-content
+    .special-project-intro {
+
+        font-size:
+            17px;
+
+    }
+
+
+    .special-project-button {
+
+        width:
+            100%;
+
+        justify-content:
+            center;
+
+        box-sizing:
+            border-box;
+
+    }
+
+}
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   DEPOIMENTOS
+   ========================================================= */
+
+
+/* =========================================================
+   1. SEÇÃO
+   ========================================================= */
+
+.testimonials-section {
+
+    padding:
+        120px
+        0;
+
+    background-color:
+        var(--cor-fundo);
+
+}
+
+
+/* =========================================================
+   2. CONTAINER
+   ========================================================= */
+
+.testimonials-container {
+
+    width:
+        min(
+            1200px,
+            calc(
+                100% - 80px
+            )
+        );
+
+    margin:
+        0 auto;
+
+}
+
+
+/* =========================================================
+   3. CABEÇALHO
+   ========================================================= */
+
+.testimonials-heading {
+
+    max-width:
+        700px;
+
+    margin:
+        0
+        auto
+        65px;
+
+    text-align:
+        center;
+
+}
+
+
+.testimonials-heading h2 {
+
+    margin:
+        20px
+        0;
+
+}
+
+
+.testimonials-heading h2 span {
+
+    color:
+        #6f8f70;
+
+}
+
+
+.testimonials-heading p {
+
+    margin:
+        0
+        auto;
+
+    max-width:
+        650px;
+
+}
+
+
+/* =========================================================
+   4. GRID
+   ========================================================= */
+
+.testimonials-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap:
+        24px;
+
+}
+
+
+/* =========================================================
+   5. CARD
+   ========================================================= */
+
+.testimonial-card {
+
+    position:
+        relative;
+
+    padding:
+        40px;
+
+    border:
+        1px
+        solid
+        rgba(
+            111,
+            143,
+            112,
+            0.15
+        );
+
+    border-radius:
+        18px;
+
+    background-color:
+        #f8faf8;
+
+    transition:
+
+        transform
+        0.35s
+        ease,
+
+        box-shadow
+        0.35s
+        ease;
+
+}
+
+
+.testimonial-card:hover {
+
+    transform:
+        translateY(
+            -6px
+        );
+
+    box-shadow:
+
+        0
+        18px
+        40px
+        rgba(
+            47,
+            70,
+            52,
+            0.08
+        );
+
+}
+
+
+/* =========================================================
+   6. ESTRELAS
+   ========================================================= */
+
+.testimonial-stars {
+
+    margin-bottom:
+        25px;
+
+    color:
+        #6f8f70;
+
+    font-size:
+        18px;
+
+    letter-spacing:
+        3px;
+
+}
+
+
+/* =========================================================
+   7. DEPOIMENTO
+   ========================================================= */
+
+.testimonial-card blockquote {
+
+    margin:
+        0
+        0
+        35px;
+
+    color:
+        #555e57;
+
+    font-size:
+        16px;
+
+    line-height:
+        1.8;
+
+    font-style:
+        italic;
+
+}
+
+
+/* =========================================================
+   8. AUTOR
+   ========================================================= */
+
+.testimonial-author {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+}
+
+
+.testimonial-author-avatar {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        45px;
+
+    height:
+        45px;
+
+    flex-shrink:
+        0;
+
+    border-radius:
+        50%;
+
+    background-color:
+        #6f8f70;
+
+    color:
+        #ffffff;
+
+    font-size:
+        16px;
+
+    font-weight:
+        600;
+
+}
+
+
+.testimonial-author div:last-child {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        4px;
+
+}
+
+
+.testimonial-author strong {
+
+    color:
+        #2e3d32;
+
+    font-size:
+        14px;
+
+}
+
+
+.testimonial-author span {
+
+    color:
+        #7b827d;
+
+    font-size:
+        13px;
+
+}
+
+
+/* =========================================================
+   9. TABLETS
+   ========================================================= */
+
+@media (
+    max-width: 900px
+) {
+
+    .testimonials-section {
+
+        padding:
+            90px
+            0;
+
+    }
+
+
+    .testimonials-container {
+
+        width:
+            calc(
+                100% - 50px
+            );
+
+    }
+
+
+    .testimonials-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .testimonial-card {
+
+        padding:
+            35px;
+
+    }
+
+}
+
+
+/* =========================================================
+   10. CELULARES
+   ========================================================= */
+
+@media (
+    max-width: 600px
+) {
+
+    .testimonials-section {
+
+        padding:
+            80px
+            0;
+
+    }
+
+
+    .testimonials-container {
+
+        width:
+            calc(
+                100% - 40px
+            );
+
+    }
+
+
+    .testimonials-heading {
+
+        margin-bottom:
+            45px;
+
+    }
+
+
+    .testimonial-card {
+
+        padding:
+            30px;
+
+    }
+
+
+    .testimonial-card blockquote {
+
+        font-size:
+            15px;
+
+    }
+
+}
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   CTA FINAL
+   ========================================================= */
+
+
+/* =========================================================
+   1. SEÇÃO
+   ========================================================= */
+
+.final-cta-section {
+
+    position:
+        relative;
+
+    padding:
+        130px
+        0;
+
+    background-color:
+        var(--cor-fundo-claro);
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   2. ELEMENTOS DECORATIVOS
+   ========================================================= */
+
+.final-cta-section::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        500px;
+
+    height:
+        500px;
+
+    top:
+        -250px;
+
+    right:
+        -150px;
+
+    border:
+        1px
+        solid
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    border-radius:
+        50%;
+
+}
+
+
+.final-cta-section::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        350px;
+
+    height:
+        350px;
+
+    bottom:
+        -200px;
+
+    left:
+        -100px;
+
+    border:
+        1px
+        solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border-radius:
+        50%;
+
+}
+
+
+/* =========================================================
+   3. CONTAINER
+   ========================================================= */
+
+.final-cta-container {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        min(
+            800px,
+            calc(
+                100% - 50px
+            )
+        );
+
+    margin:
+        0 auto;
+
+    text-align:
+        center;
+
+}
+
+
+/* =========================================================
+   4. CONTEÚDO
+   ========================================================= */
+
+.final-cta-content
+.section-tag {
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.80
+        );
+
+}
+
+
+.final-cta-content h2 {
+
+    margin:
+        20px
+        0
+        25px;
+
+    color:
+        #ffffff;
+
+    font-size:
+
+        clamp(
+            40px,
+            5vw,
+            62px
+        );
+
+    line-height:
+        1.1;
+
+    letter-spacing:
+        -1px;
+
+}
+
+
+.final-cta-content h2 span {
+
+    display:
+        block;
+
+    color:
+        #ffffff;
+
+}
+
+
+.final-cta-content p {
+
+    max-width:
+        650px;
+
+    margin:
+        0
+        auto
+        40px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    font-size:
+        18px;
+
+    line-height:
+        1.8;
+
+}
+
+
+/* =========================================================
+   5. BOTÕES
+   ========================================================= */
+
+.final-cta-buttons {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        15px;
+
+    flex-wrap:
+        wrap;
+
+}
+
+
+.final-cta-primary,
+.final-cta-secondary {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    min-height:
+        52px;
+
+    padding:
+        0
+        30px;
+
+    border-radius:
+        999px;
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+    text-decoration:
+        none;
+
+    transition:
+
+        background-color
+        0.3s
+        ease,
+
+        color
+        0.3s
+        ease,
+
+        transform
+        0.3s
+        ease;
+
+}
+
+
+/* =========================================================
+   6. BOTÃO PRINCIPAL
+   ========================================================= */
+
+.final-cta-primary {
+
+    background-color:
+        #ffffff;
+
+    color:
+        #6f8f70;
+
+}
+
+
+.final-cta-primary span {
+
+    font-size:
+        20px;
+
+}
+
+
+.final-cta-primary:hover {
+
+    background-color:
+        #f1f5f1;
+
+    color:
+        #5d7d60;
+
+    transform:
+        translateY(
+            -3px
+        );
+
+}
+
+
+/* =========================================================
+   7. BOTÃO SECUNDÁRIO
+   ========================================================= */
+
+.final-cta-secondary {
+
+    border:
+        1px
+        solid
+        rgba(
+            255,
+            255,
+            255,
+            0.65
+        );
+
+    color:
+        #ffffff;
+
+}
+
+
+.final-cta-secondary:hover {
+
+    background-color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    border-color:
+        #ffffff;
+
+    transform:
+        translateY(
+            -3px
+        );
+
+}
+
+
+/* =========================================================
+   8. MOBILE
+   ========================================================= */
+
+@media (
+    max-width: 600px
+) {
+
+    .final-cta-section {
+
+        padding:
+            90px
+            0;
+
+    }
+
+
+    .final-cta-container {
+
+        width:
+            calc(
+                100% - 40px
+            );
+
+    }
+
+
+    .final-cta-content h2 {
+
+        font-size:
+            38px;
+
+    }
+
+
+    .final-cta-content p {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .final-cta-buttons {
+
+        flex-direction:
+            column;
+
+        width:
+            100%;
+
+    }
+
+
+    .final-cta-primary,
+    .final-cta-secondary {
+
+        width:
+            100%;
+
+        box-sizing:
+            border-box;
+
+    }
+
+}
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   FOOTER
+   ========================================================= */
+
+
+/* =========================================================
+   1. FOOTER
+   ========================================================= */
+
+.site-footer {
+
+    background-color:
+        #26352a;
+
+    color:
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   2. CONTAINER PRINCIPAL
+   ========================================================= */
+
+.footer-container {
+
+    width:
+        min(
+            1200px,
+            calc(
+                100% - 80px
+            )
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        80px
+        0;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.5fr
+        1fr
+        1fr
+        1.2fr;
+
+    gap:
+        60px;
+
+}
+
+
+/* =========================================================
+   3. LOGO
+   ========================================================= */
+
+.footer-logo {
+
+    display:
+        inline-block;
+
+    margin-bottom:
+        25px;
+
+}
+
+
+.footer-logo img {
+
+    background-color: transparent;
+
+    width:
+        170px;
+
+    max-width:
+        100%;
+
+    height:
+        auto;
+
+    display:
+        block;
+
+}
+
+
+/* =========================================================
+   4. DESCRIÇÃO
+   ========================================================= */
+
+.footer-brand > p {
+
+    max-width:
+        320px;
+
+    margin:
+        0
+        0
+        25px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.65
+        );
+
+    font-size:
+        14px;
+
+    line-height:
+        1.8;
+
+}
+
+
+/* =========================================================
+   5. TÍTULOS
+   ========================================================= */
+
+.footer-column h3 {
+
+    margin:
+        0
+        0
+        25px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+}
+
+
+/* =========================================================
+   6. LINKS
+   ========================================================= */
+
+.footer-links {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        12px;
+
+}
+
+
+.footer-links a {
+
+    width:
+        fit-content;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.62
+        );
+
+    font-size:
+        14px;
+
+    text-decoration:
+        none;
+
+    transition:
+
+        color
+        0.3s
+        ease,
+
+        transform
+        0.3s
+        ease;
+
+}
+
+
+.footer-links a:hover {
+
+    color:
+        #ffffff;
+
+    transform:
+        translateX(
+            4px
+        );
+
+}
+
+
+/* =========================================================
+   7. REDES SOCIAIS
+   ========================================================= */
+
+.footer-social {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+}
+
+
+.footer-social a {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        38px;
+
+    padding:
+        0
+        16px;
+
+    border:
+        1px
+        solid
+        rgba(
+            255,
+            255,
+            255,
+            0.20
+        );
+
+    border-radius:
+        999px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+    font-size:
+        12px;
+
+    text-decoration:
+        none;
+
+    transition:
+
+        background-color
+        0.3s
+        ease,
+
+        border-color
+        0.3s
+        ease,
+
+        color
+        0.3s
+        ease;
+
+}
+
+
+.footer-social a:hover {
+
+    background-color:
+        #6f8f70;
+
+    border-color:
+        #6f8f70;
+
+    color:
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   8. CONTATO
+   ========================================================= */
+
+.footer-contact p {
+
+    margin:
+        0
+        0
+        20px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.62
+        );
+
+    font-size:
+        14px;
+
+    line-height:
+        1.7;
+
+}
+
+
+.footer-contact-link {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    width:
+        fit-content;
+
+    margin-bottom:
+        12px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.80
+        );
+
+    font-size:
+        14px;
+
+    line-height:
+        1.5;
+
+    text-decoration:
+        none;
+
+    transition:
+        color
+        0.3s
+        ease;
+
+}
+
+
+.footer-contact-link:hover {
+
+    color:
+        #ffffff;
+
+}
+
+
+.footer-contact-link span {
+
+    font-size:
+        18px;
+
+}
+
+
+/* =========================================================
+   9. LINHA INFERIOR
+   ========================================================= */
+
+.footer-bottom {
+
+    border-top:
+        1px
+        solid
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+}
+
+
+.footer-bottom-container {
+
+    width:
+        min(
+            1200px,
+            calc(
+                100% - 80px
+            )
+        );
+
+    min-height:
+        70px;
+
+    margin:
+        0 auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+}
+
+
+.footer-bottom p {
+
+    margin:
+        0;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.45
+        );
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   10. TABLETS
+   ========================================================= */
+
+@media (
+    max-width: 1000px
+) {
+
+    .footer-container {
+
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+
+        gap:
+            50px;
+
+    }
+
+}
+
+
+/* =========================================================
+   11. CELULARES
+   ========================================================= */
+
+@media (
+    max-width: 600px
+) {
+
+    .footer-container {
+
+        width:
+            calc(
+                100% - 40px
+            );
+
+        padding:
+            60px
+            0;
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            40px;
+
+    }
+
+
+    .footer-brand > p {
+
+        max-width:
+            100%;
+
+    }
+
+
+    .footer-bottom-container {
+
+        width:
+            calc(
+                100% - 40px
+            );
+
+        padding:
+            20px
+            0;
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+    }
+
+}
+/* =========================================================
+   DREAMCRAFT DECORAÇÕES
+   SEÇÃO DE CONTATO PREMIUM
+   ========================================================= */
+
+.contact-section {
+
+    position: relative;
+
+    background:
+            var(--cor-fundo-claro);
+
+    padding: 110px 20px;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.contact-container {
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.contact-heading {
+
+    max-width: 750px;
+
+    margin: 0 auto 70px;
+
+    text-align: center;
+
+}
+
+
+.contact-heading h2 {
+
+    margin-bottom: 25px;
+
+}
+
+
+.contact-heading p {
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #666;
+
+    font-size: 1.05rem;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================= */
+
+.contact-content {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(0, 1.1fr);
+
+    gap: 50px;
+
+    align-items: stretch;
+
+}
+
+
+/* =========================================================
+   INFORMAÇÕES
+   ========================================================= */
+
+.contact-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+}
+
+
+/* =========================================================
+   CARD DE CONTATO
+   ========================================================= */
+
+.contact-info-card {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 22px 25px;
+
+    min-height: 100px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(111, 143, 112, 0.15);
+
+    border-radius: 15px;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.05);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+
+}
+
+
+.contact-info-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(111, 143, 112, 0.45);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.09);
+
+}
+
+
+/* =========================================================
+   ÍCONE
+   ========================================================= */
+
+.contact-info-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(111, 143, 112, 0.12);
+
+    color:
+        #6f8f70;
+
+    font-size: 1.4rem;
+
+}
+
+
+.contact-info-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    min-width: 0;
+
+}
+
+
+.contact-info-text span {
+
+    color:
+        #6f8f70;
+
+    font-size: 0.72rem;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+}
+
+
+.contact-info-text strong {
+
+    color:
+        #333;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    overflow-wrap: anywhere;
+
+}
+
+
+.contact-info-text small {
+
+    color:
+        #777;
+
+    font-size: 0.82rem;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   SETA
+   ========================================================= */
+
+.contact-card-arrow {
+
+    margin-left: auto;
+
+    color:
+        #6f8f70;
+
+    font-size: 1.4rem;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.contact-info-card:hover
+.contact-card-arrow {
+
+    transform:
+        translateX(5px);
+
+}
+
+
+/* =========================================================
+   ENDEREÇO
+   ========================================================= */
+
+.contact-address-card {
+
+    cursor: default;
+
+}
+
+
+.contact-address-card:hover {
+
+    transform: none;
+
+}
+
+
+/* =========================================================
+   MAPA
+   ========================================================= */
+
+.contact-map-wrapper {
+
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+        #ffffff;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(111, 143, 112, 0.15);
+
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.07);
+
+}
+
+
+/* =========================================================
+   CABEÇALHO DO MAPA
+   ========================================================= */
+
+.contact-map-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 25px 30px;
+
+}
+
+
+.contact-map-tag {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color:
+        #6f8f70;
+
+    font-size: 0.7rem;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+}
+
+
+.contact-map-header h3 {
+
+    margin: 0;
+
+    color:
+        #333;
+
+    font-size: 1.35rem;
+
+}
+
+
+.contact-map-header > i {
+
+    width: 50px;
+
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(111, 143, 112, 0.12);
+
+    color:
+        #6f8f70;
+
+    font-size: 1.3rem;
+
+}
+
+
+/* =========================================================
+   ÁREA DO MAPA
+   ========================================================= */
+
+.contact-map {
+
+    width: 100%;
+
+    height: 350px;
+
+    background:
+        #eeeeee;
+
+}
+
+
+.contact-map iframe {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+/* =========================================================
+   BOTÕES DO MAPA
+   ========================================================= */
+
+.contact-map-actions {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+
+    padding: 20px 25px 25px;
+
+}
+
+
+.contact-map-button,
+.contact-review-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 50px;
+
+    padding: 12px 18px;
+
+    border-radius: 50px;
+
+    text-decoration: none;
+
+    font-size: 0.85rem;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.contact-map-button {
+
+    background:
+        #6f8f70;
+
+    color:
+        #ffffff;
+
+}
+
+
+.contact-map-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(111, 143, 112, 0.3);
+
+}
+
+
+.contact-review-button {
+
+    background:
+        #ffffff;
+
+    color:
+        #6f8f70;
+
+    border:
+        1px solid
+        rgba(111, 143, 112, 0.4);
+
+}
+
+
+.contact-review-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(111, 143, 112, 0.07);
+
+}
+
+
+/* =========================================================
+   CTA FINAL
+   ========================================================= */
+
+.contact-final-cta {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-top: 60px;
+
+    padding: 35px 40px;
+
+    background:
+        #6f8f70;
+
+    border-radius: 20px;
+
+    color:
+        #ffffff;
+
+    box-shadow:
+        0 15px 35px
+        rgba(111, 143, 112, 0.2);
+
+}
+
+
+.contact-final-cta-content {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+
+.contact-final-cta-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 55px;
+
+    height: 55px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    font-size: 1.5rem;
+
+}
+
+
+.contact-final-cta h3 {
+
+    margin:
+        0 0 5px;
+
+    color:
+        #ffffff;
+
+    font-size: 1.4rem;
+
+}
+
+
+.contact-final-cta p {
+
+    margin:
+        0;
+
+    color:
+        rgba(255, 255, 255, 0.85);
+
+    font-size: 0.95rem;
+
+}
+
+
+/* =========================================================
+   BOTÃO FINAL
+   ========================================================= */
+
+.contact-final-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+
+    padding: 15px 25px;
+
+    border-radius: 50px;
+
+    background:
+        #ffffff;
+
+    color:
+        #6f8f70;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.contact-final-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(0, 0, 0, 0.15);
+
+}
+
+
+.contact-final-button i {
+
+    font-size: 1.2rem;
+
+}
+
+
+.contact-final-button span {
+
+    font-size: 1.2rem;
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 968px) {
+
+    .contact-content {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .contact-map-wrapper {
+
+        order:
+            -1;
+
+    }
+
+
+    .contact-info {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .contact-address-card {
+
+        grid-column:
+            span 2;
+
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .contact-section {
+
+        padding:
+            80px 20px;
+
+    }
+
+
+    .contact-heading {
+
+        margin-bottom:
+            45px;
+
+    }
+
+
+    .contact-heading h2 {
+
+        font-size:
+            2rem;
+
+    }
+
+
+    .contact-info {
+
+        display: flex;
+
+    }
+
+
+    .contact-map {
+
+        height:
+            300px;
+
+    }
+
+
+    .contact-map-actions {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .contact-final-cta {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        padding:
+            30px;
+
+    }
+
+
+    .contact-final-button {
+
+        width:
+            100%;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .contact-section {
+
+        padding:
+            65px 15px;
+
+    }
+
+
+    .contact-info-card {
+
+        padding:
+            18px;
+
+        gap:
+            14px;
+
+    }
+
+
+    .contact-info-icon {
+
+        width:
+            48px;
+
+        height:
+            48px;
+
+        font-size:
+            1.2rem;
+
+    }
+
+
+    .contact-info-text strong {
+
+        font-size:
+            0.9rem;
+
+    }
+
+
+    .contact-info-text small {
+
+        font-size:
+            0.76rem;
+
+    }
+
+
+    .contact-map-header {
+
+        padding:
+            20px;
+
+    }
+
+
+    .contact-map-actions {
+
+        padding:
+            15px 20px 20px;
+
+    }
+
+
+    .contact-final-cta {
+
+        padding:
+            25px 20px;
+
+    }
+
+
+    .contact-final-cta-content {
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .contact-final-cta h3 {
+
+        font-size:
+            1.2rem;
+
+    }
+
+}

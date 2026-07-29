@@ -1,47 +1,417 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
+    <!-- =====================================================
+         CONFIGURAÇÕES BÁSICAS
+         ===================================================== -->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DreamCraft - Decoração de festas personalizadas em Limeira. Mini festas, festa completa e personalizados. Transformamos sonhos em realidade!">
-    <meta name="keywords" content="decoração festas, mini festa, festa infantil, decoração personalizada, Limeira">
-    <meta property="og:image" content="Logo/logo-festas.png">
-    <title>DreamCraft - Fazendo sonhos se tornarem realidade!</title>
-    <link rel="icon" type="image/jpeg" href="./Logo/logo-festas.png">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#6f8f70"
+    >
+
+    <meta
+        name="author"
+        content="DreamCraft Decorações"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="language"
+        content="pt-BR"
+    >
+
+
+    <!-- =====================================================
+         SEO PRINCIPAL
+         ===================================================== -->
+
+    <title>
+        DreamCraft Decorações | Festas Personalizadas em Limeira
+    </title>
+
+    <meta
+        name="description"
+        content="A DreamCraft Decorações transforma sonhos em festas inesquecíveis em Limeira e região. Mini festas, festas completas e decorações personalizadas para momentos especiais."
+    >
+
+    <meta
+        name="keywords"
+        content="decoração de festas em Limeira, decoração de festa infantil, mini festa, festa na mesa, festa completa, decoração personalizada, festas personalizadas em Limeira, DreamCraft Decorações"
+    >
+
+    <link
+        rel="canonical"
+        href="https://dreamcraftfestas.com.br/"
+    >
+
+
+    <!-- =====================================================
+         FAVICON
+         ===================================================== -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="Logo/logo-decoracoes.png"
+    >
+
+
+    <!-- =====================================================
+         OPEN GRAPH
+         Compartilhamento no WhatsApp, Facebook etc.
+         ===================================================== -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:locale"
+        content="pt_BR"
+    >
+
+    <meta
+        property="og:site_name"
+        content="DreamCraft Decorações"
+    >
+
+    <meta
+        property="og:title"
+        content="DreamCraft Decorações | Festas Personalizadas em Limeira"
+    >
+
+    <meta
+        property="og:description"
+        content="Transformamos sonhos em festas inesquecíveis. Decorações personalizadas, mini festas e festas completas em Limeira e região."
+    >
+
+    <meta
+        property="og:url"
+        content="https://dreamcraftfestas.com.br/"
+    >
+
+    <meta
+        property="og:image"
+        content="https://dreamcraftfestas.com.br/Logo/propaganda.png"
+    >
+
+    <meta
+        property="og:image:width"
+        content="1200"
+    >
+
+    <meta
+        property="og:image:height"
+        content="630"
+    >
+
+    <meta
+        property="og:image:alt"
+        content="DreamCraft Decorações - Festas personalizadas em Limeira"
+    >
+
+
+    <!-- =====================================================
+         TWITTER / X CARD
+         ===================================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="DreamCraft Decorações | Festas Personalizadas em Limeira"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Transformamos sonhos em festas inesquecíveis. Decorações personalizadas em Limeira e região."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://dreamcraftfestas.com.br/Logo/propaganda.png"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         CSS DO SITE
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style-premium.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="google-review.css"
+    >
+
+
+   <!-- =====================================================
+     SCHEMA.ORG
+     SEO LOCAL - DREAMCRAFT DECORAÇÕES
+     ===================================================== -->
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+
+    "@id": "https://dreamcraftfestas.com.br/#empresa",
+
+    "name": "DreamCraft Decorações",
+
+    "alternateName": "DreamCraft Festas",
+
+    "description": "A DreamCraft Decorações transforma sonhos em festas inesquecíveis. Trabalhamos com mini festas, festas na mesa, festas completas e decorações personalizadas em Limeira e região.",
+
+    "url": "https://dreamcraftfestas.com.br/",
+
+    "logo": "https://dreamcraftfestas.com.br/Logo/logo-decoracoes.png",
+
+    "image": [
+        "https://dreamcraftfestas.com.br/Logo/propaganda.png"
+    ],
+
+    "telephone": "+55 19 99372-3106",
+
+    "email": "contato@dreamcraftfestas.com.br",
+
+    "priceRange": "$$",
+
+    "currenciesAccepted": "BRL",
+
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Almireno Augusto Franceschi, 522",
+        "addressLocality": "Limeira",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+    },
+
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -22.556658,
+        "longitude": -47.4479007
+    },
+
+    "areaServed": [
+        {
+            "@type": "City",
+            "name": "Limeira"
+        },
+        {
+            "@type": "AdministrativeArea",
+            "name": "Região de Limeira"
+        }
+    ],
+
+    "sameAs": [
+        "https://www.instagram.com/dreamcraftdecoracoes",
+        "https://www.instagram.com/dreamcraftpersonalizados",
+        "https://www.google.com/maps/place/DreamCraft+Decora%C3%A7%C3%B5es/@-22.556653,-47.4504756"
+    ],
+
+    "hasMap": "https://www.google.com/maps/place/DreamCraft+Decora%C3%A7%C3%B5es/@-22.556653,-47.4504756",
+
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços de Decoração de Festas",
+
+        "itemListElement": [
+
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Festa na Mesa",
+                    "description": "Decoração prática e personalizada para comemorações especiais."
+                }
+            },
+
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Mini Festas",
+                    "description": "Decorações encantadoras para comemorações especiais e momentos em família."
+                }
+            },
+
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Festa Completa",
+                    "description": "Decoração completa para grandes celebrações e eventos especiais."
+                }
+            },
+
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Decoração Personalizada",
+                    "description": "Projetos personalizados de acordo com o tema e estilo de cada celebração."
+                }
+            }
+
+        ]
+    }
+
+}
+</script>
+
 </head>
 
 
 <body>
-    <!-- BOTÃO WHATSAPP DENTRO DO BODY -->
-    <a href="https://wa.me/5519993723106" class="whatsapp-float" target="_blank">
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <div id="header-container"></div>
+
+
+    <!-- =====================================================
+         BOTÃO WHATSAPP FLUTUANTE
+         ===================================================== -->
+
+    <a
+        href="https://wa.me/5519993723106"
+        class="whatsapp-float"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar com a DreamCraft pelo WhatsApp"
+    >
+
         <i class="fa-brands fa-whatsapp"></i>
-        <span class="whatsapp-tooltip">Fale conosco!</span>
+
+        <span class="whatsapp-tooltip">
+            Fale conosco!
+        </span>
+
     </a>
 
-    <header class="header">
-        <img src="Logo/logo-festas.png" alt="DreamCraft Festas">
-        <nav class="nav-menu" id="nav-menu">
-            <a href="#inicio">Início</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#portfolio">Portfólio</a>
-            <a href="#contato">Contato</a>
-        </nav>
-        <button class="nav-toggle" id="nav-toggle">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-    </header>
-
     <section id="inicio" class="hero-section">
-        <div class="hero-content">
-            <h1>Transformamos Sonhos em Festas Inesquecíveis</h1>
-                <p>Decorações personalizadas que encantam crianças e adultos.<br>
-                    Da concepção à montagem, cuidamos de cada detalhe para você.</p>
-            <a href="#servicos" class="cta-button">Ver Serviços</a>
+
+    <!-- Imagem de fundo -->
+    <div class="hero-background">
+
+        <img
+            src="Portifolio/charevelacao.jpeg"
+            alt="Decoração de festa realizada pela DreamCraft Decorações"
+            class="hero-background-image"
+        >
+
+    </div>
+
+
+    <!-- Overlay verde sobre a imagem -->
+    <div class="hero-overlay"></div>
+
+
+    <!-- Conteúdo principal -->
+    <div class="hero-content">
+
+        <!-- Identificação da marca -->
+        <span class="hero-tag">
+            DREAMCRAFT DECORAÇÕES
+        </span>
+
+
+        <!-- Título principal -->
+        <h1>
+            Transformamos sonhos
+            <span>em festas inesquecíveis.</span>
+        </h1>
+
+
+        <!-- Descrição -->
+        <p>
+            Decorações personalizadas que encantam
+            crianças e adultos.
+            <br>
+            Da concepção à montagem, cuidamos
+            de cada detalhe para você.
+        </p>
+
+
+        <!-- Ações -->
+        <div class="hero-actions">
+
+            <a
+                href="#servicos"
+                class="cta-button hero-button-primary"
+            >
+                Ver nossos serviços
+            </a>
+
+
+            <a
+                href="#portfolio"
+                class="hero-button-secondary"
+            >
+                Conheça nossas festas
+            </a>
+
         </div>
-    </section>
+
+    </div>
+
+
+    <!-- Indicador de rolagem -->
+    <a
+        href="#servicos"
+        class="hero-scroll"
+        aria-label="Conheça nossos serviços"
+    >
+
+        <span>
+            Descubra
+        </span>
+
+        <span class="hero-scroll-arrow">
+            ↓
+        </span>
+
+    </a>
+
+</section>
 
     <section class="stats-section">
     <div class="container stats-grid">
@@ -60,210 +430,1284 @@
     </div>
 </section>
 
-    <section id="sobre" class="section sobre-nos">
-    <div class="container">
-        <h2 class="titulo-secao">Sobre Nós</h2>
-        
-        <div class="sobre-grid-harmonico">
-            <!-- COLUNA ESQUERDA: História -->
-            <div class="coluna-historia">
-                <div class="box-historia">
-                    <h3>Nossa História</h3>
-                    <h4>Onde Cada Detalhe Nasce de um Sorriso</h4>
-                    
-                    <p>Tudo começou em 2016, com a chegada da nossa primeira filha. Naquele momento, despertou em nós um desejo profundo: queríamos proporcionar a ela experiências mágicas, momentos que nós mesmos não pudemos ter na infância.</p>
-                    
-                    <p>A cada aniversário, mergulhávamos no mundo da imaginação para ver aquele brilho único e o sorriso sincero no rostinho dela. O que começou como um gesto de amor de pais para filha, cresceu e floresceu.</p>
-                    
-                    <p>Com a chegada da nossa segunda e terceira filha, as celebrações se tornaram tradições familiares sagradas. Em cada balão enchido e em cada tema escolhido, havia uma entrega total.</p>
-                    
-                    <p>Percebemos, então, que nossa paixão pela decoração ia além das paredes de nossa casa. Decidimos transformar esse amor em profissão para que outras famílias também pudessem sentir essa mesma alegria.</p>
-                </div>
-                
-                <div class="box-porque">
-                    <h3>Por que fazemos o que fazemos?</h3>
-                    <p>Hoje, trabalhamos profissionalmente com decoração de festas, mas mantemos a essência do primeiro dia. Fazemos cada festa como se fosse para uma de nossas filhas.</p>
-                    <p>Nosso combustível é a gratidão e aquele sorriso iluminado que surge quando o aniversariante e sua família entram no salão e veem o sonho materializado.</p>
-                </div>
-            </div>
-            
-            <!-- COLUNA DIREITA: Imagem + Missão + Valores -->
-            <div class="coluna-info">
-                <div class="imagem-container">
-                    <img src="Quem-somos/Quem-somos.png" alt="DreamCraft - Quem somos nós">
-                </div>
-                
-                <div class="box-missao">
-                    <h3>Nossa Missão</h3>
-                    <p>Transformar sonhos em cenários inesquecíveis, entregando decorações feitas com excelência e afeto.</p>
-                </div>
-                
-                <div class="box-valores">
-                    <h3>Nossos Valores</h3>
-                    <div class="valor-item">
-                        <span class="valor-icon">❤</span>
-                        <div>
-                            <strong>Amor em cada detalhe</strong>
-                            <small>Tratamos cada evento como se fosse nosso</small>
-                        </div>
-                    </div>
-                    <div class="valor-item">
-                        <span class="valor-icon">✨</span>
-                        <div>
-                            <strong>Autenticidade</strong>
-                            <small>Ambientes que refletem sua história</small>
-                        </div>
-                    </div>
-                    <div class="valor-item">
-                        <span class="valor-icon">🎯</span>
-                        <div>
-                            <strong>Comprometimento</strong>
-                            <small>Perfeição técnica em cada elemento</small>
-                        </div>
-                    </div>
-                    <div class="valor-item">
-                        <span class="valor-icon">😊</span>
-                        <div>
-                            <strong>Foco no Sorriso</strong>
-                            <small>Sua alegria é nosso sucesso</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- =====================================================
+     NOSSA HISTÓRIA
+     ===================================================== -->
+
+<section id="sobre" class="about-section">
+
+    <div class="about-container">
+
+
+        <!-- Cabeçalho da seção -->
+
+        <div class="section-heading about-heading">
+
+            <span class="section-tag">
+                NOSSA HISTÓRIA
+            </span>
+
+            <h2>
+                Mais do que decorar,
+                <span>criamos momentos.</span>
+            </h2>
+
+            <p>
+                Cada celebração tem uma história.
+                Nosso trabalho é transformar essa história
+                em um cenário que será lembrado para sempre.
+            </p>
+
         </div>
+
+
+        <!-- Conteúdo -->
+
+        <div class="about-content">
+
+
+            <!-- Imagem -->
+
+            <div class="about-image-wrapper">
+
+                <div class="about-image-frame">
+
+                    <img
+                        src="Quem-somos/Quem-somos.png"
+                        alt="Decoração realizada pela DreamCraft Decorações"
+                        class="about-image"
+                    >
+
+                </div>
+
+
+                <!-- Detalhe decorativo -->
+
+                <div
+                    class="about-image-decoration"
+                    aria-hidden="true"
+                ></div>
+
+            </div>
+
+
+            <!-- Texto -->
+
+            <div class="about-text">
+
+
+                <span class="about-small-title">
+                    SONHOS QUE GANHAM FORMA
+                </span>
+
+
+                <h3>
+                    Cuidamos de cada detalhe
+                    para que você aproveite
+                    cada momento.
+                </h3>
+
+
+                <p>
+                    Na DreamCraft, acreditamos que uma festa
+                    é muito mais do que uma decoração bonita.
+                    É um momento especial que merece ser vivido,
+                    celebrado e guardado na memória.
+                </p>
+
+
+                <p>
+                    Por isso, trabalhamos em cada projeto
+                    com criatividade, carinho e atenção aos
+                    detalhes, buscando transformar ideias
+                    e sonhos em experiências únicas.
+                </p>
+
+
+                <!-- Diferenciais -->
+
+                <div class="about-highlights">
+
+
+                    <div class="about-highlight">
+
+                        <span class="about-highlight-icon">
+                            ✦
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Feito com carinho
+                            </strong>
+
+                            <span>
+                                Cada detalhe pensado para você.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-highlight">
+
+                        <span class="about-highlight-icon">
+                            ✦
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Decorações reais
+                            </strong>
+
+                            <span>
+                                Projetos realizados pela DreamCraft.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-highlight">
+
+                        <span class="about-highlight-icon">
+                            ✦
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Experiência
+                            </strong>
+
+                            <span>
+                                Cuidamos de cada etapa da sua festa.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Botão -->
+
+                <a
+                    href="#contato"
+                    class="about-button"
+                >
+                    Fale com a DreamCraft
+                </a>
+
+
+            </div>
+
+        </div>
+
     </div>
+
 </section>
 
-    <section id="servicos" class="section bg-light">
-        <div class="container">
-            <h2>Nossos Serviços</h2>
-            <div class="service-grid">
-                <div class="service-item">
-                    <img src="Logo/logo-decoracoes.png" alt="Decorações" class="service-logo">
-                    <h3>DreamCraft Decorações</h3>
-                    <h4>Festa na Mesa</h4>
-                    <p>🌟✨Realizando sonhos e criando memórias inesquecíveis.</p>
-                    <a href="catalogo-decoracoes.html" class="cta-button service-cta">Catálogo Decorações</a>
-                </div>
-                <div class="service-item">
-                    <img src="Logo/logo-decoracoes.png" alt="Decorações" class="service-logo">
-                    <h3>DreamCraft Decorações</h3>
-                    <h4>Festa Mood</h4>
-                    <p>Dando um toque a mais de sofisticação para sua fersta na mesa.</p>
-                </div>
-                <div class="service-item">
-                    <img src="Logo/logo-decoracoes.png" alt="Decorações" class="service-logo">
-                    <h3>DreamCraft Decorações</h3>
-                    <h4>Pegue e Monte</h4>
-                    <p>Para você que quer montar a festa do seu jeitinho.</p>
-                </div>
-                <div class="service-item">
-                    <img src="Logo/logo-decoracoes.png" alt="Decorações" class="service-logo">
-                    <h3>DreamCraft Decorações</h3>
-                    <h4>Festa Completa</h4>
-                    <p>Para você que quer arrasar com a decoração.</p>
-                    <a href="catalogo-festa-completa.html" class="cta-button service-cta">Catálogo Decorações</a>
-                </div>
-                
-                <div class="service-item">
-                    <img src="Logo/logo-personalizados.png" alt="Personalizados" class="service-logo">
-                    <h3>DreamCraft Personalizados</h3>
-                    <p>Todo tipo de personalizado spara que sua festa seja um arraso.</p>
-                    <a href="em-breve.html" class="cta-button service-cta">Catálogo Personalizados</a>
-                </div>
-                
-            </div>
-        </div>
-    </section>
+    <!-- =====================================================
+     NOSSAS DECORAÇÕES
+     ===================================================== -->
 
-    <section id="portfolio" class="section">
-    <div class="container">
-        <h2 style="text-align: center; margin-bottom: 30px;">Nosso Portfólio</h2>
-        
-        <div class="portfolio-container-relativo">
-            <button class="seta-portfolio anterior" id="portfolio-prev-btn">&#10094;</button>
-            <button class="seta-portfolio proximo" id="portfolio-next-btn">&#10095;</button>
+<section id="servicos" class="services-section">
 
-            <div class="portfolio-slider">
-                <div class="portfolio-wrapper" id="portfolio-trilho-fotos">
-                    <div class="portfolio-item"><img src="Portifolio/masculino.jpeg" loading="lazy" alt="Projeto 1"></div>
-                    <div class="portfolio-item"><img src="Portifolio/stitch.jpeg" loading="lazy" alt="Projeto 2"></div>
-                    <div class="portfolio-item"><img src="Portifolio/Unicornio.jpeg" loading="lazy" alt="Projeto 3"></div>
-                    <div class="portfolio-item"><img src="Portifolio/futebol.jpeg" loading="lazy" alt="Projeto 4"></div>
-                    <div class="portfolio-item"><img src="Portifolio/charevelacao.jpeg" loading="lazy" alt="Projeto 5"></div>
-                    <div class="portfolio-item"><img src="Portifolio/brancoepretolacorosa.jpeg" loading="lazy" alt="Projeto 6"></div>
-                    <div class="portfolio-item"><img src="Portifolio/outono.jpeg" loading="lazy" alt="Projeto 7"></div>
-                    <div class="portfolio-item"><img src="Portifolio/superpoderosas.jpeg" loading="lazy" alt="Projeto 8"></div>
-                    <div class="portfolio-item"><img src="Portifolio/Primeiravoltaaosol.jpeg" loading="lazy" alt="Projeto 9"></div>
-                    <div class="portfolio-item"><img src="Portifolio/pretoedourado.jpeg" loading="lazy" alt="Projeto 10"></div>
-                </div>
-            </div>
+    <div class="services-container">
+
+
+        <!-- Cabeçalho -->
+
+        <div class="section-heading services-heading">
+
+            <span class="section-tag">
+                NOSSAS DECORAÇÕES
+            </span>
+
+            <h2>
+                Cada celebração merece
+                <span>um cenário especial.</span>
+            </h2>
+
+            <p>
+                Do pequeno ao grande momento,
+                criamos decorações pensadas para
+                transformar sua festa em uma experiência
+                inesquecível.
+            </p>
+
         </div>
 
-        <div id="modal-zoom-final" class="modal-zoom-estilo">
-            <span id="fechar-zoom-btn">&times;</span>
-            <img id="img-ampliada-target">
+
+        <!-- Cards dos serviços -->
+
+        <div class="services-grid">
+
+
+            <!-- =================================================
+                 FESTA NA MESA
+                 ================================================= -->
+
+            <article class="service-card">
+
+                <div class="service-card-image">
+
+                    <img
+                        src="Imagem/borboletalavanda/2.webp"
+                        alt="Decoração Festa na Mesa realizada pela DreamCraft"
+                        loading="lazy"
+                    >
+
+                    <div class="service-card-overlay"></div>
+
+                </div>
+
+
+                <div class="service-card-content">
+
+                    <span class="service-card-tag">
+                        PRATICIDADE E ENCANTO
+                    </span>
+
+                    <h3>
+                        Festa na Mesa
+                    </h3>
+
+                    <p>
+                        Uma forma prática e encantadora
+                        de transformar sua comemoração,
+                        com tudo pensado para criar
+                        um cenário especial.
+                    </p>
+
+                    <a
+                        href="catalogo-decoracoes.html"
+                        class="service-card-button"
+                    >
+                        Ver catálogo
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 FESTA COMPLETA
+                 ================================================= -->
+
+            <article class="service-card">
+
+                <div class="service-card-image">
+
+                    <img
+                        src="festa-completa/casteloprincesarosa/"
+                        alt="Decoração de Festa Completa realizada pela DreamCraft"
+                        loading="lazy"
+                    >
+
+                    <div class="service-card-overlay"></div>
+
+                </div>
+
+
+                <div class="service-card-content">
+
+                    <span class="service-card-tag">
+                        GRANDES CELEBRAÇÕES
+                    </span>
+
+                    <h3>
+                        Festa Completa
+                    </h3>
+
+                    <p>
+                        Para momentos que pedem uma
+                        decoração completa, cuidamos
+                        de cada detalhe para tornar
+                        sua celebração inesquecível.
+                    </p>
+
+                    <a
+                        href="catalogo-festa-completa.html"
+                        class="service-card-button"
+                    >
+                        Ver catálogo
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </article>
+
+
         </div>
+
+
+        <!-- Frase de encerramento -->
+
+        <div class="services-footer">
+
+            <p>
+                <strong>
+                    Todas as fotos dos nossos catálogos
+                    são de decorações realizadas pela DreamCraft.
+                </strong>
+            </p>
+
+        </div>
+
     </div>
+
 </section>
 
-<!-- DEPOIMENTOS FORA DO PORTFOLIO -->
-<section id="depoimentos" class="section bg-light">
-    <div class="container">
-        <h2>O que nossos clientes dizem</h2>
-        <div class="depoimentos-grid">
-            <div class="depoimento-card">
-                <div class="estrelas">⭐⭐⭐⭐⭐</div>
-                <p>"A festa da minha filha ficou um sonho! Cada detalhe foi perfeito."</p>
-                <cite>— Maria Silva, Festa Unicórnio</cite>
-            </div>
-            <div class="depoimento-card">
-                <div class="estrelas">⭐⭐⭐⭐⭐</div>
-                <p>"Superou todas as expectativas! Profissionalismo impecável."</p>
-                <cite>— João Pedro, Festa Futebol</cite>
-            </div>
-            <div class="depoimento-card">
-                <div class="estrelas">⭐⭐⭐⭐⭐</div>
-                <p>"A criançada amou! Decoração linda e durável."</p>
-                <cite>— Ana Paula, Festa Princesas</cite>
-            </div>
+    <!-- =====================================================
+     PORTFÓLIO / GALERIA
+     ===================================================== -->
+
+<section id="portfolio" class="portfolio-section">
+
+    <div class="portfolio-container">
+
+
+        <!-- Cabeçalho -->
+
+        <div class="section-heading portfolio-heading">
+
+            <span class="section-tag">
+                NOSSO PORTFÓLIO
+            </span>
+
+            <h2>
+                Um pouco do que
+                <span>já criamos.</span>
+            </h2>
+
+            <p>
+                Cada festa é única.
+                Cada detalhe é pensado para transformar
+                momentos especiais em memórias inesquecíveis.
+            </p>
+
         </div>
+
+
+        <!-- Galeria -->
+
+        <div class="portfolio-grid">
+
+
+            <!-- FOTO 1 -->
+
+            <a
+                href="Portifolio/brancoepretolacorosa.jpeg"
+                class="portfolio-item portfolio-item-large"
+                data-lightbox="portfolio"
+                aria-label="Visualizar decoração realizada pela DreamCraft"
+            >
+
+                <img
+                    src="Portifolio/brancoepretolacorosa.jpeg"
+                    alt="Decoração de festa realizada pela DreamCraft"
+                    loading="lazy"
+                >
+
+                <div class="portfolio-item-overlay">
+
+                    <span class="portfolio-item-icon">
+                        +
+                    </span>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- FOTO 2 -->
+
+            <a
+                href="Portifolio/charevelacao.jpeg"
+                class="portfolio-item"
+                data-lightbox="portfolio"
+                aria-label="Visualizar decoração realizada pela DreamCraft"
+            >
+
+                <img
+                    src="Portifolio/charevelacao.jpeg"
+                    alt="Decoração de festa realizada pela DreamCraft"
+                    loading="lazy"
+                >
+
+                <div class="portfolio-item-overlay">
+
+                    <span class="portfolio-item-icon">
+                        +
+                    </span>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- FOTO 3 -->
+
+            <a
+                href="Portifolio/masculino.jpeg"
+                class="portfolio-item"
+                data-lightbox="portfolio"
+                aria-label="Visualizar decoração realizada pela DreamCraft"
+            >
+
+                <img
+                    src="Portifolio/masculino.jpeg"
+                    alt="Decoração de festa realizada pela DreamCraft"
+                    loading="lazy"
+                >
+
+                <div class="portfolio-item-overlay">
+
+                    <span class="portfolio-item-icon">
+                        +
+                    </span>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- FOTO 4 -->
+
+            <a
+                href="Portifolio/pretoedourado.jpeg"
+                class="portfolio-item"
+                data-lightbox="portfolio"
+                aria-label="Visualizar decoração realizada pela DreamCraft"
+            >
+
+                <img
+                    src="Portifolio/pretoedourado.jpeg"
+                    alt="Decoração de festa realizada pela DreamCraft"
+                    loading="lazy"
+                >
+
+                <div class="portfolio-item-overlay">
+
+                    <span class="portfolio-item-icon">
+                        +
+                    </span>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- FOTO 5 -->
+
+            <a
+                href="Portifolio/stitch.jpeg"
+                class="portfolio-item"
+                data-lightbox="portfolio"
+                aria-label="Visualizar decoração realizada pela DreamCraft"
+            >
+
+                <img
+                    src="Portifolio/stitch.jpeg"
+                    alt="Decoração de festa realizada pela DreamCraft"
+                    loading="lazy"
+                >
+
+                <div class="portfolio-item-overlay">
+
+                    <span class="portfolio-item-icon">
+                        +
+                    </span>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- FOTO 6 -->
+
+            <a
+                href="Portifolio/Unicornio.jpeg"
+                class="portfolio-item portfolio-item-large"
+                data-lightbox="portfolio"
+                aria-label="Visualizar decoração realizada pela DreamCraft"
+            >
+
+                <img
+                    src="Portifolio/Unicornio.jpeg"
+                    alt="Decoração de festa realizada pela DreamCraft"
+                    loading="lazy"
+                >
+
+                <div class="portfolio-item-overlay">
+
+                    <span class="portfolio-item-icon">
+                        +
+                    </span>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+        <!-- Botão -->
+
+        <div class="portfolio-footer">
+
+            <a
+                href="portfolio.html"
+                class="portfolio-button"
+            >
+                Ver portfólio completo
+                <span>→</span>
+            </a>
+
+        </div>
+
     </div>
+
 </section>
 
-    <section id="contato" class="section bg-light">
-        <div class="container">
-            <h2>Entre em Contato</h2>
-    <form id="meuFormulario" class="contact-form">
-    <label for="nome">Seu Nome:</label>
-    <input type="text" id="nome" name="nome" required>
+<!-- =====================================================
+     PROJETOS ESPECIAIS
+     APAE LIMEIRA — 60 ANOS
+     ===================================================== -->
 
-    <label for="email">Seu E-mail:</label>
-    <input type="email" id="email" name="email" required>
+<section id="projetos-especiais" class="special-project-section">
 
-    <label for="mensagem">Sua Mensagem:</label>
-    <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+    <div class="special-project-container">
 
-    <button type="submit" class="cta-button">Enviar Mensagem</button>
-</form>
+
+        <!-- Imagem -->
+
+        <div class="special-project-image">
+
+            <img
+                src="projetos/painel01.webp"
+                alt="Decoração realizada pela DreamCraft para o aniversário de 60 anos da APAE Limeira"
+                loading="lazy"
+            >
+
         </div>
-    </section>
 
-    <footer class="footer">
-        <div class="social-media-links">
-                <a href="https://wa.me/5519993723106"target="_blank" title="WhatsApp">
-                    <i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://www.instagram.com/dreamcraftdecoracoes" target="_blank" title="Decorações">
-                    <i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.instagram.com/dreamcraftpersonalizados" target="_blank" title="Personalizados">
-                    <i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+
+        <!-- Conteúdo -->
+
+        <div class="special-project-content">
+
+            <span class="section-tag">
+                PROJETO ESPECIAL
+            </span>
+
+
+            <h2>
+                60 anos de história,
+                <span>dedicação e inclusão.</span>
+            </h2>
+
+
+            <p class="special-project-intro">
+
+                Tivemos a honra de fazer parte de um momento
+                muito especial para a APAE Limeira:
+                a celebração de seus 60 anos de história.
+
+            </p>
+
+
+            <p>
+
+                Uma data tão importante merece ser celebrada
+                com carinho e cuidado em cada detalhe.
+                Para nós, foi uma alegria contribuir para
+                tornar esse momento ainda mais especial.
+
+            </p>
+
+
+            <div class="special-project-highlight">
+
+                <span class="special-project-highlight-icon">
+                    ✦
+                </span>
+
+                <div>
+
+                    <strong>
+                        APAE Limeira
+                    </strong>
+
+                    <span>
+                        Celebrando 60 anos de uma história
+                        que transforma vidas.
+                    </span>
+
+                </div>
+
             </div>
 
-        <p>&copy; DreamCraft. Todos os direitos reservados.</p>
-        <p>&copy; Designed by A. Nazato.</p>
-    </footer>
 
-    <script src="script.js?v=1.1"></script>
+            <a
+                href="portfolio-apae-60-anos.html"
+                class="special-project-button"
+            >
+                Conheça esse projeto
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     DEPOIMENTOS E AVALIAÇÕES
+     ===================================================== -->
+
+<section id="depoimentos" class="testimonials-section">
+
+    <div class="testimonials-container">
+
+        <!-- =================================================
+             CABEÇALHO
+             ================================================= -->
+
+        <div class="section-heading testimonials-heading">
+
+            <span class="section-tag">
+                EXPERIÊNCIAS REAIS
+            </span>
+
+            <h2>
+                Quem viveu essa experiência,
+                <span>recomenda.</span>
+            </h2>
+
+            <p>
+                Cada festa é muito mais do que uma decoração.
+                É a oportunidade de fazer parte de momentos
+                que ficam para sempre na memória.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             DEPOIMENTOS
+             
+             IMPORTANTE:
+             Substituir estes textos pelos depoimentos reais
+             dos clientes quando possível.
+             ================================================= -->
+
+        <div class="testimonials-grid">
+
+
+            <!-- =================================================
+                 DEPOIMENTO 1
+                 ================================================= -->
+
+            <article class="testimonial-card">
+
+                <div
+                    class="testimonial-stars"
+                    aria-label="5 estrelas"
+                >
+                    ★★★★★
+                </div>
+
+                <blockquote>
+                    "A festa da minha filha ficou um sonho!
+                    Cada detalhe foi perfeito."
+                </blockquote>
+
+                <div class="testimonial-author">
+
+                    <div
+                        class="testimonial-author-avatar"
+                        aria-hidden="true"
+                    >
+                        M
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Cliente DreamCraft
+                        </strong>
+
+                        <span>
+                            Festa Infantil
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 DEPOIMENTO 2
+                 ================================================= -->
+
+            <article class="testimonial-card">
+
+                <div
+                    class="testimonial-stars"
+                    aria-label="5 estrelas"
+                >
+                    ★★★★★
+                </div>
+
+                <blockquote>
+                    "Superou todas as expectativas!
+                    Profissionalismo impecável."
+                </blockquote>
+
+                <div class="testimonial-author">
+
+                    <div
+                        class="testimonial-author-avatar"
+                        aria-hidden="true"
+                    >
+                        D
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Cliente DreamCraft
+                        </strong>
+
+                        <span>
+                            Decoração Personalizada
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 DEPOIMENTO 3
+                 ================================================= -->
+
+            <article class="testimonial-card">
+
+                <div
+                    class="testimonial-stars"
+                    aria-label="5 estrelas"
+                >
+                    ★★★★★
+                </div>
+
+                <blockquote>
+                    "A decoração ficou linda e fez
+                    toda a diferença na nossa comemoração."
+                </blockquote>
+
+                <div class="testimonial-author">
+
+                    <div
+                        class="testimonial-author-avatar"
+                        aria-hidden="true"
+                    >
+                        D
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Cliente DreamCraft
+                        </strong>
+
+                        <span>
+                            Festa Especial
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- =================================================
+             CTA — AVALIAÇÃO NO GOOGLE
+             ================================================= -->
+
+        <div class="google-review-cta">
+
+            <div class="google-review-icon">
+
+                <i class="fa-brands fa-google"></i>
+
+            </div>
+
+
+            <div class="google-review-content">
+
+                <h3>
+                    Sua experiência pode inspirar outras pessoas
+                </h3>
+
+                <p>
+                    Já celebramos um momento especial juntos?
+                    Conte para outras famílias como foi sua experiência
+                    com a DreamCraft.
+                </p>
+
+            </div>
+
+
+            <div class="google-review-actions">
+
+                <a
+                    href="https://g.page/r/Cfgd3L8jKU4mEBM/review"
+                    class="google-review-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Avaliar no Google
+
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTATO
+     FALE COM A DREAMCRAFT
+     ===================================================== -->
+
+<section id="contato" class="contact-section">
+
+    <div class="contact-container">
+
+
+        <!-- =================================================
+             CABEÇALHO
+             ================================================= -->
+
+        <div class="section-heading contact-heading">
+
+            <span class="section-tag">
+                VAMOS CONVERSAR?
+            </span>
+
+            <h2>
+                Sua próxima celebração
+                <span>começa aqui.</span>
+            </h2>
+
+            <p>
+                Conte para nós como você imagina
+                sua festa. Será um prazer ajudar
+                a transformar sua ideia em um
+                momento inesquecível.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CONTEÚDO PRINCIPAL
+             ================================================= -->
+
+        <div class="contact-content">
+
+
+            <!-- =================================================
+                 COLUNA ESQUERDA — INFORMAÇÕES
+                 ================================================= -->
+
+            <div class="contact-info">
+
+
+                <!-- =================================================
+                     WHATSAPP
+                     ================================================= -->
+
+                <a
+                    href="https://wa.me/5519993723106"
+                    class="contact-info-card"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="contact-info-icon">
+
+                        <i class="fa-brands fa-whatsapp"></i>
+
+                    </div>
+
+
+                    <div class="contact-info-text">
+
+                        <span>
+                            WHATSAPP
+                        </span>
+
+                        <strong>
+                            (19) 99372-3106
+                        </strong>
+
+                        <small>
+                            Fale conosco e solicite seu orçamento
+                        </small>
+
+                    </div>
+
+
+                    <span class="contact-card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- =================================================
+                     E-MAIL
+                     ================================================= -->
+
+                <a
+                    href="mailto:contato@dreamcraftfestas.com.br"
+                    class="contact-info-card"
+                >
+
+                    <div class="contact-info-icon">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                    </div>
+
+
+                    <div class="contact-info-text">
+
+                        <span>
+                            E-MAIL
+                        </span>
+
+                        <strong>
+                            contato@dreamcraftfestas.com.br
+                        </strong>
+
+                        <small>
+                            Envie sua mensagem para nossa equipe
+                        </small>
+
+                    </div>
+
+
+                    <span class="contact-card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- =================================================
+                     INSTAGRAM
+                     ================================================= -->
+
+                <a
+                    href="https://www.instagram.com/dreamcraftdecoracoes"
+                    class="contact-info-card"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="contact-info-icon">
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </div>
+
+
+                    <div class="contact-info-text">
+
+                        <span>
+                            INSTAGRAM
+                        </span>
+
+                        <strong>
+                            @dreamcraftdecoracoes
+                        </strong>
+
+                        <small>
+                            Veja nossas decorações e novidades
+                        </small>
+
+                    </div>
+
+
+                    <span class="contact-card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- =================================================
+                     ENDEREÇO
+                     ================================================= -->
+
+                <div class="contact-info-card contact-address-card">
+
+                    <div class="contact-info-icon">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                    </div>
+
+
+                    <div class="contact-info-text">
+
+                        <span>
+                            NOSSA LOCALIZAÇÃO
+                        </span>
+
+                        <strong>
+                            DreamCraft Decorações
+                        </strong>
+
+                        <small>
+                            Rua Almireno Augusto Franceschi, 522<br>
+                            Abílio Pedro – Limeira/SP
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 COLUNA DIREITA — GOOGLE MAPS
+                 ================================================= -->
+
+            <div class="contact-map-wrapper">
+
+
+                <!-- CABEÇALHO DO MAPA -->
+
+                <div class="contact-map-header">
+
+                    <div>
+
+                        <span class="contact-map-tag">
+                            ONDE ESTAMOS
+                        </span>
+
+                        <h3>
+                            Encontre a DreamCraft
+                        </h3>
+
+                    </div>
+
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                </div>
+
+
+                <!-- =================================================
+                     MAPA
+                     ================================================= -->
+
+                <div class="contact-map">
+
+                    <iframe
+                        src="https://www.google.com/maps?q=DreamCraft%20Decora%C3%A7%C3%B5es%20Limeira%20SP&output=embed"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Localização da DreamCraft Decorações no Google Maps"
+                    >
+                    </iframe>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BOTÕES DO MAPA
+                     ================================================= -->
+
+                <div class="contact-map-actions">
+
+
+                    <!-- VER LOCALIZAÇÃO -->
+
+                    <a
+                        href="https://www.google.com/maps/place/DreamCraft+Decora%C3%A7%C3%B5es/@-22.556653,-47.4504756,1004m/data=!3m2!1e3!4m6!3m5!1s0x94c87f5195355e2d:0x264e2923bfdc1df8!8m2!3d-22.556658!4d-47.4479007!16s%2Fg%2F11mzhkgnby"
+                        class="contact-map-button"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <i class="fa-solid fa-map-location-dot"></i>
+
+                        Ver no Google Maps
+
+                    </a>
+
+
+
+                    <!-- AVALIAR NO GOOGLE -->
+
+                    <a
+                        href="https://g.page/r/Cfgd3L8jKU4mEBM/review"
+                        class="contact-review-button"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <i class="fa-solid fa-star"></i>
+
+                        Avalie a DreamCraft
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             CTA FINAL
+             ================================================= -->
+
+        <div class="contact-final-cta">
+
+
+            <div class="contact-final-cta-content">
+
+                <span
+                    class="contact-final-cta-icon"
+                    aria-hidden="true"
+                >
+                    ✦
+                </span>
+
+
+                <div>
+
+                    <h3>
+                        Pronto para transformar
+                        sua festa?
+                    </h3>
+
+                    <p>
+                        Fale conosco pelo WhatsApp
+                        e conte como podemos ajudar.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOTÃO WHATSAPP -->
+
+            <a
+                href="https://wa.me/5519993723106"
+                class="contact-final-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                Solicitar orçamento
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<div id="footer-container"></div>
+
+
+
+<!-- =====================================================
+     SCRIPTS
+     ===================================================== -->
+
+<script src="script.js?v=1.1"></script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="portfolio.js"></script>
+
 </body>
 </html>
