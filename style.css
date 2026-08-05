@@ -9,6 +9,12 @@
     --cor-texto: #333;
     --cor-fundo: #a8c6a9;
     --cor-fundo-claro: #c2e7c3;
+    --cor-fundo-maisclaro: #EAF7EA;
+    --cor-fundo-suave: #F3FBF3;
+    --cor-fundo-clarissimo: #F8FDF8;
+
+
+
 }
 
 /* --- RESET E BASE --- */
@@ -22,7 +28,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: var(--cor-texto);
-    background-color: var(--cor-fundo);
+    background-color: var(--cor-fundo-claro);
 }
 
 /* --- IMAGENS SEMPRE VISÍVEIS --- */
@@ -53,7 +59,7 @@ img {
 }
 
 .bg-light {
-    background-color: var(--cor-fundo-claro);
+    background-color: var(--cor-fundo-suave);
 }
 
 /* --- BOTÕES --- */
@@ -193,7 +199,7 @@ img {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    background-color: var(--cor-fundo);
+    background-color: var(--cor-fundo-claro);
 }
 
 .service-logo {
@@ -720,7 +726,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--cor-fundo-claro);
+    background: var(--cor-fundo-suave);
     border-radius: 50%;
     flex-shrink: 0;
 }
