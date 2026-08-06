@@ -43,22 +43,58 @@
         }
 
         // --- 3. ZOOM DAS IMAGENS ---
-        const modal = document.getElementById('modal-zoom-final');
-        const imgFull = document.getElementById('img-ampliada-target');
-        const btnFechar = document.getElementById('fechar-zoom-btn');
-        const imagens = document.querySelectorAll('.portfolio-item img');
-        if (modal && imgFull) {
-            imagens.forEach(function(img) {
-                img.onclick = function() {
-                    imgFull.src = this.src;
-                    modal.style.display = 'flex';
-                };
-            });
-            const fecharModal = function() { modal.style.display = 'none'; };
-            if (btnFechar) btnFechar.onclick = fecharModal;
-            modal.onclick = function(e) { if (e.target === modal) fecharModal(); };
-        }
 
+const modal = document.getElementById("modal-zoom-final");
+const imgFull = document.getElementById("img-ampliada-target");
+const btnFechar = document.getElementById("fechar-zoom-btn");
+
+document.querySelectorAll(".portfolio-item").forEach(item => {
+
+    item.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        const imagem = this.querySelector("img");
+
+        imgFull.src = imagem.src;
+
+        modal.classList.add("ativo");
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+});
+
+function fecharModal() {
+
+    modal.classList.remove("ativo");
+
+    document.body.style.overflow = "";
+
+}
+
+btnFechar.addEventListener("click", fecharModal);
+
+modal.addEventListener("click", function(e){
+
+    if(e.target === modal){
+
+        fecharModal();
+
+    }
+
+});
+
+document.addEventListener("keydown", function(e){
+
+    if(e.key === "Escape"){
+
+        fecharModal();
+
+    }
+
+});
         // --- 4. MENU MOBILE ---
         const navToggle = document.getElementById('nav-toggle');
         const navMenu = document.getElementById('nav-menu');
