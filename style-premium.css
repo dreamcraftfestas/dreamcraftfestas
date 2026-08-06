@@ -5409,7 +5409,7 @@ body.lightbox-open {
 
     min-height: 100px;
 
-    background: #ffffff;
+    background: var(--cor-fundo-suave);
 
     border: 1px solid rgba(111, 143, 112, 0.15);
 
