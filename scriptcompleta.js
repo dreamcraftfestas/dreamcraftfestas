@@ -141,6 +141,7 @@ const bancoDadosTemas = [
     { nome: "Turma da Mônica",                          pasta: "turmadamonica", categorias: "all desenhos"   , totalImgs: 0 },
     { nome: "Unicórnio",                                pasta: "unicornio", categorias: "all diversos cute"   , totalImgs: 1 },
     { nome: "Ursinho Azul Chá de Bebe",                 pasta: "ursinhoazulchadebebe", categorias: "all chadebebe"   , totalImgs: 0 }
+    { nome: "Vermelho e Prata",                         pasta: "vermelho e prata", categorias: "all liso vermelho"   , totalImgs: 1 }
 
 
 ];
