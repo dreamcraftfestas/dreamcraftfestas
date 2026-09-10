@@ -44,7 +44,7 @@ const bancoDadosTemas = [
     { nome: "Chá de Bebe Lilas",                        pasta: "chadebebelilas", categorias: "all chadebebe"   , totalImgs: 1 },
     { nome: "Chá de Bebe Ursinho Rosa",                 pasta: "chadebebeursinhorosa", categorias: "all chadebebe"   , totalImgs: 1 },
     { nome: "Chá de Bebe Rosa",                         pasta: "chadebeberosa", categorias: "all chadebebe"   , totalImgs: 2 },
-    { nome: "Chá Revelação",                            pasta: "charevelacao", categorias: "all charevelacao"   , totalImgs: 6 },
+    { nome: "Chá Revelação",                            pasta: "charevelacao", categorias: "all charevelacao"   , totalImgs: 7 },
     { nome: "Chá Revelação Rosa/Azul – Ursinho",        pasta: "charevelacaorosaazulursinho", categorias: "all charevelacao"   , totalImgs: 1 },
     { nome: "Chá Revelação Rosa e Azul",                pasta: "charevelacaorosaeazul", categorias: "all charevelacao"   , totalImgs: 4 },
     { nome: "Cocorico",                                 pasta: "cocorico", categorias: "all fazenda desenho"   , totalImgs: 1 },
