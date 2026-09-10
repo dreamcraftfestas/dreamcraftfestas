@@ -122,7 +122,7 @@ const bancoDadosTemas = [
     { nome: "Roblox",                                   pasta: "roblox", categorias: "all jogos"   , totalImgs: 1 },
     { nome: "Rosas Bebe e Prata",                       pasta: "rosasbebeeprata", categorias: "all jogos"   , totalImgs: 0 },
     { nome: "Rosas Azuis",                              pasta: "rosasazuis", categorias: "all jogos"   , totalImgs: 0 },
-    { nome: " Rose, Vermelho e Dourado",                pasta: "rosevermelhodourado", categorias: "all liso vermelho"   , totalImgs: 2 }
+    { nome: "Rose, Vermelho e Dourado",                pasta: "rosevermelhodourado", categorias: "all liso vermelho rose dourado"   , totalImgs: 2 }
     { nome: "Sereia Splash",                            pasta: "sereiasplash", categorias: "all fundodomar desenhos"   , totalImgs: 0 },
     { nome: "Santos",                                   pasta: "santos", categorias: "all futebol"   , totalImgs: 1 },
     { nome: "Shimmer Wall Holográfico/Frutacor",        pasta: "shimmerwallholograficofrutacor", categorias: "all diversos"   , totalImgs: 1 },
@@ -143,6 +143,7 @@ const bancoDadosTemas = [
     { nome: "Unicórnio",                                pasta: "unicornio", categorias: "all diversos cute"   , totalImgs: 1 },
     { nome: "Ursinho Azul Chá de Bebe",                 pasta: "ursinhoazulchadebebe", categorias: "all chadebebe"   , totalImgs: 0 }
     { nome: "Vermelho e Prata",                         pasta: "vermelhoeprata", categorias: "all liso vermelho"   , totalImgs: 1 }
+    { nome: "Vermelho e Rosa",                         pasta: "vermelhoerosa", categorias: "all liso vermelho rosa"   , totalImgs: 1 }
 
 
 ];
