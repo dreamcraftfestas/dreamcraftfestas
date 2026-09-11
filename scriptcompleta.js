@@ -63,6 +63,7 @@ const bancoDadosTemas = [
     { nome: "Festa Junina Arraia Aquarela",             pasta: "festajuninaarraiaaquarela", categorias: "all arraia datacomemorativa"   , totalImgs: 0 },
     { nome: "Festa Junina Arraia Cilindro Girassol",    pasta: "festajuninaarraiacilindrogirassol", categorias: "all arraia datacomemorativa"   , totalImgs: 0 },
     { nome: "Festa Junina Arraia em Casa",              pasta: "festajuninaarraiaemcasa", categorias: "all arraia datacomemorativa"   , totalImgs: 0 },
+    { nome: "Festa da Polenta",                         pasta: "festadapolenta", categorias: "all diversos"   , totalImgs: 1 },
     { nome: "Flamengo",                                 pasta: "flamengo", categorias: "all times futebol"   , totalImgs: 0 },
     { nome: "Frozen",                                   pasta: "frozen", categorias: "all princesas filme contodefadas disney"   , totalImgs: 0 },
     { nome: "Fundo do Mar Aquarela",                    pasta: "fundodomaraquarela", categorias: "all fundodomar"   , totalImgs: 0 },
@@ -83,6 +84,7 @@ const bancoDadosTemas = [
     { nome: "Joãozinho Praia",                          pasta: "joaozinhopraia", categorias: "all desenhos praia"   , totalImgs: 1 },
     { nome: "Laço Rosa",                                pasta: "lacaorosa", categorias: "all diversos locos"   , totalImgs: 1 },
     { nome: "Laço Vermelho",                            pasta: "lacaovermelho", categorias: "all diversos locos"   , totalImgs: 1 },
+    { nome: "Laranja Branco e Dourado",                 pasta: "laranjabrancodourado", categorias: "all diversos locos"   , totalImgs: 1 },
     { nome: "Liga da Justiça c/ Painel Lateral",        pasta: "ligadajusticacpainellateral", categorias: "all herois filme desenhos"   , totalImgs: 0 },
     { nome: "Lilas",                                    pasta: "lilas", categorias: "all liso lilas"   , totalImgs: 0 },
     { nome: "Lucas Neto",                               pasta: "lucasneto", categorias: "all youtuber diversos"   , totalImgs: 0 },
@@ -105,13 +107,15 @@ const bancoDadosTemas = [
     { nome: "Naruto",                                   pasta: "naruto", categorias: "all anime desenhos"   , totalImgs: 0 },
     { nome: "Natal Verde",                              pasta: "natalverde", categorias: "all natal"   , totalImgs: 3 },
     { nome: "Natal Vermelho",                           pasta: "natalvermelho", categorias: "all natal"   , totalImgs: 8 },
+    { nome: "Nossa Senhora",                            pasta: "nossasenhora", categorias: "all religiosos nossasenhora"   , totalImgs: 1 },
     { nome: "One Piece",                                pasta: "onepiece", categorias: "all anime"   , totalImgs: 2 },
     { nome: "Os Rosas",                                 pasta: "osrosas", categorias: "all youtuber diversos"   , totalImgs: 2 },
     { nome: "Ovelha Rosinha",                           pasta: "ovelharosinha", categorias: "all animais cute"   , totalImgs: 0 },
     { nome: "Painel Pallet",                            pasta: "painelpallet", categorias: "all diversos 20anos"   , totalImgs: 1 },
-    { nome: "Painel Grade",                             pasta: "painelgrade", categorias: "all diversos 20anos"   , totalImgs: 3 },
+    { nome: "Painel Janela",                            pasta: "paineljanela", categorias: "all diversos 20anos"   , totalImgs: 3 },
     { nome: "Pantera Negra",                            pasta: "panteranegra", categorias: "all herois filme"   , totalImgs: 1 },
     { nome: "Patrulha Canina",                          pasta: "patrulhacanina", categorias: "all desenhos animais"   , totalImgs: 0 },
+    { nome: "Pink e Roxo",                              pasta: "pinkeroxo", categorias: "all desenhos animais"   , totalImgs: 1 },
     { nome: "Playstation",                              pasta: "playstation", categorias: "all jogos"   , totalImgs: 0 },
     { nome: "Pool Party Menino",                        pasta: "poolpartymenino", categorias: "all diversos fundodomar"   , totalImgs: 1 },
     { nome: "Prata",                                    pasta: "prata", categorias: "all diversos"   , totalImgs: 0 },
@@ -124,6 +128,7 @@ const bancoDadosTemas = [
     { nome: "Roblox",                                   pasta: "roblox", categorias: "all jogos"   , totalImgs: 1 },
     { nome: "Rosas Bebe e Prata",                       pasta: "rosasbebeeprata", categorias: "all jogos"   , totalImgs: 0 },
     { nome: "Rosas Azuis",                              pasta: "rosasazuis", categorias: "all jogos"   , totalImgs: 0 },
+    { nome: "Rose",                                     pasta: "rose", categorias: "all liso rose"   , totalImgs: 1 },
     { nome: "Rose, Vermelho e Dourado",                 pasta: "rosevermelhodourado", categorias: "all liso vermelho rose dourado"   , totalImgs: 2 },
     { nome: "Sereia Splash",                            pasta: "sereiasplash", categorias: "all fundodomar desenhos"   , totalImgs: 0 },
     { nome: "Santos",                                   pasta: "santos", categorias: "all futebol"   , totalImgs: 1 },
@@ -143,9 +148,10 @@ const bancoDadosTemas = [
     { nome: "Toy Story",                                pasta: "toystory", categorias: "all filme desenhos"   , totalImgs: 1 },
     { nome: "Turma da Mônica",                          pasta: "turmadamonica", categorias: "all desenhos"   , totalImgs: 0 },
     { nome: "Unicórnio",                                pasta: "unicornio", categorias: "all diversos cute"   , totalImgs: 1 },
-    { nome: "Ursinho Azul Chá de Bebe",                 pasta: "ursinhoazulchadebebe", categorias: "all chadebebe"   , totalImgs: 0 }
-    { nome: "Vermelho e Prata",                         pasta: "vermelhoeprata", categorias: "all liso vermelho"   , totalImgs: 1 }
-    { nome: "Vermelho e Rosa",                         pasta: "vermelhoerosa", categorias: "all liso vermelho rosa"   , totalImgs: 1 }
+    { nome: "Ursinho Azul Chá de Bebe",                 pasta: "ursinhoazulchadebebe", categorias: "all chadebebe"   , totalImgs: 0 },
+    { nome: "Verde Oliva e Palha",                      pasta: "verdeolivaepalha", categorias: "all liso verde palha"   , totalImgs: 1 },
+    { nome: "Vermelho e Prata",                         pasta: "vermelhoeprata", categorias: "all liso vermelho"   , totalImgs: 1 },
+    { nome: "Vermelho e Rosa",                          pasta: "vermelhoerosa", categorias: "all liso vermelho rosa"   , totalImgs: 1 }
 
 
 ];
