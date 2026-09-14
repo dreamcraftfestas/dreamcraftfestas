@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo de Bolos Fake - DreamCraft</title>
+  <link rel="icon" type="image/png" href="Logo/logo-decoracoes.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS já utilizados pelo site -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-premium.css">
+
+  <!-- CSS específico deste catálogo -->
+  <link rel="stylesheet" href="stylebolofake.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main>
+    <h1>Catálogo de Bolos Fake</h1>
+
+    <div class="controle">
+      <label for="filtro">Filtrar por categoria:</label>
+
+      <div class="filtros-visuais">
+        <button class="filtro-btn active" type="button" onclick="filtrarCategoria('all')">Todos</button>
+        <button class="filtro-btn" type="button" onclick="filtrarCategoria('tematicos')">🎂 Temáticos</button>
+        <button class="filtro-btn" type="button" onclick="filtrarCategoria('neutros')">🤍 Neutros</button>
+        <button class="filtro-btn" type="button" onclick="filtrarCategoria('coloridos')">🎨 Coloridos</button>
+        <button class="filtro-btn" type="button" onclick="filtrarCategoria('luxo')">✨ Luxo</button>
+      </div>
+
+      <input type="text" id="busca-tema" placeholder="🔍 Buscar bolo..." autocomplete="off">
+
+      <select id="filtro" aria-label="Filtrar por categoria">
+        <option value="all">Todos</option>
+        <option value="tematicos">Temáticos</option>
+        <option value="neutros">Neutros</option>
+        <option value="coloridos">Coloridos</option>
+        <option value="luxo">Luxo</option>
+        <option value="3andares">3 andares</option>
+        <option value="2andares">2 andares</option>
+        <option value="1andar">1 andar</option>
+      </select>
+    </div>
+
+    <div class="controlevisualizacao">
+      <button type="button" id="btn-alternar">Alternar Lista / Grade</button>
+    </div>
+
+    <div class="catalogo grid" id="catalogo-bolos"></div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+  <script src="scriptbolofake.js"></script>
+</body>
+</html>

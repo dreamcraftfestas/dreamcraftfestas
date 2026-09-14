@@ -1,0 +1,451 @@
+/* =========================================================
+   DREAMCRAFT - CATÁLOGO DE BOLOS FAKE
+   ========================================================= */
+
+:root {
+  --cor-principal: #6f8f70;
+  --cor-secundaria: #f080a0;
+  --cor-texto: #333;
+  --cor-fundo-claro: #c2e7c3;
+  --font-titulos: 'Playfair Display', serif;
+  --font-corpo: 'Montserrat', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-corpo), Arial, sans-serif;
+}
+
+main {
+  margin-top: 160px;
+  padding: 20px;
+  min-height: calc(100vh - 160px);
+}
+
+main > h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 40px;
+  font-family: var(--font-titulos), Georgia, serif;
+}
+
+/* ---------- CONTROLES ---------- */
+.controle {
+  margin: 0 auto 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+  max-width: 900px;
+  border: 1px solid rgba(255,255,255,0.30);
+}
+
+.filtros-visuais {
+  margin: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filtro-btn {
+  background: #c2e7c3;
+  border: 2px solid var(--cor-principal);
+  color: var(--cor-principal);
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.filtro-btn:hover,
+.filtro-btn.active {
+  background: var(--cor-principal);
+  color: white;
+  transform: scale(1.05);
+}
+
+#busca-tema {
+  padding: 10px 20px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  width: 250px;
+  max-width: 100%;
+  margin: 10px;
+  font-size: 16px;
+}
+
+#busca-tema:focus {
+  outline: none;
+  border-color: var(--cor-principal);
+}
+
+#filtro {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  margin: 10px;
+  font-size: 16px;
+  background: white;
+}
+
+/* ---------- VISUALIZAÇÃO ---------- */
+.controlevisualizacao {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controlevisualizacao button {
+  background-color: var(--cor-principal);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.controlevisualizacao button:hover {
+  background-color: var(--cor-secundaria);
+  transform: translateY(-2px);
+}
+
+/* ---------- CATÁLOGO / CARDS ---------- */
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.bolo-fake-card {
+  overflow: visible;
+  z-index: 1;
+  transition: z-index 0.3s, box-shadow 0.3s;
+  background: rgba(255,255,255,0.30) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255,255,255,0.30);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.10);
+}
+
+.bolo-fake-card:hover {
+  z-index: 999;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.carrossel {
+  position: relative;
+  border-radius: 10px;
+  overflow: visible;
+  margin-bottom: 15px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.imagens-carrossel {
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  overflow: visible;
+}
+
+.imagens-carrossel img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
+  opacity: 0 !important;
+  transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275), opacity 0.4s ease;
+  z-index: 1;
+}
+
+.imagens-carrossel img.imagem-ativa {
+  opacity: 1 !important;
+  z-index: 10;
+}
+
+.carrossel:hover {
+  z-index: 500;
+}
+
+.carrossel:hover .imagens-carrossel img.imagem-ativa {
+  transform: translate(-50%, -65%) scale(1.65) !important;
+  z-index: 9999 !important;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.35);
+  background-color: rgba(255,255,255,0.85);
+  border-radius: 12px;
+}
+
+.zoom-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.70);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.carrossel:hover .zoom-hint {
+  opacity: 1;
+}
+
+.contador-imagens {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.70);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 20;
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.titulo {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #333;
+  font-family: var(--font-titulos), Georgia, serif;
+}
+
+.descricao {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 15px;
+  color: #555;
+  flex-grow: 1;
+}
+
+.descricao li {
+  margin-bottom: 5px;
+}
+
+.whatsapp-btn {
+  background-color: #25D366;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s;
+  margin-top: auto;
+}
+
+.whatsapp-btn:hover {
+  background-color: #128C7E;
+  transform: scale(1.02);
+}
+
+/* ---------- ESTADO VAZIO ---------- */
+.catalogo-vazio {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 70px 20px;
+  background: rgba(255,255,255,0.55);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.50);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.catalogo-vazio i {
+  font-size: 55px;
+  color: var(--cor-principal);
+  margin-bottom: 15px;
+}
+
+.catalogo-vazio h2 {
+  color: var(--cor-principal);
+  margin-bottom: 10px;
+}
+
+.catalogo-vazio p {
+  color: #555;
+}
+
+/* ---------- MODAL ---------- */
+.modal-imagem {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+}
+
+.modal-conteudo {
+  position: relative;
+  z-index: 2;
+  width: min(95vw, 1200px);
+  height: min(92vh, 900px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.35);
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: white;
+  background: transparent;
+  border: 0;
+  font-size: 50px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(111,143,112,0.95);
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.modal-anterior { left: 15px; }
+.modal-proximo { right: 15px; }
+
+.modal-contador {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  background: rgba(0,0,0,0.65);
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+/* ---------- LISTA ---------- */
+.catalogo.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.catalogo.lista .bolo-fake-card {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.catalogo.lista .carrossel {
+  width: 38%;
+  min-width: 320px;
+  margin-right: 25px;
+  margin-bottom: 0;
+}
+
+.catalogo.lista .conteudo {
+  flex: 1;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  main {
+    margin-top: 140px;
+  }
+
+  .catalogo {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .filtro-btn {
+    padding: 8px 15px;
+    font-size: 13px;
+  }
+
+  #busca-tema {
+    width: 200px;
+  }
+
+  .imagens-carrossel {
+    height: 230px;
+  }
+
+  .catalogo.lista .bolo-fake-card {
+    flex-direction: column;
+  }
+
+  .catalogo.lista .carrossel {
+    width: 100%;
+    min-width: 0;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .modal-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .modal-anterior { left: 5px; }
+  .modal-proximo { right: 5px; }
+
+  .modal-fechar {
+    top: 5px;
+    right: 5px;
+    font-size: 36px;
+  }
+}
