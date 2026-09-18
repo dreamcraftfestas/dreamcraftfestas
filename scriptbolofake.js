@@ -31,10 +31,29 @@
 
 const bancoDadosBolosFake = [
    
-  { nome: 'Bolo Fake Branco 3 Andares',                                 pasta: 'branco_3andares',                           categorias: 'all neutros luxo 3andares',totalImgs: 2},
-  { nome: 'Bolo Fake Rosa',                                             pasta: 'rosa',                                      categorias: 'all coloridos 1andar',totalImgs: 1},
-  
-    
+  { nome: 'Bolo Fake Black Clover',                                 pasta: 'blackclover',                           categorias: 'all anime blackclover meninos homem',totalImgs: 1},
+  { nome: 'Bolo Fake Festa Junina',                                 pasta: 'festajunina',                           categorias: 'all festajunina arraia',totalImgs: 1},
+  { nome: 'Bolo Fake Laço Rosa',                                    pasta: 'lacorosa',                              categorias: 'all meninas rosa laco',totalImgs: 1},
+  { nome: 'Bolo Fake Pool Party',                                   pasta: 'poolparty',                             categorias: 'all poolparty piscina',totalImgs: 1},
+  { nome: 'Bolo Fake Pantera Negra',                                pasta: 'panteranegra',                          categorias: 'all panteranegra herois filme',totalImgs: 1},
+  { nome: 'Bolo Fake Borboleta Lilas',                              pasta: 'borboletlilas',                         categorias: 'all borboleta lilas',totalImgs: 1},
+  { nome: 'Bolo Fake Castelo Princesas',                            pasta: 'princesas',                             categorias: 'all castelo princesas meninas',totalImgs: 3},
+  { nome: 'Bolo Fake Rei Leão',                                     pasta: 'reileao',                               categorias: 'all reileao desenho',totalImgs: 1},
+  { nome: 'Bolo Fake Poderoso Chefinho',                            pasta: 'poderosochefinho',                      categorias: 'all poderosochefinho meninos filme',totalImgs: 1},
+  { nome: 'Bolo Fake Princesa Tiana',                               pasta: 'princesatiana',                         categorias: 'all princesas meninas tiana',totalImgs: 2},
+  { nome: 'Bolo Fake Skate',                                        pasta: 'skate',                                 categorias: 'all skate esportes',totalImgs: 1},
+  { nome: 'Bolo Fake Neon',                                         pasta: 'neon',                                  categorias: 'all neon meninas',totalImgs: 1},
+  { nome: 'Bolo Fake Fundo do Mar',                                 pasta: 'fundodomar',                            categorias: 'all fundodomar mar',totalImgs: 1},
+  { nome: 'Bolo Fake Girasol',                                      pasta: 'girasol',                               categorias: 'all girasol meninas',totalImgs: 1},
+  { nome: 'Bolo Fake Fazendinha',                                   pasta: 'fazendinha',                            categorias: 'all fazendinha ',totalImgs: 1},
+  { nome: 'Bolo Fake Transito',                                     pasta: 'transito',                              categorias: 'all transito meninos',totalImgs: 1},
+  { nome: 'Bolo Fake Personalizado',                                pasta: 'personalizado',                         categorias: 'all personalizado tematico empresas',totalImgs: 1},
+  { nome: 'Bolo Fake Rufado',                                       pasta: 'rufado',                                categorias: 'all rufado cores',totalImgs: 7}
+
+
+
+
+
 ];
 /* ---------- DESCRIÇÃO PADRÃO ---------- */
 const DESCRICAO_PADRAO = [
