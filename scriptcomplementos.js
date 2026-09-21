@@ -1,646 +1,740 @@
-/* ============================================================
-   CATÁLOGO — COMPLEMENTOS PARA DECORAÇÃO
-   DreamCraft Decorações
+/* =========================================================
+   DREAMCRAFT - CATÁLOGO DE COMPLEMENTOS
+   Visual e comportamento baseados no catálogo de Bolos Fake
+   ========================================================= */
 
-   Estrutura das imagens:
+'use strict';
+
+/*
+   IMAGENS:
    ./complementos/nome-da-pasta/1.webp
    ./complementos/nome-da-pasta/2.webp
-   
+   etc.
 
-   Para cadastrar um item, adicione um objeto em
-   bancoDadosComplementos.
-   ============================================================ */
+   Se a extensão estiver em maiúsculo (.WEBP), o script tenta
+   automaticamente a versão maiúscula.
+*/
 
 const bancoDadosComplementos = [
-    
-    {
-        nome: 'Número LED de Mesa',                         pasta: 'numeroledmesa',                       categorias: 'all led mumero', totalImgs: 10,
-        descricao: [
-            'Número iluminado para mesa',
-            'Ideal para aniversários e comemorações'
-        ]
-    },
-    
-    {
-        nome: 'Número LED de Chão',                         pasta: 'numeroledchao',                       categorias: 'all led numero', totalImgs: 10,
-        descricao: [
-            'Número LED de chão',
-            'Ideal para aniversários e comemorações'
-        ]
-    },
-
-    /*{
-        nome: 'Cubo Sextavado Acrílico',                    pasta: 'cubo-sextavado-acrilico',               categorias: 'all acrilico', totalImgs: 2,
-        descricao: [
-            'Peça acrílica para composição da decoração',
-            'Consulte medidas e disponibilidade'
-        ]
-    },*/
-
-    {
-        nome: 'Arvore Algodão',                         pasta: 'arvorealgodao',                       categorias: 'all arvore', totalImgs: 1,
-        descricao: [
-            'Arvore Algodão',
-            'Ideal para aniversários e comemorações'
-        ]
-    },
-    
-    {
-        nome: 'Arvore Gota',                         pasta: 'arvoregota',                       categorias: 'all arvore', totalImgs: 1,
-        descricao: [
-            'Arvore Gota',
-            'Ideal para aniversários e comemorações'
-        ]
-    },
-
-    {
-        nome: 'Bandeja Espelhada',                         pasta: 'bandejaespelhada',                       categorias: 'all bandeja', totalImgs: 1,
-        descricao: [
-            'Bandeja Espelhada',
-            'Ideal para aniversários e comemorações'
-        ]
-    },
-
-    {
-        nome: 'Bandeja Redonda de Ferro',                         pasta: 'bandejaredondaferro',                       categorias: 'all bandeja', totalImgs: 1,
-        descricao: [
-            'Bandeja Redonda de Ferro',
-            'Ideal para aniversários e comemorações'
-        ]
-    },
-
-    {
-        nome: 'Display Carro',                         pasta: 'displaycarro',                       categorias: 'all display carros meninos', totalImgs: 1,
-        descricao: [
-            'Display Carro',
-            'Ideal para aniversários e comemorações'
-        ]
-    },
-
-    {
-        nome: 'Display Princesas',                         pasta: 'displayprincesa',                       categorias: 'all display princesas meninas', totalImgs: 1,
-        descricao: [
-            'Display Princesas',
-            'Ideal para agregar valor a sua decoração'
-        ]
-    },
-
-    {
-        nome: 'Display Placas de Transito',                         pasta: 'displaytransito',                       categorias: 'all display placas transito', totalImgs: 1,
-        descricao: [
-            'Display Placas de Transito',
-            'Ideal para agregar valor a sua decoração'
-        ]
-    },
-
-    {
-        nome: 'Trio Mesa Bailarina',                         pasta: 'mesabailarina',                       categorias: 'all mesas', totalImgs: 1,
-        descricao: [
-            'Trio Mesa Bailarina',
-            'Ideal para agregar valor a sua decoração'
-        ]
-    },
-
-    {
-        nome: 'Painel Janela',                         pasta: 'paineljanela',                       categorias: 'all painel janela', totalImgs: 1,
-        descricao: [
-            'Painel Janela',
-            'Ideal para agregar valor a sua decoração'
-        ]
-    },
-
-    {
-        nome: 'Placa MDF Bodas de Ouro',                         pasta: 'placabodasdeouro',                       categorias: 'all bandeja', totalImgs: 1,
-        descricao: [
-            'Placa MDF Bodas de Ouro',
-            'Ideal para agregar valor a sua decoração'
-        ]
-    },
-
-    {
-        nome: 'Vaso Aramado',                         pasta: 'vasoaramado',                       categorias: 'all bandeja', totalImgs: 1,
-        descricao: [
-            'Vaso Aramado',
-            'Ideal para agregar valor a sua decoração'
-        ]
-    },
-
-    {
-        nome: 'Cubo Baby',                         pasta: 'cubobaby',                       categorias: 'all cubo baby', totalImgs: 4,
-        descricao: [
-            'Cubo Baby',
-            'Ideal para agregar valor a sua decoração'
-        ]
-    },
-
-    {
-        nome: 'Algas em MDF',                         pasta: 'algas',                       categorias: 'all fundodomar mar', totalImgs: 4,
-        descricao: [
-            'Algas em MDF',
-            'Ideal para agregar valor a sua decoração'
-        ]
-    },
-
+  {
+    nome: 'Número LED de Mesa',
+    pasta: 'numeroledmesa',
+    categorias: 'all led numero',
+    totalImgs: 10,
+    descricao: [
+      'Número iluminado para composição da mesa',
+      'Ideal para aniversários e comemorações'
+    ]
+  },
+  {
+    nome: 'Número LED de Chão',
+    pasta: 'numeroledchao',
+    categorias: 'all led numero',
+    totalImgs: 10,
+    descricao: [
+      'Número iluminado de chão',
+      'Ideal para destacar a idade do aniversariante'
+    ]
+  },
+  {
+    nome: 'Árvore de Algodão',
+    pasta: 'arvorealgodao',
+    categorias: 'all flores iluminacao',
+    totalImgs: 1,
+    descricao: [
+      'Elemento decorativo para composição do cenário',
+      'Consulte disponibilidade'
+    ]
+  },
+  {
+    nome: 'Árvore Gota',
+    pasta: 'arvoregota',
+    categorias: 'all flores iluminacao',
+    totalImgs: 1,
+    descricao: [
+      'Elemento decorativo para composição da mesa',
+      'Consulte disponibilidade'
+    ]
+  },
+  {
+    nome: 'Bandeja Espelhada',
+    pasta: 'bandejaespelhada',
+    categorias: 'all espelhos especiais',
+    totalImgs: 1,
+    descricao: [
+      'Bandeja espelhada para composição decorativa',
+      'Ideal para doces e pequenos elementos'
+    ]
+  },
+  {
+    nome: 'Bandeja Redonda de Ferro',
+    pasta: 'bandejaredondaferro',
+    categorias: 'all especiais',
+    totalImgs: 1,
+    descricao: [
+      'Bandeja para composição da decoração',
+      'Consulte disponibilidade'
+    ]
+  },
+  {
+    nome: 'Display Carro',
+    pasta: 'displaycarro',
+    categorias: 'all especiais',
+    totalImgs: 1,
+    descricao: [
+      'Display decorativo temático',
+      'Consulte disponibilidade'
+    ]
+  },
+  {
+    nome: 'Display Princesa',
+    pasta: 'displayprincesa',
+    categorias: 'all especiais',
+    totalImgs: 1,
+    descricao: [
+      'Display decorativo para temas de princesa',
+      'Consulte disponibilidade'
+    ]
+  },
+  {
+    nome: 'Display Trânsito',
+    pasta: 'displaytransito',
+    categorias: 'all especiais',
+    totalImgs: 1,
+    descricao: [
+      'Display decorativo para tema trânsito',
+      'Consulte disponibilidade'
+    ]
+  },
+  {
+    nome: 'Mesa Bailarina',
+    pasta: 'mesabailarina',
+    categorias: 'all pedestais especiais',
+    totalImgs: 1,
+    descricao: [
+      'Mesa decorativa para composição do cenário',
+      'Consulte disponibilidade'
+    ]
+  },
+  {
+    nome: 'Painel Janela',
+    pasta: 'paineljanela',
+    categorias: 'all especiais',
+    totalImgs: 1,
+    descricao: [
+      'Painel decorativo para composição do fundo',
+      'Consulte disponibilidade'
+    ]
+  },
+  {
+    nome: 'Placa Bodas de Ouro',
+    pasta: 'placabodasdeouro',
+    categorias: 'all especiais',
+    totalImgs: 1,
+    descricao: [
+      'Placa decorativa para celebrações',
+      'Ideal para Bodas de Ouro'
+    ]
+  },
+  {
+    nome: 'Vaso Aramado',
+    pasta: 'vasoaramado',
+    categorias: 'all especiais flores',
+    totalImgs: 1,
+    descricao: [
+      'Vaso decorativo para composição',
+      'Consulte disponibilidade'
+    ]
+  },
+  {
+    nome: 'Cubo Baby',
+    pasta: 'cubobaby',
+    categorias: 'all pedestais especiais',
+    totalImgs: 1,
+    descricao: [
+      'Cubo decorativo para composição da mesa',
+      'Ideal para temas infantis'
+    ]
+  },
+  {
+    nome: 'Algas',
+    pasta: 'algas',
+    categorias: 'all especiais',
+    totalImgs: 1,
+    descricao: [
+      'Elemento decorativo para temas aquáticos',
+      'Consulte disponibilidade'
+    ]
+  }
 ];
 
 const PASTA_IMAGENS = './complementos/';
 const WHATSAPP = '5519993723106';
 const INTERVALO_SLIDESHOW = 3000;
 
-let itensFiltrados = [...bancoDadosComplementos];
+let imagensModal = [];
 let indiceModal = 0;
-let indiceImagemModal = 0;
-let slideshowTimers = [];
+let modalAtual = null;
+let timersSlideshow = [];
+
+/* ---------- SEGURANÇA ---------- */
+
+function escapeHTML(texto) {
+  return String(texto)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
 
 function normalizarTexto(texto) {
-    return String(texto || '')
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase()
-        .trim();
+  return String(texto || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
 }
 
-function escapeHtml(texto) {
-    return String(texto ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+function getDescricaoHTML(item) {
+  const descricao = Array.isArray(item.descricao) ? item.descricao : [];
+
+  if (!descricao.length) {
+    return '<li>Complemento para composição da decoração</li>' +
+           '<li>Consulte disponibilidade</li>';
+  }
+
+  return descricao.map(function (texto) {
+    return '<li>' + escapeHTML(texto) + '</li>';
+  }).join('');
 }
 
-function obterImagem(pasta, numero) {
-    return `${PASTA_IMAGENS}${pasta}/${numero}.webp`;
+/* ---------- GERAÇÃO ---------- */
+
+function gerarCatalogo() {
+  const container = document.getElementById('catalogo-festas');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  if (!bancoDadosComplementos.length) {
+    container.innerHTML =
+      '<div class="catalogo-vazio">' +
+        '<i class="fa-solid fa-puzzle-piece"></i>' +
+        '<h2>Nenhum complemento cadastrado</h2>' +
+        '<p>Cadastre os complementos no arquivo <strong>scriptcomplementos.js</strong>.</p>' +
+      '</div>';
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  bancoDadosComplementos.forEach(function (item) {
+    fragment.appendChild(criarCard(item));
+  });
+
+  container.appendChild(fragment);
+
+  iniciarCarrosseis();
+  aplicarFiltros();
 }
 
-function obterImagemFallback(pasta, numero) {
-    return `${PASTA_IMAGENS}${pasta}/${numero}.WEBP`;
-}
+function criarCard(item) {
+  const nome = item.nome || 'Complemento';
+  const pasta = item.pasta || '';
+  const categorias = item.categorias || 'all';
+  const qtdImagens = Math.max(1, Number(item.totalImgs) || 1);
+  const wppNome = encodeURIComponent(nome);
 
-function gerarDescricao(descricao) {
-    if (!Array.isArray(descricao)) return '';
+  const card = document.createElement('div');
 
-    return descricao
-        .filter(Boolean)
-        .map(item => `<li>${escapeHtml(item)}</li>`)
-        .join('');
-}
+  /* Mantém a mesma estrutura visual do Bolo Fake */
+  card.className = 'festa bolo-fake-card';
+  card.dataset.categoria = categorias;
+  card.dataset.pasta = pasta;
 
-function gerarCard(item, index) {
-    const total = Math.max(1, Number(item.totalImgs) || 1);
-    const imagens = [];
+  let htmlImgs = '';
 
-    for (let i = 1; i <= total; i++) {
-        imagens.push(`
-            <img
-                class="imagem-carrossel ${i === 1 ? 'ativa' : ''}"
-                data-src="${obterImagem(item.pasta, i)}"
-                data-fallback="${obterImagemFallback(item.pasta, i)}"
-                data-indice="${i - 1}"
-                alt="${escapeHtml(item.nome)} - imagem ${i}"
-                loading="${i === 1 ? 'eager' : 'lazy'}"
-                ${i === 1 ? `src="${obterImagem(item.pasta, i)}"` : ''}
-            >
-        `);
-    }
+  for (let i = 1; i <= qtdImagens; i++) {
+    const src = PASTA_IMAGENS + pasta + '/' + i + '.webp';
+    const srcMaiusculo = PASTA_IMAGENS + pasta + '/' + i + '.WEBP';
 
-    const mensagem = encodeURIComponent(
-        `Olá! Gostaria de solicitar um orçamento para o complemento "${item.nome}".`
+    htmlImgs +=
+      '<img src="' + src + '"' +
+      ' loading="lazy"' +
+      ' data-indice="' + i + '"' +
+      ' data-src-maiusculo="' + srcMaiusculo + '"' +
+      ' alt="' + escapeHTML(nome) + ' - imagem ' + i + '"' +
+      ' onerror="tratarErroImagemComplemento(this)"' +
+      (i === 1 ? ' class="imagem-ativa"' : '') +
+      '>';
+  }
+
+  card.innerHTML =
+    '<div class="carrossel">' +
+      '<div class="imagens-carrossel">' +
+        htmlImgs +
+      '</div>' +
+      '<div class="zoom-hint">🔍 Clique para ampliar</div>' +
+      '<div class="contador-imagens"></div>' +
+    '</div>' +
+    '<div class="conteudo">' +
+      '<div class="titulo">' + escapeHTML(nome) + '</div>' +
+      '<ul class="descricao">' + getDescricaoHTML(item) + '</ul>' +
+      '<a class="whatsapp-btn"' +
+        ' href="https://wa.me/' + WHATSAPP +
+        '?text=' + encodeURIComponent('Olá, quero orçamento para o ' + nome) + '"' +
+        ' target="_blank" rel="noopener">' +
+        '<i class="fa-brands fa-whatsapp"></i> Solicitar Orçamento' +
+      '</a>' +
+    '</div>';
+
+  atualizarContador(card);
+
+  const imagens = card.querySelector('.imagens-carrossel');
+
+  imagens.addEventListener('click', function (event) {
+    if (event.target.tagName !== 'IMG') return;
+
+    const imgsValidas = Array.from(
+      card.querySelectorAll('.imagens-carrossel img:not([data-falhou])')
     );
 
-    return `
-        <article class="festa complemento-card"
-                 data-categoria="${escapeHtml(item.categorias || 'all')}"
-                 data-indice="${index}"
-                 data-pasta="${escapeHtml(item.pasta)}"
-                 data-total-imgs="${total}">
+    const indice = Math.max(0, imgsValidas.indexOf(event.target));
 
-            <div class="carrossel">
-                <button class="carrossel-btn anterior" type="button"
-                        aria-label="Imagem anterior">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
+    if (imgsValidas.length) {
+      abrirModalComLista(
+        imgsValidas.map(function (img) {
+          return img.src;
+        }),
+        indice,
+        nome
+      );
+    }
+  });
 
-                <div class="imagens-carrossel">
-                    ${imagens.join('')}
-                </div>
-
-                <button class="carrossel-btn proxima" type="button"
-                        aria-label="Próxima imagem">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
-
-                <div class="contador-imagens">1 / ${total}</div>
-
-                <button class="abrir-imagem" type="button"
-                        aria-label="Ampliar imagens">
-                    <i class="fa-solid fa-expand"></i>
-                </button>
-            </div>
-
-            <div class="informacoes-complemento">
-                <h2 class="titulo">${escapeHtml(item.nome)}</h2>
-
-                ${
-                    item.descricao?.length
-                    ? `<ul class="descricao">${gerarDescricao(item.descricao)}</ul>`
-                    : ''
-                }
-
-                <a class="whatsapp-btn"
-                   href="https://wa.me/${WHATSAPP}?text=${mensagem}"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    Solicitar Orçamento
-                </a>
-            </div>
-        </article>
-    `;
+  return card;
 }
 
-function carregarImagem(img) {
-    if (!img || img.dataset.carregada === 'true') return;
+/* ---------- IMAGENS ---------- */
 
-    const src = img.dataset.src;
-    if (!src) return;
+function tratarErroImagemComplemento(img) {
+  if (!img.dataset.tentouMaiusculo) {
+    img.dataset.tentouMaiusculo = '1';
+    img.src = img.dataset.srcMaiusculo;
+    return;
+  }
 
-    img.src = src;
-    img.dataset.carregada = 'true';
+  img.dataset.falhou = '1';
+  img.style.display = 'none';
 
-    img.onerror = function () {
-        if (!this.dataset.tentouFallback) {
-            this.dataset.tentouFallback = 'true';
-            this.src = this.dataset.fallback;
-        }
-    };
+  const card = img.closest('.festa');
+  if (card) {
+    atualizarContador(card);
+    atualizarImagemAtiva(card);
+  }
 }
 
-function configurarLazyLoading() {
-    const imagens = document.querySelectorAll(
-        '#catalogo-complementos img[data-src]'
+function atualizarImagemAtiva(card) {
+  const imagens = Array.from(
+    card.querySelectorAll('.imagens-carrossel img:not([data-falhou])')
+  );
+
+  if (!imagens.length) return;
+
+  if (!imagens.some(function (img) {
+    return img.classList.contains('imagem-ativa');
+  })) {
+    imagens[0].classList.add('imagem-ativa');
+  }
+}
+
+function atualizarContador(card) {
+  const contador = card.querySelector('.contador-imagens');
+  if (!contador) return;
+
+  const total = card.querySelectorAll(
+    '.imagens-carrossel img:not([data-falhou])'
+  ).length;
+
+  contador.textContent = total > 1 ? '1 / ' + total : '';
+  contador.style.display = total > 1 ? 'block' : 'none';
+}
+
+/* ---------- SLIDESHOW ---------- */
+
+function iniciarCarrosseis() {
+  document.querySelectorAll('#catalogo-festas .festa').forEach(function (card) {
+    iniciarSlideshow(card);
+  });
+}
+
+function iniciarSlideshow(card) {
+  setTimeout(function () {
+    if (!document.body.contains(card)) return;
+
+    const container = card.querySelector('.imagens-carrossel');
+    if (!container) return;
+
+    const imagens = Array.from(
+      container.querySelectorAll('img:not([data-falhou])')
     );
 
-    if (!('IntersectionObserver' in window)) {
-        imagens.forEach(carregarImagem);
+    if (imagens.length <= 1) return;
+
+    let atual = 0;
+
+    imagens.forEach(function (img, index) {
+      img.classList.toggle('imagem-ativa', index === 0);
+    });
+
+    const timer = setInterval(function () {
+      if (!document.body.contains(card)) {
+        clearInterval(timer);
         return;
-    }
+      }
 
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                carregarImagem(entry.target);
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { rootMargin: '250px' });
+      const validas = Array.from(
+        container.querySelectorAll('img:not([data-falhou])')
+      );
 
-    imagens.forEach(img => observer.observe(img));
-}
-
-function obterImagensCard(card) {
-    return [...card.querySelectorAll('.imagem-carrossel')];
-}
-
-function atualizarCarrossel(card, novoIndice) {
-    const imagens = obterImagensCard(card);
-    if (!imagens.length) return;
-
-    let indice = novoIndice;
-
-    if (indice < 0) indice = imagens.length - 1;
-    if (indice >= imagens.length) indice = 0;
-
-    imagens.forEach((img, i) => {
-        img.classList.toggle('ativa', i === indice);
-        if (i === indice || i === indice + 1) carregarImagem(img);
-    });
-
-    const contador = card.querySelector('.contador-imagens');
-    if (contador) contador.textContent = `${indice + 1} / ${imagens.length}`;
-
-    card.dataset.imagemAtual = indice;
-}
-
-function iniciarSlideshows() {
-    pararSlideshows();
-
-    document.querySelectorAll('.complemento-card').forEach(card => {
-        const imagens = obterImagensCard(card);
-        if (imagens.length <= 1) return;
-
-        const timer = setInterval(() => {
-            if (!card.matches(':hover')) {
-                const atual = Number(card.dataset.imagemAtual || 0);
-                atualizarCarrossel(card, atual + 1);
-            }
-        }, INTERVALO_SLIDESHOW);
-
-        slideshowTimers.push(timer);
-    });
-}
-
-function pararSlideshows() {
-    slideshowTimers.forEach(clearInterval);
-    slideshowTimers = [];
-}
-
-function configurarCards() {
-    document.querySelectorAll('.complemento-card').forEach(card => {
-        const imagens = obterImagensCard(card);
-        atualizarCarrossel(card, 0);
-
-        card.querySelector('.anterior')?.addEventListener('click', event => {
-            event.stopPropagation();
-            atualizarCarrossel(
-                card,
-                Number(card.dataset.imagemAtual || 0) - 1
-            );
-        });
-
-        card.querySelector('.proxima')?.addEventListener('click', event => {
-            event.stopPropagation();
-            atualizarCarrossel(
-                card,
-                Number(card.dataset.imagemAtual || 0) + 1
-            );
-        });
-
-        card.querySelector('.abrir-imagem')?.addEventListener('click', event => {
-            event.stopPropagation();
-
-            const originalIndex = Number(card.dataset.indice);
-            indiceModal = itensFiltrados.findIndex(
-                item => bancoDadosComplementos.indexOf(item) === originalIndex
-            );
-
-            if (indiceModal < 0) indiceModal = 0;
-
-            indiceImagemModal = Number(card.dataset.imagemAtual || 0);
-            abrirModal();
-        });
-
-        imagens.forEach((img, i) => {
-            img.addEventListener('click', event => {
-                event.stopPropagation();
-
-                const originalIndex = Number(card.dataset.indice);
-                indiceModal = itensFiltrados.findIndex(
-                    item => bancoDadosComplementos.indexOf(item) === originalIndex
-                );
-
-                if (indiceModal < 0) indiceModal = 0;
-
-                indiceImagemModal = i;
-                abrirModal();
-            });
-        });
-    });
-}
-
-function renderizarCatalogo() {
-    const catalogo = document.getElementById('catalogo-complementos');
-    if (!catalogo) return;
-
-    pararSlideshows();
-
-    if (!itensFiltrados.length) {
-        catalogo.innerHTML = `
-            <div class="estado-vazio">
-                <i class="fa-solid fa-box-open"></i>
-                <h2>Nenhum complemento encontrado</h2>
-                <p>Cadastre seus itens no <strong>bancoDadosComplementos</strong>
-                   ou altere os filtros da busca.</p>
-            </div>
-        `;
+      if (validas.length <= 1) {
+        clearInterval(timer);
         return;
-    }
+      }
 
-    catalogo.innerHTML = itensFiltrados
-        .map((item, index) => {
-            const originalIndex = bancoDadosComplementos.indexOf(item);
-            return gerarCard(
-                { ...item, _originalIndex: originalIndex },
-                originalIndex
-            );
-        })
-        .join('');
+      validas[atual % validas.length].classList.remove('imagem-ativa');
+      atual = (atual + 1) % validas.length;
+      validas[atual].classList.add('imagem-ativa');
 
-    configurarCards();
-    configurarLazyLoading();
-    iniciarSlideshows();
+      const contador = card.querySelector('.contador-imagens');
+      if (contador) {
+        contador.textContent = (atual + 1) + ' / ' + validas.length;
+      }
+    }, INTERVALO_SLIDESHOW);
+
+    timersSlideshow.push(timer);
+  }, 800);
+}
+
+/* ---------- FILTROS + BUSCA ---------- */
+
+function obterCategoriaSelecionada() {
+  const select = document.getElementById('select-categoria');
+  return select ? select.value : 'all';
 }
 
 function aplicarFiltros() {
-    const categoria = document.getElementById('select-categoria')?.value || 'all';
-    const busca = normalizarTexto(
-        document.getElementById('busca-complemento')?.value || ''
+  const categoria = normalizarTexto(obterCategoriaSelecionada());
+  const buscaEl = document.getElementById('busca-complemento');
+  const termo = normalizarTexto(buscaEl ? buscaEl.value : '');
+
+  const cards = document.querySelectorAll('#catalogo-festas .festa');
+  let encontrados = 0;
+
+  cards.forEach(function (card) {
+    const categorias = normalizarTexto(
+      card.getAttribute('data-categoria') || ''
+    ).split(/\s+/);
+
+    const titulo = normalizarTexto(
+      card.querySelector('.titulo')?.textContent || ''
     );
 
-    itensFiltrados = bancoDadosComplementos.filter(item => {
-        const categorias = normalizarTexto(item.categorias || 'all')
-            .split(/\s+/)
-            .filter(Boolean);
-
-        const nome = normalizarTexto(item.nome);
-        const descricao = normalizarTexto(
-            Array.isArray(item.descricao) ? item.descricao.join(' ') : ''
-        );
-
-        const passaCategoria =
-            categoria === 'all' ||
-            categorias.includes(normalizarTexto(categoria));
-
-        const passaBusca =
-            !busca ||
-            nome.includes(busca) ||
-            descricao.includes(busca);
-
-        return passaCategoria && passaBusca;
-    });
-
-    document.querySelectorAll('.filtro').forEach(botao => {
-        botao.classList.toggle(
-            'ativo',
-            botao.dataset.categoria === categoria
-        );
-    });
-
-    renderizarCatalogo();
-}
-
-function configurarFiltros() {
-    document.querySelectorAll('.filtro').forEach(botao => {
-        botao.addEventListener('click', () => {
-            const select = document.getElementById('select-categoria');
-            if (select) select.value = botao.dataset.categoria;
-            aplicarFiltros();
-        });
-    });
-
-    document.getElementById('select-categoria')?.addEventListener(
-        'change',
-        aplicarFiltros
+    const descricao = normalizarTexto(
+      card.querySelector('.descricao')?.textContent || ''
     );
 
-    document.getElementById('busca-complemento')?.addEventListener(
-        'input',
-        aplicarFiltros
-    );
-}
+    const passaCategoria =
+      categoria === 'all' ||
+      categorias.includes(categoria);
 
-function configurarVisualizacao() {
-    const catalogo = document.getElementById('catalogo-complementos');
-    const botao = document.getElementById('btn-visualizacao');
-    if (!catalogo || !botao) return;
+    const passaBusca =
+      !termo ||
+      titulo.includes(termo) ||
+      descricao.includes(termo) ||
+      categorias.some(function (cat) {
+        return cat.includes(termo);
+      });
 
-    const chave = 'visualizacao-complementos';
-    const salvo = localStorage.getItem(chave);
+    const mostrar = passaCategoria && passaBusca;
 
-    if (salvo === 'lista') catalogo.classList.add('lista');
+    card.style.display = mostrar ? 'flex' : 'none';
 
-    function atualizarBotao() {
-        const lista = catalogo.classList.contains('lista');
+    if (mostrar) encontrados++;
+  });
 
-        botao.innerHTML = lista
-            ? '<i class="fa-solid fa-grip"></i><span>Grade</span>'
-            : '<i class="fa-solid fa-list"></i><span>Lista</span>';
+  let vazio = document.getElementById('catalogo-filtro-vazio');
+
+  if (!encontrados && cards.length) {
+    if (!vazio) {
+      vazio = document.createElement('div');
+      vazio.id = 'catalogo-filtro-vazio';
+      vazio.className = 'catalogo-vazio-filtro';
+      vazio.innerHTML =
+        '<i class="fa-solid fa-magnifying-glass"></i>' +
+        '<h2>Nenhum complemento encontrado</h2>' +
+        '<p>Tente outra categoria ou outro termo de busca.</p>';
+
+      document.getElementById('catalogo-festas').appendChild(vazio);
     }
 
-    atualizarBotao();
+    vazio.style.display = 'block';
+  } else if (vazio) {
+    vazio.style.display = 'none';
+  }
 
-    botao.addEventListener('click', () => {
-        const lista = catalogo.classList.toggle('lista');
-        localStorage.setItem(chave, lista ? 'lista' : 'grid');
-        atualizarBotao();
-    });
+  atualizarBotoesCategoria(categoria);
 }
 
-function obterImagemAtualModal() {
-    const item = itensFiltrados[indiceModal];
-    if (!item) return null;
+function atualizarBotoesCategoria(categoria) {
+  document.querySelectorAll('.filtro').forEach(function (btn) {
+    const btnCategoria = normalizarTexto(
+      btn.getAttribute('data-categoria') || 'all'
+    );
 
-    const total = Math.max(1, Number(item.totalImgs) || 1);
-
-    if (indiceImagemModal < 0) indiceImagemModal = total - 1;
-    if (indiceImagemModal >= total) indiceImagemModal = 0;
-
-    return {
-        item,
-        src: obterImagem(item.pasta, indiceImagemModal + 1),
-        fallback: obterImagemFallback(item.pasta, indiceImagemModal + 1),
-        total
-    };
+    btn.classList.toggle(
+      'ativo',
+      btnCategoria === categoria
+    );
+  });
 }
 
-function atualizarModal() {
-    const modal = document.getElementById('modal-imagem');
-    const imagem = document.getElementById('imagem-modal');
-    const contador = document.getElementById('contador-modal');
+function selecionarCategoria(categoria) {
+  const select = document.getElementById('select-categoria');
 
-    const dados = obterImagemAtualModal();
-    if (!dados || !imagem) return;
+  if (select) {
+    select.value = categoria;
+  }
 
-    imagem.onerror = function () {
-        if (!this.dataset.tentouFallback) {
-            this.dataset.tentouFallback = 'true';
-            this.src = dados.fallback;
-        }
-    };
+  aplicarFiltros();
 
-    imagem.dataset.tentouFallback = '';
-    imagem.src = dados.src;
-    imagem.alt = `${dados.item.nome} - imagem ${indiceImagemModal + 1}`;
+  const url = new URL(window.location.href);
 
-    if (contador) {
-        contador.textContent =
-            `${indiceImagemModal + 1} / ${dados.total} — ${dados.item.nome}`;
-    }
+  if (categoria && categoria !== 'all') {
+    url.searchParams.set('categoria', categoria);
+  } else {
+    url.searchParams.delete('categoria');
+  }
 
-    if (modal) modal.setAttribute('aria-hidden', 'false');
+  window.history.replaceState({}, '', url);
 }
 
-function abrirModal() {
-    const modal = document.getElementById('modal-imagem');
-    if (!modal) return;
+/* ---------- VISUALIZAÇÃO ---------- */
 
-    modal.classList.add('aberto');
-    document.body.classList.add('modal-aberto');
-    atualizarModal();
+function alternarVisualizacao() {
+  const catalogo = document.getElementById('catalogo-festas');
+  if (!catalogo) return;
+
+  const isLista = catalogo.classList.toggle('lista');
+  catalogo.classList.toggle('grid', !isLista);
+
+  try {
+    localStorage.setItem(
+      'visualizacao-complementos',
+      isLista ? 'lista' : 'grid'
+    );
+  } catch (_) {}
+
+  const botao = document.querySelector('.controlevisualizacao button');
+
+  if (botao) {
+    botao.textContent = isLista
+      ? 'Alternar para Grade'
+      : 'Alternar para Lista';
+  }
+}
+
+/* ---------- MODAL ---------- */
+
+function abrirModalComLista(srcs, indiceInicial, nome) {
+  if (!srcs.length) return;
+
+  if (modalAtual) {
+    fecharModal();
+  }
+
+  imagensModal = srcs.slice();
+  indiceModal = Math.max(
+    0,
+    Math.min(indiceInicial || 0, imagensModal.length - 1)
+  );
+
+  modalAtual = document.createElement('div');
+  modalAtual.className = 'modal-imagem';
+
+  modalAtual.innerHTML =
+    '<div class="modal-overlay"></div>' +
+    '<div class="modal-conteudo">' +
+      '<button class="modal-fechar" type="button" aria-label="Fechar">&times;</button>' +
+      '<button class="modal-nav modal-anterior" type="button" aria-label="Anterior">&#10094;</button>' +
+      '<img src="' + escapeHTML(imagensModal[indiceModal]) + '"' +
+        ' class="modal-img"' +
+        ' alt="' + escapeHTML(nome || 'Complemento ampliado') + '">' +
+      '<button class="modal-nav modal-proximo" type="button" aria-label="Próximo">&#10095;</button>' +
+      '<div class="modal-contador">' +
+        (indiceModal + 1) + ' / ' + imagensModal.length +
+      '</div>' +
+    '</div>';
+
+  document.body.appendChild(modalAtual);
+  document.body.style.overflow = 'hidden';
+
+  modalAtual.querySelector('.modal-overlay')
+    .addEventListener('click', fecharModal);
+
+  modalAtual.querySelector('.modal-fechar')
+    .addEventListener('click', fecharModal);
+
+  modalAtual.querySelector('.modal-anterior')
+    .addEventListener('click', imagemAnterior);
+
+  modalAtual.querySelector('.modal-proximo')
+    .addEventListener('click', imagemProxima);
+
+  atualizarModal();
 }
 
 function fecharModal() {
-    const modal = document.getElementById('modal-imagem');
-    if (!modal) return;
+  if (!modalAtual) return;
 
-    modal.classList.remove('aberto');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-aberto');
+  modalAtual.remove();
+  modalAtual = null;
+  document.body.style.overflow = '';
 }
 
-function proximaImagemModal() {
-    const dados = obterImagemAtualModal();
-    if (!dados) return;
-
-    indiceImagemModal++;
-    if (indiceImagemModal >= dados.total) indiceImagemModal = 0;
+function imagemProxima() {
+  if (indiceModal < imagensModal.length - 1) {
+    indiceModal++;
     atualizarModal();
+  }
 }
 
-function imagemAnteriorModal() {
-    const dados = obterImagemAtualModal();
-    if (!dados) return;
-
-    indiceImagemModal--;
-    if (indiceImagemModal < 0) indiceImagemModal = dados.total - 1;
+function imagemAnterior() {
+  if (indiceModal > 0) {
+    indiceModal--;
     atualizarModal();
+  }
 }
 
-function configurarModal() {
-    document.querySelector('.modal-fechar')?.addEventListener(
-        'click',
-        fecharModal
-    );
+function atualizarModal() {
+  if (!modalAtual) return;
 
-    document.querySelector('.modal-proxima')?.addEventListener(
-        'click',
-        proximaImagemModal
-    );
+  const img = modalAtual.querySelector('.modal-img');
+  const contador = modalAtual.querySelector('.modal-contador');
 
-    document.querySelector('.modal-anterior')?.addEventListener(
-        'click',
-        imagemAnteriorModal
-    );
+  if (img) {
+    img.src = imagensModal[indiceModal];
+  }
 
-    document.getElementById('modal-imagem')?.addEventListener('click', event => {
-        if (event.target.id === 'modal-imagem') fecharModal();
-    });
+  if (contador) {
+    contador.textContent =
+      (indiceModal + 1) + ' / ' + imagensModal.length;
+  }
 
-    document.addEventListener('keydown', event => {
-        const modal = document.getElementById('modal-imagem');
-        if (!modal?.classList.contains('aberto')) return;
+  const anterior = modalAtual.querySelector('.modal-anterior');
+  const proximo = modalAtual.querySelector('.modal-proximo');
 
-        if (event.key === 'Escape') fecharModal();
-        if (event.key === 'ArrowRight') proximaImagemModal();
-        if (event.key === 'ArrowLeft') imagemAnteriorModal();
-    });
+  if (anterior) {
+    anterior.style.display =
+      indiceModal === 0 ? 'none' : 'block';
+  }
+
+  if (proximo) {
+    proximo.style.display =
+      indiceModal === imagensModal.length - 1 ? 'none' : 'block';
+  }
 }
 
-function iniciar() {
-    const params = new URLSearchParams(window.location.search);
-    const categoriaUrl = params.get('categoria');
+/* ---------- EVENTOS ---------- */
 
-    if (categoriaUrl) {
-        const select = document.getElementById('select-categoria');
-        if (select && [...select.options].some(o => o.value === categoriaUrl)) {
-            select.value = categoriaUrl;
-        }
+function configurarEventos() {
+  document.querySelectorAll('.filtro').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      selecionarCategoria(
+        this.getAttribute('data-categoria') || 'all'
+      );
+    });
+  });
+
+  const select = document.getElementById('select-categoria');
+
+  if (select) {
+    select.addEventListener('change', function () {
+      selecionarCategoria(this.value);
+    });
+  }
+
+  const busca = document.getElementById('busca-complemento');
+
+  if (busca) {
+    busca.addEventListener('input', aplicarFiltros);
+  }
+
+  const botaoVisualizacao =
+    document.querySelector('.controlevisualizacao button');
+
+  if (botaoVisualizacao) {
+    botaoVisualizacao.addEventListener(
+      'click',
+      alternarVisualizacao
+    );
+  }
+
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function () {
+      navMenu.classList.toggle('active');
+    });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (!modalAtual) return;
+
+    if (event.key === 'Escape') {
+      fecharModal();
     }
 
-    configurarFiltros();
-    configurarVisualizacao();
-    configurarModal();
-    aplicarFiltros();
+    if (event.key === 'ArrowLeft') {
+      imagemAnterior();
+    }
+
+    if (event.key === 'ArrowRight') {
+      imagemProxima();
+    }
+  });
 }
 
-document.addEventListener('DOMContentLoaded', iniciar);
+/* ---------- INICIALIZAÇÃO ---------- */
+
+document.addEventListener('DOMContentLoaded', function () {
+  gerarCatalogo();
+  configurarEventos();
+
+  const catalogo = document.getElementById('catalogo-festas');
+
+  try {
+    const visualizacao =
+      localStorage.getItem('visualizacao-complementos');
+
+    if (visualizacao === 'lista' && catalogo) {
+      catalogo.classList.remove('grid');
+      catalogo.classList.add('lista');
+
+      const botao =
+        document.querySelector('.controlevisualizacao button');
+
+      if (botao) {
+        botao.textContent = 'Alternar para Grade';
+      }
+    }
+  } catch (_) {}
+
+  const categoriaInicial =
+    new URLSearchParams(window.location.search)
+      .get('categoria') || 'all';
+
+  selecionarCategoria(categoriaInicial);
+});
