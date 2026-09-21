@@ -644,3 +644,76 @@ function iniciar() {
 }
 
 document.addEventListener('DOMContentLoaded', iniciar);
+/* ---------- MODAL / LIGHTBOX ---------- */
+function abrirModalComLista(srcs, indiceInicial) {
+  if (!srcs.length) return;
+  if (modalAtual) fecharModal();
+
+  imagensModal = srcs.slice();
+  indiceModal = indiceInicial || 0;
+
+  modalAtual = document.createElement('div');
+  modalAtual.className = 'modal-imagem';
+  modalAtual.innerHTML =
+    '<div class="modal-overlay"></div>' +
+    '<div class="modal-conteudo">' +
+      '<button class="modal-fechar" aria-label="Fechar">&times;</button>' +
+      '<button class="modal-nav modal-anterior" aria-label="Anterior">&#10094;</button>' +
+      '<img src="' + imagensModal[indiceModal] + '" class="modal-img" alt="Bolo fake ampliado">' +
+      '<button class="modal-nav modal-proximo" aria-label="Próximo">&#10095;</button>' +
+      '<div class="modal-contador">' + (indiceModal + 1) + ' / ' + imagensModal.length + '</div>' +
+    '</div>';
+
+  document.body.appendChild(modalAtual);
+  document.body.style.overflow = 'hidden';
+
+  modalAtual.querySelector('.modal-overlay').addEventListener('click', fecharModal);
+  modalAtual.querySelector('.modal-fechar').addEventListener('click', fecharModal);
+  modalAtual.querySelector('.modal-anterior').addEventListener('click', imagemAnterior);
+  modalAtual.querySelector('.modal-proximo').addEventListener('click', imagemProxima);
+
+  atualizarBotoesModal();
+}
+
+function fecharModal() {
+  if (!modalAtual) return;
+  modalAtual.remove();
+  modalAtual = null;
+  document.body.style.overflow = '';
+}
+
+function imagemProxima() {
+  if (indiceModal < imagensModal.length - 1) {
+    indiceModal++;
+    atualizarModal();
+  }
+}
+
+function imagemAnterior() {
+  if (indiceModal > 0) {
+    indiceModal--;
+    atualizarModal();
+  }
+}
+
+function atualizarModal() {
+  if (!modalAtual) return;
+  modalAtual.querySelector('.modal-img').src = imagensModal[indiceModal];
+  modalAtual.querySelector('.modal-contador').textContent =
+    (indiceModal + 1) + ' / ' + imagensModal.length;
+  atualizarBotoesModal();
+}
+
+function atualizarBotoesModal() {
+  if (!modalAtual) return;
+  modalAtual.querySelector('.modal-anterior').style.display = indiceModal === 0 ? 'none' : 'block';
+  modalAtual.querySelector('.modal-proximo').style.display =
+    indiceModal === imagensModal.length - 1 ? 'none' : 'block';
+}
+
+document.addEventListener('keydown', function (event) {
+  if (!modalAtual) return;
+  if (event.key === 'Escape') fecharModal();
+  if (event.key === 'ArrowLeft') imagemAnterior();
+  if (event.key === 'ArrowRight') imagemProxima();
+});
