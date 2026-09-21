@@ -1,6 +1,5 @@
 /* =========================================================
    DREAMCRAFT - CATÁLOGO DE COMPLEMENTOS
-   Visual baseado no catálogo de Bolos Fake
    ========================================================= */
 
 :root {
@@ -26,29 +25,24 @@ main {
   min-height: calc(100vh - 160px);
 }
 
-/* ---------- CABEÇALHO ---------- */
-
+/* ---------- CABEÇALHO DO CATÁLOGO ---------- */
 .catalogo-header {
   text-align: center;
-  margin: 0 auto 30px;
-  max-width: 1100px;
+  margin-bottom: 20px;
 }
 
 .catalogo-header h1 {
   color: #333;
   margin-bottom: 10px;
   font-family: var(--font-titulos), Georgia, serif;
-  font-size: clamp(28px, 4vw, 42px);
 }
 
-.catalogo-header p {
+.catalogo-header > p {
   color: #555;
-  margin-bottom: 25px;
-  font-size: 16px;
+  margin-bottom: 30px;
 }
 
-/* ---------- CONTROLES ---------- */
-
+/* ---------- FILTROS ---------- */
 .filtros-catalogo {
   margin: 0 auto 20px;
   text-align: center;
@@ -58,7 +52,7 @@ main {
   padding: 20px;
   border-radius: 14px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.10);
-  max-width: 1100px;
+  max-width: 900px;
   border: 1px solid rgba(255,255,255,0.30);
 }
 
@@ -74,7 +68,7 @@ main {
   background: #c2e7c3;
   border: 2px solid var(--cor-principal);
   color: var(--cor-principal);
-  padding: 10px 18px;
+  padding: 10px 20px;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s;
@@ -91,10 +85,10 @@ main {
 
 .filtros-controles {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
 .campo-busca {
@@ -106,19 +100,19 @@ main {
 
 .campo-busca i {
   position: absolute;
-  left: 17px;
-  color: #777;
+  left: 16px;
+  color: #999;
+  font-size: 14px;
   pointer-events: none;
 }
 
 #busca-complemento {
-  padding: 10px 20px 10px 42px;
+  padding: 10px 20px 10px 40px;
   border: 2px solid #ddd;
   border-radius: 25px;
-  width: 280px;
+  width: 250px;
   max-width: 100%;
   font-size: 16px;
-  background: white;
 }
 
 #busca-complemento:focus {
@@ -133,16 +127,9 @@ main {
   margin: 10px;
   font-size: 16px;
   background: white;
-  color: #333;
-}
-
-#select-categoria:focus {
-  outline: none;
-  border-color: var(--cor-principal);
 }
 
 /* ---------- VISUALIZAÇÃO ---------- */
-
 .controlevisualizacao {
   text-align: center;
   margin-bottom: 20px;
@@ -165,15 +152,14 @@ main {
 }
 
 /* ---------- CATÁLOGO / CARDS ---------- */
-
-#catalogo-festas.catalogo {
+.catalogo {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   padding: 20px;
 }
 
-#catalogo-festas .bolo-fake-card {
+.complemento-card {
   overflow: visible;
   z-index: 1;
   transition: z-index 0.3s, box-shadow 0.3s;
@@ -189,12 +175,12 @@ main {
   box-shadow: 0 4px 15px rgba(0,0,0,0.10);
 }
 
-#catalogo-festas .bolo-fake-card:hover {
+.complemento-card:hover {
   z-index: 999;
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-#catalogo-festas .carrossel {
+.carrossel {
   position: relative;
   border-radius: 10px;
   overflow: visible;
@@ -203,7 +189,7 @@ main {
   z-index: 10;
 }
 
-#catalogo-festas .imagens-carrossel {
+.imagens-carrossel {
   height: 260px;
   display: flex;
   justify-content: center;
@@ -214,7 +200,7 @@ main {
   overflow: visible;
 }
 
-#catalogo-festas .imagens-carrossel img {
+.imagens-carrossel img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -227,16 +213,16 @@ main {
   z-index: 1;
 }
 
-#catalogo-festas .imagens-carrossel img.imagem-ativa {
+.imagens-carrossel img.imagem-ativa {
   opacity: 1 !important;
   z-index: 10;
 }
 
-#catalogo-festas .carrossel:hover {
+.carrossel:hover {
   z-index: 500;
 }
 
-#catalogo-festas .carrossel:hover .imagens-carrossel img.imagem-ativa {
+.carrossel:hover .imagens-carrossel img.imagem-ativa {
   transform: translate(-50%, -65%) scale(1.65) !important;
   z-index: 9999 !important;
   box-shadow: 0 15px 45px rgba(0,0,0,0.35);
@@ -322,7 +308,6 @@ main {
 }
 
 /* ---------- ESTADO VAZIO ---------- */
-
 .catalogo-vazio {
   grid-column: 1 / -1;
   text-align: center;
@@ -348,8 +333,7 @@ main {
   color: #555;
 }
 
-/* ---------- MODAL / LIGHTBOX ---------- */
-
+/* ---------- MODAL ---------- */
 .modal-imagem {
   position: fixed;
   inset: 0;
@@ -425,56 +409,37 @@ main {
 }
 
 /* ---------- LISTA ---------- */
-
-#catalogo-festas.catalogo.lista {
+.catalogo.lista {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-#catalogo-festas.catalogo.lista .bolo-fake-card {
+.catalogo.lista .complemento-card {
   flex-direction: row;
   align-items: stretch;
 }
 
-#catalogo-festas.catalogo.lista .carrossel {
+.catalogo.lista .carrossel {
   width: 38%;
   min-width: 320px;
   margin-right: 25px;
   margin-bottom: 0;
 }
 
-#catalogo-festas.catalogo.lista .conteudo {
+.catalogo.lista .conteudo {
   flex: 1;
 }
 
-/* ---------- RESULTADO FILTRADO ---------- */
-
-.catalogo-vazio-filtro {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 60px 20px;
-  color: #555;
-}
-
 /* ---------- MOBILE ---------- */
-
 @media (max-width: 768px) {
   main {
     margin-top: 140px;
+  }
+
+  .catalogo {
+    grid-template-columns: 1fr;
     padding: 10px;
-  }
-
-  .catalogo-header h1 {
-    font-size: 30px;
-  }
-
-  .filtros-catalogo {
-    padding: 15px;
-  }
-
-  .filtros-categorias {
-    gap: 5px;
   }
 
   .filtro {
@@ -482,38 +447,19 @@ main {
     font-size: 13px;
   }
 
-  .filtros-controles {
-    flex-direction: column;
-  }
-
-  .campo-busca {
-    width: 100%;
-    margin: 5px 0;
-  }
-
   #busca-complemento {
-    width: 100%;
+    width: 200px;
   }
 
-  #select-categoria {
-    width: 100%;
-    margin: 5px 0;
-  }
-
-  #catalogo-festas.catalogo {
-    grid-template-columns: 1fr;
-    padding: 10px;
-  }
-
-  #catalogo-festas .imagens-carrossel {
+  .imagens-carrossel {
     height: 230px;
   }
 
-  #catalogo-festas.catalogo.lista .bolo-fake-card {
+  .catalogo.lista .complemento-card {
     flex-direction: column;
   }
 
-  #catalogo-festas.catalogo.lista .carrossel {
+  .catalogo.lista .carrossel {
     width: 100%;
     min-width: 0;
     margin-right: 0;
