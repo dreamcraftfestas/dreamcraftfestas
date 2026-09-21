@@ -60,7 +60,7 @@ const DESCRICAO_PADRAO = [
   'Bolo cenográfico para composição da decoração',
     'Disponibilidade conforme agenda e montagem'
 ];
-const PASTA_IMAGENS = './boloFake/';
+const PASTA_IMAGENS = './bolofake/';
 const WHATSAPP = '5519993723106';
 
 let imagensModal = [];
