@@ -36,7 +36,7 @@ const bancoDadosBolosFake = [
   { nome: 'Bolo Fake Laço Rosa',                                    pasta: 'lacorosa',                              categorias: 'all meninas rosa laco',totalImgs: 1},
   { nome: 'Bolo Fake Pool Party',                                   pasta: 'poolparty',                             categorias: 'all poolparty piscina',totalImgs: 1},
   { nome: 'Bolo Fake Pantera Negra',                                pasta: 'panteranegra',                          categorias: 'all panteranegra herois filme',totalImgs: 1},
-  { nome: 'Bolo Fake Borboleta Lilas',                              pasta: 'borboletlilas',                         categorias: 'all borboleta lilas',totalImgs: 1},
+  { nome: 'Bolo Fake Borboleta Lilas',                              pasta: 'borboletalilas',                         categorias: 'all borboleta lilas',totalImgs: 1},
   { nome: 'Bolo Fake Castelo Princesas',                            pasta: 'princesas',                             categorias: 'all castelo princesas meninas',totalImgs: 3},
   { nome: 'Bolo Fake Rei Leão',                                     pasta: 'reileao',                               categorias: 'all reileao desenho',totalImgs: 1},
   { nome: 'Bolo Fake Poderoso Chefinho',                            pasta: 'poderosochefinho',                      categorias: 'all poderosochefinho meninos filme',totalImgs: 1},
