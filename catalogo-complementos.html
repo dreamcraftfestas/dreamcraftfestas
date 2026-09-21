@@ -5,14 +5,15 @@
   <title>Catálogo de Complementos - DreamCraft</title>
   <link rel="icon" type="image/png" href="Logo/logo-decoracoes.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- APENAS o CSS específico deste catálogo (autossuficiente) -->
-  <link rel="stylesheet" href="stylecomplementos.css">
-
+  <!-- CSS PRINCIPAL DO SITE -->
+    <link rel="stylesheet" href="style.css">
+    <!-- CSS PREMIUM -->
+    <link rel="stylesheet" href="style-premium.css">
+    <!-- CSS ESPECÍFICO DO CATÁLOGO -->
+    <link rel="stylesheet" href="stylecomplementos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <!-- ID igual ao bolofake e ao que header.js espera -->
   <div id="header-container"></div>
 
   <main>
@@ -54,44 +55,20 @@
             <option value="flores">Flores e Arranjos</option>
             <option value="especiais">Itens Especiais</option>
             <option value="numero">Números</option>
-          </select>
+         </select>
+</div>
 
-          <!-- Botão alternar visualização — id igual ao que o script procura -->
-          <button id="btn-visualizacao" class="btn-visualizacao" type="button" title="Alterar visualização">
-            <i class="fa-solid fa-list"></i>
-            <span>Lista</span>
-          </button>
+<div class="controlevisualizacao">
+    <button type="button">Alternar Lista / Grade</button>
+</div>
 
-        </div>
-      </div>
-    </section>
+<div class="catalogo grid" id="catalogo-festas"></div>
 
-    <!-- ID que o scriptcomplementos.js usa -->
-    <div class="catalogo grid" id="catalogo-complementos" aria-live="polite"></div>
-
-    <!-- Modal -->
-    <div id="modal-imagem" class="modal-imagem" aria-hidden="true">
-      <button class="modal-fechar" type="button" aria-label="Fechar">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <button class="modal-anterior" type="button" aria-label="Imagem anterior">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <div class="modal-conteudo">
-        <img id="imagem-modal" src="" alt="">
-        <div id="contador-modal" class="contador-modal"></div>
-      </div>
-      <button class="modal-proxima" type="button" aria-label="Próxima imagem">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-    </div>
-
-  </main>
-
+     
   <div id="footer-container"></div>
 
-  <script src="header.js"></script>
-  <script src="footer.js"></script>
-  <script src="scriptcomplementos.js"></script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="scriptdecor.js"></script>
 </body>
 </html>
