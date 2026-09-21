@@ -3,169 +3,23 @@
    DreamCraft Decorações
    ============================================================ */
 
-/* --- RESET BASE (autossuficiente, sem depender de style.css) --- */
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html { scroll-behavior: smooth; }
-
-/* IMPORTANTE: NÃO forçar display em <img> aqui.
-   O carrossel controla display: none / block nas imagens.    */
-img {
-    max-width: 100%;
-    height: auto;
-    /* SEM display: block global */
-}
-
 :root {
-    /* Identidade DreamCraft */
-    --cor-principal:   #6f8f70;
-    --cor-secundaria:  #f080a0;
-    --cor-fundo:       #a8c6a9;
-    --cor-fundo-claro: #c2e7c3;
-
-    /* Tokens do catálogo */
-    --dream-verde:       #6f8f70;
+    --dream-verde: #6f8f70;
     --dream-verde-claro: #a8c6a9;
     --dream-verde-suave: #c2e7c3;
-    --dream-fundo:       #fbfdfb;
-    --dream-texto:       #304235;
-    --dream-borda:       rgba(111, 143, 112, 0.22);
-    --dream-sombra:      0 12px 35px rgba(48, 66, 53, 0.10);
-
-    --header-height: 100px;
+    --dream-fundo: #fbfdfb;
+    --dream-texto: #304235;
+    --dream-borda: rgba(111, 143, 112, 0.22);
+    --dream-sombra: 0 12px 35px rgba(48, 66, 53, 0.10);
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: var(--dream-texto);
-    background-color: var(--cor-fundo-claro); /* fallback */
-    background: linear-gradient(
-        135deg,
-        rgba(194, 231, 195, 0.13),
-        rgba(255, 255, 255, 0.92) 45%,
-        rgba(168, 198, 169, 0.10)
-    );
+    background:
+        linear-gradient(135deg,
+            rgba(194, 231, 195, 0.13),
+            rgba(255, 255, 255, 0.92) 45%,
+            rgba(168, 198, 169, 0.10));
 }
-
-/* --- MAIN — empurra para baixo do header fixo --- */
-main { padding-top: var(--header-height); }
-
-/* --- HEADER (via header.js) --- */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 50px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    background-color: var(--cor-principal);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    height: var(--header-height);
-}
-
-.header img { height: 80px; width: auto; display: block; }
-
-.nav-menu { display: flex; gap: 20px; }
-
-.nav-menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5em;
-    cursor: pointer;
-}
-
-/* --- FOOTER --- */
-.footer {
-    text-align: center;
-    padding: 20px;
-    background-color: var(--cor-principal);
-    color: white;
-}
-
-.footer p { margin: 5px 0; }
-
-.social-media-links a {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 2em;
-    margin: 0 10px;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.social-media-links a:hover { color: white; }
-
-/* --- WHATSAPP FLUTUANTE --- */
-.whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #25D366;
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
-    animation: pulse 2s infinite;
-}
-
-.whatsapp-float:hover { transform: scale(1.1); animation: none; }
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50%       { transform: scale(1.1); }
-}
-
-/* --- MENU MOBILE --- */
-@media (max-width: 768px) {
-    :root { --header-height: 70px; }
-
-    .header { padding: 10px 20px; height: var(--header-height); }
-
-    .nav-toggle { display: flex; }
-
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: var(--header-height);
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        background-color: var(--cor-principal);
-        padding: 20px 0;
-    }
-
-    .nav-menu.active { display: flex; }
-
-    .nav-menu a { padding: 10px 30px; font-size: 15px; }
-}
-
-/* ============================================================
-   CATÁLOGO — estilos específicos
-   ============================================================ */
 
 /* Cabeçalho do catálogo */
 .catalogo-header {
