@@ -30,15 +30,134 @@
 */
 
 const bancoDadosComplementos = [
+    
+    {
+        nome: 'Número LED de Mesa',                         pasta: 'numeroledmesa',                       categorias: 'all led mumero', totalImgs: 10,
+        descricao: [
+            'Número iluminado para mesa',
+            'Ideal para aniversários e comemorações'
+        ]
+    },
+    
+    {
+        nome: 'Número LED de Chão',                         pasta: 'numeroledchao',                       categorias: 'all led numero', totalImgs: 10,
+        descricao: [
+            'Número LED de chão',
+            'Ideal para aniversários e comemorações'
+        ]
+    },
 
-  { nome: 'Número LED Gigante',                pasta: 'numero-led',        categorias: 'all led numero iluminacao',   totalImgs: 1 },
-  { nome: 'Painel Acrílico Personalizado',      pasta: 'painel-acrilico',   categorias: 'all acrilico especiais',      totalImgs: 1 },
-  { nome: 'Pedestal para Bolo',                 pasta: 'pedestal-bolo',     categorias: 'all pedestais',               totalImgs: 1 },
-  { nome: 'Cortina de Luzes',                   pasta: 'cortina-luzes',     categorias: 'all iluminacao led',          totalImgs: 1 },
-  { nome: 'Espelho Decorativo Redondo',         pasta: 'espelho-redondo',   categorias: 'all espelhos',                totalImgs: 1 },
-  { nome: 'Arranjo de Flores Artificiais',      pasta: 'arranjo-flores',    categorias: 'all flores',                  totalImgs: 1 },
-  { nome: 'Topo de Bolo Especial',              pasta: 'topo-especial',     categorias: 'all especiais',               totalImgs: 1 },
-  { nome: 'Números Decorativos em MDF',         pasta: 'numeros-mdf',       categorias: 'all numero',                  totalImgs: 1 }
+    {
+        nome: 'Cubo Sextavado Acrílico',                    pasta: 'cubo-sextavado-acrilico',               categorias: 'all acrilico', totalImgs: 2,
+        descricao: [
+            'Peça acrílica para composição da decoração',
+            'Consulte medidas e disponibilidade'
+        ]
+    },
+
+    {
+        nome: 'Arvore Algodão',                         pasta: 'arvorealgodao',                       categorias: 'all arvore', totalImgs: 1,
+        descricao: [
+            'Arvore Algodão',
+            'Ideal para aniversários e comemorações'
+        ]
+    },
+    
+    {
+        nome: 'Arvore Gota',                         pasta: 'arvoregota',                       categorias: 'all arvore', totalImgs: 1,
+        descricao: [
+            'Arvore Gota',
+            'Ideal para aniversários e comemorações'
+        ]
+    },
+
+    {
+        nome: 'Bandeja Espelhada',                         pasta: 'bandejaespelhada',                       categorias: 'all bandeja', totalImgs: 1,
+        descricao: [
+            'Bandeja Espelhada',
+            'Ideal para aniversários e comemorações'
+        ]
+    },
+
+    {
+        nome: 'Bandeja Redonda de Ferro',                         pasta: 'bandejaredondaferro',                       categorias: 'all bandeja', totalImgs: 1,
+        descricao: [
+            'Bandeja Redonda de Ferro',
+            'Ideal para aniversários e comemorações'
+        ]
+    },
+
+    {
+        nome: 'Display Carro',                         pasta: 'displaycarro',                       categorias: 'all display carros meninos', totalImgs: 1,
+        descricao: [
+            'Display Carro',
+            'Ideal para aniversários e comemorações'
+        ]
+    },
+
+    {
+        nome: 'Display Princesas',                         pasta: 'displayprincesa',                       categorias: 'all display princesas meninas', totalImgs: 1,
+        descricao: [
+            'Display Princesas',
+            'Ideal para agregar valor a sua decoração'
+        ]
+    },
+
+    {
+        nome: 'Display Placas de Transito',                         pasta: 'displaytransito',                       categorias: 'all display placas transito', totalImgs: 1,
+        descricao: [
+            'Display Placas de Transito',
+            'Ideal para agregar valor a sua decoração'
+        ]
+    },
+
+    {
+        nome: 'Trio Mesa Bailarina',                         pasta: 'mesabailarina',                       categorias: 'all mesas', totalImgs: 1,
+        descricao: [
+            'Trio Mesa Bailarina',
+            'Ideal para agregar valor a sua decoração'
+        ]
+    },
+
+    {
+        nome: 'Painel Janela',                         pasta: 'paineljanela',                       categorias: 'all painel janela', totalImgs: 1,
+        descricao: [
+            'Painel Janela',
+            'Ideal para agregar valor a sua decoração'
+        ]
+    },
+
+    {
+        nome: 'Placa MDF Bodas de Ouro',                         pasta: 'placabodasdeouro',                       categorias: 'all bandeja', totalImgs: 1,
+        descricao: [
+            'Placa MDF Bodas de Ouro',
+            'Ideal para agregar valor a sua decoração'
+        ]
+    },
+
+    {
+        nome: 'Vaso Aramado',                         pasta: 'vasoaramado',                       categorias: 'all bandeja', totalImgs: 1,
+        descricao: [
+            'Vaso Aramado',
+            'Ideal para agregar valor a sua decoração'
+        ]
+    },
+
+    {
+        nome: 'Cubo Baby',                         pasta: 'cubobaby',                       categorias: 'all cubo baby', totalImgs: 4,
+        descricao: [
+            'Cubo Baby',
+            'Ideal para agregar valor a sua decoração'
+        ]
+    },
+
+    {
+        nome: 'Algas em MDF',                         pasta: 'algas',                       categorias: 'all fundodomar mar', totalImgs: 4,
+        descricao: [
+            'Algas em MDF',
+            'Ideal para agregar valor a sua decoração'
+        ]
+    },
 
 ];
 
