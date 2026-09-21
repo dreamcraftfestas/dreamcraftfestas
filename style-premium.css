@@ -6251,10 +6251,11 @@ MODAL PORTFÓLIO
 }
 
 
-/* =========================================================
-   AJUSTE ISOLADO DOS CATÁLOGOS DE SERVIÇOS
-   Afeta somente a seção #servicos.
-   ========================================================= */
+/* Ajuste exclusivo da seção de Serviços */
+#servicos .services-container {
+    width: min(1400px, calc(100% - 80px));
+}
+
 #servicos .services-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
@@ -6289,6 +6290,10 @@ MODAL PORTFÓLIO
 }
 
 @media (max-width: 900px) {
+    #servicos .services-container {
+        width: calc(100% - 50px);
+    }
+
     #servicos .services-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -6299,6 +6304,10 @@ MODAL PORTFÓLIO
 }
 
 @media (max-width: 600px) {
+    #servicos .services-container {
+        width: calc(100% - 40px);
+    }
+
     #servicos .services-grid {
         grid-template-columns: 1fr;
     }
