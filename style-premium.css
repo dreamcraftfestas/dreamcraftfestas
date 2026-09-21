@@ -1522,7 +1522,7 @@ header nav a.active::after {
         center;
 
     gap:
-        15px;
+        13px;
 
 }
 
@@ -1539,7 +1539,7 @@ header nav a.active::after {
         center;
 
     width:
-        38px;
+        25px;
 
     height:
         38px;
@@ -1789,7 +1789,7 @@ header nav a.active::after {
     .section-heading p {
 
         font-size:
-            16px;
+            13px;
 
     }
 
@@ -1935,12 +1935,12 @@ header nav a.active::after {
 
     grid-template-columns:
         repeat(
-            2,
+            4,
             1fr
         );
 
     gap:
-        30px;
+        16px;
 
 }
 
@@ -1955,7 +1955,7 @@ header nav a.active::after {
         relative;
 
     min-height:
-        600px;
+        360px;
 
     overflow:
         hidden;
@@ -2106,7 +2106,7 @@ header nav a.active::after {
         2;
 
     padding:
-        45px;
+        24px;
 
     color:
         #ffffff;
@@ -2124,7 +2124,7 @@ header nav a.active::after {
         block;
 
     margin-bottom:
-        12px;
+        10px;
 
     color:
 
@@ -2136,7 +2136,7 @@ header nav a.active::after {
         );
 
     font-size:
-        12px;
+        10px;
 
     font-weight:
         700;
@@ -2163,7 +2163,7 @@ header nav a.active::after {
         #ffffff;
 
     font-size:
-        38px;
+        25px;
 
     line-height:
         1.15;
@@ -2181,9 +2181,9 @@ header nav a.active::after {
         480px;
 
     margin:
-        18px
+        12px
         0
-        25px;
+        16px;
 
     color:
 
@@ -2195,10 +2195,10 @@ header nav a.active::after {
         );
 
     font-size:
-        16px;
+        13px;
 
     line-height:
-        1.7;
+        1.45;
 
 }
 
@@ -2216,13 +2216,13 @@ header nav a.active::after {
         center;
 
     gap:
-        12px;
+        8px;
 
     color:
         #ffffff;
 
     font-size:
-        15px;
+        13px;
 
     font-weight:
         600;
@@ -2321,7 +2321,10 @@ header nav a.active::after {
     .services-grid {
 
         grid-template-columns:
-            1fr;
+            repeat(
+                2,
+                1fr
+            );
 
         max-width:
             650px;
@@ -2336,7 +2339,7 @@ header nav a.active::after {
     .service-card {
 
         min-height:
-            550px;
+            420px;
 
     }
 
@@ -2381,7 +2384,7 @@ header nav a.active::after {
     .service-card {
 
         min-height:
-            520px;
+            380px;
 
         border-radius:
             16px;
@@ -2392,7 +2395,7 @@ header nav a.active::after {
     .service-card-content {
 
         padding:
-            30px;
+            22px;
 
     }
 
@@ -2400,7 +2403,7 @@ header nav a.active::after {
     .service-card-content h3 {
 
         font-size:
-            32px;
+            24px;
 
     }
 
