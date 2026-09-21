@@ -29,13 +29,13 @@ const bancoDadosComplementos = [
         ]
     },
 
-    {
+    /*{
         nome: 'Cubo Sextavado Acrílico',                    pasta: 'cubo-sextavado-acrilico',               categorias: 'all acrilico', totalImgs: 2,
         descricao: [
             'Peça acrílica para composição da decoração',
             'Consulte medidas e disponibilidade'
         ]
-    },
+    },*/
 
     {
         nome: 'Arvore Algodão',                         pasta: 'arvorealgodao',                       categorias: 'all arvore', totalImgs: 1,

@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complementos para Decoração | DreamCraft</title>
+  <meta charset="UTF-8">
+  <title>Catálogo de Complementos - DreamCraft</title>
+  <link rel="icon" type="image/png" href="Logo/logo-decoracoes.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style-premium.css">
-    <link rel="stylesheet" href="stylecomplementos.css">
+  <!-- CSS já utilizados pelo site -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-premium.css">
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- CSS específico deste catálogo -->
+  <link rel="stylesheet" href="stylecomplementos.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-
-    <div id="header"></div>
+  <div id="header-container"></div>
 
     <main>
         <section class="catalogo-header">
@@ -51,42 +53,19 @@
                         <option value="flores">Flores e Arranjos</option>
                         <option value="especiais">Itens Especiais</option>
                     </select>
+    </div>
 
-                    <button id="btn-visualizacao" class="btn-visualizacao"
-                            type="button" title="Alterar visualização">
-                        <i class="fa-solid fa-list"></i>
-                        <span>Lista</span>
-                    </button>
-                </div>
-            </div>
-        </section>
+    <div class="controlevisualizacao">
+      <button type="button" id="btn-alternar">Alternar Lista / Grade</button>
+    </div>
 
-        <section id="catalogo-complementos" class="catalogo grid" aria-live="polite"></section>
+    <div class="catalogo grid" id="catalogo-complementos"></div>
+  </main>
 
-        <div id="modal-imagem" class="modal-imagem" aria-hidden="true">
-            <button class="modal-fechar" type="button" aria-label="Fechar">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+  <div id="footer-container"></div>
 
-            <button class="modal-anterior" type="button" aria-label="Imagem anterior">
-                <i class="fa-solid fa-chevron-left"></i>
-            </button>
-
-            <div class="modal-conteudo">
-                <img id="imagem-modal" src="" alt="">
-                <div id="contador-modal" class="contador-modal"></div>
-            </div>
-
-            <button class="modal-proxima" type="button" aria-label="Próxima imagem">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
-        </div>
-    </main>
-
-    <div id="footer"></div>
-
-    <script src="header.js"></script>
-    <script src="footer.js"></script>
-    <script src="scriptcomplementos.js"></script>
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+  <script src="scriptcomplementos.js"></script>
 </body>
 </html>
