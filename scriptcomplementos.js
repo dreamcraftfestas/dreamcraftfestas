@@ -1,6 +1,6 @@
 /* =========================================================
    DREAMCRAFT - CATÁLOGO DE COMPLEMENTOS
-   Arquivo: scriptdecor.js
+  
    ========================================================= */
 
 'use strict';
@@ -86,16 +86,7 @@ function gerarCatalogoComplementos() {
 
   container.innerHTML = '';
 
-  if (!bancoDadosComplementos.length) {
-    container.innerHTML =
-      '<div class="catalogo-vazio">' +
-        '<i class="fa-solid fa-gift"></i>' +
-        '<h2>Cadastre seus complementos</h2>' +
-        '<p>Os itens cadastrados em <strong>scriptdecor.js</strong> aparecerão aqui automaticamente.</p>' +
-      '</div>';
-    return;
-  }
-
+  
   const fragment = document.createDocumentFragment();
   bancoDadosComplementos.forEach(function (item) {
     fragment.appendChild(criarCardComplemento(item));
