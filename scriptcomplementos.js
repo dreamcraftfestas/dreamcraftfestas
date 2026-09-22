@@ -4,10 +4,10 @@
 
    Estrutura das imagens:
    ./complementos/nome-da-pasta/1.webp
-   ./complementos/nome-da-pasta/2.webp
-   
+   ./complementos/nome-da-pasta/2.webp*/
+'use strict';   
 
-   Para cadastrar um item, adicione um objeto em
+  /* Para cadastrar um item, adicione um objeto em
    bancoDadosComplementos.
    ============================================================ */
 
