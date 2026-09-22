@@ -13,8 +13,8 @@
 }
 
 .catalogo-header h1 {
-  color: var(--cor-principal, #6f8f70);
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(#333);
+  font-family: var(--font-titulos), Georgia, serif;
   margin: 0 0 10px;
 }
 
@@ -130,35 +130,87 @@
 }
 
 .complemento-card {
-  background: rgba(255,255,255,.92);
-  border: 1px solid rgba(111,143,112,.16);
-  border-radius: 16px;
-  padding: 14px;
+  overflow: visible;
+  z-index: 1;
+  transition: z-index 0.3s, box-shadow 0.3s;
+  background: rgba(255,255,255,0.30) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0;
-  box-shadow: 0 4px 16px rgba(0,0,0,.07);
-  transition: transform .2s ease, box-shadow .2s ease;
+  border: 1px solid rgba(255,255,255,0.30);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.10);
 }
 
 .complemento-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(0,0,0,.12);
+  z-index: 999;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 .card-imagem {
+  position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 12px;
   background: #f5f5f5;
+  cursor: zoom-in;
+  outline: none;
+  z-index: 1;
+}
+
+.card-imagem::after {
+  content: '🔍';
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 3px 10px rgba(0,0,0,.18);
+  opacity: 0;
+  transform: scale(.85);
+  transition: opacity .2s ease, transform .2s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.card-imagem:hover,
+.card-imagem:focus-visible {
+  z-index: 20;
+}
+
+.card-imagem:hover::after,
+.card-imagem:focus-visible::after {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .card-imagem img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
+  border-radius: 12px;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.card-imagem:hover img,
+.card-imagem:focus-visible img {
+  z-index: 10;
+  transform: scale(1.15);
+  box-shadow: 0 18px 40px rgba(0,0,0,.28);
 }
 
 .card-conteudo {
@@ -362,92 +414,117 @@
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  background: rgba(0,0,0,.78);
+  padding: 0;
+  background: rgba(0, 0, 0, .88);
 }
 
 .modal-conteudo {
   position: relative;
-  width: min(850px, 95vw);
-  max-height: 92vh;
-  overflow: auto;
-  background: #fff;
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
+/* No modo ampliado o título não aparece: fica somente a foto. */
 .modal-conteudo h2 {
-  text-align: center;
-  color: var(--cor-principal, #6f8f70);
-  font-size: 1.35rem;
-  margin: 0 35px 15px;
+  display: none;
 }
 
 .modal-fechar {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  width: 38px;
-  height: 38px;
+  position: fixed;
+  top: 18px;
+  right: 24px;
+  z-index: 10004;
+  width: 46px;
+  height: 46px;
   border: 0;
-  background: transparent;
-  color: #444;
-  font-size: 32px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.38);
+  color: #fff;
+  font-size: 34px;
   line-height: 1;
   cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.modal-fechar:hover {
+  background: rgba(0,0,0,.65);
+  transform: scale(1.06);
 }
 
 .modal-imagem-box {
-  position: relative;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 300px;
 }
 
 .modal-imagem-container {
-  width: min(700px, 100%);
-  height: min(65vh, 620px);
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 28px 70px;
+  box-sizing: border-box;
 }
 
 .imagem-modal {
-  width: 100%;
-  height: 100%;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 92vw;
+  max-height: 92vh;
   object-fit: contain;
-  border-radius: 10px;
+  border-radius: 0;
+  box-shadow: 0 12px 50px rgba(0,0,0,.35);
+  user-select: none;
 }
 
 .nav-modal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 2;
-  width: 44px;
-  height: 44px;
+  z-index: 10003;
+  width: 48px;
+  height: 48px;
   border: 0;
   border-radius: 50%;
-  background: rgba(0,0,0,.58);
+  background: rgba(0,0,0,.48);
   color: #fff;
-  font-size: 22px;
+  font-size: 25px;
   cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
 }
 
 .nav-modal:hover {
-  background: rgba(0,0,0,.78);
+  background: rgba(0,0,0,.72);
+  transform: translateY(-50%) scale(1.06);
 }
 
-.nav-modal.prev { left: 5px; }
-.nav-modal.next { right: 5px; }
+.nav-modal.prev { left: 24px; }
+.nav-modal.next { right: 24px; }
 
 .modal-contador {
-  text-align: center;
-  color: #777;
-  margin-top: 8px;
-  font-size: .9rem;
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 10003;
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  font-size: .85rem;
+  line-height: 1;
 }
 
 body.modal-aberto {
@@ -494,16 +571,25 @@ body.modal-aberto {
     padding: 8px 12px;
   }
 
-  .modal-container {
-    padding: 8px;
-  }
-
-  .modal-conteudo {
-    padding: 16px 10px;
-  }
-
   .modal-imagem-container {
-    height: 60vh;
+    padding: 20px 45px;
+  }
+
+  .imagem-modal {
+    max-width: 94vw;
+    max-height: 88vh;
+  }
+
+  .nav-modal.prev { left: 8px; }
+  .nav-modal.next { right: 8px; }
+
+  .modal-fechar {
+    top: 10px;
+    right: 10px;
+  }
+
+  .modal-contador {
+    bottom: 10px;
   }
 }
 

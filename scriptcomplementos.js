@@ -205,7 +205,20 @@ function criarCard(item) {
 
   const imagemBox = document.createElement('div');
   imagemBox.className = 'card-imagem';
+  imagemBox.setAttribute('role', 'button');
+  imagemBox.setAttribute('tabindex', '0');
+  imagemBox.setAttribute('aria-label', `Abrir imagens de ${item.nome}`);
+
   imagemBox.appendChild(criarImagemComFallback(caminhos, item.nome));
+
+  // Clicar na própria foto também abre o visualizador.
+  imagemBox.addEventListener('click', () => abrirModal(item));
+  imagemBox.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      abrirModal(item);
+    }
+  });
 
   const conteudo = document.createElement('div');
   conteudo.className = 'card-conteudo';
