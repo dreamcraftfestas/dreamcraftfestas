@@ -21,8 +21,14 @@ body {
             rgba(168, 198, 169, 0.10));
 }
 
+/* Compensa o header fixo do site (mesma lógica do bolofake) */
+main {
+    margin-top: 160px;
+}
+
 /* Cabeçalho do catálogo */
 .catalogo-header {
+    margin-bottom: 40px;
     max-width: 1400px;
     margin: 0 auto;
     padding: 42px 24px 18px;
@@ -408,6 +414,10 @@ body.modal-aberto {
 
 /* Responsivo */
 @media (max-width: 800px) {
+    main {
+        margin-top: 140px;
+    }
+
     .catalogo-header {
         padding: 30px 16px 12px;
     }

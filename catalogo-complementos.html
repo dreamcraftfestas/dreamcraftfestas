@@ -1,58 +1,70 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Complementos</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="stylecomplementos.css">
-    <link rel="stylesheet" href="style-premium.css">
+  <meta charset="UTF-8">
+  <title>Catálogo de Complementos - DreamCraft</title>
+  <link rel="icon" type="image/png" href="Logo/logo-decoracoes.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS já utilizados pelo site -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-premium.css">
+
+  <!-- CSS específico deste catálogo -->
+  <link rel="stylesheet" href="stylecomplementos.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <div id="header-container"></div>
 
-    <main>
-        <section class="catalogo-header">
-            <h1>Complementos para Decoração</h1>
-            <p>Itens especiais para complementar e personalizar sua decoração.</p>
+  <main>
+    <section class="catalogo-header">
+      <h1>Complementos para Decoração</h1>
+      <p>Itens especiais para complementar e personalizar sua decoração.</p>
 
-            <div class="filtros-catalogo">
-                <div class="filtros-categorias" id="filtros-categorias">
-                    <button class="filtro ativo" data-categoria="all">Todos</button>
-                    <button class="filtro" data-categoria="led">Números LED</button>
-                    <button class="filtro" data-categoria="acrilico">Acrílicos</button>
-                    <button class="filtro" data-categoria="pedestais">Pedestais</button>
-                    <button class="filtro" data-categoria="iluminacao">Iluminação</button>
-                    <button class="filtro" data-categoria="espelhos">Espelhos</button>
-                    <button class="filtro" data-categoria="flores">Flores e Arranjos</button>
-                    <button class="filtro" data-categoria="especiais">Itens Especiais</button>
-                    <button class="filtro" data-categoria="numero">Números</button>
-                </div>
+      <div class="controle">
+      <label for="filtro">Filtrar por categoria:</label>
 
-                <div class="filtros-controles">
-                    <div class="campo-busca">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" id="busca-complemento"
-                               placeholder="Buscar complemento...">
-                    </div>
+      <div class="filtros-visuais">
+          <button class="filtro ativo" data-categoria="all">Todos</button>
+          <button class="filtro" data-categoria="led">Números LED</button>
+          <button class="filtro" data-categoria="acrilico">Acrílicos</button>
+          <button class="filtro" data-categoria="pedestais">Pedestais</button>
+          <button class="filtro" data-categoria="iluminacao">Iluminação</button>
+          <button class="filtro" data-categoria="espelhos">Espelhos</button>
+          <button class="filtro" data-categoria="flores">Flores e Arranjos</button>
+          <button class="filtro" data-categoria="especiais">Itens Especiais</button>
+          <button class="filtro" data-categoria="numero">Números</button>
+        </div>
 
-                    <select id="select-categoria" aria-label="Filtrar por categoria">
-                        <option value="all">Todas as categorias</option>
-                        <option value="led">Números LED</option>
-                        <option value="acrilico">Acrílicos</option>
-                        <option value="pedestais">Pedestais</option>
-                        <option value="iluminacao">Iluminação</option>
-                        <option value="espelhos">Espelhos</option>
-                        <option value="flores">Flores e Arranjos</option>
-                        <option value="especiais">Itens Especiais</option>
-                    </select>
-    </div>
+        <div class="filtros-controles">
+          <div class="campo-busca">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="busca-complemento"
+                   placeholder="Buscar complemento...">
+          </div>
 
-    <div class="controlevisualizacao">
-      <button type="button" id="btn-alternar">Alternar Lista / Grade</button>
-    </div>
+          <select id="select-categoria" aria-label="Filtrar por categoria">
+            <option value="all">Todas as categorias</option>
+            <option value="led">Números LED</option>
+            <option value="acrilico">Acrílicos</option>
+            <option value="pedestais">Pedestais</option>
+            <option value="iluminacao">Iluminação</option>
+            <option value="espelhos">Espelhos</option>
+            <option value="flores">Flores e Arranjos</option>
+            <option value="especiais">Itens Especiais</option>
+            <option value="numero">Números</option>
+          </select>
+        </div>
+      </div>
 
-    <div class="catalogo grid" id="catalogo-complementos"></div>
+      <div class="controlevisualizacao">
+        <button type="button" id="btn-alternar">Alternar Lista / Grade</button>
+      </div>
+
+      <div class="catalogo grid" id="catalogo-complementos"></div>
+    </section>
   </main>
 
   <div id="footer-container"></div>
