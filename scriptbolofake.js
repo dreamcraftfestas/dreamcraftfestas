@@ -31,6 +31,7 @@
 
 const bancoDadosBolosFake = [
    
+  { nome: 'Bolo Fake Avatar',                                       pasta: 'avatar',                                categorias: 'all anime avatar meninos',totalImgs: 1},
   { nome: 'Bolo Fake Black Clover',                                 pasta: 'blackclover',                           categorias: 'all anime blackclover meninos homem',totalImgs: 1},
   { nome: 'Bolo Fake Festa Junina',                                 pasta: 'festajunina',                           categorias: 'all festajunina arraia',totalImgs: 1},
   { nome: 'Bolo Fake Laço Rosa',                                    pasta: 'lacorosa',                              categorias: 'all meninas rosa laco',totalImgs: 1},

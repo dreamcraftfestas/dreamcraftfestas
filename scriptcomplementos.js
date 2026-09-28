@@ -119,7 +119,43 @@ const bancoDadosComplementos = [
     categorias: ['especiais'],
     totalImgs: 4,
     descricao: ['Algas em MDF', 'Ideal para agregar valor à decoração']
+  },
+  {
+    nome: 'Trio Mesa Bailarina',
+    pasta: 'mesabailarina',
+    categorias: ['pedestais', 'especiais'],
+    totalImgs: 2,
+    descricao: ['Ideal para agregar valor à decoração']
+  },
+  {
+    nome: 'Trio Mesa Redonda',
+    pasta: 'mesaredonda',
+    categorias: ['pedestais', 'especiais', 'trio'],
+    totalImgs: 2,
+    descricao: ['Trio Mesa Redonda', 'Ideal para agregar valor à decoração']
+  },
+  {
+    nome: 'Trio Mesa Vieira',
+    pasta: 'mesavieira',
+    categorias: ['pedestais', 'especiais', 'trio'],
+    totalImgs: 2,
+    descricao: ['Trio Mesa Vieira', 'Ideal para agregar valor à decoração']
+  },
+  {
+    nome: 'Trio Mesa bailarina de Ferro',
+    pasta: 'mesabailarinaferro',
+    categorias: ['pedestais', 'especiais', 'trio'],
+    totalImgs: 2,
+    descricao: ['Trio Mesa Bailarina de Ferro', 'Ideal para agregar valor à decoração']
+  },
+  {
+    nome: 'Arco MDF Vasado',
+    pasta: 'arcomdfvasado',
+    categorias: ['pedestais', 'especiais', 'trio'],
+    totalImgs: 1,
+    descricao: ['Arco MDF Vasado', 'Ideal para agregar valor à decoração']
   }
+
 ];
 
 let imagensModal = [];
