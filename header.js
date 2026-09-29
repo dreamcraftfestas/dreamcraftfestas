@@ -328,6 +328,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         updateHeader();
 
+    }
+
     /* =========================================================
    PROTEÇÃO BÁSICA DE IMAGENS
    DreamCraft Decorações
