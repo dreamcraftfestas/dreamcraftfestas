@@ -328,14 +328,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
         updateHeader();
 
-    }
-        document.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
+    /* =========================================================
+   PROTEÇÃO BÁSICA DE IMAGENS
+   DreamCraft Decorações
+   ========================================================= */
+
+(function () {
+
+    // Bloqueia o menu do botão direito
+    document.addEventListener('contextmenu', function (event) {
+        event.preventDefault();
     });
-        document.addEventListener('dragstart', function (e) {
-        if (e.target.tagName === 'IMG') {
-        e.preventDefault();
+
+    // Impede arrastar imagens
+    document.addEventListener('dragstart', function (event) {
+        if (event.target && event.target.tagName === 'IMG') {
+            event.preventDefault();
         }
     });
+
+    // Impede seleção de imagens
+    document.addEventListener('selectstart', function (event) {
+        if (event.target && event.target.tagName === 'IMG') {
+            event.preventDefault();
+        }
+    });
+
+})();
 
 });
