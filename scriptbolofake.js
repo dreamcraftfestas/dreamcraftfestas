@@ -48,7 +48,7 @@ const bancoDadosBolosFake = [
   { nome: 'Bolo Fake Girasol',                                      pasta: 'girasol',                               categorias: 'all girasol meninas',totalImgs: 1},
   { nome: 'Bolo Fake Fazendinha',                                   pasta: 'fazendinha',                            categorias: 'all fazendinha ',totalImgs: 1},
   { nome: 'Bolo Fake Transito',                                     pasta: 'transito',                              categorias: 'all transito meninos',totalImgs: 1},
-  { nome: 'Bolo Fake Personalizado',                                pasta: 'personalizado',                         categorias: 'all personalizado tematico empresas',totalImgs: 1},
+  { nome: 'Bolo Fake Personalizado',                                pasta: 'personalisado',                         categorias: 'all personalizado tematico empresas',totalImgs: 1},
   { nome: 'Bolo Fake Rufado',                                       pasta: 'rufado',                                categorias: 'all rufado cores',totalImgs: 7}
 
 
