@@ -153,7 +153,7 @@ const bancoDadosComplementos = [
     pasta: 'arcomdfvasado',
     categorias: ['pedestais', 'especiais', 'trio'],
     totalImgs: 1,
-    descricao: ['Arco MDF Vasado', 'Ideal para agregar valor à decoração']
+    descricao: ['Arco Romano MDF Vasado', 'Ideal para agregar valor à decoração']
   }
 
 ];
