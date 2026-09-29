@@ -6324,3 +6324,8 @@ MODAL PORTFÓLIO
         font-size: 24px;
     }
 }
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+
+}
