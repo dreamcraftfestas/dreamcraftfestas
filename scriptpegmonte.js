@@ -32,6 +32,7 @@ const bancoDadosTemas = [
     { nome: "Capivara", pasta: "capivara", categorias: "all desenhos cute"   , totalImgs: 1 },
     { nome: "Casa Magica da Gabby", pasta: "casamagicadagabby", categorias: "all desenhos magia"   , totalImgs: 1 },
     { nome: "Castelo Princesa Rosa", pasta: "casteloprincesarosa", categorias: "all princesas disney"   , totalImgs: 1 },
+    { nome: "Cinderela", pasta: "cinderela", categorias: "all princesas disney"   , totalImgs: 1 },
     { nome: "Churrasco Cilindro Wisky", pasta: "churrascocilindrowisky", categorias: "all churrasco boteco"   , totalImgs: 1 },
     { nome: "Chá de Bebe Azul ", pasta: "chadebebeazul", categorias: "all chadebebe"   , totalImgs: 2 },
     { nome: "Chá de Bebe Azul Elefantinho Balão", pasta: "chadebebeazulelefantinhobalao", categorias: "all chadebebe"   , totalImgs: 0 },
