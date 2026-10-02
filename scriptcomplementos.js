@@ -78,13 +78,7 @@ const bancoDadosComplementos = [
     totalImgs: 1,
     descricao: ['Display Placas de Trânsito', 'Ideal para agregar valor à decoração']
   },
-  {
-    nome: 'Trio Mesa Bailarina',
-    pasta: 'mesabailarina',
-    categorias: ['pedestais', 'especiais'],
-    totalImgs: 1,
-    descricao: ['Trio Mesa Bailarina', 'Ideal para agregar valor à decoração']
-  },
+  
   {
     nome: 'Painel Janela',
     pasta: 'paineljanela',
