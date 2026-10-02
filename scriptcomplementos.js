@@ -154,7 +154,7 @@ const bancoDadosComplementos = [
     categorias: ['pedestais', 'especiais', 'trio'],
     totalImgs: 1,
     descricao: ['Arco Romano MDF Vasado', 'Ideal para agregar valor à decoração']
-  }
+  },
 
   {
     nome: 'Mesa Arco-Iris MDF Rosa Candy',
@@ -162,7 +162,7 @@ const bancoDadosComplementos = [
     categorias: ['mesas'],
     totalImgs: 2,
     descricao: ['Mesa Arco-Iris MDF Rosa Candy', 'Ideal para agregar valor à decoração']
-  }
+  },
 
   {
     nome: 'Mesa Arco-Iris MDF Azul Candy',
@@ -170,7 +170,7 @@ const bancoDadosComplementos = [
     categorias: ['mesas'],
     totalImgs: 1,
     descricao: ['Mesa Arco-Iris MDF Azul Candy', 'Ideal para agregar valor à decoração']
-  }
+  },
 
   {
     nome: 'Mesa Arco-Iris MDF Verde Candy',
@@ -178,7 +178,7 @@ const bancoDadosComplementos = [
     categorias: ['mesas'],
     totalImgs: 2,
     descricao: ['Mesa Arco-Iris MDF Verde Candy', 'Ideal para agregar valor à decoração']
-  }
+  },
 
 
 ];
