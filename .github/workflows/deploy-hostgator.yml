@@ -7,12 +7,58 @@ on:
 
 jobs:
   deploy:
-    name: Publicar no HostGator
+    name: Preparar e publicar no HostGator
     runs-on: ubuntu-latest
 
     steps:
       - name: Baixar código do GitHub
         uses: actions/checkout@v6
+
+      - name: Instalar ferramentas de minificação
+        run: |
+          npm install --no-save terser clean-css-cli
+
+      - name: Preparar versão de produção
+        shell: bash
+        run: |
+          set -e
+
+          rm -rf .deploy
+          mkdir -p .deploy
+
+          # Copia o projeto para a pasta de publicação.
+          # Arquivos de desenvolvimento e controle do Git não são publicados.
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='node_modules/' \
+            --exclude='.deploy/' \
+            ./ .deploy/
+
+          # Minifica JavaScript sem gerar source maps.
+          # Os arquivos originais continuam intactos no GitHub.
+          find .deploy -type f -name '*.js' -not -path '*/node_modules/*' -print0 |
+          while IFS= read -r -d '' file; do
+            npx terser "$file" \
+              --compress \
+              --mangle \
+              --format comments=false \
+              -o "$file.min"
+            mv "$file.min" "$file"
+          done
+
+          # Minifica CSS sem gerar source maps.
+          find .deploy -type f -name '*.css' -not -path '*/node_modules/*' -print0 |
+          while IFS= read -r -d '' file; do
+            npx cleancss -O2 -o "$file.min" "$file"
+            mv "$file.min" "$file"
+          done
+
+          echo "Arquivos JS publicados:"
+          find .deploy -type f -name '*.js' | sort
+
+          echo "Arquivos CSS publicados:"
+          find .deploy -type f -name '*.css' | sort
 
       - name: Publicar via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
@@ -22,9 +68,11 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
+          local-dir: ./.deploy/
           server-dir: ./
           dangerous-clean-slate: false
           exclude: |
             **/.git*
             **/.git*/**
             **/.github/**
+            **/node_modules/**
