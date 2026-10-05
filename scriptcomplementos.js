@@ -174,6 +174,22 @@ const bancoDadosComplementos = [
     descricao: ['Mesa Arco-Iris MDF Verde Candy', 'Ideal para agregar valor à decoração']
   },
 
+  {
+    nome: 'Painel Moinho ',
+    pasta: 'painelmoinhoceleiro',
+    categorias: ['mesas'],
+    totalImgs: 2,
+    descricao: ['Painel Moinho ', 'Ideal para agregar valor à decoração']
+  },
+
+  {
+    nome: 'Painel Organico MDF ',
+    pasta: 'painelorganicomdf',
+    categorias: ['mesas'],
+    totalImgs: 2,
+    descricao: ['Painel Organico MDF ', 'Ideal para agregar valor à decoração']
+  },
+
 
 ];
 
