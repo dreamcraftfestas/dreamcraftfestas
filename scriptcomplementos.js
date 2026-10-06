@@ -181,7 +181,7 @@ const bancoDadosComplementos = [
     nome: 'Painel Moinho ',
     pasta: 'painelmoinhoceleiro',
     categorias: ['Painel'],
-    totalImgs: 1,
+    totalImgs: 2,
     descricao: ['Painel Moinho ', 'Ideal para agregar valor à decoração']
   },
 
