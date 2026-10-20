@@ -1349,3 +1349,32 @@ img {
     max-width: 100%;
     height: auto;
 }
+/* =========================================================
+   EMPRESA AMIGA DA APAE — GALERIA DO CERTIFICADO
+   ========================================================= */
+.apae-certificate-section { padding: 100px 0; background: #fff; color: #333; }
+.apae-certificate-heading { max-width: 780px; margin: 0 auto 48px; text-align: center; }
+.apae-certificate-heading .section-tag { display: inline-block; margin-bottom: 18px; color: #6f8f70; font-size: .8rem; font-weight: 700; letter-spacing: 2px; }
+.apae-certificate-heading h2 { margin: 0 0 20px; color: #333; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1.15; }
+.apae-certificate-heading h2 span { color: #6f8f70; }
+.apae-certificate-heading p { margin: 0; color: #666; font-size: 1.05rem; line-height: 1.85; }
+.apae-certificate-gallery { display: grid; grid-template-columns: 1.25fr 1fr 1fr; grid-auto-rows: 260px; gap: 18px; }
+.apae-certificate-photo { position: relative; display: block; min-width: 0; overflow: hidden; border-radius: 16px; background: #e9e9e4; text-decoration: none; isolation: isolate; }
+.apae-certificate-photo-featured { grid-row: span 2; }
+.apae-certificate-photo img { display: block; width: 100%; height: 100%; min-height: 100%; object-fit: cover; transition: transform .45s ease; }
+.apae-certificate-photo::after { content: ""; position: absolute; inset: 35% 0 0; z-index: 1; background: linear-gradient(transparent, rgba(0,0,0,.68)); pointer-events: none; }
+.apae-certificate-photo:hover img, .apae-certificate-photo:focus-visible img { transform: scale(1.045); }
+.apae-certificate-photo-caption { position: absolute; right: 18px; bottom: 16px; left: 18px; z-index: 2; color: #fff; font-size: .98rem; font-weight: 700; text-shadow: 0 1px 5px rgba(0,0,0,.35); }
+.apae-certificate-note { margin: 18px 0 0; color: #777; font-size: .85rem; text-align: center; }
+.apae-lightbox { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 64px 72px; background: rgba(12,16,13,.94); }
+.apae-lightbox[hidden] { display: none; }
+.apae-lightbox-image { display: block; max-width: min(100%, 1400px); max-height: calc(100vh - 110px); width: auto; height: auto; object-fit: contain; box-shadow: 0 12px 50px rgba(0,0,0,.35); }
+.apae-lightbox-close, .apae-lightbox-prev, .apae-lightbox-next { position: absolute; z-index: 2; display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font: inherit; font-size: 1.8rem; line-height: 1; cursor: pointer; }
+.apae-lightbox-close { top: 18px; right: 22px; }
+.apae-lightbox-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+.apae-lightbox-next { right: 20px; top: 50%; transform: translateY(-50%); }
+.apae-lightbox-counter { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); color: #fff; font-size: .95rem; }
+.apae-lightbox-close:hover, .apae-lightbox-prev:hover, .apae-lightbox-next:hover { background: rgba(255,255,255,.25); }
+body.apae-lightbox-open { overflow: hidden; }
+@media (max-width: 900px) { .apae-certificate-gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 250px; } .apae-certificate-photo-featured { grid-row: span 1; } }
+@media (max-width: 600px) { .apae-certificate-section { padding: 72px 0; } .apae-certificate-gallery { grid-template-columns: 1fr; grid-auto-rows: 270px; gap: 14px; } .apae-certificate-photo-featured { grid-row: span 1; } .apae-lightbox { padding: 60px 12px; } .apae-lightbox-image { max-height: calc(100vh - 130px); } .apae-lightbox-close { top: 10px; right: 10px; } .apae-lightbox-prev { left: 8px; } .apae-lightbox-next { right: 8px; } .apae-lightbox-close, .apae-lightbox-prev, .apae-lightbox-next { width: 42px; height: 42px; } }
