@@ -52,6 +52,7 @@ const bancoDadosTemas = [
     { nome: "Corinthians",                              pasta: "corinthians", categorias: "all times futebol"   , totalImgs: 0 },
     { nome: "Corinthians Lilás",                        pasta: "corinthianslilas", categorias: "all times futebol"   , totalImgs: 1 },
     { nome: "Crash Royale",                             pasta: "crashroyale", categorias: "all jogos"   , totalImgs: 1 },
+    { nome: "Despedida de Solteira",                    pasta: "despedidadesolteira", categorias: "all despedidadesolteira vermelho rosa liso"   , totalImgs: 1 },
     { nome: "Despedida de Solteira Puro Amor",          pasta: "despedidadesolteirapuroamor", categorias: "all despedidadesolteira coracao labio"   , totalImgs: 1 },
     { nome: "Dia das Mães Rosas",                       pasta: "diadasmaesrosas", categorias: "all datacomemorativa"   , totalImgs: 0 },
     { nome: "Diario de Mica",                           pasta: "diariodemica", categorias: "all desenhos meninas"   , totalImgs: 2 },
