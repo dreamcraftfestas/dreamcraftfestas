@@ -45,7 +45,7 @@ const bancoDadosTemas = [
     { nome: "Chá de Bebe Lilas",                        pasta: "chadebebelilas", categorias: "all chadebebe"   , totalImgs: 1 },
     { nome: "Chá de Bebe Ursinho Rosa",                 pasta: "chadebebeursinhorosa", categorias: "all chadebebe"   , totalImgs: 1 },
     { nome: "Chá de Bebe Rosa",                         pasta: "chadebeberosa", categorias: "all chadebebe"   , totalImgs: 2 },
-    { nome: "Chá Revelação",                            pasta: "charevelacao", categorias: "all charevelacao"   , totalImgs: 7 },
+    { nome: "Chá Revelação",                            pasta: "charevelacao", categorias: "all charevelacao"   , totalImgs: 9 },
     { nome: "Chá Revelação Rosa/Azul – Ursinho",        pasta: "charevelacaorosaazulursinho", categorias: "all charevelacao"   , totalImgs: 1 },
     { nome: "Chá Revelação Rosa e Azul",                pasta: "charevelacaorosaeazul", categorias: "all charevelacao"   , totalImgs: 4 },
     { nome: "Cocorico",                                 pasta: "cocorico", categorias: "all fazenda desenho"   , totalImgs: 1 },
@@ -72,6 +72,7 @@ const bancoDadosTemas = [
     { nome: "Frozen",                                   pasta: "frozen", categorias: "all princesas filme contodefadas disney"   , totalImgs: 0 },
     { nome: "Fundo do Mar Aquarela",                    pasta: "fundodomaraquarela", categorias: "all fundodomar"   , totalImgs: 0 },
     { nome: "Fundo do Mar Menina",                      pasta: "fundodomarmenina", categorias: "all fundodomar"   , totalImgs: 0 },
+    { nome: "Fundo do Mar Shimmerwall",                 pasta: "fundodomashimmerwall", categorias: "all fundodomar"   , totalImgs: 4 },
     { nome: "Futebol Barcelona",                        pasta: "futebolbarcelona", categorias: "all times futebol"   , totalImgs: 1 },
     { nome: "Futebol",                                  pasta: "futebol", categorias: "all times futebol"   , totalImgs: 1 },
     { nome: "Girassol",                                 pasta: "girassol", categorias: "all diversos flores girassol"   , totalImgs: 1 },
@@ -98,6 +99,7 @@ const bancoDadosTemas = [
     { nome: "Meninas Superpoderosas",                   pasta: "meninassuperpoderosas", categorias: "all desenhos"   , totalImgs: 1 },
     { nome: "Meus 20 anos depois dos 20",               pasta: "meus20anosdepoisdos20", categorias: "all 1ano"   , totalImgs: 0 },
     { nome: "Mickey Baby Azul",                         pasta: "mickeybabyazul", categorias: "all disney desenhos cute"   , totalImgs: 1 },
+    { nome: "Melody",                                   pasta: "melody", categorias: "all desenhos cute"   , totalImgs: 1 },
     { nome: "Mickey Safari",                            pasta: "mickeysafari", categorias: "all disney desenhos animais"   , totalImgs: 2 },
     { nome: "Mickey Tradicional",                       pasta: "mickeytradicional", categorias: "all disney desenhos"   , totalImgs: 0 },
     { nome: "MineCraft TNT",                            pasta: "minecrafttnt", categorias: "all jogos"   , totalImgs: 0 },
@@ -155,7 +157,8 @@ const bancoDadosTemas = [
     { nome: "Ursinho Azul Chá de Bebe",                 pasta: "ursinhoazulchadebebe", categorias: "all chadebebe"   , totalImgs: 0 },
     { nome: "Verde Oliva e Palha",                      pasta: "verdeolivaepalha", categorias: "all liso verde palha"   , totalImgs: 1 },
     { nome: "Vermelho e Prata",                         pasta: "vermelhoeprata", categorias: "all liso vermelho"   , totalImgs: 1 },
-    { nome: "Vermelho e Rosa",                          pasta: "vermelhoerosa", categorias: "all liso vermelho rosa"   , totalImgs: 1 }
+    { nome: "Vermelho e Rosa",                          pasta: "vermelhoerosa", categorias: "all liso vermelho rosa"   , totalImgs: 1 },
+    { nome: "Vinho e Rose",                             pasta: "vinhoerose", categorias: "all liso vinho rose"   , totalImgs: 1 },
 
 
 ];

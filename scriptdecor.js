@@ -205,6 +205,7 @@ const bancoDadosTemas = [
   { nome: "Margarida",                              pasta: "margarida",                            categorias: "all flores"  , totalImgs: 3 },
   { nome: "Maria Clara e JP",                       pasta: "mariaclaraejp",                        categorias: "all youtuber desenhos"  , totalImgs: 3 },
   { nome: "Masha e o Urso",                         pasta: "mashaeourso",                          categorias: "all desenhos"  , totalImgs: 1 },
+  { nome: "Matriz Afro",                            pasta: "matrizafro",                           categorias: "all umbanda afro"  , totalImgs: 1 },
   { nome: "Meninas Super Poderosas",                pasta: "meninassuperpoderosas",                categorias: "all desenho meninas"  , totalImgs: 1 },
   { nome: "Meu Mundo Doce com Jesus",               pasta: "meumundodocecomjesus",                 categorias: "all religiosos"  , totalImgs: 1 },
   { nome: "Mickey",                                 pasta: "mickey",                               categorias: "all desenhos disney"  , totalImgs: 2 },
